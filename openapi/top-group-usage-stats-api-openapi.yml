@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: REST api to TON blockchain explorer Accounts Usage Stats API
+  version: 2.0.0
+  description: Provide access to indexed TON blockchain
+  contact:
+    name: Support
+    email: support@tonkeeper.com
+servers:
+- url: https://tonapi.io
+- url: https://testnet.tonapi.io
+- url: http://localhost:8081
+tags:
+- name: Usage Stats
+paths:
+  /usage-stats:
+    get:
+      operationId: getUsageStats
+      parameters:
+      - $ref: '#/components/parameters/tokenQuery'
+      responses:
+        '200':
+          description: usage stats
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageStats'
+        default:
+          $ref: '#/components/responses/Error'
+      tags:
+      - Usage Stats
+components:
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+  parameters:
+    tokenQuery:
+      in: query
+      name: token
+      schema:
+        type: string
+        example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
+  schemas:
+    UsageStats:
+      type: object
+      required:
+      - period_started_at
+      - account_subscriptions
+      - webhooks_delivered
+      - webhooks_failed
+      properties:
+        period_started_at:
+          type: string
+          format: date-time
+        period_ended_at:
+          type: string
+          format: date-time
+        account_subscriptions:
+          type: integer
+          format: int64
+        webhooks_delivered:
+          type: integer
+          format: int64
+        webhooks_failed:
+          type: integer
+          format: int64

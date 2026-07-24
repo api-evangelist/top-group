@@ -1,0 +1,542 @@
+openapi: 3.0.0
+info:
+  title: REST api to TON blockchain explorer Accounts Traces API
+  version: 2.0.0
+  description: Provide access to indexed TON blockchain
+  contact:
+    name: Support
+    email: support@tonkeeper.com
+servers:
+- url: https://tonapi.io
+- url: https://testnet.tonapi.io
+- url: http://localhost:8081
+tags:
+- name: Traces
+  externalDocs:
+    description: Additional documentation
+    url: https://docs.tonconsole.com/tonapi/rest-api/traces
+paths:
+  /v2/traces/{trace_id}:
+    get:
+      description: Get the trace by trace ID or hash of any transaction in trace
+      operationId: getTrace
+      tags:
+      - Traces
+      parameters:
+      - $ref: '#/components/parameters/traceIDParameter'
+      responses:
+        '200':
+          description: trace
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trace'
+        default:
+          $ref: '#/components/responses/Error'
+  /v2/traces/emulate:
+    post:
+      description: Emulate sending message to retrieve with a detailed execution trace
+      operationId: emulateMessageToTrace
+      tags:
+      - Traces
+      parameters:
+      - name: ignore_signature_check
+        in: query
+        required: false
+        schema:
+          type: boolean
+      requestBody:
+        $ref: '#/components/requestBodies/Boc'
+      responses:
+        '200':
+          description: emulated trace
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trace'
+        default:
+          $ref: '#/components/responses/Error'
+components:
+  schemas:
+    BouncePhaseType:
+      type: string
+      example: cskip_no_state
+      enum:
+      - TrPhaseBounceNegfunds
+      - TrPhaseBounceNofunds
+      - TrPhaseBounceOk
+    ActionPhase:
+      type: object
+      required:
+      - success
+      - result_code
+      - total_actions
+      - skipped_actions
+      - fwd_fees
+      - total_fees
+      properties:
+        success:
+          type: boolean
+          example: true
+        result_code:
+          type: integer
+          format: int32
+          example: 5
+        total_actions:
+          type: integer
+          format: int32
+          example: 5
+        skipped_actions:
+          type: integer
+          format: int32
+          example: 5
+        fwd_fees:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 1000
+        total_fees:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 1000
+        result_code_description:
+          type: string
+    Message:
+      type: object
+      required:
+      - msg_type
+      - created_lt
+      - ihr_disabled
+      - bounce
+      - bounced
+      - value
+      - fwd_fee
+      - ihr_fee
+      - import_fee
+      - created_at
+      - hash
+      properties:
+        msg_type:
+          type: string
+          example: int_msg
+          enum:
+          - int_msg
+          - ext_in_msg
+          - ext_out_msg
+        created_lt:
+          type: integer
+          format: int64
+          example: 25713146000001
+          x-js-format: bigint
+        ihr_disabled:
+          type: boolean
+          example: true
+        bounce:
+          type: boolean
+          example: true
+        bounced:
+          type: boolean
+          example: true
+        value:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 60000000
+        value_extra:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtraCurrency'
+        fwd_fee:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 5681002
+        ihr_fee:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 5681002
+        destination:
+          $ref: '#/components/schemas/AccountAddress'
+        source:
+          $ref: '#/components/schemas/AccountAddress'
+        import_fee:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 5681002
+        created_at:
+          type: integer
+          format: int64
+          example: 5681002
+        op_code:
+          type: string
+          x-js-format: bigint
+          example: '0xdeadbeaf'
+        init:
+          $ref: '#/components/schemas/StateInit'
+        hash:
+          type: string
+          example: 1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c
+        raw_body:
+          type: string
+          format: cell
+          description: hex-encoded BoC with raw message body
+          example: B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218
+        decoded_op_name:
+          type: string
+          example: nft_transfer
+        decoded_body: {}
+    AccStatusChange:
+      type: string
+      example: acst_unchanged
+      enum:
+      - acst_unchanged
+      - acst_frozen
+      - acst_deleted
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
+    Transaction:
+      type: object
+      required:
+      - hash
+      - lt
+      - account
+      - end_balance
+      - success
+      - utime
+      - orig_status
+      - end_status
+      - total_fees
+      - transaction_type
+      - state_update_old
+      - state_update_new
+      - out_msgs
+      - block
+      - aborted
+      - destroyed
+      - raw
+      properties:
+        hash:
+          type: string
+          example: 55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
+        lt:
+          type: integer
+          format: int64
+          example: 25713146000001
+          x-js-format: bigint
+        account:
+          $ref: '#/components/schemas/AccountAddress'
+        success:
+          type: boolean
+          example: true
+        utime:
+          type: integer
+          format: int64
+          example: 1645544908
+        orig_status:
+          $ref: '#/components/schemas/AccountStatus'
+        end_status:
+          $ref: '#/components/schemas/AccountStatus'
+        total_fees:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 25713146000001
+        end_balance:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 25713146000001
+        transaction_type:
+          $ref: '#/components/schemas/TransactionType'
+        state_update_old:
+          type: string
+          example: 55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
+        state_update_new:
+          type: string
+          example: 55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
+        in_msg:
+          $ref: '#/components/schemas/Message'
+        out_msgs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Message'
+        block:
+          type: string
+          example: (-1,4234234,8000000000000000)
+        prev_trans_hash:
+          type: string
+          example: 55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
+        prev_trans_lt:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 25713146000001
+        compute_phase:
+          $ref: '#/components/schemas/ComputePhase'
+        storage_phase:
+          $ref: '#/components/schemas/StoragePhase'
+        credit_phase:
+          $ref: '#/components/schemas/CreditPhase'
+        action_phase:
+          $ref: '#/components/schemas/ActionPhase'
+        bounce_phase:
+          $ref: '#/components/schemas/BouncePhaseType'
+        aborted:
+          type: boolean
+          example: true
+        destroyed:
+          type: boolean
+          example: true
+        raw:
+          type: string
+          format: cell
+          description: hex encoded boc with raw transaction
+          example: b5ee9c72410206010001380003b372cf3b5b8c891e517c9addbda1c0386a09ccacbb0e3faf630b51cfc8152325acb00002ac5795c0e41fdf79135cb7da03cc623b165d614b562a51eeccd8a5e097f405abf6b37f4e73000002ac5629732c1666887ed000144030480102030101a004008272abc8f2971aa4404ac6da1597720f348b2e1247b1ad9f55cbd3b6812f0a5f08b269bb65039fb1f6074d00f794e857f6dfd01131d299df456af10a8a4943d4d165000d0c80608840492001ab48015581f575c3b8c6ab3d6
+    StateInit:
+      type: object
+      required:
+      - boc
+      - interfaces
+      properties:
+        boc:
+          type: string
+          format: cell
+          example: b5ee9c72010106010044000114ff00f4a413f4bcf2c80b01020120020302014804050004f2300038d06c21d31f30ed44d0d33f3001c00197a4c8cb3fc9ed549330f206e20011a13431da89a1a67e61
+        interfaces:
+          type: array
+          items:
+            type: string
+    Trace:
+      type: object
+      required:
+      - transaction
+      - interfaces
+      properties:
+        transaction:
+          $ref: '#/components/schemas/Transaction'
+        interfaces:
+          type: array
+          items:
+            type: string
+          example:
+          - wallet
+          - tep62_item
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trace'
+        emulated:
+          type: boolean
+          example: false
+    TransactionType:
+      type: string
+      example: TransOrd
+      enum:
+      - TransOrd
+      - TransTickTock
+      - TransSplitPrepare
+      - TransSplitInstall
+      - TransMergePrepare
+      - TransMergeInstall
+      - TransStorage
+    AccountStatus:
+      type: string
+      example: active
+      enum:
+      - nonexist
+      - uninit
+      - active
+      - frozen
+    EcPreview:
+      type: object
+      required:
+      - id
+      - symbol
+      - decimals
+      - image
+      properties:
+        id:
+          type: integer
+          example: 239
+          format: int32
+        symbol:
+          type: string
+          example: FMS
+        decimals:
+          type: integer
+          example: 5
+        image:
+          type: string
+          example: https://cache.tonapi.io/images/extra.jpg
+    ComputeSkipReason:
+      type: string
+      example: cskip_no_state
+      enum:
+      - cskip_no_state
+      - cskip_bad_state
+      - cskip_no_gas
+      - cskip_suspended
+    StoragePhase:
+      type: object
+      required:
+      - fees_collected
+      - status_change
+      properties:
+        fees_collected:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 25713146000001
+        fees_due:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 25713146000001
+        status_change:
+          $ref: '#/components/schemas/AccStatusChange'
+    CreditPhase:
+      type: object
+      required:
+      - fees_collected
+      - credit
+      properties:
+        fees_collected:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 100
+        credit:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 1000
+    ExtraCurrency:
+      type: object
+      required:
+      - amount
+      - preview
+      properties:
+        amount:
+          type: string
+          x-js-format: bigint
+          example: '1000000000'
+        preview:
+          $ref: '#/components/schemas/EcPreview'
+    AccountAddress:
+      type: object
+      required:
+      - address
+      - is_scam
+      - is_wallet
+      properties:
+        address:
+          type: string
+          format: maybe-address
+          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
+        name:
+          type: string
+          example: Ton foundation
+          description: Display name. Data collected from different sources like moderation lists, dns, collections names and over.
+        is_scam:
+          type: boolean
+          example: true
+          description: Is this account was marked as part of scammers activity
+        icon:
+          type: string
+          example: https://ton.org/logo.png
+        is_wallet:
+          type: boolean
+          example: true
+    ComputePhase:
+      type: object
+      required:
+      - skipped
+      properties:
+        skipped:
+          type: boolean
+          example: true
+        skip_reason:
+          $ref: '#/components/schemas/ComputeSkipReason'
+        success:
+          type: boolean
+          example: true
+        gas_fees:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 1000
+        gas_used:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 10000
+        vm_steps:
+          type: integer
+          format: int32
+          example: 5
+        exit_code:
+          type: integer
+          format: int32
+          example: 0
+        exit_code_description:
+          type: string
+  parameters:
+    traceIDParameter:
+      in: path
+      name: trace_id
+      required: true
+      description: trace ID or transaction hash in hex (without 0x) or base64url format
+      schema:
+        type: string
+        example: 97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+  requestBodies:
+    Boc:
+      description: bag-of-cells serialized to hex
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - boc
+            properties:
+              boc:
+                type: string
+                format: cell
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'

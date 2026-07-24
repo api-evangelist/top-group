@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info:
+  title: REST api to TON blockchain explorer Accounts Utilities API
+  version: 2.0.0
+  description: Provide access to indexed TON blockchain
+  contact:
+    name: Support
+    email: support@tonkeeper.com
+servers:
+- url: https://tonapi.io
+- url: https://testnet.tonapi.io
+- url: http://localhost:8081
+tags:
+- name: Utilities
+  externalDocs:
+    description: Additional documentation
+    url: https://docs.tonconsole.com/tonapi/rest-api/utilities
+paths:
+  /v2/openapi.json:
+    get:
+      description: Get the openapi.json file
+      operationId: getOpenapiJson
+      tags:
+      - Utilities
+      responses:
+        '200':
+          description: openapi.json
+          content:
+            application/json:
+              schema: {}
+        default:
+          $ref: '#/components/responses/Error'
+  /v2/openapi.yml:
+    get:
+      description: Get the openapi.yml file
+      operationId: getOpenapiYml
+      tags:
+      - Utilities
+      responses:
+        '200':
+          description: openapi.yml
+          content:
+            application/yaml:
+              schema:
+                type: string
+                format: binary
+        default:
+          $ref: '#/components/responses/Error'
+  /v2/status:
+    get:
+      description: Status
+      operationId: status
+      tags:
+      - Utilities
+      responses:
+        '200':
+          description: status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceStatus'
+        default:
+          $ref: '#/components/responses/Error'
+  /v2/address/{account_id}/parse:
+    get:
+      description: parse address and display in all formats
+      operationId: addressParse
+      tags:
+      - Utilities
+      parameters:
+      - $ref: '#/components/parameters/accountIDParameter'
+      responses:
+        '200':
+          description: all forms and info
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - raw_form
+                - bounceable
+                - non_bounceable
+                - given_type
+                - test_only
+                properties:
+                  raw_form:
+                    type: string
+                    format: address
+                    example: 0:6e731f2e28b73539a7f85ac47ca104d5840b229351189977bb6151d36b5e3f5e
+                  bounceable:
+                    required:
+                    - b64
+                    - b64url
+                    type: object
+                    properties:
+                      b64:
+                        type: string
+                      b64url:
+                        type: string
+                  non_bounceable:
+                    required:
+                    - b64
+                    - b64url
+                    type: object
+                    properties:
+                      b64:
+                        type: string
+                      b64url:
+                        type: string
+                  given_type:
+                    type: string
+                  test_only:
+                    type: boolean
+        default:
+          $ref: '#/components/responses/Error'
+components:
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'
+  schemas:
+    ServiceStatus:
+      type: object
+      required:
+      - indexing_latency
+      - rest_online
+      - last_known_masterchain_seqno
+      properties:
+        rest_online:
+          type: boolean
+          default: true
+        indexing_latency:
+          type: integer
+          example: 100
+        last_known_masterchain_seqno:
+          type: integer
+          example: 123456
+          format: int32
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
+  parameters:
+    accountIDParameter:
+      in: path
+      name: account_id
+      required: true
+      description: account ID
+      schema:
+        type: string
+        format: address
+        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621

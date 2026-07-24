@@ -1,0 +1,243 @@
+openapi: 3.0.0
+info:
+  title: REST api to TON blockchain explorer Accounts Rates API
+  version: 2.0.0
+  description: Provide access to indexed TON blockchain
+  contact:
+    name: Support
+    email: support@tonkeeper.com
+servers:
+- url: https://tonapi.io
+- url: https://testnet.tonapi.io
+- url: http://localhost:8081
+tags:
+- name: Rates
+  externalDocs:
+    description: Additional documentation
+    url: https://docs.tonconsole.com/tonapi/rest-api/rates
+paths:
+  /v2/rates:
+    get:
+      description: Get the token price in the chosen currency for display only. Don’t use this for financial transactions.
+      operationId: getRates
+      tags:
+      - Rates
+      parameters:
+      - in: query
+        name: tokens
+        description: accept gram and jetton master addresses, separated by commas
+        required: true
+        explode: false
+        schema:
+          type: array
+          maxItems: 100
+          items:
+            type: string
+            format: address
+          example:
+          - gram
+      - in: query
+        name: currencies
+        description: accept gram and all possible fiat currencies, separated by commas
+        required: true
+        explode: false
+        schema:
+          type: array
+          maxItems: 50
+          items:
+            type: string
+          example:
+          - gram
+          - usd
+          - rub
+      responses:
+        '200':
+          description: tokens rates
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - rates
+                properties:
+                  rates:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/TokenRates'
+        default:
+          $ref: '#/components/responses/Error'
+  /v2/rates/chart:
+    get:
+      description: Get chart by token
+      operationId: getChartRates
+      tags:
+      - Rates
+      parameters:
+      - in: query
+        name: token
+        description: accept jetton master address
+        required: true
+        schema:
+          type: string
+          format: address
+      - in: query
+        name: currency
+        required: false
+        schema:
+          type: string
+          example: usd
+      - name: start_date
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+          maximum: 2114380800
+          example: 1668436763
+      - name: end_date
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+          maximum: 2114380800
+          example: 1668436763
+      - name: points_count
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int
+          maximum: 200
+          minimum: 0
+          default: 200
+      responses:
+        '200':
+          description: token chart
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - points
+                properties:
+                  points:
+                    $ref: '#/components/schemas/ChartPoints'
+        default:
+          $ref: '#/components/responses/Error'
+  /v2/rates/markets:
+    get:
+      description: Get the Gram price from markets
+      operationId: getMarketsRates
+      tags:
+      - Rates
+      responses:
+        '200':
+          description: markets rates
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - markets
+                properties:
+                  markets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MarketTonRates'
+        default:
+          $ref: '#/components/responses/Error'
+components:
+  schemas:
+    MarketTonRates:
+      type: object
+      required:
+      - market
+      - usd_price
+      - last_date_update
+      properties:
+        market:
+          type: string
+          example: OKX
+        usd_price:
+          type: number
+          example: 5.2
+        last_date_update:
+          type: integer
+          format: int64
+          example: 1668436763
+    ChartPoints:
+      type: array
+      items:
+        type: array
+        minItems: 2
+        maxItems: 2
+        items:
+          type: number
+      description: "Each inner array is a pair [timestamp, price]:\n  • index 0 — Unix timestamp (int64)  \n  • index 1 — token price (decimal) in the requested currency.\n"
+      example:
+      - - 1668436763
+        - 97.21323234
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
+    TokenRates:
+      type: object
+      properties:
+        prices:
+          type: object
+          additionalProperties:
+            type: number
+          example:
+            GRAM: 1.3710752873163712
+        diff_24h:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            GRAM: -1.28%
+        diff_7d:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            GRAM: -2.74%
+        diff_30d:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            GRAM: -0.56%
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'

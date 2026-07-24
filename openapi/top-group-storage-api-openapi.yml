@@ -1,0 +1,112 @@
+openapi: 3.0.0
+info:
+  title: REST api to TON blockchain explorer Accounts Storage API
+  version: 2.0.0
+  description: Provide access to indexed TON blockchain
+  contact:
+    name: Support
+    email: support@tonkeeper.com
+servers:
+- url: https://tonapi.io
+- url: https://testnet.tonapi.io
+- url: http://localhost:8081
+tags:
+- name: Storage
+  externalDocs:
+    description: Additional documentation
+    url: https://docs.tonconsole.com/tonapi/rest-api/storage
+paths:
+  /v2/storage/providers:
+    get:
+      description: Get TON storage providers deployed to the blockchain.
+      operationId: getStorageProviders
+      tags:
+      - Storage
+      responses:
+        '200':
+          description: a list of storage providers
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - providers
+                properties:
+                  providers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/StorageProvider'
+        default:
+          $ref: '#/components/responses/Error'
+components:
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'
+  schemas:
+    StorageProvider:
+      type: object
+      required:
+      - address
+      - accept_new_contracts
+      - rate_per_mb_day
+      - max_span
+      - minimal_file_size
+      - maximal_file_size
+      properties:
+        address:
+          type: string
+          format: address
+          example: 0:FD595F36B4C1535BEC8461490D38EBB9AE3C38DD6ACE17CA63ABE2C6608BE159
+        accept_new_contracts:
+          type: boolean
+          example: true
+        rate_per_mb_day:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 50000000
+        max_span:
+          type: integer
+          format: int64
+          example: 604800
+        minimal_file_size:
+          type: integer
+          format: int64
+          example: 64
+        maximal_file_size:
+          type: integer
+          format: int64
+          example: 10485760
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint

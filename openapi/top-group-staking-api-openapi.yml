@@ -1,0 +1,365 @@
+openapi: 3.0.0
+info:
+  title: REST api to TON blockchain explorer Accounts Staking API
+  version: 2.0.0
+  description: Provide access to indexed TON blockchain
+  contact:
+    name: Support
+    email: support@tonkeeper.com
+servers:
+- url: https://tonapi.io
+- url: https://testnet.tonapi.io
+- url: http://localhost:8081
+tags:
+- name: Staking
+  externalDocs:
+    description: Additional documentation
+    url: https://docs.tonconsole.com/tonapi/rest-api/staking
+paths:
+  /v2/staking/nominator/{account_id}/pools:
+    get:
+      description: All pools where account participates
+      operationId: getAccountNominatorsPools
+      tags:
+      - Staking
+      parameters:
+      - $ref: '#/components/parameters/accountIDParameter'
+      responses:
+        '200':
+          description: account's pools
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountStaking'
+        default:
+          $ref: '#/components/responses/Error'
+  /v2/staking/pool/{account_id}:
+    get:
+      description: Stacking pool info
+      operationId: getStakingPoolInfo
+      tags:
+      - Staking
+      parameters:
+      - $ref: '#/components/parameters/accountIDParameter'
+      - $ref: '#/components/parameters/i18n'
+      responses:
+        '200':
+          description: stacking pool info
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - implementation
+                - pool
+                properties:
+                  implementation:
+                    $ref: '#/components/schemas/PoolImplementation'
+                  pool:
+                    $ref: '#/components/schemas/PoolInfo'
+        default:
+          $ref: '#/components/responses/Error'
+  /v2/staking/pool/{account_id}/history:
+    get:
+      description: Pool history
+      operationId: getStakingPoolHistory
+      tags:
+      - Staking
+      parameters:
+      - $ref: '#/components/parameters/accountIDParameter'
+      - name: before_lt
+        in: query
+        description: omit this parameter to get last log entries
+        required: false
+        schema:
+          type: integer
+          format: int64
+          example: 25758317000002
+          x-js-format: bigint
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          default: 100
+          maximum: 100
+          minimum: 1
+          example: 100
+      responses:
+        '200':
+          description: pool history
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - apy
+                properties:
+                  apy:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ApyHistory'
+        default:
+          $ref: '#/components/responses/Error'
+  /v2/staking/pools:
+    get:
+      description: All pools available in network
+      operationId: getStakingPools
+      tags:
+      - Staking
+      parameters:
+      - in: query
+        name: available_for
+        required: false
+        description: account ID
+        schema:
+          type: string
+          format: address
+          example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+      - in: query
+        name: include_unverified
+        required: false
+        description: return also pools not from white list - just compatible by interfaces (maybe dangerous!)
+        schema:
+          type: boolean
+          example: false
+      - $ref: '#/components/parameters/i18n'
+      responses:
+        '200':
+          description: a list of pools
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - pools
+                - implementations
+                properties:
+                  pools:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PoolInfo'
+                  implementations:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/PoolImplementation'
+        default:
+          $ref: '#/components/responses/Error'
+components:
+  schemas:
+    PoolImplementationType:
+      type: string
+      enum:
+      - whales
+      - tf
+      - liquidTF
+      - ffvault
+    PoolInfo:
+      type: object
+      required:
+      - address
+      - total_amount
+      - implementation
+      - apy
+      - name
+      - min_stake
+      - cycle_start
+      - cycle_end
+      - verified
+      - current_nominators
+      - max_nominators
+      - nominators_stake
+      - validator_stake
+      properties:
+        address:
+          type: string
+          format: address
+          example: 0:48fb0195a7fc7454512377b9bd704503ded27f6e7c4c4a9d136fdab3ef9ec04c
+        name:
+          type: string
+          example: Tonkeeper pool
+        total_amount:
+          type: integer
+          format: int64
+          x-js-format: bigint
+        implementation:
+          $ref: '#/components/schemas/PoolImplementationType'
+        apy:
+          type: number
+          description: APY in percent
+          example: 5.31
+        min_stake:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 5000000000
+        cycle_start:
+          type: integer
+          description: current nomination cycle beginning timestamp
+          format: int64
+          example: 1678223064
+        cycle_end:
+          type: integer
+          description: current nomination cycle ending timestamp
+          format: int64
+          example: 1678223064
+        verified:
+          type: boolean
+          example: true
+          description: this pool has verified source code or managed by trusted company
+        current_nominators:
+          type: integer
+          example: 10
+          description: current number of nominators
+        max_nominators:
+          type: integer
+          example: 100
+          description: maximum number of nominators
+        liquid_jetton_master:
+          type: string
+          format: address
+          example: 0:4a91d32d0289bda9813ae00ff7640e6c38fdce76e4583dd6afc463b70c7d767c
+          description: for liquid staking master account of jetton
+        nominators_stake:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 5000000000
+          description: total stake of all nominators
+        validator_stake:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 5000000000
+          description: stake of validator
+        cycle_length:
+          type: integer
+          format: int64
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
+    AccountStaking:
+      type: object
+      required:
+      - pools
+      properties:
+        pools:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountStakingInfo'
+    AccountStakingInfo:
+      type: object
+      required:
+      - pool
+      - amount
+      - pending_deposit
+      - pending_withdraw
+      - ready_withdraw
+      properties:
+        pool:
+          type: string
+          example: EQBI-wGVp_x0VFEjd7m9cEUD3tJ_bnxMSp0Tb9qz757ATEAM
+        amount:
+          type: integer
+          format: int64
+          example: 10050000000000
+          x-js-format: bigint
+        pending_deposit:
+          type: integer
+          format: int64
+          example: 500000000000
+          x-js-format: bigint
+        pending_withdraw:
+          type: integer
+          format: int64
+          example: 500000000000
+          x-js-format: bigint
+        ready_withdraw:
+          type: integer
+          format: int64
+          example: 500000000000
+          x-js-format: bigint
+    PoolImplementation:
+      type: object
+      required:
+      - name
+      - description
+      - url
+      - socials
+      properties:
+        name:
+          type: string
+          example: TON Whales
+        description:
+          type: string
+          example: Oldest pool with minimal staking amount 50 Gram
+        url:
+          type: string
+          example: https://tonvalidators.org/
+        socials:
+          type: array
+          items:
+            type: string
+            example: https://t.me/tonwhales
+    ApyHistory:
+      type: object
+      required:
+      - apy
+      - time
+      properties:
+        apy:
+          type: number
+        time:
+          type: integer
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'
+  parameters:
+    i18n:
+      in: header
+      name: Accept-Language
+      required: false
+      schema:
+        type: string
+        example: ru-RU,ru;q=0.5
+        default: en
+    accountIDParameter:
+      in: path
+      name: account_id
+      required: true
+      description: account ID
+      schema:
+        type: string
+        format: address
+        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621

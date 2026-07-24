@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  title: REST api to TON blockchain explorer Accounts Connect API
+  version: 2.0.0
+  description: Provide access to indexed TON blockchain
+  contact:
+    name: Support
+    email: support@tonkeeper.com
+servers:
+- url: https://tonapi.io
+- url: https://testnet.tonapi.io
+- url: http://localhost:8081
+tags:
+- name: Connect
+  externalDocs:
+    description: Additional documentation
+    url: https://docs.tonconsole.com/tonapi/rest-api/connect
+paths:
+  /v2/tonconnect/payload:
+    get:
+      description: Get a payload for further token receipt
+      operationId: getTonConnectPayload
+      tags:
+      - Connect
+      responses:
+        '200':
+          description: payload
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - payload
+                properties:
+                  payload:
+                    type: string
+                    example: 84jHVNLQmZsAAAAAZB0Zryi2wqVJI-KaKNXOvCijEi46YyYzkaSHyJrMPBMOkVZa
+        default:
+          $ref: '#/components/responses/Error'
+  /v2/tonconnect/stateinit:
+    post:
+      description: Get account info by state init
+      operationId: getAccountInfoByStateInit
+      tags:
+      - Connect
+      requestBody:
+        $ref: '#/components/requestBodies/TonConnectStateInit'
+      responses:
+        '200':
+          description: account info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInfoByStateInit'
+        default:
+          $ref: '#/components/responses/Error'
+components:
+  requestBodies:
+    TonConnectStateInit:
+      description: Data that is expected
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - state_init
+            properties:
+              state_init:
+                type: string
+                format: cell-base64
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'
+  schemas:
+    AccountInfoByStateInit:
+      type: object
+      required:
+      - public_key
+      - address
+      properties:
+        public_key:
+          type: string
+          example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
+        address:
+          type: string
+          format: address
+          example: 0:97146a46acc2654y27947f14c4a4b14273e954f78bc017790b41208b0043200b
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
