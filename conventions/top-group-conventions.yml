@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tonconsole.com/tonapi
+description: >-
+  Cross-cutting request/response semantics of TON API (tonapi.io), captured
+  from the official documentation and derived from the published OpenAPI
+  (openapi/top-group-tonapi-openapi.yml). TON API is a read-heavy indexed
+  blockchain API: most operations are GETs, writes are message submissions to
+  the chain, and there is no documented idempotency-key mechanism.
+base_url: https://tonapi.io
+api_style: REST over HTTPS, JSON responses; versioned under /v2
+authentication:
+  scheme: Bearer token (TON Console) on REST; private API key on Webhooks API
+  detail: authentication/top-group-authentication.yml
+  docs: https://docs.tonconsole.com/tonapi
+idempotency:
+  supported: false
+  detail: >-
+    No Idempotency-Key header or equivalent is documented. Reads are inherently
+    idempotent; blockchain message submission (sendBlockchainMessage,
+    sendRawMessage) relies on TON message semantics, not an API-level
+    idempotency contract.
+pagination:
+  style: mixed offset/cursor
+  request_params:
+    limit: page size on list endpoints (e.g. events, jetton holders, NFT items)
+    offset: numeric offset on registry-style lists (jettons, holders, webhooks subscriptions)
+    before_lt: logical-time cursor on account transaction/event history endpoints
+  detail: Derived from OpenAPI query parameters; no single global pagination envelope.
+versioning:
+  scheme: uri-path
+  current: v2
+  detail: All REST paths live under /v2; TonAPI v1 was superseded by v2.
+  lifecycle: lifecycle/top-group-lifecycle.yml
+error_envelope:
+  shape: 'JSON object with an "error" string field'
+  detail: >-
+    The OpenAPI defines a single Error schema ({error: string}) returned as the
+    default response for non-2xx statuses.
+  reference: errors/top-group-problem-types.yml
+rate_limit_signaling:
+  detail: >-
+    Limits are plan-based rps tiers (see rate-limits/top-group-rate-limits.yml);
+    no rate-limit response headers are documented.
+request_tracing:
+  detail: No request-id tracing header is documented.
+events:
+  detail: >-
+    Real-time updates via the Webhooks API (rt.tonapi.io); SSE/WebSocket
+    Streaming API is deprecated. See asyncapi/top-group-tonapi-webhooks.yml.

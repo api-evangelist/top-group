@@ -1,0 +1,35 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tonconsole.com/tonapi
+description: >-
+  Lifecycle posture for TON API. Versioning is uri-path based (current v2).
+  The SSE/WebSocket Streaming API is explicitly deprecated in favor of the
+  Webhooks API. No public status page, SLA document, or formal deprecation
+  policy page was found; no Sunset/Deprecation header support is documented.
+versioning:
+  scheme: uri-path
+  current: v2
+  docs: https://docs.tonconsole.com/tonapi/rest-api
+deprecation:
+  policy_url: null
+  sunset_header: false
+  deprecated_surfaces:
+  - name: Streaming API (SSE/WebSocket)
+    docs: https://docs.tonconsole.com/tonapi/streaming-api
+    detail: >-
+      Docs banner states "Streaming API is deprecated - please use Webhooks API
+      for real-time updates."
+    replacement: https://docs.tonconsole.com/tonapi/webhooks-api
+  - name: GraphQL API
+    docs: https://docs.tonconsole.com/tonapi/graphql
+    detail: >-
+      Marked unstable and expected to be redesigned; REST API recommended.
+    status: unstable
+sla: null
+status_page: null
+deprecated_operations:
+- openapi/top-group-tonapi-openapi.yml#getMigrationWallets
+- openapi/top-group-tonapi-openapi.yml#prepareMigration
+notes:
+- deprecated_operations lists the Migration tag operations published for the
+  v1-to-v2 wallet migration path.

@@ -1,0 +1,1460 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/top-group-tonapi-openapi.yml
+description: 'Entity-relationship graph derived from $ref links between component schemas in the TON API
+  OpenAPI. Core entities: Account, BlockchainBlock, Transaction, Message, AccountEvent (with typed actions),
+  NftItem/NftCollection, JettonInfo/JettonBalance, and staking pool objects.'
+entities:
+- AccStatusChange
+- Account
+- AccountAddress
+- AccountEvent
+- AccountEvents
+- AccountInfoByStateInit
+- AccountPurchases
+- AccountStaking
+- AccountStakingInfo
+- AccountStatus
+- AccountStorageInfo
+- Accounts
+- Action
+- ActionPhase
+- ActionSimplePreview
+- AddExtensionAction
+- ApyHistory
+- Auction
+- AuctionBidAction
+- Auctions
+- BlockCurrencyCollection
+- BlockInfo
+- BlockLimits
+- BlockParamLimits
+- BlockRaw
+- BlockValueFlow
+- BlockchainAccountInspect
+- BlockchainBlock
+- BlockchainBlockShards
+- BlockchainBlocks
+- BlockchainConfig
+- BlockchainLibrary
+- BlockchainRawAccount
+- BlockchainRawAccounts
+- BouncePhaseType
+- BuyXTRAction
+- ChartPoints
+- ComputePhase
+- ComputeSkipReason
+- ConfigProposalSetup
+- ContractDeployAction
+- CreditPhase
+- CurrencyType
+- DecodedMessage
+- DecodedRawMessage
+- DefiAsset
+- DefiAssetType
+- DefiAssets
+- DefiLiquidPoolAssets
+- DefiLockedAsset
+- DefiProvider
+- DepositStakeAction
+- DepositTokenStakeAction
+- DepositXTRAction
+- DnsExpiring
+- DnsRecord
+- DomainBid
+- DomainBids
+- DomainInfo
+- DomainNames
+- DomainRenewAction
+- EcPreview
+- ElectionsDepositStakeAction
+- ElectionsRecoverStakeAction
+- EncryptedComment
+- Error
+- Event
+- ExecGetMethodArg
+- ExecGetMethodArgType
+- ExtraCurrencies
+- ExtraCurrency
+- ExtraCurrencyTransferAction
+- FlawedJettonTransferAction
+- FoundAccounts
+- GasLimitPrices
+- GasRelayAction
+- GaslessConfig
+- GaslessTx
+- ImagePreview
+- InitStateRaw
+- InsufficientFunds
+- JettonAssetInfo
+- JettonBalance
+- JettonBridgeParams
+- JettonBridgePrices
+- JettonBurnAction
+- JettonHolders
+- JettonInfo
+- JettonMetadata
+- JettonMintAction
+- JettonOperation
+- JettonOperations
+- JettonPreview
+- JettonQuantity
+- JettonSwapAction
+- JettonTransferAction
+- JettonTransferPayload
+- JettonVerificationType
+- Jettons
+- JettonsBalances
+- LiquidityDepositAction
+- MarketTonRates
+- Message
+- MessageConsequences
+- Metadata
+- Method
+- MethodExecutionResult
+- MigrationOutMessage
+- MigrationPrepareRequest
+- MigrationPrepareResponse
+- MigrationTransaction
+- MigrationWalletValue
+- MigrationWallets
+- MisbehaviourPunishmentConfig
+- MsgForwardPrices
+- Multisig
+- MultisigOrder
+- Multisigs
+- NewConsensusConfig
+- NftApprovedBy
+- NftCollection
+- NftCollectionMetadataStatus
+- NftCollections
+- NftItem
+- NftItemTransferAction
+- NftItems
+- NftOperation
+- NftOperations
+- NftPurchaseAction
+- NominatorRewardEntry
+- Oracle
+- OracleBridgeParams
+- OraclePriceFeed
+- OracleRequestAction
+- PictureDNS
+- PoolImplementation
+- PoolImplementationType
+- PoolInfo
+- Price
+- Protocol
+- Purchase
+- PurchaseAction
+- RawBlockchainConfig
+- ReducedBlock
+- ReducedBlocks
+- Refund
+- RemoveExtensionAction
+- RewardsStats
+- Risk
+- RoundInfo
+- RoundRewardsResponse
+- Sale
+- ScaledUI
+- Seqno
+- ServiceStatus
+- SetSignatureAllowedAction
+- SignRawMessage
+- SignRawParams
+- SizeLimitsConfig
+- SmartContractAction
+- Source
+- SourceFile
+- StateInit
+- StoragePhase
+- StorageProvider
+- Subscription
+- SubscriptionAction
+- Subscriptions
+- TokenRates
+- TonTransferAction
+- Trace
+- TraceID
+- TraceIDs
+- Transaction
+- TransactionType
+- Transactions
+- TrustType
+- TvmStackRecord
+- UnSubscriptionAction
+- ValidationRound
+- ValidationRoundsResponse
+- Validator
+- ValidatorRewardEntry
+- Validators
+- ValidatorsResponse
+- ValidatorsSet
+- ValueFlow
+- VaultDepositInfo
+- Wallet
+- WalletDNS
+- WalletPlugin
+- WalletStats
+- Wallets
+- WalletsByPublicKey
+- WalletsByPublicKeys
+- WithdrawStakeAction
+- WithdrawStakeRequestAction
+- WithdrawTokenStakeRequestAction
+- WithdrawXTRAction
+- WorkchainDescr
+relationships:
+- from: BlockValueFlow
+  to: BlockCurrencyCollection
+  relationship: has_one
+  via: from_prev_blk
+- from: BlockValueFlow
+  to: BlockCurrencyCollection
+  relationship: has_one
+  via: to_next_blk
+- from: BlockValueFlow
+  to: BlockCurrencyCollection
+  relationship: has_one
+  via: imported
+- from: BlockValueFlow
+  to: BlockCurrencyCollection
+  relationship: has_one
+  via: exported
+- from: BlockValueFlow
+  to: BlockCurrencyCollection
+  relationship: has_one
+  via: fees_collected
+- from: BlockValueFlow
+  to: BlockCurrencyCollection
+  relationship: has_one
+  via: burned
+- from: BlockValueFlow
+  to: BlockCurrencyCollection
+  relationship: has_one
+  via: fees_imported
+- from: BlockValueFlow
+  to: BlockCurrencyCollection
+  relationship: has_one
+  via: recovered
+- from: BlockValueFlow
+  to: BlockCurrencyCollection
+  relationship: has_one
+  via: created
+- from: BlockValueFlow
+  to: BlockCurrencyCollection
+  relationship: has_one
+  via: minted
+- from: BlockchainBlock
+  to: BlockValueFlow
+  relationship: has_one
+  via: value_flow
+- from: BlockchainBlocks
+  to: BlockchainBlock
+  relationship: has_many
+  via: blocks
+- from: ReducedBlocks
+  to: ReducedBlock
+  relationship: has_many
+  via: blocks
+- from: BlockchainBlockShards
+  to: BlockchainBlock
+  relationship: has_many
+  via: shards
+- from: Message
+  to: ExtraCurrency
+  relationship: has_many
+  via: value_extra
+- from: Message
+  to: AccountAddress
+  relationship: has_one
+  via: destination
+- from: Message
+  to: AccountAddress
+  relationship: has_one
+  via: source
+- from: Message
+  to: StateInit
+  relationship: has_one
+  via: init
+- from: ComputePhase
+  to: ComputeSkipReason
+  relationship: has_one
+  via: skip_reason
+- from: StoragePhase
+  to: AccStatusChange
+  relationship: has_one
+  via: status_change
+- from: Transaction
+  to: AccountAddress
+  relationship: has_one
+  via: account
+- from: Transaction
+  to: AccountStatus
+  relationship: has_one
+  via: orig_status
+- from: Transaction
+  to: AccountStatus
+  relationship: has_one
+  via: end_status
+- from: Transaction
+  to: TransactionType
+  relationship: has_one
+  via: transaction_type
+- from: Transaction
+  to: Message
+  relationship: has_one
+  via: in_msg
+- from: Transaction
+  to: Message
+  relationship: has_many
+  via: out_msgs
+- from: Transaction
+  to: ComputePhase
+  relationship: has_one
+  via: compute_phase
+- from: Transaction
+  to: StoragePhase
+  relationship: has_one
+  via: storage_phase
+- from: Transaction
+  to: CreditPhase
+  relationship: has_one
+  via: credit_phase
+- from: Transaction
+  to: ActionPhase
+  relationship: has_one
+  via: action_phase
+- from: Transaction
+  to: BouncePhaseType
+  relationship: has_one
+  via: bounce_phase
+- from: Transactions
+  to: Transaction
+  relationship: has_many
+  via: transactions
+- from: BlockLimits
+  to: BlockParamLimits
+  relationship: has_one
+  via: bytes
+- from: BlockLimits
+  to: BlockParamLimits
+  relationship: has_one
+  via: gas
+- from: BlockLimits
+  to: BlockParamLimits
+  relationship: has_one
+  via: lt_delta
+- from: OracleBridgeParams
+  to: Oracle
+  relationship: has_many
+  via: oracles
+- from: JettonBridgeParams
+  to: Oracle
+  relationship: has_many
+  via: oracles
+- from: JettonBridgeParams
+  to: JettonBridgePrices
+  relationship: has_one
+  via: prices
+- from: Validators
+  to: Validator
+  relationship: has_many
+  via: validators
+- from: BlockchainRawAccount
+  to: ExtraCurrency
+  relationship: has_many
+  via: extra_balance
+- from: BlockchainRawAccount
+  to: AccountStatus
+  relationship: has_one
+  via: status
+- from: BlockchainRawAccount
+  to: AccountStorageInfo
+  relationship: has_one
+  via: storage
+- from: BlockchainRawAccounts
+  to: BlockchainRawAccount
+  relationship: has_many
+  via: accounts
+- from: WalletPlugin
+  to: AccountStatus
+  relationship: has_one
+  via: status
+- from: Wallets
+  to: Wallet
+  relationship: has_many
+  via: accounts
+- from: WalletsByPublicKeys
+  to: WalletsByPublicKey
+  relationship: has_many
+  via: items
+- from: WalletsByPublicKey
+  to: Wallet
+  relationship: has_many
+  via: wallets
+- from: Wallet
+  to: WalletStats
+  relationship: has_one
+  via: stats
+- from: Wallet
+  to: WalletPlugin
+  relationship: has_many
+  via: plugins
+- from: Wallet
+  to: AccountStatus
+  relationship: has_one
+  via: status
+- from: Account
+  to: ExtraCurrency
+  relationship: has_many
+  via: extra_balance
+- from: Account
+  to: AccountStatus
+  relationship: has_one
+  via: status
+- from: Accounts
+  to: Account
+  relationship: has_many
+  via: accounts
+- from: SignRawParams
+  to: SignRawMessage
+  relationship: has_many
+  via: messages
+- from: SignRawParams
+  to: MessageConsequences
+  relationship: has_one
+  via: emulation
+- from: MethodExecutionResult
+  to: TvmStackRecord
+  relationship: has_many
+  via: stack
+- from: TvmStackRecord
+  to: TvmStackRecord
+  relationship: has_many
+  via: tuple
+- from: BlockchainConfig
+  to: ConfigProposalSetup
+  relationship: has_one
+  via: '11'
+- from: BlockchainConfig
+  to: WorkchainDescr
+  relationship: has_one
+  via: '12'
+- from: BlockchainConfig
+  to: GasLimitPrices
+  relationship: has_one
+  via: '20'
+- from: BlockchainConfig
+  to: GasLimitPrices
+  relationship: has_one
+  via: '21'
+- from: BlockchainConfig
+  to: BlockLimits
+  relationship: has_one
+  via: '22'
+- from: BlockchainConfig
+  to: BlockLimits
+  relationship: has_one
+  via: '23'
+- from: BlockchainConfig
+  to: MsgForwardPrices
+  relationship: has_one
+  via: '24'
+- from: BlockchainConfig
+  to: MsgForwardPrices
+  relationship: has_one
+  via: '25'
+- from: BlockchainConfig
+  to: NewConsensusConfig
+  relationship: has_one
+  via: '30'
+- from: BlockchainConfig
+  to: ValidatorsSet
+  relationship: has_one
+  via: '32'
+- from: BlockchainConfig
+  to: ValidatorsSet
+  relationship: has_one
+  via: '33'
+- from: BlockchainConfig
+  to: ValidatorsSet
+  relationship: has_one
+  via: '34'
+- from: BlockchainConfig
+  to: ValidatorsSet
+  relationship: has_one
+  via: '35'
+- from: BlockchainConfig
+  to: ValidatorsSet
+  relationship: has_one
+  via: '36'
+- from: BlockchainConfig
+  to: ValidatorsSet
+  relationship: has_one
+  via: '37'
+- from: BlockchainConfig
+  to: MisbehaviourPunishmentConfig
+  relationship: has_one
+  via: '40'
+- from: BlockchainConfig
+  to: SizeLimitsConfig
+  relationship: has_one
+  via: '43'
+- from: BlockchainConfig
+  to: OracleBridgeParams
+  relationship: has_one
+  via: '71'
+- from: BlockchainConfig
+  to: OracleBridgeParams
+  relationship: has_one
+  via: '72'
+- from: BlockchainConfig
+  to: OracleBridgeParams
+  relationship: has_one
+  via: '73'
+- from: BlockchainConfig
+  to: JettonBridgeParams
+  relationship: has_one
+  via: '79'
+- from: BlockchainConfig
+  to: JettonBridgeParams
+  relationship: has_one
+  via: '81'
+- from: BlockchainConfig
+  to: JettonBridgeParams
+  relationship: has_one
+  via: '82'
+- from: DomainBid
+  to: AccountAddress
+  relationship: has_one
+  via: bidder
+- from: DomainBids
+  to: DomainBid
+  relationship: has_many
+  via: data
+- from: JettonPreview
+  to: JettonVerificationType
+  relationship: has_one
+  via: verification
+- from: JettonPreview
+  to: ScaledUI
+  relationship: has_one
+  via: scaled_ui
+- from: JettonAssetInfo
+  to: DefiAssetType
+  relationship: has_one
+  via: token_type
+- from: JettonAssetInfo
+  to: DefiAssetType
+  relationship: has_one
+  via: type
+- from: JettonAssetInfo
+  to: DefiProvider
+  relationship: has_one
+  via: defi_provider
+- from: JettonAssetInfo
+  to: DefiLiquidPoolAssets
+  relationship: has_one
+  via: pool_assets
+- from: DefiLiquidPoolAssets
+  to: DefiLockedAsset
+  relationship: has_one
+  via: asset0
+- from: DefiLiquidPoolAssets
+  to: DefiLockedAsset
+  relationship: has_one
+  via: asset1
+- from: JettonBalance
+  to: TokenRates
+  relationship: has_one
+  via: price
+- from: JettonBalance
+  to: AccountAddress
+  relationship: has_one
+  via: wallet_address
+- from: JettonBalance
+  to: JettonPreview
+  relationship: has_one
+  via: jetton
+- from: JettonBalance
+  to: JettonAssetInfo
+  relationship: has_one
+  via: defi_asset
+- from: JettonsBalances
+  to: JettonBalance
+  relationship: has_many
+  via: balances
+- from: MigrationWallets
+  to: MigrationWalletValue
+  relationship: has_many
+  via: wallets
+- from: MigrationWalletValue
+  to: AccountStatus
+  relationship: has_one
+  via: status
+- from: MigrationWalletValue
+  to: JettonBalance
+  relationship: has_many
+  via: jettons
+- from: MigrationPrepareResponse
+  to: MigrationTransaction
+  relationship: has_many
+  via: transactions
+- from: MigrationTransaction
+  to: MigrationOutMessage
+  relationship: has_many
+  via: messages
+- from: MigrationTransaction
+  to: MessageConsequences
+  relationship: has_one
+  via: emulation
+- from: VaultDepositInfo
+  to: Price
+  relationship: has_one
+  via: price
+- from: Price
+  to: CurrencyType
+  relationship: has_one
+  via: currency_type
+- from: Price
+  to: TrustType
+  relationship: has_one
+  via: verification
+- from: Sale
+  to: AccountAddress
+  relationship: has_one
+  via: market
+- from: Sale
+  to: AccountAddress
+  relationship: has_one
+  via: owner
+- from: Sale
+  to: Price
+  relationship: has_one
+  via: price
+- from: NftItem
+  to: AccountAddress
+  relationship: has_one
+  via: owner
+- from: NftItem
+  to: Sale
+  relationship: has_one
+  via: sale
+- from: NftItem
+  to: ImagePreview
+  relationship: has_many
+  via: previews
+- from: NftItem
+  to: NftApprovedBy
+  relationship: has_one
+  via: approved_by
+- from: NftItem
+  to: TrustType
+  relationship: has_one
+  via: trust
+- from: NftItems
+  to: NftItem
+  relationship: has_many
+  via: nft_items
+- from: Multisigs
+  to: Multisig
+  relationship: has_many
+  via: multisigs
+- from: Multisig
+  to: MultisigOrder
+  relationship: has_many
+  via: orders
+- from: MultisigOrder
+  to: Risk
+  relationship: has_one
+  via: risk
+- from: ValueFlow
+  to: AccountAddress
+  relationship: has_one
+  via: account
+- from: ValueFlow
+  to: AccountAddress
+  relationship: has_many
+  via: jettons
+- from: ValueFlow
+  to: JettonPreview
+  relationship: has_many
+  via: jettons
+- from: Action
+  to: TonTransferAction
+  relationship: has_one
+  via: TonTransfer
+- from: Action
+  to: ExtraCurrencyTransferAction
+  relationship: has_one
+  via: ExtraCurrencyTransfer
+- from: Action
+  to: ContractDeployAction
+  relationship: has_one
+  via: ContractDeploy
+- from: Action
+  to: JettonTransferAction
+  relationship: has_one
+  via: JettonTransfer
+- from: Action
+  to: FlawedJettonTransferAction
+  relationship: has_one
+  via: FlawedJettonTransfer
+- from: Action
+  to: JettonBurnAction
+  relationship: has_one
+  via: JettonBurn
+- from: Action
+  to: JettonMintAction
+  relationship: has_one
+  via: JettonMint
+- from: Action
+  to: NftItemTransferAction
+  relationship: has_one
+  via: NftItemTransfer
+- from: Action
+  to: SubscriptionAction
+  relationship: has_one
+  via: Subscribe
+- from: Action
+  to: UnSubscriptionAction
+  relationship: has_one
+  via: UnSubscribe
+- from: Action
+  to: AuctionBidAction
+  relationship: has_one
+  via: AuctionBid
+- from: Action
+  to: NftPurchaseAction
+  relationship: has_one
+  via: NftPurchase
+- from: Action
+  to: DepositStakeAction
+  relationship: has_one
+  via: DepositStake
+- from: Action
+  to: WithdrawStakeAction
+  relationship: has_one
+  via: WithdrawStake
+- from: Action
+  to: WithdrawStakeRequestAction
+  relationship: has_one
+  via: WithdrawStakeRequest
+- from: Action
+  to: ElectionsDepositStakeAction
+  relationship: has_one
+  via: ElectionsDepositStake
+- from: Action
+  to: ElectionsRecoverStakeAction
+  relationship: has_one
+  via: ElectionsRecoverStake
+- from: Action
+  to: JettonSwapAction
+  relationship: has_one
+  via: JettonSwap
+- from: Action
+  to: SmartContractAction
+  relationship: has_one
+  via: SmartContractExec
+- from: Action
+  to: DomainRenewAction
+  relationship: has_one
+  via: DomainRenew
+- from: Action
+  to: PurchaseAction
+  relationship: has_one
+  via: Purchase
+- from: Action
+  to: AddExtensionAction
+  relationship: has_one
+  via: AddExtension
+- from: Action
+  to: RemoveExtensionAction
+  relationship: has_one
+  via: RemoveExtension
+- from: Action
+  to: SetSignatureAllowedAction
+  relationship: has_one
+  via: SetSignatureAllowedAction
+- from: Action
+  to: GasRelayAction
+  relationship: has_one
+  via: GasRelay
+- from: Action
+  to: DepositTokenStakeAction
+  relationship: has_one
+  via: DepositTokenStake
+- from: Action
+  to: WithdrawTokenStakeRequestAction
+  relationship: has_one
+  via: WithdrawTokenStakeRequest
+- from: Action
+  to: LiquidityDepositAction
+  relationship: has_one
+  via: LiquidityDeposit
+- from: Action
+  to: OracleRequestAction
+  relationship: has_one
+  via: OracleRequest
+- from: Action
+  to: WithdrawXTRAction
+  relationship: has_one
+  via: WithdrawXTR
+- from: Action
+  to: DepositXTRAction
+  relationship: has_one
+  via: DepositXTR
+- from: Action
+  to: BuyXTRAction
+  relationship: has_one
+  via: BuyXTR
+- from: Action
+  to: ActionSimplePreview
+  relationship: has_one
+  via: simple_preview
+- from: TonTransferAction
+  to: AccountAddress
+  relationship: has_one
+  via: sender
+- from: TonTransferAction
+  to: AccountAddress
+  relationship: has_one
+  via: recipient
+- from: TonTransferAction
+  to: EncryptedComment
+  relationship: has_one
+  via: encrypted_comment
+- from: TonTransferAction
+  to: Refund
+  relationship: has_one
+  via: refund
+- from: OracleRequestAction
+  to: AccountAddress
+  relationship: has_one
+  via: requester
+- from: OracleRequestAction
+  to: AccountAddress
+  relationship: has_one
+  via: response_to
+- from: OracleRequestAction
+  to: OraclePriceFeed
+  relationship: has_many
+  via: price_feeds
+- from: DepositXTRAction
+  to: AccountAddress
+  relationship: has_one
+  via: recipient
+- from: BuyXTRAction
+  to: AccountAddress
+  relationship: has_one
+  via: recipient
+- from: WithdrawXTRAction
+  to: AccountAddress
+  relationship: has_one
+  via: user
+- from: ExtraCurrencies
+  to: EcPreview
+  relationship: has_many
+  via: extra_currencies
+- from: ExtraCurrencyTransferAction
+  to: AccountAddress
+  relationship: has_one
+  via: sender
+- from: ExtraCurrencyTransferAction
+  to: AccountAddress
+  relationship: has_one
+  via: recipient
+- from: ExtraCurrencyTransferAction
+  to: EncryptedComment
+  relationship: has_one
+  via: encrypted_comment
+- from: ExtraCurrencyTransferAction
+  to: EcPreview
+  relationship: has_one
+  via: currency
+- from: SmartContractAction
+  to: AccountAddress
+  relationship: has_one
+  via: executor
+- from: SmartContractAction
+  to: AccountAddress
+  relationship: has_one
+  via: contract
+- from: SmartContractAction
+  to: Refund
+  relationship: has_one
+  via: refund
+- from: DomainRenewAction
+  to: AccountAddress
+  relationship: has_one
+  via: renewer
+- from: GasRelayAction
+  to: AccountAddress
+  relationship: has_one
+  via: relayer
+- from: GasRelayAction
+  to: AccountAddress
+  relationship: has_one
+  via: target
+- from: PurchaseAction
+  to: AccountAddress
+  relationship: has_one
+  via: source
+- from: PurchaseAction
+  to: AccountAddress
+  relationship: has_one
+  via: destination
+- from: PurchaseAction
+  to: Price
+  relationship: has_one
+  via: amount
+- from: PurchaseAction
+  to: Metadata
+  relationship: has_one
+  via: metadata
+- from: AddExtensionAction
+  to: AccountAddress
+  relationship: has_one
+  via: wallet
+- from: RemoveExtensionAction
+  to: AccountAddress
+  relationship: has_one
+  via: wallet
+- from: SetSignatureAllowedAction
+  to: AccountAddress
+  relationship: has_one
+  via: wallet
+- from: NftItemTransferAction
+  to: AccountAddress
+  relationship: has_one
+  via: sender
+- from: NftItemTransferAction
+  to: AccountAddress
+  relationship: has_one
+  via: recipient
+- from: NftItemTransferAction
+  to: EncryptedComment
+  relationship: has_one
+  via: encrypted_comment
+- from: NftItemTransferAction
+  to: Refund
+  relationship: has_one
+  via: refund
+- from: JettonTransferAction
+  to: AccountAddress
+  relationship: has_one
+  via: sender
+- from: JettonTransferAction
+  to: AccountAddress
+  relationship: has_one
+  via: recipient
+- from: JettonTransferAction
+  to: EncryptedComment
+  relationship: has_one
+  via: encrypted_comment
+- from: JettonTransferAction
+  to: Refund
+  relationship: has_one
+  via: refund
+- from: JettonTransferAction
+  to: JettonPreview
+  relationship: has_one
+  via: jetton
+- from: FlawedJettonTransferAction
+  to: AccountAddress
+  relationship: has_one
+  via: sender
+- from: FlawedJettonTransferAction
+  to: AccountAddress
+  relationship: has_one
+  via: recipient
+- from: FlawedJettonTransferAction
+  to: EncryptedComment
+  relationship: has_one
+  via: encrypted_comment
+- from: FlawedJettonTransferAction
+  to: Refund
+  relationship: has_one
+  via: refund
+- from: FlawedJettonTransferAction
+  to: JettonPreview
+  relationship: has_one
+  via: jetton
+- from: JettonBurnAction
+  to: AccountAddress
+  relationship: has_one
+  via: sender
+- from: JettonBurnAction
+  to: JettonPreview
+  relationship: has_one
+  via: jetton
+- from: JettonMintAction
+  to: AccountAddress
+  relationship: has_one
+  via: recipient
+- from: JettonMintAction
+  to: JettonPreview
+  relationship: has_one
+  via: jetton
+- from: SubscriptionAction
+  to: AccountAddress
+  relationship: has_one
+  via: subscriber
+- from: SubscriptionAction
+  to: AccountAddress
+  relationship: has_one
+  via: beneficiary
+- from: SubscriptionAction
+  to: AccountAddress
+  relationship: has_one
+  via: admin
+- from: SubscriptionAction
+  to: Price
+  relationship: has_one
+  via: price
+- from: UnSubscriptionAction
+  to: AccountAddress
+  relationship: has_one
+  via: subscriber
+- from: UnSubscriptionAction
+  to: AccountAddress
+  relationship: has_one
+  via: beneficiary
+- from: UnSubscriptionAction
+  to: AccountAddress
+  relationship: has_one
+  via: admin
+- from: AuctionBidAction
+  to: Price
+  relationship: has_one
+  via: amount
+- from: AuctionBidAction
+  to: NftItem
+  relationship: has_one
+  via: nft
+- from: AuctionBidAction
+  to: AccountAddress
+  relationship: has_one
+  via: bidder
+- from: AuctionBidAction
+  to: AccountAddress
+  relationship: has_one
+  via: auction
+- from: DepositStakeAction
+  to: AccountAddress
+  relationship: has_one
+  via: staker
+- from: DepositStakeAction
+  to: AccountAddress
+  relationship: has_one
+  via: pool
+- from: DepositStakeAction
+  to: PoolImplementationType
+  relationship: has_one
+  via: implementation
+- from: DepositStakeAction
+  to: Price
+  relationship: has_one
+  via: stake_meta
+- from: WithdrawStakeAction
+  to: AccountAddress
+  relationship: has_one
+  via: staker
+- from: WithdrawStakeAction
+  to: AccountAddress
+  relationship: has_one
+  via: pool
+- from: WithdrawStakeAction
+  to: PoolImplementationType
+  relationship: has_one
+  via: implementation
+- from: WithdrawStakeRequestAction
+  to: AccountAddress
+  relationship: has_one
+  via: staker
+- from: WithdrawStakeRequestAction
+  to: AccountAddress
+  relationship: has_one
+  via: pool
+- from: WithdrawStakeRequestAction
+  to: PoolImplementationType
+  relationship: has_one
+  via: implementation
+- from: WithdrawStakeRequestAction
+  to: Price
+  relationship: has_one
+  via: stake_meta
+- from: ElectionsRecoverStakeAction
+  to: AccountAddress
+  relationship: has_one
+  via: staker
+- from: ElectionsDepositStakeAction
+  to: AccountAddress
+  relationship: has_one
+  via: staker
+- from: JettonSwapAction
+  to: AccountAddress
+  relationship: has_one
+  via: user_wallet
+- from: JettonSwapAction
+  to: AccountAddress
+  relationship: has_one
+  via: router
+- from: JettonSwapAction
+  to: JettonPreview
+  relationship: has_one
+  via: jetton_master_in
+- from: JettonSwapAction
+  to: JettonPreview
+  relationship: has_one
+  via: jetton_master_out
+- from: NftPurchaseAction
+  to: Price
+  relationship: has_one
+  via: amount
+- from: NftPurchaseAction
+  to: NftItem
+  relationship: has_one
+  via: nft
+- from: NftPurchaseAction
+  to: AccountAddress
+  relationship: has_one
+  via: seller
+- from: NftPurchaseAction
+  to: AccountAddress
+  relationship: has_one
+  via: buyer
+- from: DepositTokenStakeAction
+  to: AccountAddress
+  relationship: has_one
+  via: staker
+- from: DepositTokenStakeAction
+  to: Protocol
+  relationship: has_one
+  via: protocol
+- from: DepositTokenStakeAction
+  to: Price
+  relationship: has_one
+  via: stake_meta
+- from: WithdrawTokenStakeRequestAction
+  to: AccountAddress
+  relationship: has_one
+  via: staker
+- from: WithdrawTokenStakeRequestAction
+  to: Protocol
+  relationship: has_one
+  via: protocol
+- from: WithdrawTokenStakeRequestAction
+  to: Price
+  relationship: has_one
+  via: stake_meta
+- from: LiquidityDepositAction
+  to: Protocol
+  relationship: has_one
+  via: protocol
+- from: LiquidityDepositAction
+  to: AccountAddress
+  relationship: has_one
+  via: from
+- from: LiquidityDepositAction
+  to: VaultDepositInfo
+  relationship: has_many
+  via: tokens
+- from: ActionSimplePreview
+  to: AccountAddress
+  relationship: has_many
+  via: accounts
+- from: AccountEvent
+  to: AccountAddress
+  relationship: has_one
+  via: account
+- from: AccountEvent
+  to: Action
+  relationship: has_many
+  via: actions
+- from: AccountEvents
+  to: AccountEvent
+  relationship: has_many
+  via: events
+- from: Purchase
+  to: AccountAddress
+  relationship: has_one
+  via: source
+- from: Purchase
+  to: AccountAddress
+  relationship: has_one
+  via: destination
+- from: Purchase
+  to: Price
+  relationship: has_one
+  via: amount
+- from: Purchase
+  to: Metadata
+  relationship: has_one
+  via: metadata
+- from: AccountPurchases
+  to: Purchase
+  relationship: has_many
+  via: purchases
+- from: TraceIDs
+  to: TraceID
+  relationship: has_many
+  via: traces
+- from: Subscription
+  to: Price
+  relationship: has_one
+  via: payment_per_period
+- from: Subscription
+  to: AccountAddress
+  relationship: has_one
+  via: wallet
+- from: Subscription
+  to: Metadata
+  relationship: has_one
+  via: metadata
+- from: Subscription
+  to: AccountAddress
+  relationship: has_one
+  via: beneficiary
+- from: Subscription
+  to: AccountAddress
+  relationship: has_one
+  via: admin
+- from: Subscriptions
+  to: Subscription
+  relationship: has_many
+  via: subscriptions
+- from: Auctions
+  to: Auction
+  relationship: has_many
+  via: data
+- from: WalletDNS
+  to: AccountAddress
+  relationship: has_one
+  via: account
+- from: DomainInfo
+  to: NftItem
+  relationship: has_one
+  via: item
+- from: DnsRecord
+  to: WalletDNS
+  relationship: has_one
+  via: wallet
+- from: DnsRecord
+  to: PictureDNS
+  relationship: has_one
+  via: picture
+- from: NftCollection
+  to: AccountAddress
+  relationship: has_one
+  via: owner
+- from: NftCollection
+  to: ImagePreview
+  relationship: has_many
+  via: previews
+- from: NftCollection
+  to: NftApprovedBy
+  relationship: has_one
+  via: approved_by
+- from: NftCollection
+  to: TrustType
+  relationship: has_one
+  via: trust
+- from: NftCollection
+  to: NftCollectionMetadataStatus
+  relationship: has_one
+  via: metadata_status
+- from: NftCollections
+  to: NftCollection
+  relationship: has_many
+  via: nft_collections
+- from: Trace
+  to: Transaction
+  relationship: has_one
+  via: transaction
+- from: Trace
+  to: Trace
+  relationship: has_many
+  via: children
+- from: MessageConsequences
+  to: Trace
+  relationship: has_one
+  via: trace
+- from: MessageConsequences
+  to: Risk
+  relationship: has_one
+  via: risk
+- from: MessageConsequences
+  to: AccountEvent
+  relationship: has_one
+  via: event
+- from: Risk
+  to: JettonQuantity
+  relationship: has_many
+  via: jettons
+- from: Risk
+  to: NftItem
+  relationship: has_many
+  via: nfts
+- from: JettonQuantity
+  to: AccountAddress
+  relationship: has_one
+  via: wallet_address
+- from: JettonQuantity
+  to: JettonPreview
+  relationship: has_one
+  via: jetton
+- from: DecodedMessage
+  to: AccountAddress
+  relationship: has_one
+  via: destination
+- from: DecodedMessage
+  to: DecodedRawMessage
+  relationship: has_one
+  via: ext_in_msg_decoded
+- from: Event
+  to: Action
+  relationship: has_many
+  via: actions
+- from: Event
+  to: ValueFlow
+  relationship: has_many
+  via: value_flow
+- from: Jettons
+  to: JettonInfo
+  relationship: has_many
+  via: jettons
+- from: JettonInfo
+  to: AccountAddress
+  relationship: has_one
+  via: admin
+- from: JettonInfo
+  to: JettonMetadata
+  relationship: has_one
+  via: metadata
+- from: JettonInfo
+  to: JettonVerificationType
+  relationship: has_one
+  via: verification
+- from: JettonInfo
+  to: ScaledUI
+  relationship: has_one
+  via: scaled_ui
+- from: JettonHolders
+  to: AccountAddress
+  relationship: has_many
+  via: addresses
+- from: DefiAssets
+  to: DefiAsset
+  relationship: has_many
+  via: assets
+- from: DefiAsset
+  to: DefiAssetType
+  relationship: has_one
+  via: type
+- from: DefiAsset
+  to: DefiProvider
+  relationship: has_one
+  via: defi_provider
+- from: DefiAsset
+  to: DefiLockedAsset
+  relationship: has_one
+  via: locked_asset
+- from: DefiLockedAsset
+  to: JettonPreview
+  relationship: has_one
+  via: jetton
+- from: AccountStaking
+  to: AccountStakingInfo
+  relationship: has_many
+  via: pools
+- from: PoolInfo
+  to: PoolImplementationType
+  relationship: has_one
+  via: implementation
+- from: FoundAccounts
+  to: TrustType
+  relationship: has_many
+  via: addresses
+- from: DnsExpiring
+  to: NftItem
+  relationship: has_many
+  via: items
+- from: BlockchainAccountInspect
+  to: Method
+  relationship: has_many
+  via: methods
+- from: BlockchainAccountInspect
+  to: Source
+  relationship: has_one
+  via: source
+- from: ExtraCurrency
+  to: EcPreview
+  relationship: has_one
+  via: preview
+- from: Source
+  to: SourceFile
+  relationship: has_many
+  via: files
+- from: NftOperations
+  to: NftOperation
+  relationship: has_many
+  via: operations
+- from: NftOperation
+  to: AccountAddress
+  relationship: has_one
+  via: source
+- from: NftOperation
+  to: AccountAddress
+  relationship: has_one
+  via: destination
+- from: NftOperation
+  to: NftItem
+  relationship: has_one
+  via: item
+- from: JettonOperations
+  to: JettonOperation
+  relationship: has_many
+  via: operations
+- from: JettonOperation
+  to: AccountAddress
+  relationship: has_one
+  via: source
+- from: JettonOperation
+  to: AccountAddress
+  relationship: has_one
+  via: destination
+- from: JettonOperation
+  to: JettonPreview
+  relationship: has_one
+  via: jetton
+- from: ExecGetMethodArg
+  to: ExecGetMethodArgType
+  relationship: has_one
+  via: type
+- from: ValidatorsResponse
+  to: BlockInfo
+  relationship: has_one
+  via: block
+- from: ValidatorsResponse
+  to: RoundInfo
+  relationship: has_one
+  via: validation_round
+- from: ValidatorsResponse
+  to: ValidatorRewardEntry
+  relationship: has_many
+  via: validators
+- from: ValidationRoundsResponse
+  to: ValidationRound
+  relationship: has_many
+  via: rounds
+- from: ValidatorRewardEntry
+  to: NominatorRewardEntry
+  relationship: has_many
+  via: nominators
+- from: RoundRewardsResponse
+  to: ValidatorRewardEntry
+  relationship: has_many
+  via: validators

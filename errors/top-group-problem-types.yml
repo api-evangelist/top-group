@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/top-group-tonapi-openapi.yml
+format: custom-json-envelope
+description: 'Error catalog derived from the TON API OpenAPI. The spec defines a single Error schema ({error:
+  string}) returned as the default response for non-2xx statuses; explicit 4xx/5xx statuses per operation
+  are aggregated below. Not RFC 9457 problem+json.'
+envelope:
+  content_type: application/json
+  schema:
+    error: string - human-readable error message
+problems:
+- status: default
+  description: ''
+  operations:
+  - openapi/top-group-tonapi-openapi.yml#getOpenapiJson
+  - openapi/top-group-tonapi-openapi.yml#getOpenapiYml
+  - openapi/top-group-tonapi-openapi.yml#status
+  - openapi/top-group-tonapi-openapi.yml#getReducedBlockchainBlocks
+  - openapi/top-group-tonapi-openapi.yml#getBlockchainBlock

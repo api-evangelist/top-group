@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tonconsole.com/tonapi/rest-api
+description: >-
+  Test environment for TON API. TOP Group publishes no magic test values or
+  test cards; the sandbox surface is the TON testnet, exposed through dedicated
+  testnet hosts that mirror the mainnet API. TON Console tokens work on both
+  networks with identical rate limits.
+environments:
+- name: mainnet
+  base_url: https://tonapi.io
+- name: testnet
+  base_url: https://testnet.tonapi.io
+  detail: Full REST API against the TON testnet; same paths and operations as mainnet.
+- name: testnet webhooks
+  base_url: https://rt-testnet.tonapi.io
+  detail: Webhooks API testnet host; same URL scheme as mainnet rt.tonapi.io.
+  source: https://docs.tonconsole.com/tonapi/webhooks-api
+keys:
+  separation: >-
+    No separate test keys; the same TON Console token is used for mainnet and
+    testnet, and rate limits are identical on both (a 10 rps plan grants 10 rps
+    on each network).
+  source: https://docs.tonconsole.com/tonapi
+tooling:
+- name: Swagger UI
+  url: https://tonapi.io/api-v2
+  detail: Interactive testing and exploration of the REST API.
+- name: GraphQL Playground
+  url: https://tonapi.io/v2/graphql/playground
+  detail: Interactive GraphQL queries (GraphQL API is marked unstable).
+- name: opentonapi
+  url: https://github.com/tonkeeper/opentonapi
+  detail: >-
+    Limited open-source TonAPI that can be self-hosted without a full
+    blockchain index, usable for local development against public or private
+    liteservers.

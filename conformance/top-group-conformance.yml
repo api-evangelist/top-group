@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/top-group-tonapi-openapi.yml
+description: >-
+  Industry and cross-cutting standards posture for TON API, derived from the
+  published OpenAPI and the official documentation. TOP Group publishes no
+  formal compliance/certification program, so no Compliance pointer is emitted.
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: Published spec is OpenAPI 3.0.0 (openapi/top-group-tonapi-openapi.yml).
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securitySchemes; auth is bearer API tokens from TON Console.
+- id: oidc
+  conforms: false
+  evidence: No openid-configuration published (see well-known/top-group-well-known.yml).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'Errors use a custom {error: string} JSON envelope, not application/problem+json.'
+- id: server-sent-events
+  conforms: true
+  evidence: >-
+    Streaming API (deprecated) uses text/event-stream SSE per
+    https://docs.tonconsole.com/tonapi/streaming-api.
+- id: webhooks
+  conforms: true
+  evidence: >-
+    Webhooks API (rt.tonapi.io) delivers POST callbacks for account
+    transactions, contract deployments, and opcode-matched messages.
+- id: pagination
+  conforms: true
+  evidence: limit/offset and before_lt cursor parameters across list operations in OpenAPI.
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key mechanism documented or present in the OpenAPI.
+- id: json-api
+  conforms: false
+  evidence: Responses are plain JSON objects, not JSON:API envelopes.
+- id: graphql
+  conforms: true
+  evidence: >-
+    GraphQL endpoint at https://tonapi.io/v2/graphql (documented as unstable;
+    REST recommended).
+- id: ton-connect
+  conforms: true
+  evidence: >-
+    TON Connect 2.0 protocol support (getTonConnectPayload, tonConnectProof
+    operations; tonkeeper/tonconnect-sdk).

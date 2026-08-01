@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for TON API Webhooks API
+  version: 1.0.0
+extends: openapi/top-group-tonapi-webhooks-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: top-group
+      generated: '2026-07-21'
+      notes: >-
+        Harvested verbatim from tonkeeper/opentonapi (api/rt.yml). All methods
+        require a private TON Console API key via Authorization Bearer header
+        or token query parameter; testnet host is https://rt-testnet.tonapi.io.
+- target: $.info
+  update:
+    x-artifacts:
+      webhooks-catalog: asyncapi/top-group-tonapi-webhooks.yml
+      authentication: authentication/top-group-authentication.yml

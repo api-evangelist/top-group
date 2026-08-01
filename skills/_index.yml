@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: generated
+description: >-
+  Packaged Agent Skills for TON API (TOP Group / The Open Platform). No
+  provider-published skills or AGENTS.md were found; these are generated from
+  the published OpenAPI, with every step grounded in real operationIds.
+skills:
+- file: top-group-account-activity.md
+  name: Inspect a TON account and its activity
+  api: openapi/top-group-tonapi-openapi.yml
+  operations: [getAccount, getAccountJettonsBalances, getAccountNftItems, getAccountEvents, getBlockchainAccountTransactions]
+- file: top-group-send-and-track-message.md
+  name: Emulate, send, and track a TON message
+  api: openapi/top-group-tonapi-openapi.yml
+  operations: [getAccountSeqno, emulateMessageToWallet, sendBlockchainMessage, getBlockchainTransactionByMessageHash, getTrace]
+- file: top-group-webhook-monitoring.md
+  name: Monitor TON accounts with webhooks
+  api: openapi/top-group-tonapi-webhooks-openapi.yml
+  operations: [createWebhook, webhookAccountTxSubscribe, webhookAccountTxSubscriptions, getFailureLogs, webhookBackOnline, deleteWebhook]

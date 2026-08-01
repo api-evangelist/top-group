@@ -1,0 +1,48 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tonconsole.com/tonapi
+docs: https://docs.tonconsole.com/tonapi
+description: >-
+  Authentication profile for TON API (tonapi.io) and the TON API Webhooks API
+  (rt.tonapi.io). The published OpenAPI declares no securitySchemes; this
+  profile is captured from the official TON API documentation. REST API methods
+  work unauthenticated at a heavily throttled rate; production use requires a
+  bearer API token issued by TON Console. The Webhooks API always requires a
+  private API key.
+summary:
+  types: [http-bearer, apiKey]
+  api_key_in: [header, query]
+schemes:
+- name: TON Console API token (REST API)
+  type: http
+  scheme: bearer
+  description: >-
+    Obtain a token from https://tonconsole.com/ and pass it in the
+    Authorization header using the Bearer scheme. All REST methods are also
+    available without authentication at a rate limit of 1 request per 4
+    seconds (0.24 rps); authenticated rate limits match the purchased TON
+    Console plan and apply equally to mainnet and testnet.
+  docs: https://docs.tonconsole.com/tonapi
+  applies_to: https://tonapi.io, https://testnet.tonapi.io
+- name: Webhooks API private key
+  type: apiKey
+  in: header-or-query
+  description: >-
+    All Webhooks API methods require a private API key from TON Console. The
+    key is read from the Authorization header (Bearer scheme) first, then from
+    the "token" query-string parameter.
+  docs: https://docs.tonconsole.com/tonapi/webhooks-api
+  applies_to: https://rt.tonapi.io, https://rt-testnet.tonapi.io
+- name: Streaming API token (deprecated surface)
+  type: apiKey
+  in: header-or-query
+  description: >-
+    The deprecated SSE/WebSocket Streaming API accepts requests without a key
+    (limited concurrent connections) or a TON Console token via Authorization
+    Bearer header or "token" query parameter.
+  docs: https://docs.tonconsole.com/tonapi/streaming-api
+notes:
+- The published OpenAPI (openapi/top-group-tonapi-openapi.yml) declares no
+  components.securitySchemes; the auth model above is documented prose.
+- No OAuth2/OIDC surface is published, so no scopes/ artifact exists for this
+  provider.

@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: top.co
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jul 26 12:13:20 2026 GMT
+  hsts: false
+- host: tonapi.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 29 11:41:16 2026 GMT
+  hsts: false
+- host: docs.tonconsole.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  9 14:47:41 2026 GMT
+  hsts: false
+domains:
+- domain: top.co
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: tonapi.io
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false

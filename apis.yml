@@ -1,8 +1,29 @@
 aid: top-group
-name: TOP Group
-description: TOP Group is a company surfaced as a portfolio company of ribbit-capital and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+name: TOP Group (The Open Platform)
+description: 'TOP Group (The Open Platform, top.co) is the tech company fueling the Telegram
+  economy, connecting Telegram''s billion-user audience to the TON blockchain through in-house
+  retail products and builder solutions. TOP operates two flagship companies: Wallet in Telegram
+  (100M+ users) and TOP Labs, a venture builder behind 25+ Telegram/TON ecosystem projects
+  including Tonkeeper (acquired 100% in January 2026), TON API, Getgems, STON.fi, Notcoin, and
+  Tribute. Founded by Andrew Rogozov and backed by Ribbit Capital, TOP is the first unicorn in
+  the TON-Telegram ecosystem, valued at $1 billion. Its developer surface centers on TON API
+  (tonapi.io) - the indexed REST, streaming, and webhooks API to the TON blockchain - and the
+  TON Console developer platform (tonconsole.com). Surfaced as a portfolio company of
+  ribbit-capital and enriched by the API Evangelist pipeline.'
 url: https://raw.githubusercontent.com/api-evangelist/top-group/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://top.co/icon.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -11,12 +32,550 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Blockchain
+- TON
+- Telegram
+- Crypto
+- Wallets
+- Web3
+- NFT
+- Payments
+apis:
+- aid: top-group:top-group-accounts-api
+  name: TOP Group (The Open Platform) Accounts API
+  description: The Accounts API from TOP Group (The Open Platform) — 22 operation(s) for accounts.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-blockchain-api
+  name: TOP Group (The Open Platform) Blockchain API
+  description: The Blockchain API from TOP Group (The Open Platform) — 22 operation(s) for blockchain.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Blockchain
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-blockchain-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-connect-api
+  name: TOP Group (The Open Platform) Connect API
+  description: The Connect API from TOP Group (The Open Platform) — 2 operation(s) for connect.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Connect
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-connect-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-dns-api
+  name: TOP Group (The Open Platform) DNS API
+  description: The DNS API from TOP Group (The Open Platform) — 4 operation(s) for dns.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - DNS
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-dns-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-emulation-api
+  name: TOP Group (The Open Platform) Emulation API
+  description: The Emulation API from TOP Group (The Open Platform) — 5 operation(s) for emulation.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Emulation
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-emulation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-events-api
+  name: TOP Group (The Open Platform) Events API
+  description: The Events API from TOP Group (The Open Platform) — 2 operation(s) for events.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-events-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-extracurrency-api
+  name: TOP Group (The Open Platform) ExtraCurrency API
+  description: >-
+    The ExtraCurrency API from TOP Group (The Open Platform) — 1 operation(s) for extracurrency.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - ExtraCurrency
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-extracurrency-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-gasless-api
+  name: TOP Group (The Open Platform) Gasless API
+  description: The Gasless API from TOP Group (The Open Platform) — 3 operation(s) for gasless.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Gasless
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-gasless-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-jettons-api
+  name: TOP Group (The Open Platform) Jettons API
+  description: The Jettons API from TOP Group (The Open Platform) — 6 operation(s) for jettons.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Jettons
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-jettons-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-lite-server-api
+  name: TOP Group (The Open Platform) Lite Server API
+  description: >-
+    The Lite Server API from TOP Group (The Open Platform) — 16 operation(s) for lite server.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Lite Server
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-lite-server-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-migration-api
+  name: TOP Group (The Open Platform) Migration API
+  description: The Migration API from TOP Group (The Open Platform) — 2 operation(s) for migration.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Migration
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-migration-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-multisig-api
+  name: TOP Group (The Open Platform) Multisig API
+  description: The Multisig API from TOP Group (The Open Platform) — 2 operation(s) for multisig.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Multisig
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-multisig-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-nft-api
+  name: TOP Group (The Open Platform) NFT API
+  description: The NFT API from TOP Group (The Open Platform) — 8 operation(s) for nft.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - NFT
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-nft-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-purchases-api
+  name: TOP Group (The Open Platform) Purchases API
+  description: The Purchases API from TOP Group (The Open Platform) — 1 operation(s) for purchases.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Purchases
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-purchases-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-rates-api
+  name: TOP Group (The Open Platform) Rates API
+  description: The Rates API from TOP Group (The Open Platform) — 3 operation(s) for rates.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Rates
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-rates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-rewards-api
+  name: TOP Group (The Open Platform) Rewards API
+  description: The Rewards API from TOP Group (The Open Platform) — 5 operation(s) for rewards.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-rewards-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-staking-api
+  name: TOP Group (The Open Platform) Staking API
+  description: The Staking API from TOP Group (The Open Platform) — 4 operation(s) for staking.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Staking
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-staking-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-storage-api
+  name: TOP Group (The Open Platform) Storage API
+  description: The Storage API from TOP Group (The Open Platform) — 1 operation(s) for storage.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Storage
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-storage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-traces-api
+  name: TOP Group (The Open Platform) Traces API
+  description: The Traces API from TOP Group (The Open Platform) — 2 operation(s) for traces.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Traces
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-traces-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-usage-stats-api
+  name: TOP Group (The Open Platform) Usage Stats API
+  description: The Usage Stats API from TOP Group (The Open Platform) — 1 operation(s) for usage stats.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Usage Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-usage-stats-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-utilities-api
+  name: TOP Group (The Open Platform) Utilities API
+  description: The Utilities API from TOP Group (The Open Platform) — 4 operation(s) for utilities.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Utilities
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-utilities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-wallet-api
+  name: TOP Group (The Open Platform) Wallet API
+  description: The Wallet API from TOP Group (The Open Platform) — 6 operation(s) for wallet.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Wallet
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-wallet-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
+- aid: top-group:top-group-webhooks-api
+  name: TOP Group (The Open Platform) Webhooks API
+  description: The Webhooks API from TOP Group (The Open Platform) — 15 operation(s) for webhooks.
+  humanURL: https://tonapi.io
+  baseURL: https://tonapi.io
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/top-group-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi
+  - type: APIReference
+    url: https://tonapi.io/api-v2
+  - type: GraphQL
+    url: graphql/top-group-tonapi-graphql.md
+  - type: TermsOfService
+    url: https://tonapi.io/terms
+  - type: Documentation
+    url: https://docs.tonconsole.com/tonapi/webhooks-api
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: Website
+  url: https://top.co
+- type: About
+  url: https://top.co/about
+- type: Blog
+  url: https://top.co/insights
+- type: Careers
+  url: https://top.co/careers
+- type: PrivacyPolicy
+  url: https://top.co/privacy-policy
+- type: TermsOfService
+  url: https://top.co/terms-of-use
+- type: GitHubOrganization
+  url: https://github.com/tonkeeper
+- type: DeveloperPortal
+  url: https://tonconsole.com
+- type: Documentation
+  url: https://docs.tonconsole.com
+- type: APIReference
+  url: https://docs.tonconsole.com/tonapi/rest-api
+- type: GettingStarted
+  url: https://docs.tonconsole.com/tonapi
+- type: Pricing
+  url: https://tonconsole.com/tonapi/pricing
+- type: SignUp
+  url: https://tonconsole.com
+- type: Support
+  url: mailto:support@tonkeeper.com
+- type: Packages
+  url: packages/top-group-packages.yml
+- type: SDKs
+  url: packages/top-group-packages.yml
+- type: WellKnown
+  url: well-known/top-group-well-known.yml
+- type: MCPServer
+  url: mcp/top-group-mcp.yml
+- type: LLMsTxt
+  url: llms/top-group-llms.txt
+- type: Conformance
+  url: conformance/top-group-conformance.yml
+- type: ErrorCatalog
+  url: errors/top-group-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/top-group-lifecycle.yml
+- type: Deprecation
+  url: https://docs.tonconsole.com/tonapi/streaming-api
+- type: Authentication
+  url: authentication/top-group-authentication.yml
+- type: DomainSecurity
+  url: security/top-group-domain-security.yml
+- type: Sandbox
+  url: sandbox/top-group-sandbox.yml
+- type: Conventions
+  url: conventions/top-group-conventions.yml
+- type: RateLimits
+  url: rate-limits/top-group-rate-limits.yml
+- type: Webhooks
+  url: asyncapi/top-group-tonapi-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/top-group-data-model.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 23
+  pass: local-v1

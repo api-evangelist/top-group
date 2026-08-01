@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tonconsole.com/tonapi
+description: >-
+  Published rate limits for TON API (tonapi.io). Limits are plan-based rps
+  tiers managed through TON Console; the docs publish the unauthenticated and
+  free-tier limits, and the pricing page carries the paid tiers.
+rate_limits:
+- name: Unauthenticated access
+  limit_count: 1
+  limit_period: 4 seconds
+  detail: 1 request per 4 seconds (0.24 rps) for all REST methods without a token.
+  source: https://docs.tonconsole.com/tonapi
+- name: Free tier (TON Console token)
+  limit_count: 1
+  limit_period: second
+  detail: Default free rate limit of 1 request per second with a valid TON Console token.
+  source: https://docs.tonconsole.com/tonapi/dapp/free-limits
+- name: Paid plans
+  detail: >-
+    Rate limits match the purchased TON Console plan (rps-based tiers, e.g. a
+    10 rps plan grants 10 rps); limits are identical for mainnet and testnet
+    tokens. Tiers published at https://tonconsole.com/tonapi/pricing.
+  source: https://tonconsole.com/tonapi/pricing
+- name: Tonkeeper dApp free high limits
+  detail: >-
+    dApps running in the Tonkeeper browser or alongside the Tonkeeper extension
+    can route requests through the window.tonapi proxy via @ton-api/client for
+    higher limits at no cost (a valid free-tier key is still required).
+  source: https://docs.tonconsole.com/tonapi/dapp/free-limits

@@ -1,0 +1,26 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for TON API
+  version: 1.0.0
+extends: openapi/top-group-tonapi-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: top-group
+      generated: '2026-07-21'
+      notes: >-
+        Harvested verbatim from tonkeeper/opentonapi (api/openapi.yml). Auth is
+        not declared in the spec: production use requires a TON Console bearer
+        token (see authentication/top-group-authentication.yml). The
+        localhost server entry is a self-hosted opentonapi default, not a
+        production host.
+- target: $.info
+  update:
+    x-artifacts:
+      authentication: authentication/top-group-authentication.yml
+      conventions: conventions/top-group-conventions.yml
+      errors: errors/top-group-problem-types.yml
+      rate-limits: rate-limits/top-group-rate-limits.yml
+      sandbox: sandbox/top-group-sandbox.yml
+      webhooks: asyncapi/top-group-tonapi-webhooks.yml

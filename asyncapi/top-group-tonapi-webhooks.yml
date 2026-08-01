@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.tonconsole.com/tonapi/webhooks-api
+type: Webhooks
+description: >-
+  Webhook event surface of TON API. TOP Group publishes no AsyncAPI document;
+  this catalog captures the documented webhook subscriptions delivered by
+  rt.tonapi.io. The management API for these subscriptions is captured as
+  OpenAPI at openapi/top-group-tonapi-webhooks-openapi.yml. The older SSE
+  Streaming API (deprecated) remains documented at
+  https://docs.tonconsole.com/tonapi/streaming-api.
+management_api:
+  base_url: https://rt.tonapi.io
+  testnet_base_url: https://rt-testnet.tonapi.io
+  openapi: openapi/top-group-tonapi-webhooks-openapi.yml
+  auth: Private TON Console API key (Authorization Bearer header or token query param)
+delivery:
+  method: HTTP POST to the subscriber-configured endpoint
+  payload_example_fields: [account_id, lt, tx_hash]
+subscriptions:
+- name: account-tx
+  detail: >-
+    Transactions on subscribed accounts. Subscribe/unsubscribe per list of
+    account IDs; delivery includes account_id, transaction lt and tx_hash.
+- name: new-contracts
+  detail: Notification for every new contract deployed to the blockchain.
+- name: msg-opcode
+  detail: >-
+    Messages whose body contains a specific 32-bit opcode (0x-prefixed hex).
+    Fires for every matching message on the blockchain, not only subscriber
+    accounts.
+- name: mempool
+  detail: Mempool message events (subscribe/unsubscribe endpoints in the management API).
+operational:
+  failure_handling: >-
+    Failed deliveries are tracked per subscription (failed_at, failed_lt,
+    failed_attempts); a back-online endpoint resumes delivery and logs are
+    available via the management API.
