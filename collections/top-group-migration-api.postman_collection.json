@@ -1,0 +1,313 @@
+{
+  "item": [
+    {
+      "id": "482442b0-6dd2-4e21-aec5-c06c51136934",
+      "name": "Migration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eefc51dc-172c-4b7c-ac11-f79149341a37",
+          "name": "get Migration Wallets",
+          "request": {
+            "name": "get Migration Wallets",
+            "description": {
+              "content": "Get migratable assets value (TON balance, jettons with prices, NFT count) for several wallets at once.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "migration",
+                "wallets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currencies",
+                  "value": "<string>,<string>",
+                  "description": "accept gram and all possible fiat currencies, separated by commas"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account_ids\": [\n    \"<address>\",\n    \"<address>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8e4bfa71-1a5c-422c-85cc-bfe2af135b15",
+              "name": "migratable value per requested wallet",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "migration",
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currencies",
+                      "value": "gram,usd,rub"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"wallets\": [\n    {\n      \"account\": \"0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621\",\n      \"balance\": 1391,\n      \"status\": \"active\",\n      \"jettons\": [\n        {\n          \"balance\": \"597968399\",\n          \"wallet_address\": {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          },\n          \"jetton\": {\n            \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n            \"name\": \"Wrapped TON\",\n            \"symbol\": \"WTON\",\n            \"decimals\": 9,\n            \"verification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n            \"score\": 2951,\n            \"custom_payload_api_uri\": \"string\",\n            \"scaled_ui\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": \"string\"\n          },\n          \"price\": {\n            \"prices\": {\n              \"GRAM\": 1.3710752873163712\n            },\n            \"diff_24h\": {\n              \"GRAM\": \"-1.28%\"\n            },\n            \"diff_7d\": {\n              \"GRAM\": \"-2.74%\"\n            },\n            \"diff_30d\": {\n              \"GRAM\": \"-0.56%\"\n            }\n          },\n          \"defi_asset\": {\n            \"token_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defi_provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pool_assets\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"extensions\": [\n            \"custom_payload\",\n            \"non_transferable\"\n          ],\n          \"lock\": {\n            \"amount\": \"597968399\",\n            \"till\": 1678223064\n          }\n        },\n        {\n          \"balance\": \"597968399\",\n          \"wallet_address\": {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          },\n          \"jetton\": {\n            \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n            \"name\": \"Wrapped TON\",\n            \"symbol\": \"WTON\",\n            \"decimals\": 9,\n            \"verification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n            \"score\": 1020,\n            \"custom_payload_api_uri\": \"string\",\n            \"scaled_ui\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": \"string\"\n          },\n          \"price\": {\n            \"prices\": {\n              \"GRAM\": 1.3710752873163712\n            },\n            \"diff_24h\": {\n              \"GRAM\": \"-1.28%\"\n            },\n            \"diff_7d\": {\n              \"GRAM\": \"-2.74%\"\n            },\n            \"diff_30d\": {\n              \"GRAM\": \"-0.56%\"\n            }\n          },\n          \"defi_asset\": {\n            \"token_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defi_provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pool_assets\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"extensions\": [\n            \"custom_payload\",\n            \"non_transferable\"\n          ],\n          \"lock\": {\n            \"amount\": \"597968399\",\n            \"till\": 1678223064\n          }\n        }\n      ],\n      \"nft_count\": 9589\n    },\n    {\n      \"account\": \"0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621\",\n      \"balance\": 4926,\n      \"status\": \"active\",\n      \"jettons\": [\n        {\n          \"balance\": \"597968399\",\n          \"wallet_address\": {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          },\n          \"jetton\": {\n            \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n            \"name\": \"Wrapped TON\",\n            \"symbol\": \"WTON\",\n            \"decimals\": 9,\n            \"verification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n            \"score\": 2507,\n            \"custom_payload_api_uri\": \"string\",\n            \"scaled_ui\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": \"string\"\n          },\n          \"price\": {\n            \"prices\": {\n              \"GRAM\": 1.3710752873163712\n            },\n            \"diff_24h\": {\n              \"GRAM\": \"-1.28%\"\n            },\n            \"diff_7d\": {\n              \"GRAM\": \"-2.74%\"\n            },\n            \"diff_30d\": {\n              \"GRAM\": \"-0.56%\"\n            }\n          },\n          \"defi_asset\": {\n            \"token_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defi_provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pool_assets\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"extensions\": [\n            \"custom_payload\",\n            \"non_transferable\"\n          ],\n          \"lock\": {\n            \"amount\": \"597968399\",\n            \"till\": 1678223064\n          }\n        },\n        {\n          \"balance\": \"597968399\",\n          \"wallet_address\": {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          },\n          \"jetton\": {\n            \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n            \"name\": \"Wrapped TON\",\n            \"symbol\": \"WTON\",\n            \"decimals\": 9,\n            \"verification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n            \"score\": 6603,\n            \"custom_payload_api_uri\": \"string\",\n            \"scaled_ui\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": \"string\"\n          },\n          \"price\": {\n            \"prices\": {\n              \"GRAM\": 1.3710752873163712\n            },\n            \"diff_24h\": {\n              \"GRAM\": \"-1.28%\"\n            },\n            \"diff_7d\": {\n              \"GRAM\": \"-2.74%\"\n            },\n            \"diff_30d\": {\n              \"GRAM\": \"-0.56%\"\n            }\n          },\n          \"defi_asset\": {\n            \"token_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"defi_provider\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"pool_assets\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"extensions\": [\n            \"custom_payload\",\n            \"non_transferable\"\n          ],\n          \"lock\": {\n            \"amount\": \"597968399\",\n            \"till\": 1678223064\n          }\n        }\n      ],\n      \"nft_count\": 556\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e00324a-cfbe-4c9e-a9cd-9f29b600b3e8",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "migration",
+                    "wallets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currencies",
+                      "value": "gram,usd,rub"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 8230,\n  \"details\": {\n    \"required\": 5798,\n    \"available\": 4048\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc969a94-74ea-4996-b3bc-8b59357615aa",
+          "name": "prepare Migration",
+          "request": {
+            "name": "prepare Migration",
+            "description": {
+              "content": "Prepare ordered signable transactions that migrate every asset from `from` to `to`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "migration",
+                "prepare"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"from\": \"<address>\",\n  \"to\": \"<address>\",\n  \"currency\": \"USD\",\n  \"public_key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e95ab33a-fbfc-4704-b750-6073403fc5e1",
+              "name": "ordered transactions to sign and broadcast",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "migration",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<address>\",\n  \"to\": \"<address>\",\n  \"currency\": \"USD\",\n  \"public_key\": \"29c1a72938b8f4f1d4e64f1e3f73e4b0e60f9b0c0e0d0e0f0a0b0c0d0e0f0a0b0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"from\": \"string\",\n  \"to\": \"string\",\n  \"wallet_version\": \"v4R2\",\n  \"transactions\": [\n    {\n      \"seqno\": 203,\n      \"boc\": \"string\",\n      \"messages\": [\n        {\n          \"boc\": \"string\",\n          \"mode\": 398\n        },\n        {\n          \"boc\": \"string\",\n          \"mode\": 9458\n        }\n      ],\n      \"emulation\": {\n        \"trace\": {\n          \"transaction\": {\n            \"hash\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_balance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"success\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"utime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"orig_status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"total_fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"transaction_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state_update_old\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state_update_new\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"out_msgs\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"aborted\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"destroyed\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"raw\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"in_msg\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"prev_trans_hash\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"prev_trans_lt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"compute_phase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"storage_phase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"credit_phase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"action_phase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bounce_phase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"interfaces\": [\n            \"wallet\",\n            \"tep62_item\"\n          ],\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n            }\n          ],\n          \"emulated\": false\n        },\n        \"risk\": {\n          \"transfer_all_remaining_balance\": true,\n          \"gram\": 500,\n          \"jettons\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"nfts\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"ton\": 500,\n          \"total_equivalent\": 5229.380898304567\n        },\n        \"event\": {\n          \"event_id\": \"e8b0e3fee4a26bd2317ac1f9952fcdc87dc08fdb617656b5202416323337372e\",\n          \"timestamp\": 1234567890,\n          \"actions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"account\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"is_scam\": false,\n          \"lt\": 25713146000001,\n          \"in_progress\": false,\n          \"extra\": 3,\n          \"progress\": 0.5,\n          \"ext_msg_hash\": \"a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456\"\n        }\n      },\n      \"state_init\": \"string\"\n    },\n    {\n      \"seqno\": 1901,\n      \"boc\": \"string\",\n      \"messages\": [\n        {\n          \"boc\": \"string\",\n          \"mode\": 8828\n        },\n        {\n          \"boc\": \"string\",\n          \"mode\": 1135\n        }\n      ],\n      \"emulation\": {\n        \"trace\": {\n          \"transaction\": {\n            \"hash\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"account\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_balance\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"success\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"utime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"orig_status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"end_status\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"total_fees\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"transaction_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state_update_old\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"state_update_new\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"out_msgs\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"block\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"aborted\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"destroyed\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"raw\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"in_msg\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"prev_trans_hash\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"prev_trans_lt\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"compute_phase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"storage_phase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"credit_phase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"action_phase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bounce_phase\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"interfaces\": [\n            \"wallet\",\n            \"tep62_item\"\n          ],\n          \"children\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n            }\n          ],\n          \"emulated\": false\n        },\n        \"risk\": {\n          \"transfer_all_remaining_balance\": true,\n          \"gram\": 500,\n          \"jettons\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"nfts\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"ton\": 500,\n          \"total_equivalent\": 2602.5176127919603\n        },\n        \"event\": {\n          \"event_id\": \"e8b0e3fee4a26bd2317ac1f9952fcdc87dc08fdb617656b5202416323337372e\",\n          \"timestamp\": 1234567890,\n          \"actions\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"account\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"is_scam\": false,\n          \"lt\": 25713146000001,\n          \"in_progress\": false,\n          \"extra\": 3,\n          \"progress\": 0.5,\n          \"ext_msg_hash\": \"a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456\"\n        }\n      },\n      \"state_init\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a748a919-936b-400d-8f21-c6d32b0d8fa1",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "migration",
+                    "prepare"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"from\": \"<address>\",\n  \"to\": \"<address>\",\n  \"currency\": \"USD\",\n  \"public_key\": \"29c1a72938b8f4f1d4e64f1e3f73e4b0e60f9b0c0e0d0e0f0a0b0c0d0e0f0a0b0\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 8230,\n  \"details\": {\n    \"required\": 5798,\n    \"available\": 4048\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "50e2d084-7425-4855-b2cb-194624580054",
+    "name": "REST api to TON blockchain explorer Accounts Migration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

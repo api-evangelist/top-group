@@ -1,0 +1,167 @@
+{
+  "item": [
+    {
+      "id": "374dfd1d-e470-4ad6-9a0c-2316a84d659b",
+      "name": "ExtraCurrency",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "94c84354-6e9b-40d8-aedc-e23a045ffb9f",
+          "name": "get Extra Currency Info",
+          "request": {
+            "name": "get Extra Currency Info",
+            "description": {
+              "content": "Get extra currency info by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "extra-currency",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) extra currency id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ade521c8-df23-4906-a43f-0b2a2dbca7b3",
+              "name": "extra currency info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "extra-currency",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) extra currency id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 239,\n  \"symbol\": \"FMS\",\n  \"decimals\": 5,\n  \"image\": \"https://cache.tonapi.io/images/extra.jpg\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c50952b2-bad3-4791-b583-fe8a564309a1",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "extra-currency",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) extra currency id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 469,\n  \"details\": {\n    \"required\": 2021,\n    \"available\": 424\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1b156c63-d4c9-4427-8a02-8ee1afd453a3",
+    "name": "REST api to TON blockchain explorer Accounts ExtraCurrency API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,916 @@
+{
+  "item": [
+    {
+      "id": "7b9cd85f-b2f9-43d9-9b8a-97c3d983023a",
+      "name": "Jettons",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d492a3f1-5a9b-4a44-ad25-0ac94f4315b4",
+          "name": "get Jettons",
+          "request": {
+            "name": "get Jettons",
+            "description": {
+              "content": "Get a list of all indexed jetton masters in the blockchain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "jettons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "683aa0ac-5432-49bb-92bc-a88f17d6f49c",
+              "name": "a list of jettons",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "jettons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "15"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jettons\": [\n    {\n      \"mintable\": true,\n      \"total_supply\": \"5887105890579978\",\n      \"metadata\": {\n        \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n        \"name\": \"Wrapped TON\",\n        \"symbol\": \"WTON\",\n        \"decimals\": \"9\",\n        \"image\": \"https://bitcoincash-example.github.io/website/logo.png\",\n        \"description\": \"Wrapped Gram\",\n        \"social\": [\n          \"string\",\n          \"string\"\n        ],\n        \"websites\": [\n          \"string\",\n          \"string\"\n        ],\n        \"catalogs\": [\n          \"string\",\n          \"string\"\n        ],\n        \"custom_payload_api_uri\": \"https://claim-api.tonapi.io/jettons/TESTMINT\"\n      },\n      \"verification\": \"blacklist\",\n      \"holders_count\": 2000,\n      \"preview\": \"https://cache.tonapi.io/images/jetton.jpg\",\n      \"admin\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"scaled_ui\": {\n        \"numerator\": \"597968399\",\n        \"denominator\": \"597968399\"\n      },\n      \"code_hash\": \"rOIINk/O5kGub/FI/RARmMN6SY7BLesBSOonmxrz5f4=\",\n      \"data_hash\": \"xd7cWaRQdVSysuG+WVJv9KRuRUGxnehLoByEcK5ukOE=\",\n      \"last_transaction_lt\": \"26640202000003\",\n      \"name\": \"admin.ton\",\n      \"interfaces\": [\n        \"multisig_v2\",\n        \"wallet_v3r2\"\n      ]\n    },\n    {\n      \"mintable\": true,\n      \"total_supply\": \"5887105890579978\",\n      \"metadata\": {\n        \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n        \"name\": \"Wrapped TON\",\n        \"symbol\": \"WTON\",\n        \"decimals\": \"9\",\n        \"image\": \"https://bitcoincash-example.github.io/website/logo.png\",\n        \"description\": \"Wrapped Gram\",\n        \"social\": [\n          \"string\",\n          \"string\"\n        ],\n        \"websites\": [\n          \"string\",\n          \"string\"\n        ],\n        \"catalogs\": [\n          \"string\",\n          \"string\"\n        ],\n        \"custom_payload_api_uri\": \"https://claim-api.tonapi.io/jettons/TESTMINT\"\n      },\n      \"verification\": \"blacklist\",\n      \"holders_count\": 2000,\n      \"preview\": \"https://cache.tonapi.io/images/jetton.jpg\",\n      \"admin\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"scaled_ui\": {\n        \"numerator\": \"597968399\",\n        \"denominator\": \"597968399\"\n      },\n      \"code_hash\": \"rOIINk/O5kGub/FI/RARmMN6SY7BLesBSOonmxrz5f4=\",\n      \"data_hash\": \"xd7cWaRQdVSysuG+WVJv9KRuRUGxnehLoByEcK5ukOE=\",\n      \"last_transaction_lt\": \"26640202000003\",\n      \"name\": \"admin.ton\",\n      \"interfaces\": [\n        \"multisig_v2\",\n        \"wallet_v3r2\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6b5c3f7-ef1c-40dd-bc7f-b628e02bc4d6",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "jettons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "15"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3009,\n  \"details\": {\n    \"required\": 9454,\n    \"available\": 8270\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42a540b1-9eb5-409f-8ef1-4a4837e27f67",
+          "name": "get Jetton Info",
+          "request": {
+            "name": "get Jetton Info",
+            "description": {
+              "content": "Get jetton metadata by jetton master address",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "jettons",
+                ":account_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "account_id",
+                  "description": "(Required) account ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd809e0c-fc27-4c74-91f1-f32ca4a70f6f",
+              "name": "jetton info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "jettons",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mintable\": true,\n  \"total_supply\": \"5887105890579978\",\n  \"metadata\": {\n    \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n    \"name\": \"Wrapped TON\",\n    \"symbol\": \"WTON\",\n    \"decimals\": \"9\",\n    \"image\": \"https://bitcoincash-example.github.io/website/logo.png\",\n    \"description\": \"Wrapped Gram\",\n    \"social\": [\n      \"string\",\n      \"string\"\n    ],\n    \"websites\": [\n      \"string\",\n      \"string\"\n    ],\n    \"catalogs\": [\n      \"string\",\n      \"string\"\n    ],\n    \"custom_payload_api_uri\": \"https://claim-api.tonapi.io/jettons/TESTMINT\"\n  },\n  \"verification\": \"whitelist\",\n  \"holders_count\": 2000,\n  \"preview\": \"https://cache.tonapi.io/images/jetton.jpg\",\n  \"admin\": {\n    \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n    \"is_scam\": true,\n    \"is_wallet\": true,\n    \"name\": \"Ton foundation\",\n    \"icon\": \"https://ton.org/logo.png\"\n  },\n  \"scaled_ui\": {\n    \"numerator\": \"597968399\",\n    \"denominator\": \"597968399\"\n  },\n  \"code_hash\": \"rOIINk/O5kGub/FI/RARmMN6SY7BLesBSOonmxrz5f4=\",\n  \"data_hash\": \"xd7cWaRQdVSysuG+WVJv9KRuRUGxnehLoByEcK5ukOE=\",\n  \"last_transaction_lt\": \"26640202000003\",\n  \"name\": \"admin.ton\",\n  \"interfaces\": [\n    \"multisig_v2\",\n    \"wallet_v3r2\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d86dec9-3342-4808-8223-63479de90494",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "jettons",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3009,\n  \"details\": {\n    \"required\": 9454,\n    \"available\": 8270\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e82459d7-106e-44fe-a2f8-456c2909f6f9",
+          "name": "get Jetton Infos By Addresses",
+          "request": {
+            "name": "get Jetton Infos By Addresses",
+            "description": {
+              "content": "Get jetton metadata items by jetton master addresses",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "jettons",
+                "_bulk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account_ids\": [\n    \"<address>\",\n    \"<address>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64ffbc7e-1a27-4510-ab09-14d271884c84",
+              "name": "a list of jettons",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "jettons",
+                    "_bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jettons\": [\n    {\n      \"mintable\": true,\n      \"total_supply\": \"5887105890579978\",\n      \"metadata\": {\n        \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n        \"name\": \"Wrapped TON\",\n        \"symbol\": \"WTON\",\n        \"decimals\": \"9\",\n        \"image\": \"https://bitcoincash-example.github.io/website/logo.png\",\n        \"description\": \"Wrapped Gram\",\n        \"social\": [\n          \"string\",\n          \"string\"\n        ],\n        \"websites\": [\n          \"string\",\n          \"string\"\n        ],\n        \"catalogs\": [\n          \"string\",\n          \"string\"\n        ],\n        \"custom_payload_api_uri\": \"https://claim-api.tonapi.io/jettons/TESTMINT\"\n      },\n      \"verification\": \"none\",\n      \"holders_count\": 2000,\n      \"preview\": \"https://cache.tonapi.io/images/jetton.jpg\",\n      \"admin\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"scaled_ui\": {\n        \"numerator\": \"597968399\",\n        \"denominator\": \"597968399\"\n      },\n      \"code_hash\": \"rOIINk/O5kGub/FI/RARmMN6SY7BLesBSOonmxrz5f4=\",\n      \"data_hash\": \"xd7cWaRQdVSysuG+WVJv9KRuRUGxnehLoByEcK5ukOE=\",\n      \"last_transaction_lt\": \"26640202000003\",\n      \"name\": \"admin.ton\",\n      \"interfaces\": [\n        \"multisig_v2\",\n        \"wallet_v3r2\"\n      ]\n    },\n    {\n      \"mintable\": true,\n      \"total_supply\": \"5887105890579978\",\n      \"metadata\": {\n        \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n        \"name\": \"Wrapped TON\",\n        \"symbol\": \"WTON\",\n        \"decimals\": \"9\",\n        \"image\": \"https://bitcoincash-example.github.io/website/logo.png\",\n        \"description\": \"Wrapped Gram\",\n        \"social\": [\n          \"string\",\n          \"string\"\n        ],\n        \"websites\": [\n          \"string\",\n          \"string\"\n        ],\n        \"catalogs\": [\n          \"string\",\n          \"string\"\n        ],\n        \"custom_payload_api_uri\": \"https://claim-api.tonapi.io/jettons/TESTMINT\"\n      },\n      \"verification\": \"blacklist\",\n      \"holders_count\": 2000,\n      \"preview\": \"https://cache.tonapi.io/images/jetton.jpg\",\n      \"admin\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"scaled_ui\": {\n        \"numerator\": \"597968399\",\n        \"denominator\": \"597968399\"\n      },\n      \"code_hash\": \"rOIINk/O5kGub/FI/RARmMN6SY7BLesBSOonmxrz5f4=\",\n      \"data_hash\": \"xd7cWaRQdVSysuG+WVJv9KRuRUGxnehLoByEcK5ukOE=\",\n      \"last_transaction_lt\": \"26640202000003\",\n      \"name\": \"admin.ton\",\n      \"interfaces\": [\n        \"multisig_v2\",\n        \"wallet_v3r2\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b401900-99b3-44ba-b530-c515abdf3a4e",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "jettons",
+                    "_bulk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3009,\n  \"details\": {\n    \"required\": 9454,\n    \"available\": 8270\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c674d76f-a4b6-4701-9c21-992682c23ee5",
+          "name": "get Jetton Holders",
+          "request": {
+            "name": "get Jetton Holders",
+            "description": {
+              "content": "Get jetton's holders",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "jettons",
+                ":account_id",
+                "holders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "account_id",
+                  "description": "(Required) account ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cea32f14-568d-40ff-b257-7e28d9cafc98",
+              "name": "jetton's holders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "jettons",
+                    ":account_id",
+                    "holders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"addresses\": [\n    {\n      \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n      \"owner\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"balance\": \"168856200518084\"\n    },\n    {\n      \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n      \"owner\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"balance\": \"168856200518084\"\n    }\n  ],\n  \"total\": 2000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee3a89ee-7d69-4e91-b357-22abb60a9fc5",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "jettons",
+                    ":account_id",
+                    "holders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3009,\n  \"details\": {\n    \"required\": 9454,\n    \"available\": 8270\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d57dd01-3d43-4d9f-9dbb-e8ca337f3bb1",
+          "name": "get Jetton Transfer Payload",
+          "request": {
+            "name": "get Jetton Transfer Payload",
+            "description": {
+              "content": "Get jetton's custom payload and state init required for transfer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "jettons",
+                ":jetton_id",
+                "transfer",
+                ":account_id",
+                "payload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "account_id",
+                  "description": "(Required) account ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "jetton_id",
+                  "description": "(Required) jetton ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a3db9c3-acae-470c-9ec0-58e1bb7a36ae",
+              "name": "jetton's custom payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "jettons",
+                    ":jetton_id",
+                    "transfer",
+                    ":account_id",
+                    "payload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "jetton_id",
+                      "description": "(Required) jetton ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"custom_payload\": \"b5ee9c72410212010001b40009460395b521c9251151ae7987e03c544bd275d6cd42c2d157f840beb14d5454b96718000d012205817002020328480101fd7f6a648d4f771d7f0abc1707e4e806b19de1801f65eb8c133a4cfb0c33d847000b22012004052848010147da975b922d89192f4c9b68a640daa6764ec398c93cec025e17f0c1852a711a0009220120061122012007082848010170d9fb0423cbef6c2cf1f3811a2f640daf8c9a326b6f8816c1b993e90d88e2100006220120090a28480101f6df1d75f6b9e45f224b2cb4fc2286d927d47b468b6dbf1fedc4316290ec2ae900042201200b102201200c0f2201200d\",\n  \"state_init\": \"b5ee9c72410212010001b40009460395b521c9251151ae7987e03c544bd275d6cd42c2d157f840beb14d5454b96718000d012205817002020328480101fd7f6a648d4f771d7f0abc1707e4e806b19de1801f65eb8c133a4cfb0c33d847000b22012004052848010147da975b922d89192f4c9b68a640daa6764ec398c93cec025e17f0c1852a711a0009220120061122012007082848010170d9fb0423cbef6c2cf1f3811a2f640daf8c9a326b6f8816c1b993e90d88e2100006220120090a28480101f6df1d75f6b9e45f224b2cb4fc2286d927d47b468b6dbf1fedc4316290ec2ae900042201200b102201200c0f2201200d\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3f499c3-778a-4822-a04a-642165eb9ad1",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "jettons",
+                    ":jetton_id",
+                    "transfer",
+                    ":account_id",
+                    "payload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "jetton_id",
+                      "description": "(Required) jetton ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3009,\n  \"details\": {\n    \"required\": 9454,\n    \"available\": 8270\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bf851d3-528b-4fb3-ad68-4ff09d006ce9",
+          "name": "get Jettons Events",
+          "request": {
+            "name": "get Jettons Events",
+            "description": {
+              "content": "Get only jetton transfers in the event",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "events",
+                ":event_id",
+                "jettons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "event_id",
+                  "description": "(Required) event ID or transaction hash in hex (without 0x) or base64url format"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Accept-Language",
+                "value": "en",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8131ae25-a417-4a22-a0b9-db4e87ea72c1",
+              "name": "events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "events",
+                    ":event_id",
+                    "jettons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) event ID or transaction hash in hex (without 0x) or base64url format"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept-Language",
+                    "value": "ru-RU,ru;q=0.5",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event_id\": \"e8b0e3fee4a26bd2317ac1f9952fcdc87dc08fdb617656b5202416323337372e\",\n  \"timestamp\": 1234567890,\n  \"actions\": [\n    {\n      \"type\": \"TonTransfer\",\n      \"status\": \"ok\",\n      \"simple_preview\": {\n        \"name\": \"Gram Transfer\",\n        \"description\": \"Transferring 5 Gram\",\n        \"accounts\": [\n          {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          },\n          {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          }\n        ],\n        \"action_image\": \"string\",\n        \"value\": \"5 Gram\",\n        \"fiat_value\": \"4.99 USD\",\n        \"value_image\": \"string\"\n      },\n      \"base_transactions\": [\n        \"e8b0e3fee4a26bd2317ac1f9952fcdc87dc08fdb617656b5202416323337372e\",\n        \"e8b0e3fee4a26bd2317ac1f9952fcdc87dc08fdb617656b5202416323337372e\"\n      ],\n      \"TonTransfer\": {\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"amount\": 123456789,\n        \"comment\": \"Hi! This is your salary. \\nFrom accounting with love.\",\n        \"encrypted_comment\": {\n          \"encryption_type\": \"simple\",\n          \"cipher_text\": \"A6A0BD6608672B...CE3AF8DB\"\n        },\n        \"refund\": {\n          \"type\": \"DNS.ton\",\n          \"origin\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        }\n      },\n      \"ExtraCurrencyTransfer\": {\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"amount\": \"1000000000\",\n        \"currency\": {\n          \"id\": 239,\n          \"symbol\": \"FMS\",\n          \"decimals\": 5,\n          \"image\": \"https://cache.tonapi.io/images/extra.jpg\"\n        },\n        \"comment\": \"Hi! This is your salary. \\nFrom accounting with love.\",\n        \"encrypted_comment\": {\n          \"encryption_type\": \"simple\",\n          \"cipher_text\": \"A6A0BD6608672B...CE3AF8DB\"\n        }\n      },\n      \"ContractDeploy\": {\n        \"address\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"interfaces\": [\n          \"nft_item\",\n          \"nft_royalty\"\n        ]\n      },\n      \"JettonTransfer\": {\n        \"amount\": \"1000000000\",\n        \"jetton\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 1990,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        },\n        \"senders_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n        \"recipients_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"comment\": \"Hi! This is your salary. \\nFrom accounting with love.\",\n        \"encrypted_comment\": {\n          \"encryption_type\": \"simple\",\n          \"cipher_text\": \"A6A0BD6608672B...CE3AF8DB\"\n        },\n        \"refund\": {\n          \"type\": \"DNS.ton\",\n          \"origin\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        }\n      },\n      \"FlawedJettonTransfer\": {\n        \"sent_amount\": \"1000000000\",\n        \"received_amount\": \"1000000000\",\n        \"jetton\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 9978,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        },\n        \"senders_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n        \"recipients_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"comment\": \"Hi! This is your salary. \\nFrom accounting with love.\",\n        \"encrypted_comment\": {\n          \"encryption_type\": \"simple\",\n          \"cipher_text\": \"A6A0BD6608672B...CE3AF8DB\"\n        },\n        \"refund\": {\n          \"type\": \"DNS.ton\",\n          \"origin\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        }\n      },\n      \"JettonBurn\": {\n        \"amount\": \"1000000000\",\n        \"jetton\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"blacklist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 5673,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        },\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"senders_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\"\n      },\n      \"JettonMint\": {\n        \"amount\": \"1000000000\",\n        \"jetton\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"blacklist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 3319,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipients_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\"\n      },\n      \"NftItemTransfer\": {\n        \"nft\": \"\",\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"comment\": \"Hi! This is your salary. \\nFrom accounting with love.\",\n        \"encrypted_comment\": {\n          \"encryption_type\": \"simple\",\n          \"cipher_text\": \"A6A0BD6608672B...CE3AF8DB\"\n        },\n        \"payload\": \"0234de3e21d21b3ee21f3\",\n        \"refund\": {\n          \"type\": \"DNS.ton\",\n          \"origin\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        }\n      },\n      \"Subscribe\": {\n        \"subscriber\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"subscription\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"beneficiary\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"admin\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"price\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        },\n        \"initial\": false,\n        \"amount\": 1000000000\n      },\n      \"UnSubscribe\": {\n        \"subscriber\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"subscription\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"beneficiary\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"admin\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        }\n      },\n      \"AuctionBid\": {\n        \"amount\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        },\n        \"bidder\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"auction\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"auction_type\": \"getgems\",\n        \"nft\": {\n          \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n          \"index\": 58,\n          \"verified\": true,\n          \"metadata\": {},\n          \"approved_by\": {\n            \"deprecated\": true,\n            \"description\": \"Please use trust field\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"trust\": \"whitelist\",\n          \"owner\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"collection\": {\n            \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n            \"name\": \"TON Diamonds\",\n            \"description\": \"Best collection in TON network\"\n          },\n          \"sale\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"market\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"previews\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"dns\": \"crypto.ton\",\n          \"include_cnft\": false,\n          \"code_hash\": \"string\",\n          \"data_hash\": \"string\"\n        }\n      },\n      \"NftPurchase\": {\n        \"amount\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        },\n        \"seller\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"buyer\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"auction_type\": \"getgems\",\n        \"nft\": {\n          \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n          \"index\": 58,\n          \"verified\": true,\n          \"metadata\": {},\n          \"approved_by\": {\n            \"deprecated\": true,\n            \"description\": \"Please use trust field\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"trust\": \"whitelist\",\n          \"owner\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"collection\": {\n            \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n            \"name\": \"TON Diamonds\",\n            \"description\": \"Best collection in TON network\"\n          },\n          \"sale\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"market\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"previews\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"dns\": \"crypto.ton\",\n          \"include_cnft\": false,\n          \"code_hash\": \"string\",\n          \"data_hash\": \"string\"\n        }\n      },\n      \"DepositStake\": {\n        \"amount\": 1660050553,\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"pool\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"implementation\": \"whales\",\n        \"stake_meta\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        }\n      },\n      \"WithdrawStake\": {\n        \"amount\": 1660050553,\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"pool\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"implementation\": \"liquidTF\"\n      },\n      \"WithdrawStakeRequest\": {\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"pool\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"implementation\": \"liquidTF\",\n        \"amount\": 1660050553,\n        \"stake_meta\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        }\n      },\n      \"ElectionsDepositStake\": {\n        \"amount\": 1660050553,\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        }\n      },\n      \"ElectionsRecoverStake\": {\n        \"amount\": 1660050553,\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        }\n      },\n      \"JettonSwap\": {\n        \"dex\": \"stonfi\",\n        \"amount_in\": \"1660050553\",\n        \"amount_out\": \"1660050553\",\n        \"user_wallet\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"router\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"ton_in\": 1000000000,\n        \"ton_out\": 2000000000,\n        \"gram_in\": 1000000000,\n        \"gram_out\": 2000000000,\n        \"jetton_master_in\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"graylist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 7796,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        },\n        \"jetton_master_out\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"blacklist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 6929,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        }\n      },\n      \"SmartContractExec\": {\n        \"executor\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"contract\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"gram_attached\": 123456789,\n        \"operation\": \"NftTransfer or 0x35d95a12\",\n        \"ton_attached\": 123456789,\n        \"payload\": \"string\",\n        \"refund\": {\n          \"type\": \"DNS.ton\",\n          \"origin\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        }\n      },\n      \"DomainRenew\": {\n        \"domain\": \"vasya.ton\",\n        \"contract_address\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"renewer\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        }\n      },\n      \"Purchase\": {\n        \"source\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"destination\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"invoice_id\": \"03cfc582-b1c3-410a-a9a7-1f3afe326b3b\",\n        \"amount\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        },\n        \"metadata\": {\n          \"encrypted_binary\": \"string\",\n          \"decryption_key\": \"dead.....beef\"\n        }\n      },\n      \"AddExtension\": {\n        \"wallet\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"extension\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\"\n      },\n      \"RemoveExtension\": {\n        \"wallet\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"extension\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\"\n      },\n      \"SetSignatureAllowedAction\": {\n        \"wallet\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"allowed\": true\n      },\n      \"GasRelay\": {\n        \"amount\": 1000000000,\n        \"relayer\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"target\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        }\n      },\n      \"DepositTokenStake\": {\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"protocol\": {\n          \"name\": \"Ethena\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\"\n        },\n        \"stake_meta\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        }\n      },\n      \"WithdrawTokenStakeRequest\": {\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"protocol\": {\n          \"name\": \"Ethena\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\"\n        },\n        \"stake_meta\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        }\n      },\n      \"LiquidityDeposit\": {\n        \"protocol\": {\n          \"name\": \"Ethena\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\"\n        },\n        \"from\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"tokens\": [\n          {\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"vault\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n          },\n          {\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"vault\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n          }\n        ]\n      },\n      \"OracleRequest\": {\n        \"requester\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"response_to\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"price_feeds\": [\n          {\n            \"id\": \"e62df6c8b4a85fe1a67f1c4d1f1e1d4335c04d1d7e2c50e0d7da7ad911f2d4\",\n            \"display_symbol\": \"GRAM/USD\",\n            \"rate\": 5.24\n          },\n          {\n            \"id\": \"e62df6c8b4a85fe1a67f1c4d1f1e1d4335c04d1d7e2c50e0d7da7ad911f2d4\",\n            \"display_symbol\": \"GRAM/USD\",\n            \"rate\": 5.24\n          }\n        ]\n      },\n      \"WithdrawXTR\": {\n        \"user\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"amount\": \"123000000000\"\n      },\n      \"DepositXTR\": {\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"amount\": \"123000000000\"\n      },\n      \"BuyXTR\": {\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"amount\": \"123000000000\"\n      }\n    },\n    {\n      \"type\": \"TonTransfer\",\n      \"status\": \"ok\",\n      \"simple_preview\": {\n        \"name\": \"Gram Transfer\",\n        \"description\": \"Transferring 5 Gram\",\n        \"accounts\": [\n          {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          },\n          {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          }\n        ],\n        \"action_image\": \"string\",\n        \"value\": \"5 Gram\",\n        \"fiat_value\": \"4.99 USD\",\n        \"value_image\": \"string\"\n      },\n      \"base_transactions\": [\n        \"e8b0e3fee4a26bd2317ac1f9952fcdc87dc08fdb617656b5202416323337372e\",\n        \"e8b0e3fee4a26bd2317ac1f9952fcdc87dc08fdb617656b5202416323337372e\"\n      ],\n      \"TonTransfer\": {\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"amount\": 123456789,\n        \"comment\": \"Hi! This is your salary. \\nFrom accounting with love.\",\n        \"encrypted_comment\": {\n          \"encryption_type\": \"simple\",\n          \"cipher_text\": \"A6A0BD6608672B...CE3AF8DB\"\n        },\n        \"refund\": {\n          \"type\": \"DNS.ton\",\n          \"origin\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        }\n      },\n      \"ExtraCurrencyTransfer\": {\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"amount\": \"1000000000\",\n        \"currency\": {\n          \"id\": 239,\n          \"symbol\": \"FMS\",\n          \"decimals\": 5,\n          \"image\": \"https://cache.tonapi.io/images/extra.jpg\"\n        },\n        \"comment\": \"Hi! This is your salary. \\nFrom accounting with love.\",\n        \"encrypted_comment\": {\n          \"encryption_type\": \"simple\",\n          \"cipher_text\": \"A6A0BD6608672B...CE3AF8DB\"\n        }\n      },\n      \"ContractDeploy\": {\n        \"address\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"interfaces\": [\n          \"nft_item\",\n          \"nft_royalty\"\n        ]\n      },\n      \"JettonTransfer\": {\n        \"amount\": \"1000000000\",\n        \"jetton\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"graylist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 9326,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        },\n        \"senders_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n        \"recipients_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"comment\": \"Hi! This is your salary. \\nFrom accounting with love.\",\n        \"encrypted_comment\": {\n          \"encryption_type\": \"simple\",\n          \"cipher_text\": \"A6A0BD6608672B...CE3AF8DB\"\n        },\n        \"refund\": {\n          \"type\": \"DNS.ton\",\n          \"origin\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        }\n      },\n      \"FlawedJettonTransfer\": {\n        \"sent_amount\": \"1000000000\",\n        \"received_amount\": \"1000000000\",\n        \"jetton\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"blacklist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 4767,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        },\n        \"senders_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n        \"recipients_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"comment\": \"Hi! This is your salary. \\nFrom accounting with love.\",\n        \"encrypted_comment\": {\n          \"encryption_type\": \"simple\",\n          \"cipher_text\": \"A6A0BD6608672B...CE3AF8DB\"\n        },\n        \"refund\": {\n          \"type\": \"DNS.ton\",\n          \"origin\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        }\n      },\n      \"JettonBurn\": {\n        \"amount\": \"1000000000\",\n        \"jetton\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 9465,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        },\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"senders_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\"\n      },\n      \"JettonMint\": {\n        \"amount\": \"1000000000\",\n        \"jetton\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"graylist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 6417,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipients_wallet\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\"\n      },\n      \"NftItemTransfer\": {\n        \"nft\": \"\",\n        \"sender\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"comment\": \"Hi! This is your salary. \\nFrom accounting with love.\",\n        \"encrypted_comment\": {\n          \"encryption_type\": \"simple\",\n          \"cipher_text\": \"A6A0BD6608672B...CE3AF8DB\"\n        },\n        \"payload\": \"0234de3e21d21b3ee21f3\",\n        \"refund\": {\n          \"type\": \"DNS.ton\",\n          \"origin\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        }\n      },\n      \"Subscribe\": {\n        \"subscriber\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"subscription\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"beneficiary\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"admin\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"price\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        },\n        \"initial\": false,\n        \"amount\": 1000000000\n      },\n      \"UnSubscribe\": {\n        \"subscriber\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"subscription\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"beneficiary\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"admin\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        }\n      },\n      \"AuctionBid\": {\n        \"amount\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        },\n        \"bidder\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"auction\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"auction_type\": \"DNS.ton\",\n        \"nft\": {\n          \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n          \"index\": 58,\n          \"verified\": true,\n          \"metadata\": {},\n          \"approved_by\": {\n            \"deprecated\": true,\n            \"description\": \"Please use trust field\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"trust\": \"whitelist\",\n          \"owner\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"collection\": {\n            \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n            \"name\": \"TON Diamonds\",\n            \"description\": \"Best collection in TON network\"\n          },\n          \"sale\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"market\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"previews\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"dns\": \"crypto.ton\",\n          \"include_cnft\": false,\n          \"code_hash\": \"string\",\n          \"data_hash\": \"string\"\n        }\n      },\n      \"NftPurchase\": {\n        \"amount\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        },\n        \"seller\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"buyer\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"auction_type\": \"NUMBER.tg\",\n        \"nft\": {\n          \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n          \"index\": 58,\n          \"verified\": true,\n          \"metadata\": {},\n          \"approved_by\": {\n            \"deprecated\": true,\n            \"description\": \"Please use trust field\",\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"trust\": \"whitelist\",\n          \"owner\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"collection\": {\n            \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n            \"name\": \"TON Diamonds\",\n            \"description\": \"Best collection in TON network\"\n          },\n          \"sale\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"market\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"previews\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"dns\": \"crypto.ton\",\n          \"include_cnft\": false,\n          \"code_hash\": \"string\",\n          \"data_hash\": \"string\"\n        }\n      },\n      \"DepositStake\": {\n        \"amount\": 1660050553,\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"pool\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"implementation\": \"ffvault\",\n        \"stake_meta\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        }\n      },\n      \"WithdrawStake\": {\n        \"amount\": 1660050553,\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"pool\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"implementation\": \"whales\"\n      },\n      \"WithdrawStakeRequest\": {\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"pool\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"implementation\": \"whales\",\n        \"amount\": 1660050553,\n        \"stake_meta\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        }\n      },\n      \"ElectionsDepositStake\": {\n        \"amount\": 1660050553,\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        }\n      },\n      \"ElectionsRecoverStake\": {\n        \"amount\": 1660050553,\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        }\n      },\n      \"JettonSwap\": {\n        \"dex\": \"stonfi\",\n        \"amount_in\": \"1660050553\",\n        \"amount_out\": \"1660050553\",\n        \"user_wallet\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"router\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"ton_in\": 1000000000,\n        \"ton_out\": 2000000000,\n        \"gram_in\": 1000000000,\n        \"gram_out\": 2000000000,\n        \"jetton_master_in\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 6439,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        },\n        \"jetton_master_out\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"none\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 4013,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        }\n      },\n      \"SmartContractExec\": {\n        \"executor\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"contract\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"gram_attached\": 123456789,\n        \"operation\": \"NftTransfer or 0x35d95a12\",\n        \"ton_attached\": 123456789,\n        \"payload\": \"string\",\n        \"refund\": {\n          \"type\": \"DNS.ton\",\n          \"origin\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        }\n      },\n      \"DomainRenew\": {\n        \"domain\": \"vasya.ton\",\n        \"contract_address\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"renewer\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        }\n      },\n      \"Purchase\": {\n        \"source\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"destination\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"invoice_id\": \"03cfc582-b1c3-410a-a9a7-1f3afe326b3b\",\n        \"amount\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        },\n        \"metadata\": {\n          \"encrypted_binary\": \"string\",\n          \"decryption_key\": \"dead.....beef\"\n        }\n      },\n      \"AddExtension\": {\n        \"wallet\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"extension\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\"\n      },\n      \"RemoveExtension\": {\n        \"wallet\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"extension\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\"\n      },\n      \"SetSignatureAllowedAction\": {\n        \"wallet\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"allowed\": true\n      },\n      \"GasRelay\": {\n        \"amount\": 1000000000,\n        \"relayer\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"target\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        }\n      },\n      \"DepositTokenStake\": {\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"protocol\": {\n          \"name\": \"Ethena\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\"\n        },\n        \"stake_meta\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        }\n      },\n      \"WithdrawTokenStakeRequest\": {\n        \"staker\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"protocol\": {\n          \"name\": \"Ethena\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\"\n        },\n        \"stake_meta\": {\n          \"currency_type\": \"jetton\",\n          \"value\": \"123000000000\",\n          \"decimals\": 9,\n          \"token_name\": \"Gram\",\n          \"verification\": \"whitelist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n        }\n      },\n      \"LiquidityDeposit\": {\n        \"protocol\": {\n          \"name\": \"Ethena\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\"\n        },\n        \"from\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"tokens\": [\n          {\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"vault\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n          },\n          {\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"vault\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n          }\n        ]\n      },\n      \"OracleRequest\": {\n        \"requester\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"response_to\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"price_feeds\": [\n          {\n            \"id\": \"e62df6c8b4a85fe1a67f1c4d1f1e1d4335c04d1d7e2c50e0d7da7ad911f2d4\",\n            \"display_symbol\": \"GRAM/USD\",\n            \"rate\": 5.24\n          },\n          {\n            \"id\": \"e62df6c8b4a85fe1a67f1c4d1f1e1d4335c04d1d7e2c50e0d7da7ad911f2d4\",\n            \"display_symbol\": \"GRAM/USD\",\n            \"rate\": 5.24\n          }\n        ]\n      },\n      \"WithdrawXTR\": {\n        \"user\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"amount\": \"123000000000\"\n      },\n      \"DepositXTR\": {\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"amount\": \"123000000000\"\n      },\n      \"BuyXTR\": {\n        \"recipient\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"amount\": \"123000000000\"\n      }\n    }\n  ],\n  \"value_flow\": [\n    {\n      \"account\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"gram\": 80,\n      \"fees\": 10,\n      \"ton\": 80,\n      \"jettons\": [\n        {\n          \"account\": {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          },\n          \"qty\": \"200\",\n          \"quantity\": 10,\n          \"jetton\": {\n            \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n            \"name\": \"Wrapped TON\",\n            \"symbol\": \"WTON\",\n            \"decimals\": 9,\n            \"verification\": \"graylist\",\n            \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n            \"score\": 811,\n            \"custom_payload_api_uri\": \"string\",\n            \"scaled_ui\": {\n              \"numerator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"denominator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"description\": \"string\"\n          }\n        },\n        {\n          \"account\": {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          },\n          \"qty\": \"200\",\n          \"quantity\": 10,\n          \"jetton\": {\n            \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n            \"name\": \"Wrapped TON\",\n            \"symbol\": \"WTON\",\n            \"decimals\": 9,\n            \"verification\": \"whitelist\",\n            \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n            \"score\": 7916,\n            \"custom_payload_api_uri\": \"string\",\n            \"scaled_ui\": {\n              \"numerator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"denominator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"description\": \"string\"\n          }\n        }\n      ]\n    },\n    {\n      \"account\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"gram\": 80,\n      \"fees\": 10,\n      \"ton\": 80,\n      \"jettons\": [\n        {\n          \"account\": {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          },\n          \"qty\": \"200\",\n          \"quantity\": 10,\n          \"jetton\": {\n            \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n            \"name\": \"Wrapped TON\",\n            \"symbol\": \"WTON\",\n            \"decimals\": 9,\n            \"verification\": \"graylist\",\n            \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n            \"score\": 3516,\n            \"custom_payload_api_uri\": \"string\",\n            \"scaled_ui\": {\n              \"numerator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"denominator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"description\": \"string\"\n          }\n        },\n        {\n          \"account\": {\n            \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n            \"is_scam\": true,\n            \"is_wallet\": true,\n            \"name\": \"Ton foundation\",\n            \"icon\": \"https://ton.org/logo.png\"\n          },\n          \"qty\": \"200\",\n          \"quantity\": 10,\n          \"jetton\": {\n            \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n            \"name\": \"Wrapped TON\",\n            \"symbol\": \"WTON\",\n            \"decimals\": 9,\n            \"verification\": \"whitelist\",\n            \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n            \"score\": 2191,\n            \"custom_payload_api_uri\": \"string\",\n            \"scaled_ui\": {\n              \"numerator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"denominator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"description\": \"string\"\n          }\n        }\n      ]\n    }\n  ],\n  \"is_scam\": false,\n  \"lt\": 25713146000001,\n  \"in_progress\": false,\n  \"progress\": 0.5,\n  \"last_slice_id\": 12345678,\n  \"ext_msg_hash\": \"a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "369c210c-3e7f-4ec8-bee1-5e37553e2a22",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "events",
+                    ":event_id",
+                    "jettons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "event_id",
+                      "description": "(Required) event ID or transaction hash in hex (without 0x) or base64url format"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept-Language",
+                    "value": "ru-RU,ru;q=0.5",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3009,\n  \"details\": {\n    \"required\": 9454,\n    \"available\": 8270\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2d6b614c-75b4-491d-9bd0-d281c47fbf0c",
+    "name": "REST api to TON blockchain explorer Accounts Jettons API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

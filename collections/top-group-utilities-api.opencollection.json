@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Utilities API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Utilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getOpenapiJson",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/openapi.json"
+          },
+          "docs": "Get the openapi.json file"
+        },
+        {
+          "info": {
+            "name": "getOpenapiYml",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/openapi.yml"
+          },
+          "docs": "Get the openapi.yml file"
+        },
+        {
+          "info": {
+            "name": "status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/status"
+          },
+          "docs": "Status"
+        },
+        {
+          "info": {
+            "name": "addressParse",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/address/:account_id/parse",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "parse address and display in all formats"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

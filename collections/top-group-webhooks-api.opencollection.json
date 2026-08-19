@@ -1,0 +1,418 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Webhooks API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getWebhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/webhooks",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get list of webhooks"
+        },
+        {
+          "info": {
+            "name": "createWebhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/webhooks",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "deleteWebhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://tonapi.io/webhooks/:webhook_id",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "remove webhook and its subscriptions"
+        },
+        {
+          "info": {
+            "name": "webhookGenerateNewToken",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/webhooks/:webhook_id/generate-new-token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "generate a new secret token which will be used by TONAPI to authenticate itself when sending notifications to the webhook endpoint. The old token will be invalidated."
+        },
+        {
+          "info": {
+            "name": "webhookBackOnline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/webhooks/:webhook_id/back-online",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Let TONAPI know that webhook is ready to receive notifications after it has been unavailable"
+        },
+        {
+          "info": {
+            "name": "getFailureLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/webhooks/:webhook_id/logs",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get logs of failed attempts to deliver notifications to the webhook"
+        },
+        {
+          "info": {
+            "name": "webhookAccountTxSubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/webhooks/:webhook_id/account-tx/subscribe",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "subscribe to notifications for a particular set of accounts"
+        },
+        {
+          "info": {
+            "name": "webhookAccountTxUnsubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/webhooks/:webhook_id/account-tx/unsubscribe",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "webhookAccountTxSubscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/webhooks/:webhook_id/account-tx/subscriptions",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "webhookNewContractsSubscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/webhooks/:webhook_id/msg-opcode/subscriptions",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "webhookNewContractSubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/webhooks/:webhook_id/subscribe-new-contracts",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "receive a notification when a new contract is deployed to the blockchain"
+        },
+        {
+          "info": {
+            "name": "webhookNewContractUnsubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/webhooks/:webhook_id/unsubscribe-new-contracts",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "receive a notification when a new contract is deployed to the blockchain"
+        },
+        {
+          "info": {
+            "name": "webhookMsgOpcodeSubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/webhooks/:webhook_id/subscribe-msg-opcode/:opcode",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "opcode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "receive a notification when there is a new message with a given opcode"
+        },
+        {
+          "info": {
+            "name": "webhookMsgOpcodeUnsubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/webhooks/:webhook_id/unsubscribe-msg-opcode/:opcode",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "opcode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "stop receiving a notification about a new message with a given opcode"
+        },
+        {
+          "info": {
+            "name": "webhookMempoolSubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/webhooks/:webhook_id/mempool/subscribe",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "subscribe to notifications for mempool messages"
+        },
+        {
+          "info": {
+            "name": "webhookMempoolUnsubscribe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/webhooks/:webhook_id/mempool/unsubscribe",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

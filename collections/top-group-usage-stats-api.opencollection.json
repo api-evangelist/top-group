@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Usage Stats API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Usage Stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getUsageStats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/usage-stats",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

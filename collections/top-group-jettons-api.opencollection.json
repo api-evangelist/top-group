@@ -1,0 +1,154 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Jettons API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jettons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getJettons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/jettons",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of all indexed jetton masters in the blockchain."
+        },
+        {
+          "info": {
+            "name": "getJettonInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/jettons/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Get jetton metadata by jetton master address"
+        },
+        {
+          "info": {
+            "name": "getJettonInfosByAddresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/jettons/_bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get jetton metadata items by jetton master addresses"
+        },
+        {
+          "info": {
+            "name": "getJettonHolders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/jettons/:account_id/holders",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get jetton's holders"
+        },
+        {
+          "info": {
+            "name": "getJettonTransferPayload",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/jettons/:jetton_id/transfer/:account_id/payload",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "jetton_id",
+                "value": "",
+                "type": "path",
+                "description": "jetton ID"
+              }
+            ]
+          },
+          "docs": "Get jetton's custom payload and state init required for transfer"
+        },
+        {
+          "info": {
+            "name": "getJettonsEvents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/events/:event_id/jettons",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "path",
+                "description": "event ID or transaction hash in hex (without 0x) or base64url format"
+              }
+            ]
+          },
+          "docs": "Get only jetton transfers in the event"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

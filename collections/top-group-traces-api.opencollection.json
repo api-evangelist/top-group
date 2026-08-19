@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Traces API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Traces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getTrace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/traces/:trace_id",
+            "params": [
+              {
+                "name": "trace_id",
+                "value": "",
+                "type": "path",
+                "description": "trace ID or transaction hash in hex (without 0x) or base64url format"
+              }
+            ]
+          },
+          "docs": "Get the trace by trace ID or hash of any transaction in trace"
+        },
+        {
+          "info": {
+            "name": "emulateMessageToTrace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/traces/emulate",
+            "params": [
+              {
+                "name": "ignore_signature_check",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Emulate sending message to retrieve with a detailed execution trace"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

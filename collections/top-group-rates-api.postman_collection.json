@@ -1,0 +1,462 @@
+{
+  "item": [
+    {
+      "id": "64dd193a-af5a-43e7-8417-27f5f8171766",
+      "name": "Rates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1cab6648-9bbd-4b81-85d7-85d2f7ad98a5",
+          "name": "get Rates",
+          "request": {
+            "name": "get Rates",
+            "description": {
+              "content": "Get the token price in the chosen currency for display only. Don’t use this for financial transactions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "rates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tokens",
+                  "value": "<address>,<address>",
+                  "description": "(Required) accept gram and jetton master addresses, separated by commas"
+                },
+                {
+                  "disabled": false,
+                  "key": "currencies",
+                  "value": "<string>,<string>",
+                  "description": "(Required) accept gram and all possible fiat currencies, separated by commas"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d03888b2-12a3-4a95-b3bd-c0cee35fc118",
+              "name": "tokens rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokens",
+                      "value": "gram"
+                    },
+                    {
+                      "key": "currencies",
+                      "value": "gram,usd,rub"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rates\": {\n    \"key_0\": {\n      \"prices\": {\n        \"GRAM\": 1.3710752873163712\n      },\n      \"diff_24h\": {\n        \"GRAM\": \"-1.28%\"\n      },\n      \"diff_7d\": {\n        \"GRAM\": \"-2.74%\"\n      },\n      \"diff_30d\": {\n        \"GRAM\": \"-0.56%\"\n      }\n    },\n    \"key_1\": {\n      \"prices\": {\n        \"GRAM\": 1.3710752873163712\n      },\n      \"diff_24h\": {\n        \"GRAM\": \"-1.28%\"\n      },\n      \"diff_7d\": {\n        \"GRAM\": \"-2.74%\"\n      },\n      \"diff_30d\": {\n        \"GRAM\": \"-0.56%\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ba5b724-bbe1-4970-97c2-8cba45e2d70d",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tokens",
+                      "value": "gram"
+                    },
+                    {
+                      "key": "currencies",
+                      "value": "gram,usd,rub"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 1688,\n  \"details\": {\n    \"required\": 1094,\n    \"available\": 7627\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97182be6-843d-41dd-88f5-169ba4170824",
+          "name": "get Chart Rates",
+          "request": {
+            "name": "get Chart Rates",
+            "description": {
+              "content": "Get chart by token",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "rates",
+                "chart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<address>",
+                  "description": "(Required) accept jetton master address"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "points_count",
+                  "value": "200"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1307f92f-1aab-41e5-8dc6-ea64b1417522",
+              "name": "token chart",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates",
+                    "chart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<address>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "1668436763"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "1668436763"
+                    },
+                    {
+                      "key": "points_count",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"points\": [\n    [\n      1668436763,\n      97.21323234\n    ]\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b73f02c-1598-48de-b717-eda77a87a4cc",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates",
+                    "chart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<address>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "usd"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "1668436763"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "1668436763"
+                    },
+                    {
+                      "key": "points_count",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 1688,\n  \"details\": {\n    \"required\": 1094,\n    \"available\": 7627\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "602cba00-3b0b-4935-be80-172655cf7e76",
+          "name": "get Markets Rates",
+          "request": {
+            "name": "get Markets Rates",
+            "description": {
+              "content": "Get the Gram price from markets",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "rates",
+                "markets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51cb5078-4c05-4591-8604-e4de8148bde8",
+              "name": "markets rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates",
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"markets\": [\n    {\n      \"market\": \"OKX\",\n      \"usd_price\": 5.2,\n      \"last_date_update\": 1668436763\n    },\n    {\n      \"market\": \"OKX\",\n      \"usd_price\": 5.2,\n      \"last_date_update\": 1668436763\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64549add-c691-4fb0-8c51-a6ba34eb1f39",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rates",
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 1688,\n  \"details\": {\n    \"required\": 1094,\n    \"available\": 7627\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f18437a7-e01f-4641-a827-627fd810c73d",
+    "name": "REST api to TON blockchain explorer Accounts Rates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,736 @@
+{
+  "item": [
+    {
+      "id": "0014f84b-619d-4c36-9480-9686b094d5a6",
+      "name": "Rewards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b839408b-3385-443c-a513-4c2e6e6beac1",
+          "name": "Get all current validators",
+          "request": {
+            "name": "Get all current validators",
+            "description": {
+              "content": "Returns all current validators with stakes, rewards, pool addresses, and (optionally) nominator breakdowns.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "rewards",
+                "validators"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "seqno",
+                  "value": "<uint32>",
+                  "description": "Masterchain block seqno. Defaults to latest. Mutually exclusive with `unixtime`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "unixtime",
+                  "value": "<uint32>",
+                  "description": "Unix timestamp (seconds). Looks up the masterchain block at this time and uses it as the anchor. Mutually exclusive with `seqno`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "shallow",
+                  "value": "false",
+                  "description": "Set to `1` to return only basic validator info (rank, pubkey, effective_stake, weight, reward, pool). Skips pool type detection, owner/validator addresses, nominator data, and returned-stake lookup — significantly faster.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "30bb4d4b-538e-458b-835b-4194431c4dd5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rewards",
+                    "validators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "seqno",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "unixtime",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "shallow",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_time_ms\": 12345,\n  \"block\": {\n    \"seqno\": 57486221,\n    \"utime\": 23814011000000\n  },\n  \"validation_round\": {\n    \"start_block\": 57480000,\n    \"end_block\": 57546000,\n    \"start_utime\": 23814011000000,\n    \"end_utime\": 23814011000000\n  },\n  \"election_id\": 1740053384,\n  \"elector_balance\": 123456789,\n  \"total_stake\": 123456789,\n  \"reward_per_block\": 123456789,\n  \"validators\": [\n    {\n      \"rank\": 1,\n      \"public_key\": \"e33f0e53552f951e0a27c8e5a461a1bd65975af369a2c85a06e51f7fbb8ae667\",\n      \"effective_stake\": 123456789,\n      \"weight\": 0.004648,\n      \"reward\": 123456789,\n      \"pool\": \"Ef_bmCmMPsrHKOC4hV8foWBs2TEUAggQ1Wfe6EAqjrI3sGNI\",\n      \"pool_type\": \"single-nominator-pool-v1.0\",\n      \"owner_address\": \"string\",\n      \"validator_address\": \"string\",\n      \"validator_stake\": 123456789,\n      \"nominators_stake\": 123456789,\n      \"total_stake\": 123456789,\n      \"validator_reward_share\": 0.3,\n      \"nominators_count\": 6858,\n      \"nominators\": [\n        {\n          \"address\": \"EQAqR4RYauq7p3jqKGnD-eSYVDoOCak9g8ZsSNVHI9fevCzB\",\n          \"weight\": 0.15,\n          \"reward\": 123456789,\n          \"effective_stake\": 123456789,\n          \"stake\": 123456789\n        },\n        {\n          \"address\": \"EQAqR4RYauq7p3jqKGnD-eSYVDoOCak9g8ZsSNVHI9fevCzB\",\n          \"weight\": 0.15,\n          \"reward\": 123456789,\n          \"effective_stake\": 123456789,\n          \"stake\": 123456789\n        }\n      ]\n    },\n    {\n      \"rank\": 1,\n      \"public_key\": \"e33f0e53552f951e0a27c8e5a461a1bd65975af369a2c85a06e51f7fbb8ae667\",\n      \"effective_stake\": 123456789,\n      \"weight\": 0.004648,\n      \"reward\": 123456789,\n      \"pool\": \"Ef_bmCmMPsrHKOC4hV8foWBs2TEUAggQ1Wfe6EAqjrI3sGNI\",\n      \"pool_type\": \"nominator-pool-v1.0\",\n      \"owner_address\": \"string\",\n      \"validator_address\": \"string\",\n      \"validator_stake\": 123456789,\n      \"nominators_stake\": 123456789,\n      \"total_stake\": 123456789,\n      \"validator_reward_share\": 0.3,\n      \"nominators_count\": 2824,\n      \"nominators\": [\n        {\n          \"address\": \"EQAqR4RYauq7p3jqKGnD-eSYVDoOCak9g8ZsSNVHI9fevCzB\",\n          \"weight\": 0.15,\n          \"reward\": 123456789,\n          \"effective_stake\": 123456789,\n          \"stake\": 123456789\n        },\n        {\n          \"address\": \"EQAqR4RYauq7p3jqKGnD-eSYVDoOCak9g8ZsSNVHI9fevCzB\",\n          \"weight\": 0.15,\n          \"reward\": 123456789,\n          \"effective_stake\": 123456789,\n          \"stake\": 123456789\n        }\n      ]\n    }\n  ],\n  \"prev_election_id\": 1772486024,\n  \"next_election_id\": 1772658824\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c2d04b5-71f0-4ab6-b940-22dfb9a0a91e",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rewards",
+                    "validators"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "seqno",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "unixtime",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "shallow",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 7869,\n  \"details\": {\n    \"required\": 3094,\n    \"available\": 7808\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e40f0699-6c74-499a-b37f-573bdab9d9e9",
+          "name": "Get validation round metadata",
+          "request": {
+            "name": "Get validation round metadata",
+            "description": {
+              "content": "Returns past and current validation rounds with boundaries, stakes, and bonuses. Always uses the latest masterchain block.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "rewards",
+                "validation-rounds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "election_id",
+                  "value": "<long>",
+                  "description": "Return the single round matching this election ID. Mutually exclusive with `block` and `unixtime`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "block",
+                  "value": "<uint32>",
+                  "description": "Find the round containing this masterchain block seqno and return it plus up to `limit-1` older rounds. Mutually exclusive with `election_id` and `unixtime`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "unixtime",
+                  "value": "<uint32>",
+                  "description": "Unix timestamp (seconds). Looks up the masterchain block at this time and uses it as the anchor. Mutually exclusive with `election_id` and `block`.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0f06d71-d82a-43f8-94fb-6af2e62731e5",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rewards",
+                    "validation-rounds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "election_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "block",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "unixtime",
+                      "value": "<uint32>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_time_ms\": 1234,\n  \"rounds\": [\n    {\n      \"election_id\": 1740053384,\n      \"start_block\": 57480000,\n      \"finished\": true,\n      \"start_utime\": 23814011000000,\n      \"end_utime\": 23814011000000,\n      \"end_block\": 57546000,\n      \"prev_election_id\": 1772486024,\n      \"next_election_id\": 1772658824,\n      \"total_stake\": 123456789,\n      \"bonuses\": 123456789\n    },\n    {\n      \"election_id\": 1740053384,\n      \"start_block\": 57480000,\n      \"finished\": true,\n      \"start_utime\": 23814011000000,\n      \"end_utime\": 23814011000000,\n      \"end_block\": 57546000,\n      \"prev_election_id\": 1772486024,\n      \"next_election_id\": 1772658824,\n      \"total_stake\": 123456789,\n      \"bonuses\": 123456789\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c17f2658-6061-4794-bc6b-977d97a7e051",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rewards",
+                    "validation-rounds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "election_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "block",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "unixtime",
+                      "value": "<uint32>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 7869,\n  \"details\": {\n    \"required\": 3094,\n    \"available\": 7808\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7082b40b-87b1-4bee-b27d-2aeea60fae60",
+          "name": "Get per-validator reward distribution for a finished round",
+          "request": {
+            "name": "Get per-validator reward distribution for a finished round",
+            "description": {
+              "content": "Computes per-validator and per-nominator reward distribution for a finished validation round using the elector's bonuses value.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "rewards",
+                "round-rewards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "election_id",
+                  "value": "<long>",
+                  "description": "Election ID of the finished round. Mutually exclusive with `block` and `unixtime`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "block",
+                  "value": "<uint32>",
+                  "description": "Masterchain block seqno within the finished round. Mutually exclusive with `election_id` and `unixtime`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "unixtime",
+                  "value": "<uint32>",
+                  "description": "Unix timestamp (seconds). Looks up the masterchain block at this time and uses it as the anchor. Mutually exclusive with `election_id` and `block`.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "shallow",
+                  "value": "false",
+                  "description": "Set to `1` to return only basic validator info (rank, pubkey, effective_stake, weight, reward, pool). Skips pool type detection, owner/validator addresses, nominator data, and returned-stake lookup — significantly faster.\n"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c37f7d00-67ab-4d87-a8c6-182b9d16d737",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rewards",
+                    "round-rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "election_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "block",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "unixtime",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "shallow",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_time_ms\": 5432,\n  \"election_id\": 1740053384,\n  \"round_start\": \"1991-07-13T02:25:10.941Z\",\n  \"round_end\": \"1978-10-14T21:02:00.543Z\",\n  \"start_block\": 7601,\n  \"end_block\": 661,\n  \"total_bonuses\": 123456789,\n  \"total_stake\": 123456789,\n  \"validators\": [\n    {\n      \"rank\": 1,\n      \"public_key\": \"e33f0e53552f951e0a27c8e5a461a1bd65975af369a2c85a06e51f7fbb8ae667\",\n      \"effective_stake\": 123456789,\n      \"weight\": 0.004648,\n      \"reward\": 123456789,\n      \"pool\": \"Ef_bmCmMPsrHKOC4hV8foWBs2TEUAggQ1Wfe6EAqjrI3sGNI\",\n      \"pool_type\": \"other\",\n      \"owner_address\": \"string\",\n      \"validator_address\": \"string\",\n      \"validator_stake\": 123456789,\n      \"nominators_stake\": 123456789,\n      \"total_stake\": 123456789,\n      \"validator_reward_share\": 0.3,\n      \"nominators_count\": 7002,\n      \"nominators\": [\n        {\n          \"address\": \"EQAqR4RYauq7p3jqKGnD-eSYVDoOCak9g8ZsSNVHI9fevCzB\",\n          \"weight\": 0.15,\n          \"reward\": 123456789,\n          \"effective_stake\": 123456789,\n          \"stake\": 123456789\n        },\n        {\n          \"address\": \"EQAqR4RYauq7p3jqKGnD-eSYVDoOCak9g8ZsSNVHI9fevCzB\",\n          \"weight\": 0.15,\n          \"reward\": 123456789,\n          \"effective_stake\": 123456789,\n          \"stake\": 123456789\n        }\n      ]\n    },\n    {\n      \"rank\": 1,\n      \"public_key\": \"e33f0e53552f951e0a27c8e5a461a1bd65975af369a2c85a06e51f7fbb8ae667\",\n      \"effective_stake\": 123456789,\n      \"weight\": 0.004648,\n      \"reward\": 123456789,\n      \"pool\": \"Ef_bmCmMPsrHKOC4hV8foWBs2TEUAggQ1Wfe6EAqjrI3sGNI\",\n      \"pool_type\": \"other\",\n      \"owner_address\": \"string\",\n      \"validator_address\": \"string\",\n      \"validator_stake\": 123456789,\n      \"nominators_stake\": 123456789,\n      \"total_stake\": 123456789,\n      \"validator_reward_share\": 0.3,\n      \"nominators_count\": 9207,\n      \"nominators\": [\n        {\n          \"address\": \"EQAqR4RYauq7p3jqKGnD-eSYVDoOCak9g8ZsSNVHI9fevCzB\",\n          \"weight\": 0.15,\n          \"reward\": 123456789,\n          \"effective_stake\": 123456789,\n          \"stake\": 123456789\n        },\n        {\n          \"address\": \"EQAqR4RYauq7p3jqKGnD-eSYVDoOCak9g8ZsSNVHI9fevCzB\",\n          \"weight\": 0.15,\n          \"reward\": 123456789,\n          \"effective_stake\": 123456789,\n          \"stake\": 123456789\n        }\n      ]\n    }\n  ],\n  \"prev_election_id\": 1772486024,\n  \"next_election_id\": 1772658824,\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b19cb01-2afd-4c0b-94cf-b9f1798af532",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rewards",
+                    "round-rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "election_id",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "block",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "unixtime",
+                      "value": "<uint32>"
+                    },
+                    {
+                      "key": "shallow",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 7869,\n  \"details\": {\n    \"required\": 3094,\n    \"available\": 7808\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04af532c-463e-44a5-9ba2-a9e69426cf00",
+          "name": "Get historical APY and stake statistics",
+          "request": {
+            "name": "Get historical APY and stake statistics",
+            "description": {
+              "content": "Returns time series of APY and total stake from past validation rounds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "rewards",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9b08e3f-1f3a-49f8-9ca9-e762f5f1926a",
+              "name": "APY and stake statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rewards",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apy\": [\n    [\n      1602.9390053074765,\n      1618.9707975244228\n    ],\n    [\n      1284.8292379184256,\n      7598.946208751777\n    ]\n  ],\n  \"total_stake\": [\n    [\n      3171.755198837666,\n      9949.023036709275\n    ],\n    [\n      9400.092552595577,\n      1576.273938561318\n    ]\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a23e1ecc-3984-4f8d-b021-31a105ab14bb",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rewards",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 7869,\n  \"details\": {\n    \"required\": 3094,\n    \"available\": 7808\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "329790ba-6061-4d5c-816f-1f4907ea79a2",
+          "name": "Get current TON blockchain APY",
+          "request": {
+            "name": "Get current TON blockchain APY",
+            "description": {
+              "content": "Returns the current TON blockchain APY as a percent based on the latest completed validation round.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "rewards",
+                "apy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64e0f561-5cfb-4a86-9a66-3861fbb023c9",
+              "name": "current TON blockchain APY as a percent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rewards",
+                    "apy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "3.3",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ade67b2-03ec-4aee-bad0-c25c63496876",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "rewards",
+                    "apy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 7869,\n  \"details\": {\n    \"required\": 3094,\n    \"available\": 7808\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5ae286da-0dd0-400c-8cc1-00a30e6fe899",
+    "name": "REST api to TON blockchain explorer Accounts Rewards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

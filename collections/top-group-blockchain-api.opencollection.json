@@ -1,0 +1,472 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON explorer Accounts Blockchain API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blockchain",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getReducedBlockchainBlocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/reduced/blocks",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get reduced blockchain blocks data"
+        },
+        {
+          "info": {
+            "name": "getBlockchainBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/blocks/:block_id",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "block ID"
+              }
+            ]
+          },
+          "docs": "Get blockchain block data"
+        },
+        {
+          "info": {
+            "name": "downloadBlockchainBlockBoc",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/blocks/:block_id/boc",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "block ID"
+              }
+            ]
+          },
+          "docs": "Download blockchain block BOC"
+        },
+        {
+          "info": {
+            "name": "getBlockchainMasterchainShards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/masterchain/:masterchain_seqno/shards",
+            "params": [
+              {
+                "name": "masterchain_seqno",
+                "value": "",
+                "type": "path",
+                "description": "masterchain block seqno"
+              }
+            ]
+          },
+          "docs": "Get blockchain block shards"
+        },
+        {
+          "info": {
+            "name": "getBlockchainMasterchainBlocks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/masterchain/:masterchain_seqno/blocks",
+            "params": [
+              {
+                "name": "masterchain_seqno",
+                "value": "",
+                "type": "path",
+                "description": "masterchain block seqno"
+              }
+            ]
+          },
+          "docs": "Get all blocks in all shards and workchains between target and previous masterchain block according to shards last blocks snapshot in masterchain.  We don't recommend to build your app around this method because it has problem with scalability and will work very slow in the future."
+        },
+        {
+          "info": {
+            "name": "getBlockchainMasterchainTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/masterchain/:masterchain_seqno/transactions",
+            "params": [
+              {
+                "name": "masterchain_seqno",
+                "value": "",
+                "type": "path",
+                "description": "masterchain block seqno"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all transactions in all shards and workchains between target and previous masterchain block according to shards last blocks snapshot in masterchain. We don't recommend to build your app around this method because it has problem with scalability and will work very slow in the future."
+        },
+        {
+          "info": {
+            "name": "getBlockchainConfigFromBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/masterchain/:masterchain_seqno/config",
+            "params": [
+              {
+                "name": "masterchain_seqno",
+                "value": "",
+                "type": "path",
+                "description": "masterchain block seqno"
+              }
+            ]
+          },
+          "docs": "Get blockchain config from a specific block, if present."
+        },
+        {
+          "info": {
+            "name": "getRawBlockchainConfigFromBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/masterchain/:masterchain_seqno/config/raw",
+            "params": [
+              {
+                "name": "masterchain_seqno",
+                "value": "",
+                "type": "path",
+                "description": "masterchain block seqno"
+              }
+            ]
+          },
+          "docs": "Get raw blockchain config from a specific block, if present."
+        },
+        {
+          "info": {
+            "name": "getBlockchainBlockTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/blocks/:block_id/transactions",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "block ID"
+              }
+            ]
+          },
+          "docs": "Get transactions from block"
+        },
+        {
+          "info": {
+            "name": "getBlockchainTransaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/transactions/:transaction_id",
+            "params": [
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path",
+                "description": "transaction ID"
+              }
+            ]
+          },
+          "docs": "Get transaction data"
+        },
+        {
+          "info": {
+            "name": "getBlockchainTransactionByMessageHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/messages/:msg_id/transaction",
+            "params": [
+              {
+                "name": "msg_id",
+                "value": "",
+                "type": "path",
+                "description": "message ID"
+              }
+            ]
+          },
+          "docs": "Get transaction data by message hash"
+        },
+        {
+          "info": {
+            "name": "getBlockchainValidators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/validators"
+          },
+          "docs": "Get blockchain validators"
+        },
+        {
+          "info": {
+            "name": "getBlockchainMasterchainHead",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/masterchain-head"
+          },
+          "docs": "Get last known masterchain block"
+        },
+        {
+          "info": {
+            "name": "getBlockchainRawAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/accounts/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Get low-level information about an account taken directly from the blockchain."
+        },
+        {
+          "info": {
+            "name": "getBlockchainRawAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/blockchain/accounts/_bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get low-level information about several accounts taken directly from the blockchain."
+        },
+        {
+          "info": {
+            "name": "getBlockchainAccountTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/accounts/:account_id/transactions",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "after_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last transactions"
+              },
+              {
+                "name": "before_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last transactions"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get account transactions"
+        },
+        {
+          "info": {
+            "name": "execGetMethodForBlockchainAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/accounts/:account_id/methods/:method_name",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "method_name",
+                "value": "",
+                "type": "path",
+                "description": "contract get method name"
+              },
+              {
+                "name": "args",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Execute get method for account"
+        },
+        {
+          "info": {
+            "name": "execGetMethodWithBodyForBlockchainAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/blockchain/accounts/:account_id/methods/:method_name",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "method_name",
+                "value": "",
+                "type": "path",
+                "description": "contract get method name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute get method for account"
+        },
+        {
+          "info": {
+            "name": "sendBlockchainMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/blockchain/message",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send message to blockchain"
+        },
+        {
+          "info": {
+            "name": "getBlockchainConfig",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/config"
+          },
+          "docs": "Get blockchain config"
+        },
+        {
+          "info": {
+            "name": "getRawBlockchainConfig",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/config/raw"
+          },
+          "docs": "Get raw blockchain config"
+        },
+        {
+          "info": {
+            "name": "blockchainAccountInspect",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/accounts/:account_id/inspect",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Blockchain account inspect"
+        },
+        {
+          "info": {
+            "name": "getLibraryByHash",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/blockchain/libraries/:hash",
+            "params": [
+              {
+                "name": "hash",
+                "value": "",
+                "type": "path",
+                "description": "hash in hex (without 0x) format"
+              }
+            ]
+          },
+          "docs": "Get library cell"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

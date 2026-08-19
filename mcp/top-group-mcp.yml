@@ -375,3 +375,9 @@ tools:
 - name: get_rewards_apy
   description: Get current TON blockchain APY
   source_operation: openapi/top-group-tonapi-openapi.yml#getRewardsApy
+deployment:
+  mode: none
+  verified: derived
+  tools: 118
+  checked: '2026-08-12'
+  source: catalog MCP census

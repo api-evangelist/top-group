@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Rates API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getRates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/rates",
+            "params": [
+              {
+                "name": "tokens",
+                "value": "",
+                "type": "query",
+                "description": "accept gram and jetton master addresses, separated by commas"
+              },
+              {
+                "name": "currencies",
+                "value": "",
+                "type": "query",
+                "description": "accept gram and all possible fiat currencies, separated by commas"
+              }
+            ]
+          },
+          "docs": "Get the token price in the chosen currency for display only. Don’t use this for financial transactions."
+        },
+        {
+          "info": {
+            "name": "getChartRates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/rates/chart",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "accept jetton master address"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "points_count",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get chart by token"
+        },
+        {
+          "info": {
+            "name": "getMarketsRates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/rates/markets"
+          },
+          "docs": "Get the Gram price from markets"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

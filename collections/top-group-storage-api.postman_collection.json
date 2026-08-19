@@ -1,0 +1,143 @@
+{
+  "item": [
+    {
+      "id": "1d08f772-48a7-40c8-8019-c750e42e055a",
+      "name": "Storage",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c7ee8b5-9f13-4b67-8330-3edff8fe0f55",
+          "name": "get Storage Providers",
+          "request": {
+            "name": "get Storage Providers",
+            "description": {
+              "content": "Get TON storage providers deployed to the blockchain.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "storage",
+                "providers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "55a4ea2b-eafc-4253-a4af-d5596edf62f8",
+              "name": "a list of storage providers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "storage",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"providers\": [\n    {\n      \"address\": \"0:FD595F36B4C1535BEC8461490D38EBB9AE3C38DD6ACE17CA63ABE2C6608BE159\",\n      \"accept_new_contracts\": true,\n      \"rate_per_mb_day\": 50000000,\n      \"max_span\": 604800,\n      \"minimal_file_size\": 64,\n      \"maximal_file_size\": 10485760\n    },\n    {\n      \"address\": \"0:FD595F36B4C1535BEC8461490D38EBB9AE3C38DD6ACE17CA63ABE2C6608BE159\",\n      \"accept_new_contracts\": true,\n      \"rate_per_mb_day\": 50000000,\n      \"max_span\": 604800,\n      \"minimal_file_size\": 64,\n      \"maximal_file_size\": 10485760\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78aa12ba-13b4-460a-9e3b-1cf8e3acfcdc",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "storage",
+                    "providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 4333,\n  \"details\": {\n    \"required\": 1065,\n    \"available\": 91\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ffa171ce-b95a-4dc2-b7e6-90c8be09119a",
+    "name": "REST api to TON blockchain explorer Accounts Storage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

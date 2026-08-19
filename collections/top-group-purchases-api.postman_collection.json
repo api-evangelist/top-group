@@ -1,0 +1,200 @@
+{
+  "item": [
+    {
+      "id": "2dd9d0eb-3a77-4d60-94db-221cce0f8ea5",
+      "name": "Purchases",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b81e1efd-50df-4ba1-bc6a-91c2a9ba8f61",
+          "name": "get Purchase History",
+          "request": {
+            "name": "get Purchase History",
+            "description": {
+              "content": "Get history of purchases",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "purchases",
+                ":account_id",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_lt",
+                  "value": "<long>",
+                  "description": "omit this parameter to get last invoices"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "account_id",
+                  "description": "(Required) account ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c53c6846-0b65-41ed-8994-d64dae15d242",
+              "name": "account purchase history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "purchases",
+                    ":account_id",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_lt",
+                      "value": "25758317000002"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"purchases\": [\n    {\n      \"event_id\": \"e8b0e3fee4a26bd2317ac1f9952fcdc87dc08fdb617656b5202416323337372e\",\n      \"invoice_id\": \"03cfc582-b1c3-410a-a9a7-1f3afe326b3b\",\n      \"source\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"destination\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"lt\": 25713146000001,\n      \"utime\": 1645544908,\n      \"amount\": {\n        \"currency_type\": \"jetton\",\n        \"value\": \"123000000000\",\n        \"decimals\": 9,\n        \"token_name\": \"Gram\",\n        \"verification\": \"whitelist\",\n        \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n        \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n      },\n      \"metadata\": {\n        \"encrypted_binary\": \"string\",\n        \"decryption_key\": \"dead.....beef\"\n      }\n    },\n    {\n      \"event_id\": \"e8b0e3fee4a26bd2317ac1f9952fcdc87dc08fdb617656b5202416323337372e\",\n      \"invoice_id\": \"03cfc582-b1c3-410a-a9a7-1f3afe326b3b\",\n      \"source\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"destination\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"lt\": 25713146000001,\n      \"utime\": 1645544908,\n      \"amount\": {\n        \"currency_type\": \"jetton\",\n        \"value\": \"123000000000\",\n        \"decimals\": 9,\n        \"token_name\": \"Gram\",\n        \"verification\": \"whitelist\",\n        \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n        \"jetton\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\"\n      },\n      \"metadata\": {\n        \"encrypted_binary\": \"string\",\n        \"decryption_key\": \"dead.....beef\"\n      }\n    }\n  ],\n  \"next_from\": 25713146000001\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e02e7bf3-2685-4dac-9d8b-f916aedc8d09",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "purchases",
+                    ":account_id",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_lt",
+                      "value": "25758317000002"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 4725,\n  \"details\": {\n    \"required\": 5398,\n    \"available\": 9675\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a7c1db7a-5586-4dac-b36c-6a2c702c33b6",
+    "name": "REST api to TON blockchain explorer Accounts Purchases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

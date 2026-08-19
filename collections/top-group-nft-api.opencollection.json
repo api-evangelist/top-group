@@ -1,0 +1,220 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts NFT API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "NFT",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getAccountNftHistory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/nfts/history",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "before_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last events"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the transfer nft history"
+        },
+        {
+          "info": {
+            "name": "getNftCollections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/nfts/collections",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get NFT collections"
+        },
+        {
+          "info": {
+            "name": "getNftCollection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/nfts/collections/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Get NFT collection by collection address"
+        },
+        {
+          "info": {
+            "name": "getNftCollectionItemsByAddresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/nfts/collections/_bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get NFT collection items by their addresses"
+        },
+        {
+          "info": {
+            "name": "getItemsFromCollection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/nfts/collections/:account_id/items",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get NFT items from collection by collection address"
+        },
+        {
+          "info": {
+            "name": "getNftItemsByAddresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/nfts/_bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get NFT items by their addresses"
+        },
+        {
+          "info": {
+            "name": "getNftItemByAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/nfts/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Get NFT item by its address"
+        },
+        {
+          "info": {
+            "name": "getNftHistoryByID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/nfts/:account_id/history",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "before_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last events"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Please use `getAccountNftHistory`` instead"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

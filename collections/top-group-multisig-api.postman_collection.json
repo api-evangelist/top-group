@@ -1,0 +1,305 @@
+{
+  "item": [
+    {
+      "id": "7cdcd2ab-d621-4dd4-8332-c09f275c5496",
+      "name": "Multisig",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f40a88d-bac5-4335-8898-485791a44f3b",
+          "name": "get Multisig Account",
+          "request": {
+            "name": "get Multisig Account",
+            "description": {
+              "content": "Get multisig account info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "multisig",
+                ":account_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "account_id",
+                  "description": "(Required) account ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0ce9aab-3bc3-4b11-a9c6-d6a3f7df53e2",
+              "name": "multisig account",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multisig",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n  \"seqno\": \"string\",\n  \"threshold\": 7663,\n  \"signers\": [\n    \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n    \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n  ],\n  \"proposers\": [\n    \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n    \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n  ],\n  \"orders\": [\n    {\n      \"address\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n      \"order_seqno\": \"string\",\n      \"threshold\": 93,\n      \"sent_for_execution\": false,\n      \"signers\": [\n        \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n      ],\n      \"approvals_num\": 9347,\n      \"expiration_date\": 5681,\n      \"risk\": {\n        \"transfer_all_remaining_balance\": true,\n        \"gram\": 500,\n        \"jettons\": [\n          {\n            \"quantity\": \"597968399\",\n            \"wallet_address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"jetton\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"quantity\": \"597968399\",\n            \"wallet_address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"jetton\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"nfts\": [\n          {\n            \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n            \"index\": 58,\n            \"verified\": true,\n            \"metadata\": {},\n            \"approved_by\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trust\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"collection\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"description\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"sale\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"previews\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"dns\": \"crypto.ton\",\n            \"include_cnft\": false,\n            \"code_hash\": \"string\",\n            \"data_hash\": \"string\"\n          },\n          {\n            \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n            \"index\": 58,\n            \"verified\": true,\n            \"metadata\": {},\n            \"approved_by\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trust\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"collection\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"description\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"sale\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"previews\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"dns\": \"crypto.ton\",\n            \"include_cnft\": false,\n            \"code_hash\": \"string\",\n            \"data_hash\": \"string\"\n          }\n        ],\n        \"ton\": 500,\n        \"total_equivalent\": 7258.6674349852465\n      },\n      \"creation_date\": 343,\n      \"signed_by\": [\n        \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n      ],\n      \"multisig_address\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n      \"changing_parameters\": {\n        \"threshold\": 6099,\n        \"signers\": [\n          \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n          \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        ],\n        \"proposers\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    {\n      \"address\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n      \"order_seqno\": \"string\",\n      \"threshold\": 2267,\n      \"sent_for_execution\": false,\n      \"signers\": [\n        \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n      ],\n      \"approvals_num\": 2907,\n      \"expiration_date\": 7128,\n      \"risk\": {\n        \"transfer_all_remaining_balance\": true,\n        \"gram\": 500,\n        \"jettons\": [\n          {\n            \"quantity\": \"597968399\",\n            \"wallet_address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"jetton\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"quantity\": \"597968399\",\n            \"wallet_address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"jetton\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"nfts\": [\n          {\n            \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n            \"index\": 58,\n            \"verified\": true,\n            \"metadata\": {},\n            \"approved_by\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trust\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"collection\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"description\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"sale\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"previews\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"dns\": \"crypto.ton\",\n            \"include_cnft\": false,\n            \"code_hash\": \"string\",\n            \"data_hash\": \"string\"\n          },\n          {\n            \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n            \"index\": 58,\n            \"verified\": true,\n            \"metadata\": {},\n            \"approved_by\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"trust\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"owner\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"collection\": {\n              \"address\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"description\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"sale\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"previews\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"dns\": \"crypto.ton\",\n            \"include_cnft\": false,\n            \"code_hash\": \"string\",\n            \"data_hash\": \"string\"\n          }\n        ],\n        \"ton\": 500,\n        \"total_equivalent\": 9086.652565283757\n      },\n      \"creation_date\": 6643,\n      \"signed_by\": [\n        \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n        \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n      ],\n      \"multisig_address\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n      \"changing_parameters\": {\n        \"threshold\": 2833,\n        \"signers\": [\n          \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n          \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n        ],\n        \"proposers\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8a39667-3ee3-4026-ae55-1f44f50c556d",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multisig",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 5534,\n  \"details\": {\n    \"required\": 462,\n    \"available\": 3802\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08a6f33c-e777-42fe-bc5f-70b9fb2d36ad",
+          "name": "get Multisig Order",
+          "request": {
+            "name": "get Multisig Order",
+            "description": {
+              "content": "Get multisig order",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "multisig",
+                "order",
+                ":account_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "account_id",
+                  "description": "(Required) account ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc5b5a7f-c0a2-4a28-97b9-64266dddcc27",
+              "name": "multisig order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multisig",
+                    "order",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n  \"order_seqno\": \"string\",\n  \"threshold\": 9063,\n  \"sent_for_execution\": false,\n  \"signers\": [\n    \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n    \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n  ],\n  \"approvals_num\": 9122,\n  \"expiration_date\": 9854,\n  \"risk\": {\n    \"transfer_all_remaining_balance\": true,\n    \"gram\": 500,\n    \"jettons\": [\n      {\n        \"quantity\": \"597968399\",\n        \"wallet_address\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"jetton\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"blacklist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 4231,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        }\n      },\n      {\n        \"quantity\": \"597968399\",\n        \"wallet_address\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"jetton\": {\n          \"address\": \"0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0\",\n          \"name\": \"Wrapped TON\",\n          \"symbol\": \"WTON\",\n          \"decimals\": 9,\n          \"verification\": \"graylist\",\n          \"image\": \"https://cache.tonapi.io/images/jetton.jpg\",\n          \"score\": 1269,\n          \"custom_payload_api_uri\": \"string\",\n          \"scaled_ui\": {\n            \"numerator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"denominator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"description\": \"string\"\n        }\n      }\n    ],\n    \"nfts\": [\n      {\n        \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n        \"index\": 58,\n        \"verified\": true,\n        \"metadata\": {},\n        \"approved_by\": [\n          \"getgems\",\n          \"getgems\"\n        ],\n        \"trust\": \"whitelist\",\n        \"owner\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"collection\": {\n          \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n          \"name\": \"TON Diamonds\",\n          \"description\": \"Best collection in TON network\"\n        },\n        \"sale\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"market\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"price\": {\n            \"currency_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"decimals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"verification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"jetton\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"owner\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"previews\": [\n          {\n            \"resolution\": \"100x100\",\n            \"url\": \"https://site.com/pic1.jpg\"\n          },\n          {\n            \"resolution\": \"100x100\",\n            \"url\": \"https://site.com/pic1.jpg\"\n          }\n        ],\n        \"dns\": \"crypto.ton\",\n        \"include_cnft\": false,\n        \"code_hash\": \"string\",\n        \"data_hash\": \"string\"\n      },\n      {\n        \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n        \"index\": 58,\n        \"verified\": true,\n        \"metadata\": {},\n        \"approved_by\": [\n          \"getgems\",\n          \"getgems\"\n        ],\n        \"trust\": \"whitelist\",\n        \"owner\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"collection\": {\n          \"address\": \"0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B\",\n          \"name\": \"TON Diamonds\",\n          \"description\": \"Best collection in TON network\"\n        },\n        \"sale\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"market\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"price\": {\n            \"currency_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"decimals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"token_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"verification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"jetton\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"owner\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"previews\": [\n          {\n            \"resolution\": \"100x100\",\n            \"url\": \"https://site.com/pic1.jpg\"\n          },\n          {\n            \"resolution\": \"100x100\",\n            \"url\": \"https://site.com/pic1.jpg\"\n          }\n        ],\n        \"dns\": \"crypto.ton\",\n        \"include_cnft\": false,\n        \"code_hash\": \"string\",\n        \"data_hash\": \"string\"\n      }\n    ],\n    \"ton\": 500,\n    \"total_equivalent\": 4533.312552606713\n  },\n  \"creation_date\": 649,\n  \"signed_by\": [\n    \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n    \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n  ],\n  \"multisig_address\": \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n  \"changing_parameters\": {\n    \"threshold\": 8742,\n    \"signers\": [\n      \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\",\n      \"0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf\"\n    ],\n    \"proposers\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0cb02ce2-1241-498d-b131-ee328eb7cadf",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "multisig",
+                    "order",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 5534,\n  \"details\": {\n    \"required\": 462,\n    \"available\": 3802\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "88ba2d01-693c-4050-aad7-800619b5870f",
+    "name": "REST api to TON blockchain explorer Accounts Multisig API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

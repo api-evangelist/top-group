@@ -1,0 +1,307 @@
+{
+  "item": [
+    {
+      "id": "09bf1ac8-5515-4467-986e-1effb158efe6",
+      "name": "Traces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5b868367-f2c8-4235-97e2-a57eee3f9e6f",
+          "name": "get Trace",
+          "request": {
+            "name": "get Trace",
+            "description": {
+              "content": "Get the trace by trace ID or hash of any transaction in trace",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "traces",
+                ":trace_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trace_id",
+                  "description": "(Required) trace ID or transaction hash in hex (without 0x) or base64url format"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e511cd2-88ae-483c-8d14-e2661e146c64",
+              "name": "trace",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "traces",
+                    ":trace_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trace_id",
+                      "description": "(Required) trace ID or transaction hash in hex (without 0x) or base64url format"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transaction\": {\n    \"hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n    \"lt\": 25713146000001,\n    \"account\": {\n      \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n      \"is_scam\": true,\n      \"is_wallet\": true,\n      \"name\": \"Ton foundation\",\n      \"icon\": \"https://ton.org/logo.png\"\n    },\n    \"end_balance\": 25713146000001,\n    \"success\": true,\n    \"utime\": 1645544908,\n    \"orig_status\": \"active\",\n    \"end_status\": \"active\",\n    \"total_fees\": 25713146000001,\n    \"transaction_type\": \"TransOrd\",\n    \"state_update_old\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n    \"state_update_new\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n    \"out_msgs\": [\n      {\n        \"msg_type\": \"int_msg\",\n        \"created_lt\": 25713146000001,\n        \"ihr_disabled\": true,\n        \"bounce\": true,\n        \"bounced\": true,\n        \"value\": 60000000,\n        \"fwd_fee\": 5681002,\n        \"ihr_fee\": 5681002,\n        \"import_fee\": 5681002,\n        \"created_at\": 5681002,\n        \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n        \"value_extra\": [\n          {\n            \"amount\": \"1000000000\",\n            \"preview\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"amount\": \"1000000000\",\n            \"preview\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"destination\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"source\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"op_code\": \"0xdeadbeaf\",\n        \"init\": {\n          \"boc\": \"b5ee9c72010106010044000114ff00f4a413f4bcf2c80b01020120020302014804050004f2300038d06c21d31f30ed44d0d33f3001c00197a4c8cb3fc9ed549330f206e20011a13431da89a1a67e61\",\n          \"interfaces\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n        \"decoded_op_name\": \"nft_transfer\",\n        \"decoded_body\": \"\"\n      },\n      {\n        \"msg_type\": \"int_msg\",\n        \"created_lt\": 25713146000001,\n        \"ihr_disabled\": true,\n        \"bounce\": true,\n        \"bounced\": true,\n        \"value\": 60000000,\n        \"fwd_fee\": 5681002,\n        \"ihr_fee\": 5681002,\n        \"import_fee\": 5681002,\n        \"created_at\": 5681002,\n        \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n        \"value_extra\": [\n          {\n            \"amount\": \"1000000000\",\n            \"preview\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"amount\": \"1000000000\",\n            \"preview\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"destination\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"source\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"op_code\": \"0xdeadbeaf\",\n        \"init\": {\n          \"boc\": \"b5ee9c72010106010044000114ff00f4a413f4bcf2c80b01020120020302014804050004f2300038d06c21d31f30ed44d0d33f3001c00197a4c8cb3fc9ed549330f206e20011a13431da89a1a67e61\",\n          \"interfaces\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n        \"decoded_op_name\": \"nft_transfer\",\n        \"decoded_body\": \"\"\n      }\n    ],\n    \"block\": \"(-1,4234234,8000000000000000)\",\n    \"aborted\": true,\n    \"destroyed\": true,\n    \"raw\": \"b5ee9c72410206010001380003b372cf3b5b8c891e517c9addbda1c0386a09ccacbb0e3faf630b51cfc8152325acb00002ac5795c0e41fdf79135cb7da03cc623b165d614b562a51eeccd8a5e097f405abf6b37f4e73000002ac5629732c1666887ed000144030480102030101a004008272abc8f2971aa4404ac6da1597720f348b2e1247b1ad9f55cbd3b6812f0a5f08b269bb65039fb1f6074d00f794e857f6dfd01131d299df456af10a8a4943d4d165000d0c80608840492001ab48015581f575c3b8c6ab3d6\",\n    \"in_msg\": {\n      \"msg_type\": \"int_msg\",\n      \"created_lt\": 25713146000001,\n      \"ihr_disabled\": true,\n      \"bounce\": true,\n      \"bounced\": true,\n      \"value\": 60000000,\n      \"fwd_fee\": 5681002,\n      \"ihr_fee\": 5681002,\n      \"import_fee\": 5681002,\n      \"created_at\": 5681002,\n      \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n      \"value_extra\": [\n        {\n          \"amount\": \"1000000000\",\n          \"preview\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"symbol\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"decimals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"amount\": \"1000000000\",\n          \"preview\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"symbol\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"decimals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"destination\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"source\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"op_code\": \"0xdeadbeaf\",\n      \"init\": {\n        \"boc\": \"b5ee9c72010106010044000114ff00f4a413f4bcf2c80b01020120020302014804050004f2300038d06c21d31f30ed44d0d33f3001c00197a4c8cb3fc9ed549330f206e20011a13431da89a1a67e61\",\n        \"interfaces\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n      \"decoded_op_name\": \"nft_transfer\",\n      \"decoded_body\": \"\"\n    },\n    \"prev_trans_hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n    \"prev_trans_lt\": 25713146000001,\n    \"compute_phase\": {\n      \"skipped\": true,\n      \"skip_reason\": \"cskip_no_state\",\n      \"success\": true,\n      \"gas_fees\": 1000,\n      \"gas_used\": 10000,\n      \"vm_steps\": 5,\n      \"exit_code\": 0,\n      \"exit_code_description\": \"string\"\n    },\n    \"storage_phase\": {\n      \"fees_collected\": 25713146000001,\n      \"status_change\": \"acst_unchanged\",\n      \"fees_due\": 25713146000001\n    },\n    \"credit_phase\": {\n      \"fees_collected\": 100,\n      \"credit\": 1000\n    },\n    \"action_phase\": {\n      \"success\": true,\n      \"result_code\": 5,\n      \"total_actions\": 5,\n      \"skipped_actions\": 5,\n      \"fwd_fees\": 1000,\n      \"total_fees\": 1000,\n      \"result_code_description\": \"string\"\n    },\n    \"bounce_phase\": \"TrPhaseBounceNofunds\"\n  },\n  \"interfaces\": [\n    \"wallet\",\n    \"tep62_item\"\n  ],\n  \"children\": [\n    {\n      \"transaction\": {\n        \"hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"lt\": 25713146000001,\n        \"account\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"end_balance\": 25713146000001,\n        \"success\": true,\n        \"utime\": 1645544908,\n        \"orig_status\": \"active\",\n        \"end_status\": \"active\",\n        \"total_fees\": 25713146000001,\n        \"transaction_type\": \"TransOrd\",\n        \"state_update_old\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"state_update_new\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"out_msgs\": [\n          {\n            \"msg_type\": \"int_msg\",\n            \"created_lt\": 25713146000001,\n            \"ihr_disabled\": true,\n            \"bounce\": true,\n            \"bounced\": true,\n            \"value\": 60000000,\n            \"fwd_fee\": 5681002,\n            \"ihr_fee\": 5681002,\n            \"import_fee\": 5681002,\n            \"created_at\": 5681002,\n            \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n            \"value_extra\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destination\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"op_code\": \"0xdeadbeaf\",\n            \"init\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n            \"decoded_op_name\": \"nft_transfer\",\n            \"decoded_body\": \"\"\n          },\n          {\n            \"msg_type\": \"int_msg\",\n            \"created_lt\": 25713146000001,\n            \"ihr_disabled\": true,\n            \"bounce\": true,\n            \"bounced\": true,\n            \"value\": 60000000,\n            \"fwd_fee\": 5681002,\n            \"ihr_fee\": 5681002,\n            \"import_fee\": 5681002,\n            \"created_at\": 5681002,\n            \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n            \"value_extra\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destination\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"op_code\": \"0xdeadbeaf\",\n            \"init\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n            \"decoded_op_name\": \"nft_transfer\",\n            \"decoded_body\": \"\"\n          }\n        ],\n        \"block\": \"(-1,4234234,8000000000000000)\",\n        \"aborted\": true,\n        \"destroyed\": true,\n        \"raw\": \"b5ee9c72410206010001380003b372cf3b5b8c891e517c9addbda1c0386a09ccacbb0e3faf630b51cfc8152325acb00002ac5795c0e41fdf79135cb7da03cc623b165d614b562a51eeccd8a5e097f405abf6b37f4e73000002ac5629732c1666887ed000144030480102030101a004008272abc8f2971aa4404ac6da1597720f348b2e1247b1ad9f55cbd3b6812f0a5f08b269bb65039fb1f6074d00f794e857f6dfd01131d299df456af10a8a4943d4d165000d0c80608840492001ab48015581f575c3b8c6ab3d6\",\n        \"in_msg\": {\n          \"msg_type\": \"int_msg\",\n          \"created_lt\": 25713146000001,\n          \"ihr_disabled\": true,\n          \"bounce\": true,\n          \"bounced\": true,\n          \"value\": 60000000,\n          \"fwd_fee\": 5681002,\n          \"ihr_fee\": 5681002,\n          \"import_fee\": 5681002,\n          \"created_at\": 5681002,\n          \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n          \"value_extra\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"destination\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"source\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"op_code\": \"0xdeadbeaf\",\n          \"init\": {\n            \"boc\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"interfaces\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n          \"decoded_op_name\": \"nft_transfer\",\n          \"decoded_body\": \"\"\n        },\n        \"prev_trans_hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"prev_trans_lt\": 25713146000001,\n        \"compute_phase\": {\n          \"skipped\": true,\n          \"skip_reason\": \"cskip_no_state\",\n          \"success\": true,\n          \"gas_fees\": 1000,\n          \"gas_used\": 10000,\n          \"vm_steps\": 5,\n          \"exit_code\": 0,\n          \"exit_code_description\": \"string\"\n        },\n        \"storage_phase\": {\n          \"fees_collected\": 25713146000001,\n          \"status_change\": \"acst_unchanged\",\n          \"fees_due\": 25713146000001\n        },\n        \"credit_phase\": {\n          \"fees_collected\": 100,\n          \"credit\": 1000\n        },\n        \"action_phase\": {\n          \"success\": true,\n          \"result_code\": 5,\n          \"total_actions\": 5,\n          \"skipped_actions\": 5,\n          \"fwd_fees\": 1000,\n          \"total_fees\": 1000,\n          \"result_code_description\": \"string\"\n        },\n        \"bounce_phase\": \"TrPhaseBounceOk\"\n      },\n      \"interfaces\": [\n        \"wallet\",\n        \"tep62_item\"\n      ],\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n        }\n      ],\n      \"emulated\": false\n    },\n    {\n      \"transaction\": {\n        \"hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"lt\": 25713146000001,\n        \"account\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"end_balance\": 25713146000001,\n        \"success\": true,\n        \"utime\": 1645544908,\n        \"orig_status\": \"active\",\n        \"end_status\": \"active\",\n        \"total_fees\": 25713146000001,\n        \"transaction_type\": \"TransOrd\",\n        \"state_update_old\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"state_update_new\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"out_msgs\": [\n          {\n            \"msg_type\": \"int_msg\",\n            \"created_lt\": 25713146000001,\n            \"ihr_disabled\": true,\n            \"bounce\": true,\n            \"bounced\": true,\n            \"value\": 60000000,\n            \"fwd_fee\": 5681002,\n            \"ihr_fee\": 5681002,\n            \"import_fee\": 5681002,\n            \"created_at\": 5681002,\n            \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n            \"value_extra\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destination\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"op_code\": \"0xdeadbeaf\",\n            \"init\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n            \"decoded_op_name\": \"nft_transfer\",\n            \"decoded_body\": \"\"\n          },\n          {\n            \"msg_type\": \"int_msg\",\n            \"created_lt\": 25713146000001,\n            \"ihr_disabled\": true,\n            \"bounce\": true,\n            \"bounced\": true,\n            \"value\": 60000000,\n            \"fwd_fee\": 5681002,\n            \"ihr_fee\": 5681002,\n            \"import_fee\": 5681002,\n            \"created_at\": 5681002,\n            \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n            \"value_extra\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destination\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"op_code\": \"0xdeadbeaf\",\n            \"init\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n            \"decoded_op_name\": \"nft_transfer\",\n            \"decoded_body\": \"\"\n          }\n        ],\n        \"block\": \"(-1,4234234,8000000000000000)\",\n        \"aborted\": true,\n        \"destroyed\": true,\n        \"raw\": \"b5ee9c72410206010001380003b372cf3b5b8c891e517c9addbda1c0386a09ccacbb0e3faf630b51cfc8152325acb00002ac5795c0e41fdf79135cb7da03cc623b165d614b562a51eeccd8a5e097f405abf6b37f4e73000002ac5629732c1666887ed000144030480102030101a004008272abc8f2971aa4404ac6da1597720f348b2e1247b1ad9f55cbd3b6812f0a5f08b269bb65039fb1f6074d00f794e857f6dfd01131d299df456af10a8a4943d4d165000d0c80608840492001ab48015581f575c3b8c6ab3d6\",\n        \"in_msg\": {\n          \"msg_type\": \"int_msg\",\n          \"created_lt\": 25713146000001,\n          \"ihr_disabled\": true,\n          \"bounce\": true,\n          \"bounced\": true,\n          \"value\": 60000000,\n          \"fwd_fee\": 5681002,\n          \"ihr_fee\": 5681002,\n          \"import_fee\": 5681002,\n          \"created_at\": 5681002,\n          \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n          \"value_extra\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"destination\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"source\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"op_code\": \"0xdeadbeaf\",\n          \"init\": {\n            \"boc\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"interfaces\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n          \"decoded_op_name\": \"nft_transfer\",\n          \"decoded_body\": \"\"\n        },\n        \"prev_trans_hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"prev_trans_lt\": 25713146000001,\n        \"compute_phase\": {\n          \"skipped\": true,\n          \"skip_reason\": \"cskip_no_state\",\n          \"success\": true,\n          \"gas_fees\": 1000,\n          \"gas_used\": 10000,\n          \"vm_steps\": 5,\n          \"exit_code\": 0,\n          \"exit_code_description\": \"string\"\n        },\n        \"storage_phase\": {\n          \"fees_collected\": 25713146000001,\n          \"status_change\": \"acst_unchanged\",\n          \"fees_due\": 25713146000001\n        },\n        \"credit_phase\": {\n          \"fees_collected\": 100,\n          \"credit\": 1000\n        },\n        \"action_phase\": {\n          \"success\": true,\n          \"result_code\": 5,\n          \"total_actions\": 5,\n          \"skipped_actions\": 5,\n          \"fwd_fees\": 1000,\n          \"total_fees\": 1000,\n          \"result_code_description\": \"string\"\n        },\n        \"bounce_phase\": \"TrPhaseBounceNegfunds\"\n      },\n      \"interfaces\": [\n        \"wallet\",\n        \"tep62_item\"\n      ],\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n        }\n      ],\n      \"emulated\": false\n    }\n  ],\n  \"emulated\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c58f24b8-fc82-4271-91d9-3cf69f276c3c",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "traces",
+                    ":trace_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trace_id",
+                      "description": "(Required) trace ID or transaction hash in hex (without 0x) or base64url format"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3438,\n  \"details\": {\n    \"required\": 1699,\n    \"available\": 6870\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b8a2ed6-1630-46b9-a5c3-2f948936bb59",
+          "name": "emulate Message To Trace",
+          "request": {
+            "name": "emulate Message To Trace",
+            "description": {
+              "content": "Emulate sending message to retrieve with a detailed execution trace",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "traces",
+                "emulate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ignore_signature_check",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"boc\": \"<cell>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "16bc6202-85e9-48d6-8b4d-a6288185270e",
+              "name": "emulated trace",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "traces",
+                    "emulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ignore_signature_check",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transaction\": {\n    \"hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n    \"lt\": 25713146000001,\n    \"account\": {\n      \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n      \"is_scam\": true,\n      \"is_wallet\": true,\n      \"name\": \"Ton foundation\",\n      \"icon\": \"https://ton.org/logo.png\"\n    },\n    \"end_balance\": 25713146000001,\n    \"success\": true,\n    \"utime\": 1645544908,\n    \"orig_status\": \"active\",\n    \"end_status\": \"active\",\n    \"total_fees\": 25713146000001,\n    \"transaction_type\": \"TransOrd\",\n    \"state_update_old\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n    \"state_update_new\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n    \"out_msgs\": [\n      {\n        \"msg_type\": \"int_msg\",\n        \"created_lt\": 25713146000001,\n        \"ihr_disabled\": true,\n        \"bounce\": true,\n        \"bounced\": true,\n        \"value\": 60000000,\n        \"fwd_fee\": 5681002,\n        \"ihr_fee\": 5681002,\n        \"import_fee\": 5681002,\n        \"created_at\": 5681002,\n        \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n        \"value_extra\": [\n          {\n            \"amount\": \"1000000000\",\n            \"preview\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"amount\": \"1000000000\",\n            \"preview\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"destination\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"source\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"op_code\": \"0xdeadbeaf\",\n        \"init\": {\n          \"boc\": \"b5ee9c72010106010044000114ff00f4a413f4bcf2c80b01020120020302014804050004f2300038d06c21d31f30ed44d0d33f3001c00197a4c8cb3fc9ed549330f206e20011a13431da89a1a67e61\",\n          \"interfaces\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n        \"decoded_op_name\": \"nft_transfer\",\n        \"decoded_body\": \"\"\n      },\n      {\n        \"msg_type\": \"int_msg\",\n        \"created_lt\": 25713146000001,\n        \"ihr_disabled\": true,\n        \"bounce\": true,\n        \"bounced\": true,\n        \"value\": 60000000,\n        \"fwd_fee\": 5681002,\n        \"ihr_fee\": 5681002,\n        \"import_fee\": 5681002,\n        \"created_at\": 5681002,\n        \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n        \"value_extra\": [\n          {\n            \"amount\": \"1000000000\",\n            \"preview\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"amount\": \"1000000000\",\n            \"preview\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"destination\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"source\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"op_code\": \"0xdeadbeaf\",\n        \"init\": {\n          \"boc\": \"b5ee9c72010106010044000114ff00f4a413f4bcf2c80b01020120020302014804050004f2300038d06c21d31f30ed44d0d33f3001c00197a4c8cb3fc9ed549330f206e20011a13431da89a1a67e61\",\n          \"interfaces\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n        \"decoded_op_name\": \"nft_transfer\",\n        \"decoded_body\": \"\"\n      }\n    ],\n    \"block\": \"(-1,4234234,8000000000000000)\",\n    \"aborted\": true,\n    \"destroyed\": true,\n    \"raw\": \"b5ee9c72410206010001380003b372cf3b5b8c891e517c9addbda1c0386a09ccacbb0e3faf630b51cfc8152325acb00002ac5795c0e41fdf79135cb7da03cc623b165d614b562a51eeccd8a5e097f405abf6b37f4e73000002ac5629732c1666887ed000144030480102030101a004008272abc8f2971aa4404ac6da1597720f348b2e1247b1ad9f55cbd3b6812f0a5f08b269bb65039fb1f6074d00f794e857f6dfd01131d299df456af10a8a4943d4d165000d0c80608840492001ab48015581f575c3b8c6ab3d6\",\n    \"in_msg\": {\n      \"msg_type\": \"int_msg\",\n      \"created_lt\": 25713146000001,\n      \"ihr_disabled\": true,\n      \"bounce\": true,\n      \"bounced\": true,\n      \"value\": 60000000,\n      \"fwd_fee\": 5681002,\n      \"ihr_fee\": 5681002,\n      \"import_fee\": 5681002,\n      \"created_at\": 5681002,\n      \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n      \"value_extra\": [\n        {\n          \"amount\": \"1000000000\",\n          \"preview\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"symbol\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"decimals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"amount\": \"1000000000\",\n          \"preview\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"symbol\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"decimals\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"destination\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"source\": {\n        \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n        \"is_scam\": true,\n        \"is_wallet\": true,\n        \"name\": \"Ton foundation\",\n        \"icon\": \"https://ton.org/logo.png\"\n      },\n      \"op_code\": \"0xdeadbeaf\",\n      \"init\": {\n        \"boc\": \"b5ee9c72010106010044000114ff00f4a413f4bcf2c80b01020120020302014804050004f2300038d06c21d31f30ed44d0d33f3001c00197a4c8cb3fc9ed549330f206e20011a13431da89a1a67e61\",\n        \"interfaces\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n      \"decoded_op_name\": \"nft_transfer\",\n      \"decoded_body\": \"\"\n    },\n    \"prev_trans_hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n    \"prev_trans_lt\": 25713146000001,\n    \"compute_phase\": {\n      \"skipped\": true,\n      \"skip_reason\": \"cskip_no_state\",\n      \"success\": true,\n      \"gas_fees\": 1000,\n      \"gas_used\": 10000,\n      \"vm_steps\": 5,\n      \"exit_code\": 0,\n      \"exit_code_description\": \"string\"\n    },\n    \"storage_phase\": {\n      \"fees_collected\": 25713146000001,\n      \"status_change\": \"acst_unchanged\",\n      \"fees_due\": 25713146000001\n    },\n    \"credit_phase\": {\n      \"fees_collected\": 100,\n      \"credit\": 1000\n    },\n    \"action_phase\": {\n      \"success\": true,\n      \"result_code\": 5,\n      \"total_actions\": 5,\n      \"skipped_actions\": 5,\n      \"fwd_fees\": 1000,\n      \"total_fees\": 1000,\n      \"result_code_description\": \"string\"\n    },\n    \"bounce_phase\": \"TrPhaseBounceOk\"\n  },\n  \"interfaces\": [\n    \"wallet\",\n    \"tep62_item\"\n  ],\n  \"children\": [\n    {\n      \"transaction\": {\n        \"hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"lt\": 25713146000001,\n        \"account\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"end_balance\": 25713146000001,\n        \"success\": true,\n        \"utime\": 1645544908,\n        \"orig_status\": \"active\",\n        \"end_status\": \"active\",\n        \"total_fees\": 25713146000001,\n        \"transaction_type\": \"TransOrd\",\n        \"state_update_old\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"state_update_new\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"out_msgs\": [\n          {\n            \"msg_type\": \"int_msg\",\n            \"created_lt\": 25713146000001,\n            \"ihr_disabled\": true,\n            \"bounce\": true,\n            \"bounced\": true,\n            \"value\": 60000000,\n            \"fwd_fee\": 5681002,\n            \"ihr_fee\": 5681002,\n            \"import_fee\": 5681002,\n            \"created_at\": 5681002,\n            \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n            \"value_extra\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destination\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"op_code\": \"0xdeadbeaf\",\n            \"init\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n            \"decoded_op_name\": \"nft_transfer\",\n            \"decoded_body\": \"\"\n          },\n          {\n            \"msg_type\": \"int_msg\",\n            \"created_lt\": 25713146000001,\n            \"ihr_disabled\": true,\n            \"bounce\": true,\n            \"bounced\": true,\n            \"value\": 60000000,\n            \"fwd_fee\": 5681002,\n            \"ihr_fee\": 5681002,\n            \"import_fee\": 5681002,\n            \"created_at\": 5681002,\n            \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n            \"value_extra\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destination\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"op_code\": \"0xdeadbeaf\",\n            \"init\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n            \"decoded_op_name\": \"nft_transfer\",\n            \"decoded_body\": \"\"\n          }\n        ],\n        \"block\": \"(-1,4234234,8000000000000000)\",\n        \"aborted\": true,\n        \"destroyed\": true,\n        \"raw\": \"b5ee9c72410206010001380003b372cf3b5b8c891e517c9addbda1c0386a09ccacbb0e3faf630b51cfc8152325acb00002ac5795c0e41fdf79135cb7da03cc623b165d614b562a51eeccd8a5e097f405abf6b37f4e73000002ac5629732c1666887ed000144030480102030101a004008272abc8f2971aa4404ac6da1597720f348b2e1247b1ad9f55cbd3b6812f0a5f08b269bb65039fb1f6074d00f794e857f6dfd01131d299df456af10a8a4943d4d165000d0c80608840492001ab48015581f575c3b8c6ab3d6\",\n        \"in_msg\": {\n          \"msg_type\": \"int_msg\",\n          \"created_lt\": 25713146000001,\n          \"ihr_disabled\": true,\n          \"bounce\": true,\n          \"bounced\": true,\n          \"value\": 60000000,\n          \"fwd_fee\": 5681002,\n          \"ihr_fee\": 5681002,\n          \"import_fee\": 5681002,\n          \"created_at\": 5681002,\n          \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n          \"value_extra\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"destination\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"source\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"op_code\": \"0xdeadbeaf\",\n          \"init\": {\n            \"boc\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"interfaces\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n          \"decoded_op_name\": \"nft_transfer\",\n          \"decoded_body\": \"\"\n        },\n        \"prev_trans_hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"prev_trans_lt\": 25713146000001,\n        \"compute_phase\": {\n          \"skipped\": true,\n          \"skip_reason\": \"cskip_no_state\",\n          \"success\": true,\n          \"gas_fees\": 1000,\n          \"gas_used\": 10000,\n          \"vm_steps\": 5,\n          \"exit_code\": 0,\n          \"exit_code_description\": \"string\"\n        },\n        \"storage_phase\": {\n          \"fees_collected\": 25713146000001,\n          \"status_change\": \"acst_unchanged\",\n          \"fees_due\": 25713146000001\n        },\n        \"credit_phase\": {\n          \"fees_collected\": 100,\n          \"credit\": 1000\n        },\n        \"action_phase\": {\n          \"success\": true,\n          \"result_code\": 5,\n          \"total_actions\": 5,\n          \"skipped_actions\": 5,\n          \"fwd_fees\": 1000,\n          \"total_fees\": 1000,\n          \"result_code_description\": \"string\"\n        },\n        \"bounce_phase\": \"TrPhaseBounceNegfunds\"\n      },\n      \"interfaces\": [\n        \"wallet\",\n        \"tep62_item\"\n      ],\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n        }\n      ],\n      \"emulated\": false\n    },\n    {\n      \"transaction\": {\n        \"hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"lt\": 25713146000001,\n        \"account\": {\n          \"address\": \"0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365\",\n          \"is_scam\": true,\n          \"is_wallet\": true,\n          \"name\": \"Ton foundation\",\n          \"icon\": \"https://ton.org/logo.png\"\n        },\n        \"end_balance\": 25713146000001,\n        \"success\": true,\n        \"utime\": 1645544908,\n        \"orig_status\": \"active\",\n        \"end_status\": \"active\",\n        \"total_fees\": 25713146000001,\n        \"transaction_type\": \"TransOrd\",\n        \"state_update_old\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"state_update_new\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"out_msgs\": [\n          {\n            \"msg_type\": \"int_msg\",\n            \"created_lt\": 25713146000001,\n            \"ihr_disabled\": true,\n            \"bounce\": true,\n            \"bounced\": true,\n            \"value\": 60000000,\n            \"fwd_fee\": 5681002,\n            \"ihr_fee\": 5681002,\n            \"import_fee\": 5681002,\n            \"created_at\": 5681002,\n            \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n            \"value_extra\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destination\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"op_code\": \"0xdeadbeaf\",\n            \"init\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n            \"decoded_op_name\": \"nft_transfer\",\n            \"decoded_body\": \"\"\n          },\n          {\n            \"msg_type\": \"int_msg\",\n            \"created_lt\": 25713146000001,\n            \"ihr_disabled\": true,\n            \"bounce\": true,\n            \"bounced\": true,\n            \"value\": 60000000,\n            \"fwd_fee\": 5681002,\n            \"ihr_fee\": 5681002,\n            \"import_fee\": 5681002,\n            \"created_at\": 5681002,\n            \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n            \"value_extra\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"destination\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"source\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"op_code\": \"0xdeadbeaf\",\n            \"init\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n            \"decoded_op_name\": \"nft_transfer\",\n            \"decoded_body\": \"\"\n          }\n        ],\n        \"block\": \"(-1,4234234,8000000000000000)\",\n        \"aborted\": true,\n        \"destroyed\": true,\n        \"raw\": \"b5ee9c72410206010001380003b372cf3b5b8c891e517c9addbda1c0386a09ccacbb0e3faf630b51cfc8152325acb00002ac5795c0e41fdf79135cb7da03cc623b165d614b562a51eeccd8a5e097f405abf6b37f4e73000002ac5629732c1666887ed000144030480102030101a004008272abc8f2971aa4404ac6da1597720f348b2e1247b1ad9f55cbd3b6812f0a5f08b269bb65039fb1f6074d00f794e857f6dfd01131d299df456af10a8a4943d4d165000d0c80608840492001ab48015581f575c3b8c6ab3d6\",\n        \"in_msg\": {\n          \"msg_type\": \"int_msg\",\n          \"created_lt\": 25713146000001,\n          \"ihr_disabled\": true,\n          \"bounce\": true,\n          \"bounced\": true,\n          \"value\": 60000000,\n          \"fwd_fee\": 5681002,\n          \"ihr_fee\": 5681002,\n          \"import_fee\": 5681002,\n          \"created_at\": 5681002,\n          \"hash\": \"1219de582369ac80ee1afe12147930f458a54ff1eea612611a8bc6bd31581a6c\",\n          \"value_extra\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"destination\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"source\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_scam\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_wallet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"icon\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"op_code\": \"0xdeadbeaf\",\n          \"init\": {\n            \"boc\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"interfaces\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"raw_body\": \"B5EE9C7201010101001100001D00048656C6C6F2C20776F726C64218\",\n          \"decoded_op_name\": \"nft_transfer\",\n          \"decoded_body\": \"\"\n        },\n        \"prev_trans_hash\": \"55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122\",\n        \"prev_trans_lt\": 25713146000001,\n        \"compute_phase\": {\n          \"skipped\": true,\n          \"skip_reason\": \"cskip_no_state\",\n          \"success\": true,\n          \"gas_fees\": 1000,\n          \"gas_used\": 10000,\n          \"vm_steps\": 5,\n          \"exit_code\": 0,\n          \"exit_code_description\": \"string\"\n        },\n        \"storage_phase\": {\n          \"fees_collected\": 25713146000001,\n          \"status_change\": \"acst_unchanged\",\n          \"fees_due\": 25713146000001\n        },\n        \"credit_phase\": {\n          \"fees_collected\": 100,\n          \"credit\": 1000\n        },\n        \"action_phase\": {\n          \"success\": true,\n          \"result_code\": 5,\n          \"total_actions\": 5,\n          \"skipped_actions\": 5,\n          \"fwd_fees\": 1000,\n          \"total_fees\": 1000,\n          \"result_code_description\": \"string\"\n        },\n        \"bounce_phase\": \"TrPhaseBounceNegfunds\"\n      },\n      \"interfaces\": [\n        \"wallet\",\n        \"tep62_item\"\n      ],\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Trace detected>\"\n        }\n      ],\n      \"emulated\": false\n    }\n  ],\n  \"emulated\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "181829fb-b646-488d-a77c-c3b703424881",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "traces",
+                    "emulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ignore_signature_check",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3438,\n  \"details\": {\n    \"required\": 1699,\n    \"available\": 6870\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7a9889b5-d85b-4aa9-9117-cc3b2d446db6",
+    "name": "REST api to TON blockchain explorer Accounts Traces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts DNS API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DNS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getDnsInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/dns/:domain_name",
+            "params": [
+              {
+                "name": "domain_name",
+                "value": "",
+                "type": "path",
+                "description": "domain name with .ton or .t.me"
+              }
+            ]
+          },
+          "docs": "Get full information about domain name"
+        },
+        {
+          "info": {
+            "name": "dnsResolve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/dns/:domain_name/resolve",
+            "params": [
+              {
+                "name": "domain_name",
+                "value": "",
+                "type": "path",
+                "description": "domain name with .ton or .t.me"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "DNS resolve for domain name"
+        },
+        {
+          "info": {
+            "name": "getDomainBids",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/dns/:domain_name/bids",
+            "params": [
+              {
+                "name": "domain_name",
+                "value": "",
+                "type": "path",
+                "description": "domain name with .ton or .t.me"
+              }
+            ]
+          },
+          "docs": "Get domain bids"
+        },
+        {
+          "info": {
+            "name": "getAllAuctions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/dns/auctions",
+            "params": [
+              {
+                "name": "tld",
+                "value": "",
+                "type": "query",
+                "description": "domain filter for current auctions \"ton\" or \"t.me\""
+              }
+            ]
+          },
+          "docs": "Get all auctions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

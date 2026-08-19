@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Emulation API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Emulation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "decodeMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/message/decode",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Decode a given message. Only external incoming messages can be decoded currently."
+        },
+        {
+          "info": {
+            "name": "emulateMessageToEvent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/events/emulate",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "ignore_signature_check",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Emulate sending message to retrieve general blockchain events"
+        },
+        {
+          "info": {
+            "name": "emulateMessageToTrace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/traces/emulate",
+            "params": [
+              {
+                "name": "ignore_signature_check",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Emulate sending message to retrieve with a detailed execution trace"
+        },
+        {
+          "info": {
+            "name": "emulateMessageToWallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/wallet/emulate",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Emulates a wallet message on the current blockchain state and derives its consequences for the signing wallet"
+        },
+        {
+          "info": {
+            "name": "emulateMessageToAccountEvent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/accounts/:account_id/events/emulate",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "ignore_signature_check",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Emulate sending message to retrieve account-specific events"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

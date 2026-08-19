@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Staking API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Staking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getAccountNominatorsPools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/staking/nominator/:account_id/pools",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "All pools where account participates"
+        },
+        {
+          "info": {
+            "name": "getStakingPoolInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/staking/pool/:account_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Stacking pool info"
+        },
+        {
+          "info": {
+            "name": "getStakingPoolHistory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/staking/pool/:account_id/history",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "before_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last log entries"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Pool history"
+        },
+        {
+          "info": {
+            "name": "getStakingPools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/staking/pools",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "available_for",
+                "value": "",
+                "type": "query",
+                "description": "account ID"
+              },
+              {
+                "name": "include_unverified",
+                "value": "",
+                "type": "query",
+                "description": "return also pools not from white list - just compatible by interfaces (maybe dangerous!)"
+              }
+            ]
+          },
+          "docs": "All pools available in network"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

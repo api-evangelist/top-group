@@ -1,0 +1,384 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Lite Server API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lite Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getRawMasterchainInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_masterchain_info"
+          },
+          "docs": "Get raw masterchain info"
+        },
+        {
+          "info": {
+            "name": "getRawMasterchainInfoExt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_masterchain_info_ext",
+            "params": [
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "mode"
+              }
+            ]
+          },
+          "docs": "Get raw masterchain info ext"
+        },
+        {
+          "info": {
+            "name": "getRawTime",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_time"
+          },
+          "docs": "Get raw time"
+        },
+        {
+          "info": {
+            "name": "getRawBlockchainBlock",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_block/:block_id",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "block ID: (workchain,shard,seqno,root_hash,file_hash)"
+              }
+            ]
+          },
+          "docs": "Get raw blockchain block"
+        },
+        {
+          "info": {
+            "name": "getRawBlockchainBlockState",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_state/:block_id",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "block ID: (workchain,shard,seqno,root_hash,file_hash)"
+              }
+            ]
+          },
+          "docs": "Get raw blockchain block state"
+        },
+        {
+          "info": {
+            "name": "getRawBlockchainBlockHeader",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_block_header/:block_id",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "block ID: (workchain,shard,seqno,root_hash,file_hash)"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "mode"
+              }
+            ]
+          },
+          "docs": "Get raw blockchain block header"
+        },
+        {
+          "info": {
+            "name": "sendRawMessage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/liteserver/send_message",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send raw message to blockchain"
+        },
+        {
+          "info": {
+            "name": "getRawAccountState",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_account_state/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "target_block",
+                "value": "",
+                "type": "query",
+                "description": "target block: (workchain,shard,seqno,root_hash,file_hash)"
+              }
+            ]
+          },
+          "docs": "Get raw account state"
+        },
+        {
+          "info": {
+            "name": "getRawShardInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_shard_info/:block_id",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "block ID: (workchain,shard,seqno,root_hash,file_hash)"
+              },
+              {
+                "name": "workchain",
+                "value": "",
+                "type": "query",
+                "description": "workchain"
+              },
+              {
+                "name": "shard",
+                "value": "",
+                "type": "query",
+                "description": "shard"
+              },
+              {
+                "name": "exact",
+                "value": "",
+                "type": "query",
+                "description": "exact"
+              }
+            ]
+          },
+          "docs": "Get raw shard info"
+        },
+        {
+          "info": {
+            "name": "getAllRawShardsInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_all_shards_info/:block_id",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "block ID: (workchain,shard,seqno,root_hash,file_hash)"
+              }
+            ]
+          },
+          "docs": "Get all raw shards info"
+        },
+        {
+          "info": {
+            "name": "getRawTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_transactions/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "count"
+              },
+              {
+                "name": "lt",
+                "value": "",
+                "type": "query",
+                "description": "lt"
+              },
+              {
+                "name": "hash",
+                "value": "",
+                "type": "query",
+                "description": "hash"
+              }
+            ]
+          },
+          "docs": "Get raw transactions"
+        },
+        {
+          "info": {
+            "name": "getRawListBlockTransactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/list_block_transactions/:block_id",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "block ID: (workchain,shard,seqno,root_hash,file_hash)"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "mode"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "count"
+              },
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "account ID"
+              },
+              {
+                "name": "lt",
+                "value": "",
+                "type": "query",
+                "description": "lt"
+              }
+            ]
+          },
+          "docs": "Get raw list block transactions"
+        },
+        {
+          "info": {
+            "name": "getRawBlockProof",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_block_proof",
+            "params": [
+              {
+                "name": "known_block",
+                "value": "",
+                "type": "query",
+                "description": "known block: (workchain,shard,seqno,root_hash,file_hash)"
+              },
+              {
+                "name": "target_block",
+                "value": "",
+                "type": "query",
+                "description": "target block: (workchain,shard,seqno,root_hash,file_hash)"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "mode"
+              }
+            ]
+          },
+          "docs": "Get raw block proof"
+        },
+        {
+          "info": {
+            "name": "getRawConfig",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_config_all/:block_id",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "block ID: (workchain,shard,seqno,root_hash,file_hash)"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "mode"
+              }
+            ]
+          },
+          "docs": "Get raw config"
+        },
+        {
+          "info": {
+            "name": "getRawShardBlockProof",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_shard_block_proof/:block_id",
+            "params": [
+              {
+                "name": "block_id",
+                "value": "",
+                "type": "path",
+                "description": "block ID: (workchain,shard,seqno,root_hash,file_hash)"
+              }
+            ]
+          },
+          "docs": "Get raw shard block proof"
+        },
+        {
+          "info": {
+            "name": "getOutMsgQueueSizes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/liteserver/get_out_msg_queue_sizes"
+          },
+          "docs": "Get out msg queue sizes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

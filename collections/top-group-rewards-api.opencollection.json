@@ -1,0 +1,139 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Rewards API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all current validators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/rewards/validators",
+            "params": [
+              {
+                "name": "seqno",
+                "value": "",
+                "type": "query",
+                "description": "Masterchain block seqno. Defaults to latest. Mutually exclusive with `unixtime`.\n"
+              },
+              {
+                "name": "unixtime",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Looks up the masterchain block at this time and uses it as the anchor. Mutually exclusive with `seqno`.\n"
+              },
+              {
+                "name": "shallow",
+                "value": "",
+                "type": "query",
+                "description": "Set to `1` to return only basic validator info (rank, pubkey, effective_stake, weight, reward, pool). Skips pool type detection, owner/validator addresses, nominator data, and returned-stake lookup — significantly faster.\n"
+              }
+            ]
+          },
+          "docs": "Returns all current validators with stakes, rewards, pool addresses, and (optionally) nominator breakdowns.\n"
+        },
+        {
+          "info": {
+            "name": "Get validation round metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/rewards/validation-rounds",
+            "params": [
+              {
+                "name": "election_id",
+                "value": "",
+                "type": "query",
+                "description": "Return the single round matching this election ID. Mutually exclusive with `block` and `unixtime`.\n"
+              },
+              {
+                "name": "block",
+                "value": "",
+                "type": "query",
+                "description": "Find the round containing this masterchain block seqno and return it plus up to `limit-1` older rounds. Mutually exclusive with `election_id` and `unixtime`.\n"
+              },
+              {
+                "name": "unixtime",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Looks up the masterchain block at this time and uses it as the anchor. Mutually exclusive with `election_id` and `block`.\n"
+              }
+            ]
+          },
+          "docs": "Returns past and current validation rounds with boundaries, stakes, and bonuses. Always uses the latest masterchain block.\n"
+        },
+        {
+          "info": {
+            "name": "Get per-validator reward distribution for a finished round",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/rewards/round-rewards",
+            "params": [
+              {
+                "name": "election_id",
+                "value": "",
+                "type": "query",
+                "description": "Election ID of the finished round. Mutually exclusive with `block` and `unixtime`.\n"
+              },
+              {
+                "name": "block",
+                "value": "",
+                "type": "query",
+                "description": "Masterchain block seqno within the finished round. Mutually exclusive with `election_id` and `unixtime`.\n"
+              },
+              {
+                "name": "unixtime",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (seconds). Looks up the masterchain block at this time and uses it as the anchor. Mutually exclusive with `election_id` and `block`.\n"
+              },
+              {
+                "name": "shallow",
+                "value": "",
+                "type": "query",
+                "description": "Set to `1` to return only basic validator info (rank, pubkey, effective_stake, weight, reward, pool). Skips pool type detection, owner/validator addresses, nominator data, and returned-stake lookup — significantly faster.\n"
+              }
+            ]
+          },
+          "docs": "Computes per-validator and per-nominator reward distribution for a finished validation round using the elector's bonuses value.\n"
+        },
+        {
+          "info": {
+            "name": "Get historical APY and stake statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/rewards/stats"
+          },
+          "docs": "Returns time series of APY and total stake from past validation rounds."
+        },
+        {
+          "info": {
+            "name": "Get current TON blockchain APY",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/rewards/apy"
+          },
+          "docs": "Returns the current TON blockchain APY as a percent based on the latest completed validation round."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

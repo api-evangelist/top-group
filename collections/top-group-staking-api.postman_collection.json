@@ -1,0 +1,660 @@
+{
+  "item": [
+    {
+      "id": "54d8fd30-8e37-4e58-a662-70536345878a",
+      "name": "Staking",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "66da413e-43ce-4609-9ed5-e7b942cc0842",
+          "name": "get Account Nominators Pools",
+          "request": {
+            "name": "get Account Nominators Pools",
+            "description": {
+              "content": "All pools where account participates",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "staking",
+                "nominator",
+                ":account_id",
+                "pools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "account_id",
+                  "description": "(Required) account ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f5c011e-3dcb-4409-abab-136e6791f983",
+              "name": "account's pools",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "staking",
+                    "nominator",
+                    ":account_id",
+                    "pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pools\": [\n    {\n      \"pool\": \"EQBI-wGVp_x0VFEjd7m9cEUD3tJ_bnxMSp0Tb9qz757ATEAM\",\n      \"amount\": 10050000000000,\n      \"pending_deposit\": 500000000000,\n      \"pending_withdraw\": 500000000000,\n      \"ready_withdraw\": 500000000000\n    },\n    {\n      \"pool\": \"EQBI-wGVp_x0VFEjd7m9cEUD3tJ_bnxMSp0Tb9qz757ATEAM\",\n      \"amount\": 10050000000000,\n      \"pending_deposit\": 500000000000,\n      \"pending_withdraw\": 500000000000,\n      \"ready_withdraw\": 500000000000\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d305bfd-4bc4-40a0-a318-f4b4debf1072",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "staking",
+                    "nominator",
+                    ":account_id",
+                    "pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3466,\n  \"details\": {\n    \"required\": 1773,\n    \"available\": 8803\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20c2554f-8455-4bc0-b220-a2151aea9ab2",
+          "name": "get Staking Pool Info",
+          "request": {
+            "name": "get Staking Pool Info",
+            "description": {
+              "content": "Stacking pool info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "staking",
+                "pool",
+                ":account_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "account_id",
+                  "description": "(Required) account ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Accept-Language",
+                "value": "en",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85771cd4-c577-4126-bc2e-4a0546889e81",
+              "name": "stacking pool info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "staking",
+                    "pool",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept-Language",
+                    "value": "ru-RU,ru;q=0.5",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"implementation\": {\n    \"name\": \"TON Whales\",\n    \"description\": \"Oldest pool with minimal staking amount 50 Gram\",\n    \"url\": \"https://tonvalidators.org/\",\n    \"socials\": [\n      \"https://t.me/tonwhales\",\n      \"https://t.me/tonwhales\"\n    ]\n  },\n  \"pool\": {\n    \"address\": \"0:48fb0195a7fc7454512377b9bd704503ded27f6e7c4c4a9d136fdab3ef9ec04c\",\n    \"total_amount\": 2191,\n    \"implementation\": \"tf\",\n    \"apy\": 5.31,\n    \"name\": \"Tonkeeper pool\",\n    \"min_stake\": 5000000000,\n    \"cycle_start\": 1678223064,\n    \"cycle_end\": 1678223064,\n    \"verified\": true,\n    \"current_nominators\": 10,\n    \"max_nominators\": 100,\n    \"nominators_stake\": 5000000000,\n    \"validator_stake\": 5000000000,\n    \"liquid_jetton_master\": \"0:4a91d32d0289bda9813ae00ff7640e6c38fdce76e4583dd6afc463b70c7d767c\",\n    \"cycle_length\": 8039\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "29881f8f-7eaa-4718-b838-1393a6b5ed18",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "staking",
+                    "pool",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept-Language",
+                    "value": "ru-RU,ru;q=0.5",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3466,\n  \"details\": {\n    \"required\": 1773,\n    \"available\": 8803\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a26d292f-06a5-4a68-bedb-9227887332e1",
+          "name": "get Staking Pool History",
+          "request": {
+            "name": "get Staking Pool History",
+            "description": {
+              "content": "Pool history",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "staking",
+                "pool",
+                ":account_id",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "before_lt",
+                  "value": "<long>",
+                  "description": "omit this parameter to get last log entries"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "account_id",
+                  "description": "(Required) account ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e01faf8-f14a-47eb-a9f5-e4dfcd344e9d",
+              "name": "pool history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "staking",
+                    "pool",
+                    ":account_id",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_lt",
+                      "value": "25758317000002"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apy\": [\n    {\n      \"apy\": 6022.403419898351,\n      \"time\": 8314\n    },\n    {\n      \"apy\": 7962.770804092156,\n      \"time\": 8962\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "471bfb7c-0f39-4c38-b1fd-913149e3dc26",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "staking",
+                    "pool",
+                    ":account_id",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "before_lt",
+                      "value": "25758317000002"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3466,\n  \"details\": {\n    \"required\": 1773,\n    \"available\": 8803\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4023bd28-6e83-4110-81c2-0b8c3e38c673",
+          "name": "get Staking Pools",
+          "request": {
+            "name": "get Staking Pools",
+            "description": {
+              "content": "All pools available in network",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "staking",
+                "pools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "available_for",
+                  "value": "<address>",
+                  "description": "account ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "include_unverified",
+                  "value": "<boolean>",
+                  "description": "return also pools not from white list - just compatible by interfaces (maybe dangerous!)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Accept-Language",
+                "value": "en",
+                "description": ""
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b98ae8a7-3f12-4cbf-bdf3-07abb9b06fc1",
+              "name": "a list of pools",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "staking",
+                    "pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "available_for",
+                      "value": "0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621"
+                    },
+                    {
+                      "key": "include_unverified",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept-Language",
+                    "value": "ru-RU,ru;q=0.5",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pools\": [\n    {\n      \"address\": \"0:48fb0195a7fc7454512377b9bd704503ded27f6e7c4c4a9d136fdab3ef9ec04c\",\n      \"total_amount\": 3933,\n      \"implementation\": \"whales\",\n      \"apy\": 5.31,\n      \"name\": \"Tonkeeper pool\",\n      \"min_stake\": 5000000000,\n      \"cycle_start\": 1678223064,\n      \"cycle_end\": 1678223064,\n      \"verified\": true,\n      \"current_nominators\": 10,\n      \"max_nominators\": 100,\n      \"nominators_stake\": 5000000000,\n      \"validator_stake\": 5000000000,\n      \"liquid_jetton_master\": \"0:4a91d32d0289bda9813ae00ff7640e6c38fdce76e4583dd6afc463b70c7d767c\",\n      \"cycle_length\": 4152\n    },\n    {\n      \"address\": \"0:48fb0195a7fc7454512377b9bd704503ded27f6e7c4c4a9d136fdab3ef9ec04c\",\n      \"total_amount\": 1295,\n      \"implementation\": \"tf\",\n      \"apy\": 5.31,\n      \"name\": \"Tonkeeper pool\",\n      \"min_stake\": 5000000000,\n      \"cycle_start\": 1678223064,\n      \"cycle_end\": 1678223064,\n      \"verified\": true,\n      \"current_nominators\": 10,\n      \"max_nominators\": 100,\n      \"nominators_stake\": 5000000000,\n      \"validator_stake\": 5000000000,\n      \"liquid_jetton_master\": \"0:4a91d32d0289bda9813ae00ff7640e6c38fdce76e4583dd6afc463b70c7d767c\",\n      \"cycle_length\": 2773\n    }\n  ],\n  \"implementations\": {\n    \"key_0\": {\n      \"name\": \"TON Whales\",\n      \"description\": \"Oldest pool with minimal staking amount 50 Gram\",\n      \"url\": \"https://tonvalidators.org/\",\n      \"socials\": [\n        \"https://t.me/tonwhales\",\n        \"https://t.me/tonwhales\"\n      ]\n    },\n    \"key_1\": {\n      \"name\": \"TON Whales\",\n      \"description\": \"Oldest pool with minimal staking amount 50 Gram\",\n      \"url\": \"https://tonvalidators.org/\",\n      \"socials\": [\n        \"https://t.me/tonwhales\",\n        \"https://t.me/tonwhales\"\n      ]\n    },\n    \"key_2\": {\n      \"name\": \"TON Whales\",\n      \"description\": \"Oldest pool with minimal staking amount 50 Gram\",\n      \"url\": \"https://tonvalidators.org/\",\n      \"socials\": [\n        \"https://t.me/tonwhales\",\n        \"https://t.me/tonwhales\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b88587ae-8da8-4784-a165-3a1d2235ff8b",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "staking",
+                    "pools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "available_for",
+                      "value": "0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621"
+                    },
+                    {
+                      "key": "include_unverified",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Accept-Language",
+                    "value": "ru-RU,ru;q=0.5",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 3466,\n  \"details\": {\n    \"required\": 1773,\n    \"available\": 8803\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "60a12997-43d0-41b8-b610-d2a72760457b",
+    "name": "REST api to TON blockchain explorer Accounts Staking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

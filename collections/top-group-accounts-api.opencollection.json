@@ -1,0 +1,714 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/accounts/_bulk",
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get human-friendly information about several accounts without low-level details."
+        },
+        {
+          "info": {
+            "name": "getAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Get human-friendly information about an account without low-level details."
+        },
+        {
+          "info": {
+            "name": "accountDnsBackResolve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/dns/backresolve",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Get account's domains"
+        },
+        {
+          "info": {
+            "name": "getAccountJettonsBalances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/jettons",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "currencies",
+                "value": "",
+                "type": "query",
+                "description": "accept gram and all possible fiat currencies, separated by commas"
+              },
+              {
+                "name": "supported_extensions",
+                "value": "",
+                "type": "query",
+                "description": "comma separated list supported extensions"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all Jettons balances by owner address"
+        },
+        {
+          "info": {
+            "name": "getAccountJettonBalance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/jettons/:jetton_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "jetton_id",
+                "value": "",
+                "type": "path",
+                "description": "jetton ID"
+              },
+              {
+                "name": "currencies",
+                "value": "",
+                "type": "query",
+                "description": "accept gram and all possible fiat currencies, separated by commas"
+              },
+              {
+                "name": "supported_extensions",
+                "value": "",
+                "type": "query",
+                "description": "comma separated list supported extensions"
+              }
+            ]
+          },
+          "docs": "Get Jetton balance by owner address"
+        },
+        {
+          "info": {
+            "name": "getAccountJettonsHistory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/jettons/history",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "before_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last events"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the transfer jettons history for account"
+        },
+        {
+          "info": {
+            "name": "getAccountJettonHistoryByID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/jettons/:jetton_id/history",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "jetton_id",
+                "value": "",
+                "type": "path",
+                "description": "jetton ID"
+              },
+              {
+                "name": "before_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last events"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Please use `getJettonAccountHistoryByID`` instead"
+        },
+        {
+          "info": {
+            "name": "getAccountNftItems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/nfts",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "collection",
+                "value": "",
+                "type": "query",
+                "description": "nft collection"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "indirect_ownership",
+                "value": "",
+                "type": "query",
+                "description": "Selling nft items in TON implemented usually via transfer items to special selling account. This option enables including items which owned not directly."
+              }
+            ]
+          },
+          "docs": "Get all NFT items by owner address"
+        },
+        {
+          "info": {
+            "name": "getAccountEvents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/events",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "initiator",
+                "value": "",
+                "type": "query",
+                "description": "Show only events that are initiated by this account"
+              },
+              {
+                "name": "subject_only",
+                "value": "",
+                "type": "query",
+                "description": "filter actions where requested account is not real subject (for example sender or receiver jettons)"
+              },
+              {
+                "name": "after_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last events"
+              },
+              {
+                "name": "before_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last events"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_order",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get events for an account. Each event is built on top of a trace which is a series of transactions caused by one inbound message. TonAPI looks for known patterns inside the trace and splits the trace into actions, where a single action represents a meaningful high-level operation like a Jetton Transfer or an NFT Purchase. Actions are expected to be shown to users. It is advised not to build any logic on top of actions because actions can be changed at any time."
+        },
+        {
+          "info": {
+            "name": "getAccountEvent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/events/:event_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "path",
+                "description": "event ID or transaction hash in hex (without 0x) or base64url format"
+              },
+              {
+                "name": "subject_only",
+                "value": "",
+                "type": "query",
+                "description": "filter actions where requested account is not real subject (for example sender or receiver jettons)"
+              }
+            ]
+          },
+          "docs": "Get event for an account by event_id"
+        },
+        {
+          "info": {
+            "name": "getAccountTraces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/traces",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "before_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last events"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get traces for account"
+        },
+        {
+          "info": {
+            "name": "getAccountSubscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/subscriptions",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Get all subscriptions by wallet address"
+        },
+        {
+          "info": {
+            "name": "reindexAccount",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/accounts/:account_id/reindex",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Update internal cache for a particular account"
+        },
+        {
+          "info": {
+            "name": "searchAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/search",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search by account domain name"
+        },
+        {
+          "info": {
+            "name": "getAccountDnsExpiring",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/dns/expiring",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "number of days before expiration"
+              }
+            ]
+          },
+          "docs": "Get expiring account .ton dns"
+        },
+        {
+          "info": {
+            "name": "getAccountPublicKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/publickey",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Get public key by account id"
+        },
+        {
+          "info": {
+            "name": "getAccountMultisigs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/multisigs",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Get account's multisigs"
+        },
+        {
+          "info": {
+            "name": "getAccountDiff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/diff",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get account's balance change"
+        },
+        {
+          "info": {
+            "name": "getAccountDefiAssets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/defi/assets",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Return DeFi assets locked in custom smart contracts: currently returns TON Whales staking and EVAA lending positions.\n"
+        },
+        {
+          "info": {
+            "name": "getAccountExtraCurrencyHistoryByID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/accounts/:account_id/extra-currency/:id/history",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "extra currency id"
+              },
+              {
+                "name": "before_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last events"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the transfer history of extra currencies for an account."
+        },
+        {
+          "info": {
+            "name": "getJettonAccountHistoryByID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/jettons/:jetton_id/accounts/:account_id/history",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "jetton_id",
+                "value": "",
+                "type": "path",
+                "description": "jetton ID"
+              },
+              {
+                "name": "before_lt",
+                "value": "",
+                "type": "query",
+                "description": "omit this parameter to get last events"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the transfer jetton history for account and jetton"
+        },
+        {
+          "info": {
+            "name": "emulateMessageToAccountEvent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/accounts/:account_id/events/emulate",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              },
+              {
+                "name": "ignore_signature_check",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Emulate sending message to retrieve account-specific events"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

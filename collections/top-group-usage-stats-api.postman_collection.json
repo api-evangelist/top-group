@@ -1,0 +1,150 @@
+{
+  "item": [
+    {
+      "id": "0bfd8d74-7174-4b8d-b689-c70a74027f18",
+      "name": "Usage Stats",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5aa81a57-f16c-4954-9773-3cb9dbab6215",
+          "name": "get Usage Stats",
+          "request": {
+            "name": "get Usage Stats",
+            "description": {},
+            "url": {
+              "path": [
+                "usage-stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e379f70d-788a-4d26-ab91-f03d1f6872c5",
+              "name": "usage stats",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage-stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3..."
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"period_started_at\": \"2005-03-02T03:50:49.805Z\",\n  \"account_subscriptions\": 898,\n  \"webhooks_delivered\": 6846,\n  \"webhooks_failed\": 6653,\n  \"period_ended_at\": \"1990-07-08T03:08:51.153Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9439a335-9fe8-4d88-b9eb-6c6e175be235",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage-stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3..."
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7b7ead87-3b03-4632-89ea-b3fbf9a1da3b",
+    "name": "REST api to TON blockchain explorer Accounts Usage Stats API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

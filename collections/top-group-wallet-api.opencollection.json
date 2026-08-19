@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Wallet API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "tonConnectProof",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/wallet/auth/proof",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Account verification and token issuance"
+        },
+        {
+          "info": {
+            "name": "getAccountSeqno",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/wallet/:account_id/seqno",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Get account seqno"
+        },
+        {
+          "info": {
+            "name": "getWalletInfo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/wallet/:account_id",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "path",
+                "description": "account ID"
+              }
+            ]
+          },
+          "docs": "Get human-friendly information about a wallet without low-level details."
+        },
+        {
+          "info": {
+            "name": "getWalletsByPublicKey",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/pubkeys/:public_key/wallets",
+            "params": [
+              {
+                "name": "public_key",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get wallets by public key"
+        },
+        {
+          "info": {
+            "name": "getWalletsByPublicKeyBulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/pubkeys/wallets/_bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get wallets by a list of public keys"
+        },
+        {
+          "info": {
+            "name": "emulateMessageToWallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/wallet/emulate",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Emulates a wallet message on the current blockchain state and derives its consequences for the signing wallet"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

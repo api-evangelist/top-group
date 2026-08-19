@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Gasless API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Gasless",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "gaslessConfig",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tonapi.io/v2/gasless/config"
+          },
+          "docs": "Returns configuration of gasless transfers"
+        },
+        {
+          "info": {
+            "name": "gaslessEstimate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/gasless/estimate/:master_id",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "master_id",
+                "value": "",
+                "type": "path",
+                "description": "jetton to pay commission"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Estimates the cost of the given messages and returns a payload to sign"
+        },
+        {
+          "info": {
+            "name": "gaslessSend",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/gasless/send",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits the signed gasless transaction message to the network"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

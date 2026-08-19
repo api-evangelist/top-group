@@ -1,0 +1,2353 @@
+{
+  "item": [
+    {
+      "id": "42c35510-f25b-4d3b-843c-077744a16188",
+      "name": "Lite Server",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ba94d7ba-af41-4e3f-99aa-06816f693c7a",
+          "name": "get Raw Masterchain Info",
+          "request": {
+            "name": "get Raw Masterchain Info",
+            "description": {
+              "content": "Get raw masterchain info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_masterchain_info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "453e9f0d-3def-45c3-ad5f-3ccfe83dae33",
+              "name": "raw masterchain info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_masterchain_info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"last\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"state_root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n  \"init\": {\n    \"workchain\": 4294967295,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a103f56-cdeb-4d5e-b7b1-86c5da608674",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_masterchain_info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a09db51-b9ae-49c7-9700-220db1909234",
+          "name": "get Raw Masterchain Info Ext",
+          "request": {
+            "name": "get Raw Masterchain Info Ext",
+            "description": {
+              "content": "Get raw masterchain info ext",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_masterchain_info_ext"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<integer>",
+                  "description": "(Required) mode"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e62525f-af83-4e60-a4ee-6f52c8f96754",
+              "name": "raw masterchain info ext",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_masterchain_info_ext"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": 0,\n  \"version\": 257,\n  \"capabilities\": 7,\n  \"last\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"last_utime\": 1687938199,\n  \"now\": 1687938204,\n  \"state_root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n  \"init\": {\n    \"workchain\": 4294967295,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e6a8c28-8d67-4e48-82c1-4fe28c2120d4",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_masterchain_info_ext"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92a3b7c8-1807-4394-b95f-e04c92a28b55",
+          "name": "get Raw Time",
+          "request": {
+            "name": "get Raw Time",
+            "description": {
+              "content": "Get raw time",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_time"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c223c903-897a-427a-b9a8-426b9ab41160",
+              "name": "raw time",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"time\": 1687146728\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47fd5cf8-ff5c-436c-97c9-9286c779507c",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "900ecd9f-6013-46cd-ad38-9699b16af02c",
+          "name": "get Raw Blockchain Block",
+          "request": {
+            "name": "get Raw Blockchain Block",
+            "description": {
+              "content": "Get raw blockchain block",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_block",
+                ":block_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "block_id",
+                  "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9099f08-225e-4a03-b3d1-40a517236238",
+              "name": "raw blockchain block",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_block",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"data\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdc95013-341c-4276-893d-9df62bb95be9",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_block",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f3f79ee-6f81-41be-8cc8-b3ea21016a96",
+          "name": "get Raw Blockchain Block State",
+          "request": {
+            "name": "get Raw Blockchain Block State",
+            "description": {
+              "content": "Get raw blockchain block state",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_state",
+                ":block_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "block_id",
+                  "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e9f30ce-1eeb-40c6-b76a-8bd5ff2c78b9",
+              "name": "raw blockchain block state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_state",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n  \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\",\n  \"data\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03df4f01-db5d-4dca-8fd7-ff0dc331cdc2",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_state",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "129d79a7-a5cc-4fff-92fa-e038cb08a154",
+          "name": "get Raw Blockchain Block Header",
+          "request": {
+            "name": "get Raw Blockchain Block Header",
+            "description": {
+              "content": "Get raw blockchain block header",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_block_header",
+                ":block_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<integer>",
+                  "description": "(Required) mode"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "block_id",
+                  "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3beb71df-2ae2-4096-93c0-c2a992d62ff3",
+              "name": "raw blockchain block header",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_block_header",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"mode\": 0,\n  \"header_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47d935a0-8ee0-4706-b0a3-98738dfe3ee2",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_block_header",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ce96933-383b-48f0-a551-bb7e1ffd19e8",
+          "name": "send Raw Message",
+          "request": {
+            "name": "send Raw Message",
+            "description": {
+              "content": "Send raw message to blockchain",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "send_message"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"body\": \"<cell-base64>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff318f91-cbdc-4a53-8463-6f638d79144c",
+              "name": "code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "send_message"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 200\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "278c0019-0649-4b44-9a11-c1307d4f10fc",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "send_message"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90bbaab0-3ef4-41dd-9d46-6c756d7bb60c",
+          "name": "get Raw Account State",
+          "request": {
+            "name": "get Raw Account State",
+            "description": {
+              "content": "Get raw account state",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_account_state",
+                ":account_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "target_block",
+                  "value": "<string>",
+                  "description": "target block: (workchain,shard,seqno,root_hash,file_hash)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "account_id",
+                  "description": "(Required) account ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c712290-84d2-4e72-9648-3eacbfdc9d52",
+              "name": "raw account state",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_account_state",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_block",
+                      "value": "(-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"shardblk\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"shard_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n  \"proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n  \"state\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8420667-37dc-4c2b-98fb-743c950ee8cc",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_account_state",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "target_block",
+                      "value": "(-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66789d3d-88f0-4a63-b528-944a51a34800",
+          "name": "get Raw Shard Info",
+          "request": {
+            "name": "get Raw Shard Info",
+            "description": {
+              "content": "Get raw shard info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_shard_info",
+                ":block_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "workchain",
+                  "value": "<integer>",
+                  "description": "(Required) workchain"
+                },
+                {
+                  "disabled": false,
+                  "key": "shard",
+                  "value": "<long>",
+                  "description": "(Required) shard"
+                },
+                {
+                  "disabled": false,
+                  "key": "exact",
+                  "value": "<boolean>",
+                  "description": "(Required) exact"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "block_id",
+                  "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e0534ac-5e85-4fd4-a531-453c23845a82",
+              "name": "raw shard info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_shard_info",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workchain",
+                      "value": "1"
+                    },
+                    {
+                      "key": "shard",
+                      "value": "1"
+                    },
+                    {
+                      "key": "exact",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"shardblk\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"shard_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n  \"shard_descr\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5d072c7-4cac-4a85-911c-6d66f255e980",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_shard_info",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workchain",
+                      "value": "1"
+                    },
+                    {
+                      "key": "shard",
+                      "value": "1"
+                    },
+                    {
+                      "key": "exact",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56505e3a-8a06-475e-8e38-a3589bfbd3c5",
+          "name": "get All Raw Shards Info",
+          "request": {
+            "name": "get All Raw Shards Info",
+            "description": {
+              "content": "Get all raw shards info",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_all_shards_info",
+                ":block_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "block_id",
+                  "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "88d022bc-26cb-4ac9-8722-8aacb0ec663c",
+              "name": "all raw shards info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_all_shards_info",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n  \"data\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f2965f0-c3d5-42b9-9f38-254f15e6b33e",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_all_shards_info",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d20c040-6762-4d5a-9057-5b7af6cc7620",
+          "name": "get Raw Transactions",
+          "request": {
+            "name": "get Raw Transactions",
+            "description": {
+              "content": "Get raw transactions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_transactions",
+                ":account_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<integer>",
+                  "description": "(Required) count"
+                },
+                {
+                  "disabled": false,
+                  "key": "lt",
+                  "value": "<long>",
+                  "description": "(Required) lt"
+                },
+                {
+                  "disabled": false,
+                  "key": "hash",
+                  "value": "<string>",
+                  "description": "(Required) hash"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<address>",
+                  "key": "account_id",
+                  "description": "(Required) account ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1a9c84e-24f0-491e-9035-be03d6149138",
+              "name": "raw transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_transactions",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "100"
+                    },
+                    {
+                      "key": "lt",
+                      "value": "23814011000000"
+                    },
+                    {
+                      "key": "hash",
+                      "value": "131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ids\": [\n    {\n      \"workchain\": 4294967295,\n      \"shard\": \"800000000000000\",\n      \"seqno\": 30699640,\n      \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n      \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n    },\n    {\n      \"workchain\": 4294967295,\n      \"shard\": \"800000000000000\",\n      \"seqno\": 30699640,\n      \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n      \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n    }\n  ],\n  \"transactions\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04f52ae0-b615-469f-87e2-82af7f07f933",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_transactions",
+                    ":account_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "100"
+                    },
+                    {
+                      "key": "lt",
+                      "value": "23814011000000"
+                    },
+                    {
+                      "key": "hash",
+                      "value": "131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<address>",
+                      "key": "account_id",
+                      "description": "(Required) account ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f9a3954-d81f-4e82-85cd-54a3fb002682",
+          "name": "get Raw List Block Transactions",
+          "request": {
+            "name": "get Raw List Block Transactions",
+            "description": {
+              "content": "Get raw list block transactions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "list_block_transactions",
+                ":block_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<integer>",
+                  "description": "(Required) mode"
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<integer>",
+                  "description": "(Required) count"
+                },
+                {
+                  "disabled": false,
+                  "key": "account_id",
+                  "value": "<address>",
+                  "description": "account ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "lt",
+                  "value": "<long>",
+                  "description": "lt"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "block_id",
+                  "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e342df5-80d3-434f-802a-fb89c551edeb",
+              "name": "a list of raw block transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "list_block_transactions",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "0"
+                    },
+                    {
+                      "key": "count",
+                      "value": "100"
+                    },
+                    {
+                      "key": "account_id",
+                      "value": "0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621"
+                    },
+                    {
+                      "key": "lt",
+                      "value": "23814011000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"req_count\": 100,\n  \"incomplete\": true,\n  \"ids\": [\n    {\n      \"mode\": 0,\n      \"account\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n      \"lt\": 8195,\n      \"hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n    },\n    {\n      \"mode\": 0,\n      \"account\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n      \"lt\": 7086,\n      \"hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n    }\n  ],\n  \"proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ea1aa38-1c93-4c74-9108-33f1debb0b3d",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "list_block_transactions",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "0"
+                    },
+                    {
+                      "key": "count",
+                      "value": "100"
+                    },
+                    {
+                      "key": "account_id",
+                      "value": "0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621"
+                    },
+                    {
+                      "key": "lt",
+                      "value": "23814011000000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a1f9994-e0dc-46cc-93f0-9b8f212b552e",
+          "name": "get Raw Block Proof",
+          "request": {
+            "name": "get Raw Block Proof",
+            "description": {
+              "content": "Get raw block proof",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_block_proof"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "known_block",
+                  "value": "<string>",
+                  "description": "(Required) known block: (workchain,shard,seqno,root_hash,file_hash)"
+                },
+                {
+                  "disabled": false,
+                  "key": "target_block",
+                  "value": "<string>",
+                  "description": "target block: (workchain,shard,seqno,root_hash,file_hash)"
+                },
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<integer>",
+                  "description": "(Required) mode"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5be7981-d505-4588-a722-24067bb26ed5",
+              "name": "raw block proof",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_block_proof"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "known_block",
+                      "value": "(-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)"
+                    },
+                    {
+                      "key": "target_block",
+                      "value": "(-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"complete\": true,\n  \"from\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"to\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"steps\": [\n    {\n      \"lite_server_block_link_back\": {\n        \"to_key_block\": false,\n        \"from\": {\n          \"workchain\": 4294967295,\n          \"shard\": \"800000000000000\",\n          \"seqno\": 30699640,\n          \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n          \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n        },\n        \"to\": {\n          \"workchain\": 4294967295,\n          \"shard\": \"800000000000000\",\n          \"seqno\": 30699640,\n          \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n          \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n        },\n        \"dest_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"state_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n      },\n      \"lite_server_block_link_forward\": {\n        \"to_key_block\": false,\n        \"from\": {\n          \"workchain\": 4294967295,\n          \"shard\": \"800000000000000\",\n          \"seqno\": 30699640,\n          \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n          \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n        },\n        \"to\": {\n          \"workchain\": 4294967295,\n          \"shard\": \"800000000000000\",\n          \"seqno\": 30699640,\n          \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n          \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n        },\n        \"dest_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"config_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"signatures\": {\n          \"validator_set_hash\": 8854,\n          \"catchain_seqno\": 7343,\n          \"signatures\": [\n            {\n              \"node_id_short\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n              \"signature\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n            },\n            {\n              \"node_id_short\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n              \"signature\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n            }\n          ]\n        }\n      }\n    },\n    {\n      \"lite_server_block_link_back\": {\n        \"to_key_block\": false,\n        \"from\": {\n          \"workchain\": 4294967295,\n          \"shard\": \"800000000000000\",\n          \"seqno\": 30699640,\n          \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n          \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n        },\n        \"to\": {\n          \"workchain\": 4294967295,\n          \"shard\": \"800000000000000\",\n          \"seqno\": 30699640,\n          \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n          \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n        },\n        \"dest_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"state_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n      },\n      \"lite_server_block_link_forward\": {\n        \"to_key_block\": false,\n        \"from\": {\n          \"workchain\": 4294967295,\n          \"shard\": \"800000000000000\",\n          \"seqno\": 30699640,\n          \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n          \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n        },\n        \"to\": {\n          \"workchain\": 4294967295,\n          \"shard\": \"800000000000000\",\n          \"seqno\": 30699640,\n          \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n          \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n        },\n        \"dest_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"config_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"signatures\": {\n          \"validator_set_hash\": 8526,\n          \"catchain_seqno\": 4557,\n          \"signatures\": [\n            {\n              \"node_id_short\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n              \"signature\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n            },\n            {\n              \"node_id_short\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n              \"signature\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n            }\n          ]\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b2970fc-3363-444a-944b-be8a1c305e67",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_block_proof"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "known_block",
+                      "value": "(-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)"
+                    },
+                    {
+                      "key": "target_block",
+                      "value": "(-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09dd635b-eb44-4e7e-8d7b-a6f6dd67e1bc",
+          "name": "get Raw Config",
+          "request": {
+            "name": "get Raw Config",
+            "description": {
+              "content": "Get raw config",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_config_all",
+                ":block_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<integer>",
+                  "description": "(Required) mode"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "block_id",
+                  "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "265dd49d-3e3a-4e70-a57e-c2f5a483ba0d",
+              "name": "raw config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_config_all",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mode\": 0,\n  \"id\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"state_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n  \"config_proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38effb65-2a2f-4e36-a1d3-ec3cbb586574",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_config_all",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "533dd15b-ea16-4758-bc27-7409338e06bb",
+          "name": "get Raw Shard Block Proof",
+          "request": {
+            "name": "get Raw Shard Block Proof",
+            "description": {
+              "content": "Get raw shard block proof",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_shard_block_proof",
+                ":block_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "block_id",
+                  "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "898fde3c-1d87-4c17-96d6-6ff293be4d51",
+              "name": "raw shard block proof",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_shard_block_proof",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"masterchain_id\": {\n    \"workchain\": 4294967295,\n    \"shard\": \"800000000000000\",\n    \"seqno\": 30699640,\n    \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n    \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n  },\n  \"links\": [\n    {\n      \"id\": {\n        \"workchain\": 4294967295,\n        \"shard\": \"800000000000000\",\n        \"seqno\": 30699640,\n        \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n      },\n      \"proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n    },\n    {\n      \"id\": {\n        \"workchain\": 4294967295,\n        \"shard\": \"800000000000000\",\n        \"seqno\": 30699640,\n        \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n      },\n      \"proof\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "381604ef-ad26-4abc-9511-06ff3224b728",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_shard_block_proof",
+                    ":block_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "block_id",
+                      "description": "(Required) block ID: (workchain,shard,seqno,root_hash,file_hash)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "806cd8e8-58b6-4391-82b1-67fb037eb998",
+          "name": "get Out Msg Queue Sizes",
+          "request": {
+            "name": "get Out Msg Queue Sizes",
+            "description": {
+              "content": "Get out msg queue sizes",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "liteserver",
+                "get_out_msg_queue_sizes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b747d6ea-9a35-4d58-9d96-299934830e66",
+              "name": "out msg queue sizes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_out_msg_queue_sizes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ext_msg_queue_size_limit\": 4836,\n  \"shards\": [\n    {\n      \"id\": {\n        \"workchain\": 4294967295,\n        \"shard\": \"800000000000000\",\n        \"seqno\": 30699640,\n        \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n      },\n      \"size\": 6611\n    },\n    {\n      \"id\": {\n        \"workchain\": 4294967295,\n        \"shard\": \"800000000000000\",\n        \"seqno\": 30699640,\n        \"root_hash\": \"131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85\",\n        \"file_hash\": \"A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB\"\n      },\n      \"size\": 317\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4881f1a-0ea9-403b-9516-e9ace5edd572",
+              "name": "Some error during request processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "liteserver",
+                    "get_out_msg_queue_sizes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"error_code\": 2344,\n  \"details\": {\n    \"required\": 7577,\n    \"available\": 6911\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tonapi.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bd551b5d-9070-4505-8f3b-5ca7c68f3396",
+    "name": "REST api to TON blockchain explorer Accounts Lite Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provide access to indexed TON blockchain\n\nContact Support:\n Name: Support\n Email: support@tonkeeper.com",
+      "type": "text/plain"
+    }
+  }
+}

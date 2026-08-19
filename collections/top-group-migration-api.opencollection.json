@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "REST api to TON blockchain explorer Accounts Migration API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Migration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getMigrationWallets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/migration/wallets",
+            "params": [
+              {
+                "name": "currencies",
+                "value": "",
+                "type": "query",
+                "description": "accept gram and all possible fiat currencies, separated by commas"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get migratable assets value (TON balance, jettons with prices, NFT count) for several wallets at once."
+        },
+        {
+          "info": {
+            "name": "prepareMigration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tonapi.io/v2/migration/prepare",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Prepare ordered signable transactions that migrate every asset from `from` to `to`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
