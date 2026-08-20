@@ -50,6 +50,8 @@ apis:
   humanURL: https://tonapi.io
   baseURL: https://tonapi.io
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -150,6 +152,8 @@ apis:
   humanURL: https://tonapi.io
   baseURL: https://tonapi.io
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -472,6 +476,8 @@ apis:
   humanURL: https://tonapi.io
   baseURL: https://tonapi.io
   tags:
+  - Wallets
+  tags_raw:
   - Wallet
   properties:
   - type: OpenAPI
@@ -492,6 +498,8 @@ apis:
   humanURL: https://tonapi.io
   baseURL: https://tonapi.io
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
