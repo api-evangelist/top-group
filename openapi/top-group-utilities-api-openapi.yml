@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: REST api to TON blockchain explorer Accounts Utilities API
+  title: REST api to TON blockchain explorer Utilities API
   version: 2.0.0
   description: Provide access to indexed TON blockchain
   contact:
@@ -114,41 +114,7 @@ paths:
         default:
           $ref: '#/components/responses/Error'
 components:
-  responses:
-    Error:
-      description: Some error during request processing
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                type: string
-              error_code:
-                type: integer
-                format: int64
-              details:
-                $ref: '#/components/schemas/InsufficientFunds'
   schemas:
-    ServiceStatus:
-      type: object
-      required:
-      - indexing_latency
-      - rest_online
-      - last_known_masterchain_seqno
-      properties:
-        rest_online:
-          type: boolean
-          default: true
-        indexing_latency:
-          type: integer
-          example: 100
-        last_known_masterchain_seqno:
-          type: integer
-          example: 123456
-          format: int32
     InsufficientFunds:
       type: object
       description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
@@ -168,6 +134,23 @@ components:
           format: int64
           description: TON in nanotons currently available on the source wallet
           x-js-format: bigint
+    ServiceStatus:
+      type: object
+      required:
+      - indexing_latency
+      - rest_online
+      - last_known_masterchain_seqno
+      properties:
+        rest_online:
+          type: boolean
+          default: true
+        indexing_latency:
+          type: integer
+          example: 100
+        last_known_masterchain_seqno:
+          type: integer
+          example: 123456
+          format: int32
   parameters:
     accountIDParameter:
       in: path
@@ -178,3 +161,20 @@ components:
         type: string
         format: address
         example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'

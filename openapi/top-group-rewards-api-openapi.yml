@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: REST api to TON blockchain explorer Accounts Rewards API
+  title: REST api to TON blockchain explorer Rewards API
   version: 2.0.0
   description: Provide access to indexed TON blockchain
   contact:
@@ -196,92 +196,25 @@ paths:
           $ref: '#/components/responses/Error'
 components:
   schemas:
-    ValidatorsResponse:
+    InsufficientFunds:
       type: object
-      required:
-      - response_time_ms
-      - block
-      - validation_round
-      - election_id
-      - elector_balance
-      - total_stake
-      - reward_per_block
-      - validators
-      properties:
-        response_time_ms:
-          type: integer
-          format: int64
-          description: Server-side response time in milliseconds.
-          example: 12345
-        block:
-          $ref: '#/components/schemas/BlockInfo'
-        validation_round:
-          $ref: '#/components/schemas/RoundInfo'
-        election_id:
-          type: integer
-          format: int64
-          description: Current election ID (electAt timestamp).
-          example: 1740053384
-        prev_election_id:
-          type: integer
-          format: int64
-          description: Election ID of the round immediately before this one.
-          example: 1772486024
-        next_election_id:
-          type: integer
-          format: int64
-          description: 'Election ID of the round immediately after this one. Omitted when the current round is not yet finished (next round not known).
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
 
-            '
-          example: 1772658824
-        elector_balance:
-          type: integer
-          description: amount in nanograms
-          format: int64
-          example: 123456789
-          x-js-format: bigint
-        total_stake:
-          type: integer
-          description: amount in nanograms
-          format: int64
-          example: 123456789
-          x-js-format: bigint
-        reward_per_block:
-          type: integer
-          description: amount in nanograms
-          format: int64
-          example: 123456789
-          x-js-format: bigint
-        validators:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidatorRewardEntry'
-    RoundInfo:
-      type: object
+        '
       required:
-      - start
-      - end
-      - start_block
-      - end_block
+      - required
+      - available
       properties:
-        start_utime:
+        required:
           type: integer
           format: int64
-          example: 23814011000000
-        end_utime:
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
           type: integer
           format: int64
-          example: 23814011000000
-        start_block:
-          type: integer
-          format: uint32
-          description: Masterchain block seqno at (or nearest to) validation round start.
-          example: 57480000
-        end_block:
-          type: integer
-          format: uint32
-          description: Masterchain block seqno at (or nearest to) validation round end.
-          example: 57546000
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
     NominatorRewardEntry:
       type: object
       required:
@@ -317,55 +250,6 @@ components:
           description: amount in nanograms
           format: int64
           example: 123456789
-          x-js-format: bigint
-    ValidationRoundsResponse:
-      type: object
-      required:
-      - response_time_ms
-      - rounds
-      properties:
-        response_time_ms:
-          type: integer
-          format: int64
-          description: Server-side response time in milliseconds.
-          example: 1234
-        rounds:
-          type: array
-          items:
-            $ref: '#/components/schemas/ValidationRound'
-    BlockInfo:
-      type: object
-      required:
-      - seqno
-      - time
-      properties:
-        seqno:
-          type: integer
-          format: uint32
-          description: Masterchain block sequence number.
-          example: 57486221
-        utime:
-          type: integer
-          format: int64
-          example: 23814011000000
-    InsufficientFunds:
-      type: object
-      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
-
-        '
-      required:
-      - required
-      - available
-      properties:
-        required:
-          type: integer
-          format: int64
-          description: TON in nanotons required to cover transfer gas
-          x-js-format: bigint
-        available:
-          type: integer
-          format: int64
-          description: TON in nanotons currently available on the source wallet
           x-js-format: bigint
     ValidationRound:
       type: object
@@ -427,6 +311,21 @@ components:
           type: boolean
           description: Whether the validation round is complete.
           example: true
+    BlockInfo:
+      type: object
+      required:
+      - seqno
+      - time
+      properties:
+        seqno:
+          type: integer
+          format: uint32
+          description: Masterchain block sequence number.
+          example: 57486221
+        utime:
+          type: integer
+          format: int64
+          example: 23814011000000
     RewardsStats:
       type: object
       required:
@@ -449,6 +348,159 @@ components:
             items:
               type: number
               format: double
+    RoundInfo:
+      type: object
+      required:
+      - start
+      - end
+      - start_block
+      - end_block
+      properties:
+        start_utime:
+          type: integer
+          format: int64
+          example: 23814011000000
+        end_utime:
+          type: integer
+          format: int64
+          example: 23814011000000
+        start_block:
+          type: integer
+          format: uint32
+          description: Masterchain block seqno at (or nearest to) validation round start.
+          example: 57480000
+        end_block:
+          type: integer
+          format: uint32
+          description: Masterchain block seqno at (or nearest to) validation round end.
+          example: 57546000
+    RoundRewardsResponse:
+      type: object
+      required:
+      - response_time_ms
+      - election_id
+      - round_start
+      - round_end
+      - start_block
+      - end_block
+      - total_bonuses
+      - total_stake
+      - validators
+      properties:
+        response_time_ms:
+          type: integer
+          format: int64
+          description: Server-side response time in milliseconds.
+          example: 5432
+        election_id:
+          type: integer
+          format: int64
+          description: Election ID (electAt timestamp).
+          example: 1740053384
+        prev_election_id:
+          type: integer
+          format: int64
+          description: Election ID of the round immediately before this one.
+          example: 1772486024
+        next_election_id:
+          type: integer
+          format: int64
+          description: Election ID of the round immediately after this one.
+          example: 1772658824
+        round_start:
+          type: string
+          format: date-time
+          description: Validation round start time.
+        round_end:
+          type: string
+          format: date-time
+          description: Validation round end time.
+        start_block:
+          type: integer
+          format: uint32
+          description: First masterchain block of the round.
+        end_block:
+          type: integer
+          format: uint32
+          description: Last masterchain block of the round.
+        total_bonuses:
+          type: integer
+          description: amount in nanograms
+          format: int64
+          example: 123456789
+          x-js-format: bigint
+        total_stake:
+          type: integer
+          description: amount in nanograms
+          format: int64
+          example: 123456789
+          x-js-format: bigint
+        validators:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidatorRewardEntry'
+        error:
+          type: string
+    ValidatorsResponse:
+      type: object
+      required:
+      - response_time_ms
+      - block
+      - validation_round
+      - election_id
+      - elector_balance
+      - total_stake
+      - reward_per_block
+      - validators
+      properties:
+        response_time_ms:
+          type: integer
+          format: int64
+          description: Server-side response time in milliseconds.
+          example: 12345
+        block:
+          $ref: '#/components/schemas/BlockInfo'
+        validation_round:
+          $ref: '#/components/schemas/RoundInfo'
+        election_id:
+          type: integer
+          format: int64
+          description: Current election ID (electAt timestamp).
+          example: 1740053384
+        prev_election_id:
+          type: integer
+          format: int64
+          description: Election ID of the round immediately before this one.
+          example: 1772486024
+        next_election_id:
+          type: integer
+          format: int64
+          description: 'Election ID of the round immediately after this one. Omitted when the current round is not yet finished (next round not known).
+
+            '
+          example: 1772658824
+        elector_balance:
+          type: integer
+          description: amount in nanograms
+          format: int64
+          example: 123456789
+          x-js-format: bigint
+        total_stake:
+          type: integer
+          description: amount in nanograms
+          format: int64
+          example: 123456789
+          x-js-format: bigint
+        reward_per_block:
+          type: integer
+          description: amount in nanograms
+          format: int64
+          example: 123456789
+          x-js-format: bigint
+        validators:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidatorRewardEntry'
     ValidatorRewardEntry:
       type: object
       required:
@@ -531,73 +583,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NominatorRewardEntry'
-    RoundRewardsResponse:
+    ValidationRoundsResponse:
       type: object
       required:
       - response_time_ms
-      - election_id
-      - round_start
-      - round_end
-      - start_block
-      - end_block
-      - total_bonuses
-      - total_stake
-      - validators
+      - rounds
       properties:
         response_time_ms:
           type: integer
           format: int64
           description: Server-side response time in milliseconds.
-          example: 5432
-        election_id:
-          type: integer
-          format: int64
-          description: Election ID (electAt timestamp).
-          example: 1740053384
-        prev_election_id:
-          type: integer
-          format: int64
-          description: Election ID of the round immediately before this one.
-          example: 1772486024
-        next_election_id:
-          type: integer
-          format: int64
-          description: Election ID of the round immediately after this one.
-          example: 1772658824
-        round_start:
-          type: string
-          format: date-time
-          description: Validation round start time.
-        round_end:
-          type: string
-          format: date-time
-          description: Validation round end time.
-        start_block:
-          type: integer
-          format: uint32
-          description: First masterchain block of the round.
-        end_block:
-          type: integer
-          format: uint32
-          description: Last masterchain block of the round.
-        total_bonuses:
-          type: integer
-          description: amount in nanograms
-          format: int64
-          example: 123456789
-          x-js-format: bigint
-        total_stake:
-          type: integer
-          description: amount in nanograms
-          format: int64
-          example: 123456789
-          x-js-format: bigint
-        validators:
+          example: 1234
+        rounds:
           type: array
           items:
-            $ref: '#/components/schemas/ValidatorRewardEntry'
-        error:
-          type: string
+            $ref: '#/components/schemas/ValidationRound'
   responses:
     Error:
       description: Some error during request processing

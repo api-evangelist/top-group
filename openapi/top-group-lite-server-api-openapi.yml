@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: REST api to TON blockchain explorer Accounts Lite Server API
+  title: REST api to TON blockchain explorer Lite Server API
   version: 2.0.0
   description: Provide access to indexed TON blockchain
   contact:
@@ -655,134 +655,26 @@ paths:
         default:
           $ref: '#/components/responses/Error'
 components:
-  parameters:
-    blockchainBlockIDExtParameter:
-      in: path
-      name: block_id
-      required: true
-      description: 'block ID: (workchain,shard,seqno,root_hash,file_hash)'
-      schema:
-        type: string
-        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
-    knownBlockIDExtQuery:
-      in: query
-      name: known_block
-      required: true
-      description: 'known block: (workchain,shard,seqno,root_hash,file_hash)'
-      schema:
-        type: string
-        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
-    ltQuery:
-      in: query
-      name: lt
-      description: lt
-      schema:
-        type: integer
-        format: int64
-        example: 23814011000000
-    countQuery:
-      in: query
-      name: count
-      required: true
-      description: count
-      schema:
-        type: integer
-        format: int32
-        example: 100
-    modeQuery:
-      in: query
-      name: mode
-      required: true
-      description: mode
-      schema:
-        type: integer
-        format: int32
-        example: 0
-    shardQuery:
-      in: query
-      name: shard
-      required: true
-      description: shard
-      schema:
-        type: integer
-        format: int64
-        example: 1
-    hashQuery:
-      in: query
-      name: hash
-      required: true
-      description: hash
-      schema:
-        type: string
-        example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
-    exactQuery:
-      in: query
-      name: exact
-      required: true
-      description: exact
-      schema:
-        type: boolean
-        example: false
-    ltMustQuery:
-      in: query
-      name: lt
-      required: true
-      description: lt
-      schema:
-        type: integer
-        format: int64
-        example: 23814011000000
-    targetBlockIDExtQuery:
-      in: query
-      name: target_block
-      required: false
-      description: 'target block: (workchain,shard,seqno,root_hash,file_hash)'
-      schema:
-        type: string
-        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
-    accountIDQuery:
-      in: query
-      name: account_id
-      required: false
-      description: account ID
-      explode: false
-      schema:
-        type: string
-        format: address
-        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
-    workchainQuery:
-      in: query
-      name: workchain
-      required: true
-      description: workchain
-      schema:
-        type: integer
-        format: int32
-        example: 1
-    accountIDParameter:
-      in: path
-      name: account_id
-      required: true
-      description: account ID
-      schema:
-        type: string
-        format: address
-        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
-  requestBodies:
-    LiteServerSendMessageRequest:
-      description: Data that is expected
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - body
-            properties:
-              body:
-                type: string
-                format: cell-base64
   schemas:
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
     BlockRaw:
       type: object
       required:
@@ -809,25 +701,6 @@ components:
         file_hash:
           type: string
           example: A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB
-    InsufficientFunds:
-      type: object
-      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
-
-        '
-      required:
-      - required
-      - available
-      properties:
-        required:
-          type: integer
-          format: int64
-          description: TON in nanotons required to cover transfer gas
-          x-js-format: bigint
-        available:
-          type: integer
-          format: int64
-          description: TON in nanotons currently available on the source wallet
-          x-js-format: bigint
     InitStateRaw:
       type: object
       required:
@@ -845,6 +718,133 @@ components:
         file_hash:
           type: string
           example: A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB
+  parameters:
+    ltQuery:
+      in: query
+      name: lt
+      description: lt
+      schema:
+        type: integer
+        format: int64
+        example: 23814011000000
+    ltMustQuery:
+      in: query
+      name: lt
+      required: true
+      description: lt
+      schema:
+        type: integer
+        format: int64
+        example: 23814011000000
+    workchainQuery:
+      in: query
+      name: workchain
+      required: true
+      description: workchain
+      schema:
+        type: integer
+        format: int32
+        example: 1
+    accountIDQuery:
+      in: query
+      name: account_id
+      required: false
+      description: account ID
+      explode: false
+      schema:
+        type: string
+        format: address
+        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+    knownBlockIDExtQuery:
+      in: query
+      name: known_block
+      required: true
+      description: 'known block: (workchain,shard,seqno,root_hash,file_hash)'
+      schema:
+        type: string
+        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
+    hashQuery:
+      in: query
+      name: hash
+      required: true
+      description: hash
+      schema:
+        type: string
+        example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
+    accountIDParameter:
+      in: path
+      name: account_id
+      required: true
+      description: account ID
+      schema:
+        type: string
+        format: address
+        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+    countQuery:
+      in: query
+      name: count
+      required: true
+      description: count
+      schema:
+        type: integer
+        format: int32
+        example: 100
+    modeQuery:
+      in: query
+      name: mode
+      required: true
+      description: mode
+      schema:
+        type: integer
+        format: int32
+        example: 0
+    targetBlockIDExtQuery:
+      in: query
+      name: target_block
+      required: false
+      description: 'target block: (workchain,shard,seqno,root_hash,file_hash)'
+      schema:
+        type: string
+        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
+    blockchainBlockIDExtParameter:
+      in: path
+      name: block_id
+      required: true
+      description: 'block ID: (workchain,shard,seqno,root_hash,file_hash)'
+      schema:
+        type: string
+        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
+    exactQuery:
+      in: query
+      name: exact
+      required: true
+      description: exact
+      schema:
+        type: boolean
+        example: false
+    shardQuery:
+      in: query
+      name: shard
+      required: true
+      description: shard
+      schema:
+        type: integer
+        format: int64
+        example: 1
+  requestBodies:
+    LiteServerSendMessageRequest:
+      description: Data that is expected
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - body
+            properties:
+              body:
+                type: string
+                format: cell-base64
   responses:
     Error:
       description: Some error during request processing

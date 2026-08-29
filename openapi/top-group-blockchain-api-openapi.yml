@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: REST api to TON explorer Accounts Blockchain API
+  title: REST api to TON explorer Blockchain API
   version: 2.0.0
   description: Provide access to indexed TON blockchain
   contact:
@@ -472,7 +472,527 @@ paths:
         default:
           $ref: '#/components/responses/Error'
 components:
+  parameters:
+    methodNameParameter:
+      in: path
+      name: method_name
+      required: true
+      description: contract get method name
+      schema:
+        type: string
+        example: get_wallet_address
+    accountIDParameter:
+      in: path
+      name: account_id
+      required: true
+      description: account ID
+      schema:
+        type: string
+        format: address
+        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+    masterchainSeqno:
+      in: path
+      name: masterchain_seqno
+      required: true
+      description: masterchain block seqno
+      schema:
+        type: integer
+        format: int32
+        example: 123456
+    toQuery:
+      in: query
+      name: to
+      required: true
+      schema:
+        type: integer
+        format: int64
+    messageIDParameter:
+      in: path
+      name: msg_id
+      required: true
+      description: message ID
+      schema:
+        type: string
+        example: 97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+    transactionIDParameter:
+      in: path
+      name: transaction_id
+      required: true
+      description: transaction ID
+      schema:
+        type: string
+        example: 97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+    hashParameter:
+      in: path
+      name: hash
+      required: true
+      description: hash in hex (without 0x) format
+      schema:
+        type: string
+        example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
+    blockchainBlockIDParameter:
+      in: path
+      name: block_id
+      required: true
+      description: block ID
+      schema:
+        type: string
+        example: (-1,8000000000000000,4234234)
+    fromQuery:
+      in: query
+      name: from
+      required: true
+      schema:
+        type: integer
+        format: int64
+    offsetQuery:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
   schemas:
+    BlockLimits:
+      type: object
+      required:
+      - bytes
+      - gas
+      - lt_delta
+      properties:
+        bytes:
+          $ref: '#/components/schemas/BlockParamLimits'
+        gas:
+          $ref: '#/components/schemas/BlockParamLimits'
+        lt_delta:
+          $ref: '#/components/schemas/BlockParamLimits'
+    JettonBridgePrices:
+      type: object
+      required:
+      - bridge_burn_fee
+      - bridge_mint_fee
+      - wallet_min_gram_for_storage
+      - wallet_gas_consumption
+      - minter_min_gram_for_storage
+      - discover_gas_consumption
+      properties:
+        bridge_burn_fee:
+          type: integer
+          format: int64
+        bridge_mint_fee:
+          type: integer
+          format: int64
+        wallet_min_tons_for_storage:
+          type: integer
+          format: int64
+          deprecated: true
+          description: this field will gone after Sept. 2026, use wallet_min_gram_for_storage instead
+        wallet_min_gram_for_storage:
+          type: integer
+          format: int64
+        wallet_gas_consumption:
+          type: integer
+          format: int64
+        minter_min_tons_for_storage:
+          type: integer
+          format: int64
+          deprecated: true
+          description: this field will gone after Sept. 2026, use wallet_min_gram_for_storage instead
+        minter_min_gram_for_storage:
+          type: integer
+          format: int64
+        discover_gas_consumption:
+          type: integer
+          format: int64
+    BlockchainBlocks:
+      type: object
+      required:
+      - blocks
+      properties:
+        blocks:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlockchainBlock'
+    AccStatusChange:
+      type: string
+      example: acst_unchanged
+      enum:
+      - acst_unchanged
+      - acst_frozen
+      - acst_deleted
+    TvmStackRecord:
+      type: object
+      format: tuple-item
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          example: cell
+          enum:
+          - cell
+          - num
+          - nan
+          - 'null'
+          - tuple
+        cell:
+          type: string
+          format: cell
+        slice:
+          type: string
+          format: cell
+        num:
+          type: string
+          example: ''
+        tuple:
+          type: array
+          example: []
+          items:
+            $ref: '#/components/schemas/TvmStackRecord'
+    OracleBridgeParams:
+      type: object
+      required:
+      - bridge_addr
+      - oracle_multisig_address
+      - external_chain_address
+      - oracles
+      properties:
+        bridge_addr:
+          type: string
+          format: address
+        oracle_multisig_address:
+          type: string
+          format: address
+        external_chain_address:
+          type: string
+        oracles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Oracle'
+    BouncePhaseType:
+      type: string
+      example: cskip_no_state
+      enum:
+      - TrPhaseBounceNegfunds
+      - TrPhaseBounceNofunds
+      - TrPhaseBounceOk
+    AccountStorageInfo:
+      type: object
+      required:
+      - used_cells
+      - used_bits
+      - used_public_cells
+      - last_paid
+      - due_payment
+      properties:
+        used_cells:
+          type: integer
+          format: int64
+          example: 567
+        used_bits:
+          type: integer
+          format: int64
+          example: 567
+        used_public_cells:
+          type: integer
+          format: int64
+          example: 567
+        last_paid:
+          type: integer
+          format: int64
+          description: time of the last payment
+          example: 1720860269
+        due_payment:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 567
+    BlockchainRawAccount:
+      type: object
+      required:
+      - address
+      - balance
+      - status
+      - last_transaction_lt
+      - storage
+      properties:
+        address:
+          type: string
+          format: address
+          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+        balance:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 123456789
+        extra_balance:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtraCurrency'
+        code:
+          type: string
+          format: cell
+          example: b5ee9c72410104010087000114ff00f4a413f4a0f2c80b0102012002030002d200dfa5ffff76a268698fe9ffe8e42c5267858f90e785ffe4f6aa6467c444ffb365ffc10802faf0807d014035e7a064b87d804077e7857fc10803dfd2407d014035e7a064b86467cd8903a32b9ba4410803ade68afd014035e7a045ea432b6363796103bb7b9363210c678b64b87d807d8040c249b3e4
+        data:
+          type: string
+          format: cell
+          example: b5ee9c7241010101002600004811fd096c0000000000000000000000000000000000000000000000000000000000000000cb78264d
+        last_transaction_lt:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 123456789
+        last_transaction_hash:
+          type: string
+          example: 088b436a846d92281734236967970612f87fbd64a2cd3573107948379e8e4161
+        frozen_hash:
+          type: string
+          example: 088b436a846d92281734236967970612f87fbd64a2cd3573107948379e8e4161
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        storage:
+          $ref: '#/components/schemas/AccountStorageInfo'
+        libraries:
+          type: array
+          items:
+            type: object
+            required:
+            - public
+            - root
+            properties:
+              public:
+                type: boolean
+                example: true
+              root:
+                type: string
+                format: cell
+    Method:
+      type: object
+      required:
+      - id
+      - method
+      properties:
+        id:
+          type: integer
+          format: int64
+        method:
+          type: string
+          example: get_something
+    ReducedBlock:
+      type: object
+      required:
+      - workchain_id
+      - shard
+      - seqno
+      - tx_quantity
+      - utime
+      - shards_blocks
+      - parent
+      properties:
+        workchain_id:
+          type: integer
+          example: 0
+          format: int32
+        shard:
+          type: string
+          example: '8000000000000000'
+        seqno:
+          type: integer
+          example: 21734019
+          format: int32
+        master_ref:
+          type: string
+          example: (-1,4234234,8000000000000000)
+        tx_quantity:
+          type: integer
+          example: 130
+        utime:
+          type: integer
+          format: int64
+          example: 23814011000000
+        shards_blocks:
+          type: array
+          items:
+            type: string
+            example: '[ (0,4234235,8000000000000000) ]'
+        parent:
+          type: array
+          items:
+            type: string
+            example: '[ (0,21734018,8000000000000000) ]'
+    Source:
+      type: object
+      required:
+      - files
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceFile'
+    RawBlockchainConfig:
+      type: object
+      required:
+      - config
+      properties:
+        config:
+          type: object
+          additionalProperties: true
+          example: {}
+    MethodExecutionResult:
+      type: object
+      required:
+      - success
+      - exit_code
+      - stack
+      properties:
+        success:
+          type: boolean
+          example: true
+        exit_code:
+          type: integer
+          example: 0
+          description: tvm exit code
+        stack:
+          type: array
+          items:
+            $ref: '#/components/schemas/TvmStackRecord'
+        decoded: {}
+    Oracle:
+      type: object
+      required:
+      - address
+      - secp_pubkey
+      properties:
+        address:
+          type: string
+          format: address
+          example: 0:55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
+        secp_pubkey:
+          type: string
+          example: 00000000000000000000000017dcab1b1481610f6c7a7a98cf0370dc0ec704a6
+    CreditPhase:
+      type: object
+      required:
+      - fees_collected
+      - credit
+      properties:
+        fees_collected:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 100
+        credit:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 1000
+    GasLimitPrices:
+      type: object
+      required:
+      - gas_price
+      - gas_limit
+      - gas_credit
+      - block_gas_limit
+      - freeze_due_limit
+      - delete_due_limit
+      properties:
+        special_gas_limit:
+          type: integer
+          format: int64
+        flat_gas_limit:
+          type: integer
+          format: int64
+        flat_gas_price:
+          type: integer
+          format: int64
+        gas_price:
+          type: integer
+          format: int64
+          example: 1
+        gas_limit:
+          type: integer
+          format: int64
+          example: 1000000
+        gas_credit:
+          type: integer
+          format: int64
+          example: 1000000
+        block_gas_limit:
+          type: integer
+          format: int64
+          example: 1000000
+        freeze_due_limit:
+          type: integer
+          format: int64
+          example: 1000000
+        delete_due_limit:
+          type: integer
+          format: int64
+          example: 1000000
+    ComputeSkipReason:
+      type: string
+      example: cskip_no_state
+      enum:
+      - cskip_no_state
+      - cskip_bad_state
+      - cskip_no_gas
+      - cskip_suspended
+    EcPreview:
+      type: object
+      required:
+      - id
+      - symbol
+      - decimals
+      - image
+      properties:
+        id:
+          type: integer
+          example: 239
+          format: int32
+        symbol:
+          type: string
+          example: FMS
+        decimals:
+          type: integer
+          example: 5
+        image:
+          type: string
+          example: https://cache.tonapi.io/images/extra.jpg
+    SourceFile:
+      type: object
+      required:
+      - name
+      - content
+      - is_entrypoint
+      - is_std_lib
+      - include_in_command
+      properties:
+        name:
+          type: string
+        content:
+          type: string
+        is_entrypoint:
+          type: boolean
+          example: false
+        is_std_lib:
+          type: boolean
+          example: false
+        include_in_command:
+          type: boolean
+          example: false
+    ExecGetMethodArg:
+      type: object
+      required:
+      - type
+      - value
+      properties:
+        type:
+          $ref: '#/components/schemas/ExecGetMethodArgType'
+        value:
+          type: string
+          description: String representation of the value according to the specified type
+          example: '0xfa01d78381ae32'
     ExecGetMethodArgType:
       type: string
       description: 'Data type of the argument value:
@@ -501,222 +1021,105 @@ components:
       - cell_boc_base64
       - slice_boc_hex
       example: int257
-    Source:
+    BlockchainRawAccounts:
       type: object
       required:
-      - files
+      - accounts
       properties:
-        files:
+        accounts:
           type: array
           items:
-            $ref: '#/components/schemas/SourceFile'
-    ConfigProposalSetup:
+            $ref: '#/components/schemas/BlockchainRawAccount'
+    NewConsensusConfig:
       type: object
       required:
-      - min_tot_rounds
-      - max_tot_rounds
-      - min_wins
-      - max_losses
-      - min_store_sec
-      - max_store_sec
-      - bit_price
-      - cell_price
+      - flags
+      - use_quic
+      - slots_per_leader_window
       properties:
-        min_tot_rounds:
+        flags:
           type: integer
-          example: 2
-        max_tot_rounds:
-          type: integer
-          example: 6
-        min_wins:
-          type: integer
-          example: 2
-        max_losses:
-          type: integer
-          example: 6
-        min_store_sec:
+          format: int
+          example: 0
+          x-js-format: bigint
+        use_quic:
+          type: boolean
+          example: false
+        target_rate_ms:
           type: integer
           format: int64
-          example: 1000000
-        max_store_sec:
-          type: integer
-          format: int64
-          example: 10000000
-        bit_price:
+          example: 1000
+          x-js-format: bigint
+        slots_per_leader_window:
           type: integer
           format: int64
           example: 1
-        cell_price:
+          x-js-format: bigint
+        first_block_timeout_ms:
           type: integer
           format: int64
-          example: 500
-    BlockCurrencyCollection:
+          example: 1000
+          x-js-format: bigint
+        max_leader_window_desync:
+          type: integer
+          format: int64
+          example: 4
+          x-js-format: bigint
+        noncritical_params:
+          type: object
+          additionalProperties:
+            type: integer
+            format: int64
+            x-js-format: bigint
+    BlockchainBlockShards:
       type: object
       required:
-      - grams
-      - other
+      - shards
       properties:
-        grams:
-          type: integer
-          format: int64
-          example: 10000000000
-          x-js-format: bigint
-        other:
+        shards:
           type: array
           items:
             type: object
             required:
-            - id
-            - value
+            - last_known_block_id
+            - last_known_block
             properties:
-              id:
-                type: integer
-                format: int64
-                example: 13
-              value:
+              last_known_block_id:
                 type: string
-                x-js-format: bigint
-                example: '10000000000'
-    MsgForwardPrices:
+                example: (0,8000000000000000,4234234)
+              last_known_block:
+                $ref: '#/components/schemas/BlockchainBlock'
+    Validators:
       type: object
       required:
-      - lump_price
-      - bit_price
-      - cell_price
-      - ihr_price_factor
-      - first_frac
-      - next_frac
+      - validators
+      - elect_at
+      - elect_close
+      - min_stake
+      - total_stake
       properties:
-        lump_price:
+        elect_at:
           type: integer
           format: int64
-          example: 1000000
-        bit_price:
+          example: 123456789
+        elect_close:
           type: integer
           format: int64
-          example: 1000000
-        cell_price:
-          type: integer
-          format: int64
-          example: 1000000
-        ihr_price_factor:
-          type: integer
-          format: int64
-          example: 1000000
-        first_frac:
-          type: integer
-          format: int64
-          example: 1000000
-        next_frac:
-          type: integer
-          format: int64
-          example: 1000000
-    ActionPhase:
-      type: object
-      required:
-      - success
-      - result_code
-      - total_actions
-      - skipped_actions
-      - fwd_fees
-      - total_fees
-      properties:
-        success:
-          type: boolean
-          example: true
-        result_code:
-          type: integer
-          format: int32
-          example: 5
-        total_actions:
-          type: integer
-          format: int32
-          example: 5
-        skipped_actions:
-          type: integer
-          format: int32
-          example: 5
-        fwd_fees:
+          example: 123456789
+        min_stake:
           type: integer
           format: int64
           x-js-format: bigint
-          example: 1000
-        total_fees:
+          example: 123456789
+        total_stake:
           type: integer
           format: int64
           x-js-format: bigint
-          example: 1000
-        result_code_description:
-          type: string
-    BouncePhaseType:
-      type: string
-      example: cskip_no_state
-      enum:
-      - TrPhaseBounceNegfunds
-      - TrPhaseBounceNofunds
-      - TrPhaseBounceOk
-    MisbehaviourPunishmentConfig:
-      type: object
-      required:
-      - default_flat_fine
-      - default_proportional_fine
-      - severity_flat_mult
-      - severity_proportional_mult
-      - unpunishable_interval
-      - long_interval
-      - long_flat_mult
-      - long_proportional_mult
-      - medium_interval
-      - medium_flat_mult
-      - medium_proportional_mult
-      properties:
-        default_flat_fine:
-          type: integer
-          format: int64
-          example: 1000000
-        default_proportional_fine:
-          type: integer
-          format: int64
-          example: 1000000
-        severity_flat_mult:
-          type: integer
-          example: 1000000
-        severity_proportional_mult:
-          type: integer
-          example: 1000000
-        unpunishable_interval:
-          type: integer
-          example: 1000000
-        long_interval:
-          type: integer
-          example: 1000000
-        long_flat_mult:
-          type: integer
-          example: 1000000
-        long_proportional_mult:
-          type: integer
-          example: 1000000
-        medium_interval:
-          type: integer
-          example: 1000000
-        medium_flat_mult:
-          type: integer
-          example: 1000000
-        medium_proportional_mult:
-          type: integer
-          example: 1000000
-    Method:
-      type: object
-      required:
-      - id
-      - method
-      properties:
-        id:
-          type: integer
-          format: int64
-        method:
-          type: string
-          example: get_something
+          example: 123456789
+        validators:
+          type: array
+          items:
+            $ref: '#/components/schemas/Validator'
     Message:
       type: object
       required:
@@ -803,6 +1206,234 @@ components:
           type: string
           example: nft_transfer
         decoded_body: {}
+    BlockchainLibrary:
+      type: object
+      required:
+      - boc
+      properties:
+        boc:
+          type: string
+          format: cell
+          example: b5ee9c7201010101005f0000baff0020dd2082014c97ba218201339cbab19c71b0ed44d0d31fd70bffe304e0a4f260810200d71820d70b1fed44d0d31fd3ffd15112baf2a122f901541044f910f2a2f80001d31f3120d74a96d307d402fb00ded1a4c8cb1fcbffc9ed54
+    Transactions:
+      type: object
+      required:
+      - transactions
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
+    BlockchainBlock:
+      type: object
+      required:
+      - workchain_id
+      - shard
+      - seqno
+      - root_hash
+      - file_hash
+      - global_id
+      - value_flow
+      - version
+      - after_merge
+      - before_split
+      - after_split
+      - want_split
+      - want_merge
+      - key_block
+      - gen_utime
+      - start_lt
+      - end_lt
+      - vert_seqno
+      - gen_catchain_seqno
+      - min_ref_mc_seqno
+      - prev_key_block_seqno
+      - prev_refs
+      - in_msg_descr_length
+      - out_msg_descr_length
+      - rand_seed
+      - created_by
+      - tx_quantity
+      properties:
+        tx_quantity:
+          type: integer
+          example: 130
+        value_flow:
+          $ref: '#/components/schemas/BlockValueFlow'
+        workchain_id:
+          type: integer
+          example: 0
+          format: int32
+        shard:
+          type: string
+          example: '8000000000000000'
+        seqno:
+          type: integer
+          example: 21734019
+          format: int32
+        root_hash:
+          type: string
+          example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
+        file_hash:
+          type: string
+          example: A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB
+        global_id:
+          type: integer
+          example: -239
+          format: int32
+        version:
+          type: integer
+          example: 0
+          format: int32
+        after_merge:
+          type: boolean
+          example: true
+        before_split:
+          type: boolean
+          example: true
+        after_split:
+          type: boolean
+          example: true
+        want_split:
+          type: boolean
+          example: true
+        want_merge:
+          type: boolean
+          example: true
+        key_block:
+          type: boolean
+          example: true
+        gen_utime:
+          type: integer
+          format: int64
+          example: 1674826775
+        start_lt:
+          type: integer
+          format: int64
+          example: 23814011000000
+          x-js-format: bigint
+        end_lt:
+          type: integer
+          format: int64
+          example: 23814011000001
+          x-js-format: bigint
+        vert_seqno:
+          type: integer
+          example: 0
+          format: int32
+        gen_catchain_seqno:
+          type: integer
+          example: 0
+          format: int32
+        min_ref_mc_seqno:
+          type: integer
+          example: 0
+          format: int32
+        prev_key_block_seqno:
+          type: integer
+          example: 0
+          format: int32
+        gen_software_version:
+          type: integer
+          example: 0
+          format: int32
+        gen_software_capabilities:
+          type: integer
+          format: int64
+          example: 0
+        master_ref:
+          type: string
+          example: (-1,4234234,8000000000000000)
+        prev_refs:
+          type: array
+          items:
+            type: string
+            example:
+            - (-1
+            - 4234235
+            - 8000000000000000)
+        in_msg_descr_length:
+          type: integer
+          format: int64
+          example: 0
+        out_msg_descr_length:
+          type: integer
+          format: int64
+          example: 0
+        rand_seed:
+          type: string
+          example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
+        created_by:
+          type: string
+          example: A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB
+    ActionPhase:
+      type: object
+      required:
+      - success
+      - result_code
+      - total_actions
+      - skipped_actions
+      - fwd_fees
+      - total_fees
+      properties:
+        success:
+          type: boolean
+          example: true
+        result_code:
+          type: integer
+          format: int32
+          example: 5
+        total_actions:
+          type: integer
+          format: int32
+          example: 5
+        skipped_actions:
+          type: integer
+          format: int32
+          example: 5
+        fwd_fees:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 1000
+        total_fees:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 1000
+        result_code_description:
+          type: string
+    ExtraCurrency:
+      type: object
+      required:
+      - amount
+      - preview
+      properties:
+        amount:
+          type: string
+          x-js-format: bigint
+          example: '1000000000'
+        preview:
+          $ref: '#/components/schemas/EcPreview'
     BlockValueFlow:
       type: object
       required:
@@ -836,6 +1467,185 @@ components:
           $ref: '#/components/schemas/BlockCurrencyCollection'
         minted:
           $ref: '#/components/schemas/BlockCurrencyCollection'
+    MisbehaviourPunishmentConfig:
+      type: object
+      required:
+      - default_flat_fine
+      - default_proportional_fine
+      - severity_flat_mult
+      - severity_proportional_mult
+      - unpunishable_interval
+      - long_interval
+      - long_flat_mult
+      - long_proportional_mult
+      - medium_interval
+      - medium_flat_mult
+      - medium_proportional_mult
+      properties:
+        default_flat_fine:
+          type: integer
+          format: int64
+          example: 1000000
+        default_proportional_fine:
+          type: integer
+          format: int64
+          example: 1000000
+        severity_flat_mult:
+          type: integer
+          example: 1000000
+        severity_proportional_mult:
+          type: integer
+          example: 1000000
+        unpunishable_interval:
+          type: integer
+          example: 1000000
+        long_interval:
+          type: integer
+          example: 1000000
+        long_flat_mult:
+          type: integer
+          example: 1000000
+        long_proportional_mult:
+          type: integer
+          example: 1000000
+        medium_interval:
+          type: integer
+          example: 1000000
+        medium_flat_mult:
+          type: integer
+          example: 1000000
+        medium_proportional_mult:
+          type: integer
+          example: 1000000
+    BlockCurrencyCollection:
+      type: object
+      required:
+      - grams
+      - other
+      properties:
+        grams:
+          type: integer
+          format: int64
+          example: 10000000000
+          x-js-format: bigint
+        other:
+          type: array
+          items:
+            type: object
+            required:
+            - id
+            - value
+            properties:
+              id:
+                type: integer
+                format: int64
+                example: 13
+              value:
+                type: string
+                x-js-format: bigint
+                example: '10000000000'
+    BlockParamLimits:
+      type: object
+      required:
+      - underload
+      - soft_limit
+      - hard_limit
+      properties:
+        underload:
+          type: integer
+          format: int64
+          example: 1000000
+        soft_limit:
+          type: integer
+          format: int64
+          example: 1000000
+        hard_limit:
+          type: integer
+          format: int64
+          example: 1000000
+    Validator:
+      type: object
+      required:
+      - address
+      - adnl_address
+      - stake
+      - max_factor
+      properties:
+        address:
+          type: string
+          format: address
+          example: 0:55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
+        adnl_address:
+          type: string
+          example: 10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
+        stake:
+          type: integer
+          format: int64
+          example: 123456789
+          x-js-format: bigint
+        max_factor:
+          type: integer
+          format: int64
+          example: 123456789
+    AccountAddress:
+      type: object
+      required:
+      - address
+      - is_scam
+      - is_wallet
+      properties:
+        address:
+          type: string
+          format: maybe-address
+          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
+        name:
+          type: string
+          example: Ton foundation
+          description: Display name. Data collected from different sources like moderation lists, dns, collections names and over.
+        is_scam:
+          type: boolean
+          example: true
+          description: Is this account was marked as part of scammers activity
+        icon:
+          type: string
+          example: https://ton.org/logo.png
+        is_wallet:
+          type: boolean
+          example: true
+    MsgForwardPrices:
+      type: object
+      required:
+      - lump_price
+      - bit_price
+      - cell_price
+      - ihr_price_factor
+      - first_frac
+      - next_frac
+      properties:
+        lump_price:
+          type: integer
+          format: int64
+          example: 1000000
+        bit_price:
+          type: integer
+          format: int64
+          example: 1000000
+        cell_price:
+          type: integer
+          format: int64
+          example: 1000000
+        ihr_price_factor:
+          type: integer
+          format: int64
+          example: 1000000
+        first_frac:
+          type: integer
+          format: int64
+          example: 1000000
+        next_frac:
+          type: integer
+          format: int64
+          example: 1000000
     ValidatorsSet:
       type: object
       required:
@@ -874,32 +1684,208 @@ components:
               adnl_addr:
                 type: string
                 example: 45061C1D4EC44A937D0318589E13C73D151D1CEF5D3C0E53AFBCF56A6C2FE2BD
-    InsufficientFunds:
+    ComputePhase:
       type: object
-      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
-
-        '
       required:
-      - required
-      - available
+      - skipped
       properties:
-        required:
+        skipped:
+          type: boolean
+          example: true
+        skip_reason:
+          $ref: '#/components/schemas/ComputeSkipReason'
+        success:
+          type: boolean
+          example: true
+        gas_fees:
           type: integer
           format: int64
-          description: TON in nanotons required to cover transfer gas
           x-js-format: bigint
-        available:
+          example: 1000
+        gas_used:
           type: integer
           format: int64
-          description: TON in nanotons currently available on the source wallet
           x-js-format: bigint
-    AccStatusChange:
+          example: 10000
+        vm_steps:
+          type: integer
+          format: int32
+          example: 5
+        exit_code:
+          type: integer
+          format: int32
+          example: 0
+        exit_code_description:
+          type: string
+    SizeLimitsConfig:
+      type: object
+      required:
+      - max_msg_bits
+      - max_msg_cells
+      - max_library_cells
+      - max_vm_data_depth
+      - max_ext_msg_size
+      - max_ext_msg_depth
+      properties:
+        max_msg_bits:
+          type: integer
+          format: int64
+          example: 1000000
+        max_msg_cells:
+          type: integer
+          format: int64
+          example: 1000000
+        max_library_cells:
+          type: integer
+          format: int64
+          example: 1000000
+        max_vm_data_depth:
+          type: integer
+          format: int
+          example: 1000000
+        max_ext_msg_size:
+          type: integer
+          format: int64
+          example: 1000000
+        max_ext_msg_depth:
+          type: integer
+          format: int
+          example: 1000000
+        max_acc_state_cells:
+          type: integer
+          format: int64
+          example: 1000000
+        max_acc_state_bits:
+          type: integer
+          format: int64
+          example: 1000000
+    JettonBridgeParams:
+      type: object
+      required:
+      - bridge_address
+      - oracles_address
+      - state_flags
+      - oracles
+      properties:
+        bridge_address:
+          type: string
+          format: address
+        oracles_address:
+          type: string
+          format: address
+        state_flags:
+          type: integer
+        burn_bridge_fee:
+          type: integer
+          format: int64
+        oracles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Oracle'
+        external_chain_address:
+          type: string
+        prices:
+          $ref: '#/components/schemas/JettonBridgePrices'
+    ConfigProposalSetup:
+      type: object
+      required:
+      - min_tot_rounds
+      - max_tot_rounds
+      - min_wins
+      - max_losses
+      - min_store_sec
+      - max_store_sec
+      - bit_price
+      - cell_price
+      properties:
+        min_tot_rounds:
+          type: integer
+          example: 2
+        max_tot_rounds:
+          type: integer
+          example: 6
+        min_wins:
+          type: integer
+          example: 2
+        max_losses:
+          type: integer
+          example: 6
+        min_store_sec:
+          type: integer
+          format: int64
+          example: 1000000
+        max_store_sec:
+          type: integer
+          format: int64
+          example: 10000000
+        bit_price:
+          type: integer
+          format: int64
+          example: 1
+        cell_price:
+          type: integer
+          format: int64
+          example: 500
+    BlockchainAccountInspect:
+      type: object
+      required:
+      - code
+      - code_hash
+      - methods
+      - compiler
+      properties:
+        code:
+          type: string
+          format: cell
+        disassembled_code:
+          type: string
+        code_hash:
+          type: string
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/Method'
+        compiler:
+          type: string
+          enum:
+          - func
+          - fift
+          - tact
+        source:
+          $ref: '#/components/schemas/Source'
+    AccountStatus:
       type: string
-      example: acst_unchanged
+      example: active
       enum:
-      - acst_unchanged
-      - acst_frozen
-      - acst_deleted
+      - nonexist
+      - uninit
+      - active
+      - frozen
+    TransactionType:
+      type: string
+      example: TransOrd
+      enum:
+      - TransOrd
+      - TransTickTock
+      - TransSplitPrepare
+      - TransSplitInstall
+      - TransMergePrepare
+      - TransMergeInstall
+      - TransStorage
+    StateInit:
+      type: object
+      required:
+      - boc
+      - interfaces
+      properties:
+        boc:
+          type: string
+          format: cell
+          example: b5ee9c72010106010044000114ff00f4a413f4bcf2c80b01020120020302014804050004f2300038d06c21d31f30ed44d0d33f3001c00197a4c8cb3fc9ed549330f206e20011a13431da89a1a67e61
+        interfaces:
+          type: array
+          items:
+            type: string
     Transaction:
       type: object
       required:
@@ -998,312 +1984,6 @@ components:
           format: cell
           description: hex encoded boc with raw transaction
           example: b5ee9c72410206010001380003b372cf3b5b8c891e517c9addbda1c0386a09ccacbb0e3faf630b51cfc8152325acb00002ac5795c0e41fdf79135cb7da03cc623b165d614b562a51eeccd8a5e097f405abf6b37f4e73000002ac5629732c1666887ed000144030480102030101a004008272abc8f2971aa4404ac6da1597720f348b2e1247b1ad9f55cbd3b6812f0a5f08b269bb65039fb1f6074d00f794e857f6dfd01131d299df456af10a8a4943d4d165000d0c80608840492001ab48015581f575c3b8c6ab3d6
-    TvmStackRecord:
-      type: object
-      format: tuple-item
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          example: cell
-          enum:
-          - cell
-          - num
-          - nan
-          - 'null'
-          - tuple
-        cell:
-          type: string
-          format: cell
-        slice:
-          type: string
-          format: cell
-        num:
-          type: string
-          example: ''
-        tuple:
-          type: array
-          example: []
-          items:
-            $ref: '#/components/schemas/TvmStackRecord'
-    NewConsensusConfig:
-      type: object
-      required:
-      - flags
-      - use_quic
-      - slots_per_leader_window
-      properties:
-        flags:
-          type: integer
-          format: int
-          example: 0
-          x-js-format: bigint
-        use_quic:
-          type: boolean
-          example: false
-        target_rate_ms:
-          type: integer
-          format: int64
-          example: 1000
-          x-js-format: bigint
-        slots_per_leader_window:
-          type: integer
-          format: int64
-          example: 1
-          x-js-format: bigint
-        first_block_timeout_ms:
-          type: integer
-          format: int64
-          example: 1000
-          x-js-format: bigint
-        max_leader_window_desync:
-          type: integer
-          format: int64
-          example: 4
-          x-js-format: bigint
-        noncritical_params:
-          type: object
-          additionalProperties:
-            type: integer
-            format: int64
-            x-js-format: bigint
-    MethodExecutionResult:
-      type: object
-      required:
-      - success
-      - exit_code
-      - stack
-      properties:
-        success:
-          type: boolean
-          example: true
-        exit_code:
-          type: integer
-          example: 0
-          description: tvm exit code
-        stack:
-          type: array
-          items:
-            $ref: '#/components/schemas/TvmStackRecord'
-        decoded: {}
-    StateInit:
-      type: object
-      required:
-      - boc
-      - interfaces
-      properties:
-        boc:
-          type: string
-          format: cell
-          example: b5ee9c72010106010044000114ff00f4a413f4bcf2c80b01020120020302014804050004f2300038d06c21d31f30ed44d0d33f3001c00197a4c8cb3fc9ed549330f206e20011a13431da89a1a67e61
-        interfaces:
-          type: array
-          items:
-            type: string
-    TransactionType:
-      type: string
-      example: TransOrd
-      enum:
-      - TransOrd
-      - TransTickTock
-      - TransSplitPrepare
-      - TransSplitInstall
-      - TransMergePrepare
-      - TransMergeInstall
-      - TransStorage
-    ComputePhase:
-      type: object
-      required:
-      - skipped
-      properties:
-        skipped:
-          type: boolean
-          example: true
-        skip_reason:
-          $ref: '#/components/schemas/ComputeSkipReason'
-        success:
-          type: boolean
-          example: true
-        gas_fees:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 1000
-        gas_used:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 10000
-        vm_steps:
-          type: integer
-          format: int32
-          example: 5
-        exit_code:
-          type: integer
-          format: int32
-          example: 0
-        exit_code_description:
-          type: string
-    BlockchainBlockShards:
-      type: object
-      required:
-      - shards
-      properties:
-        shards:
-          type: array
-          items:
-            type: object
-            required:
-            - last_known_block_id
-            - last_known_block
-            properties:
-              last_known_block_id:
-                type: string
-                example: (0,8000000000000000,4234234)
-              last_known_block:
-                $ref: '#/components/schemas/BlockchainBlock'
-    OracleBridgeParams:
-      type: object
-      required:
-      - bridge_addr
-      - oracle_multisig_address
-      - external_chain_address
-      - oracles
-      properties:
-        bridge_addr:
-          type: string
-          format: address
-        oracle_multisig_address:
-          type: string
-          format: address
-        external_chain_address:
-          type: string
-        oracles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Oracle'
-    Validator:
-      type: object
-      required:
-      - address
-      - adnl_address
-      - stake
-      - max_factor
-      properties:
-        address:
-          type: string
-          format: address
-          example: 0:55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
-        adnl_address:
-          type: string
-          example: 10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
-        stake:
-          type: integer
-          format: int64
-          example: 123456789
-          x-js-format: bigint
-        max_factor:
-          type: integer
-          format: int64
-          example: 123456789
-    AccountStatus:
-      type: string
-      example: active
-      enum:
-      - nonexist
-      - uninit
-      - active
-      - frozen
-    Transactions:
-      type: object
-      required:
-      - transactions
-      properties:
-        transactions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Transaction'
-    GasLimitPrices:
-      type: object
-      required:
-      - gas_price
-      - gas_limit
-      - gas_credit
-      - block_gas_limit
-      - freeze_due_limit
-      - delete_due_limit
-      properties:
-        special_gas_limit:
-          type: integer
-          format: int64
-        flat_gas_limit:
-          type: integer
-          format: int64
-        flat_gas_price:
-          type: integer
-          format: int64
-        gas_price:
-          type: integer
-          format: int64
-          example: 1
-        gas_limit:
-          type: integer
-          format: int64
-          example: 1000000
-        gas_credit:
-          type: integer
-          format: int64
-          example: 1000000
-        block_gas_limit:
-          type: integer
-          format: int64
-          example: 1000000
-        freeze_due_limit:
-          type: integer
-          format: int64
-          example: 1000000
-        delete_due_limit:
-          type: integer
-          format: int64
-          example: 1000000
-    BlockParamLimits:
-      type: object
-      required:
-      - underload
-      - soft_limit
-      - hard_limit
-      properties:
-        underload:
-          type: integer
-          format: int64
-          example: 1000000
-        soft_limit:
-          type: integer
-          format: int64
-          example: 1000000
-        hard_limit:
-          type: integer
-          format: int64
-          example: 1000000
-    BlockchainLibrary:
-      type: object
-      required:
-      - boc
-      properties:
-        boc:
-          type: string
-          format: cell
-          example: b5ee9c7201010101005f0000baff0020dd2082014c97ba218201339cbab19c71b0ed44d0d31fd70bffe304e0a4f260810200d71820d70b1fed44d0d31fd3ffd15112baf2a122f901541044f910f2a2f80001d31f3120d74a96d307d402fb00ded1a4c8cb1fcbffc9ed54
-    BlockchainRawAccounts:
-      type: object
-      required:
-      - accounts
-      properties:
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/BlockchainRawAccount'
     ReducedBlocks:
       type: object
       required:
@@ -1313,181 +1993,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ReducedBlock'
-    BlockchainAccountInspect:
+    StoragePhase:
       type: object
       required:
-      - code
-      - code_hash
-      - methods
-      - compiler
+      - fees_collected
+      - status_change
       properties:
-        code:
-          type: string
-          format: cell
-        disassembled_code:
-          type: string
-        code_hash:
-          type: string
-        methods:
-          type: array
-          items:
-            $ref: '#/components/schemas/Method'
-        compiler:
-          type: string
-          enum:
-          - func
-          - fift
-          - tact
-        source:
-          $ref: '#/components/schemas/Source'
-    EcPreview:
-      type: object
-      required:
-      - id
-      - symbol
-      - decimals
-      - image
-      properties:
-        id:
-          type: integer
-          example: 239
-          format: int32
-        symbol:
-          type: string
-          example: FMS
-        decimals:
-          type: integer
-          example: 5
-        image:
-          type: string
-          example: https://cache.tonapi.io/images/extra.jpg
-    JettonBridgePrices:
-      type: object
-      required:
-      - bridge_burn_fee
-      - bridge_mint_fee
-      - wallet_min_gram_for_storage
-      - wallet_gas_consumption
-      - minter_min_gram_for_storage
-      - discover_gas_consumption
-      properties:
-        bridge_burn_fee:
+        fees_collected:
           type: integer
           format: int64
-        bridge_mint_fee:
+          x-js-format: bigint
+          example: 25713146000001
+        fees_due:
           type: integer
           format: int64
-        wallet_min_tons_for_storage:
-          type: integer
-          format: int64
-          deprecated: true
-          description: this field will gone after Sept. 2026, use wallet_min_gram_for_storage instead
-        wallet_min_gram_for_storage:
-          type: integer
-          format: int64
-        wallet_gas_consumption:
-          type: integer
-          format: int64
-        minter_min_tons_for_storage:
-          type: integer
-          format: int64
-          deprecated: true
-          description: this field will gone after Sept. 2026, use wallet_min_gram_for_storage instead
-        minter_min_gram_for_storage:
-          type: integer
-          format: int64
-        discover_gas_consumption:
-          type: integer
-          format: int64
-    BlockchainBlocks:
-      type: object
-      required:
-      - blocks
-      properties:
-        blocks:
-          type: array
-          items:
-            $ref: '#/components/schemas/BlockchainBlock'
-    Oracle:
-      type: object
-      required:
-      - address
-      - secp_pubkey
-      properties:
-        address:
-          type: string
-          format: address
-          example: 0:55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
-        secp_pubkey:
-          type: string
-          example: 00000000000000000000000017dcab1b1481610f6c7a7a98cf0370dc0ec704a6
-    WorkchainDescr:
-      type: object
-      required:
-      - workchain
-      - enabled_since
-      - actual_min_split
-      - min_split
-      - max_split
-      - basic
-      - active
-      - accept_msgs
-      - flags
-      - zerostate_root_hash
-      - zerostate_file_hash
-      - version
-      properties:
-        workchain:
-          type: integer
-          format: int
-          example: 0
-        enabled_since:
-          type: integer
-          format: int64
-          example: 1000000
-        actual_min_split:
-          type: integer
-          format: int
-          example: 1000000
-        min_split:
-          type: integer
-          format: int
-          example: 1000000
-        max_split:
-          type: integer
-          format: int
-          example: 1000000
-        basic:
-          type: integer
-          example: 1000000
-        active:
-          type: boolean
-          example: true
-        accept_msgs:
-          type: boolean
-          example: true
-        flags:
-          type: integer
-          format: int
-          example: 1000000
-        zerostate_root_hash:
-          type: string
-          example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
-        zerostate_file_hash:
-          type: string
-          example: A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB
-        version:
-          type: integer
-          format: int64
-          example: 1000000
-    ComputeSkipReason:
-      type: string
-      example: cskip_no_state
-      enum:
-      - cskip_no_state
-      - cskip_bad_state
-      - cskip_no_gas
-      - cskip_suspended
+          x-js-format: bigint
+          example: 25713146000001
+        status_change:
+          $ref: '#/components/schemas/AccStatusChange'
     BlockchainConfig:
       type: object
       required:
@@ -2021,604 +2544,98 @@ components:
           properties:
             jetton_bridge_params:
               $ref: '#/components/schemas/JettonBridgeParams'
-    BlockchainBlock:
+    WorkchainDescr:
       type: object
       required:
-      - workchain_id
-      - shard
-      - seqno
-      - root_hash
-      - file_hash
-      - global_id
-      - value_flow
+      - workchain
+      - enabled_since
+      - actual_min_split
+      - min_split
+      - max_split
+      - basic
+      - active
+      - accept_msgs
+      - flags
+      - zerostate_root_hash
+      - zerostate_file_hash
       - version
-      - after_merge
-      - before_split
-      - after_split
-      - want_split
-      - want_merge
-      - key_block
-      - gen_utime
-      - start_lt
-      - end_lt
-      - vert_seqno
-      - gen_catchain_seqno
-      - min_ref_mc_seqno
-      - prev_key_block_seqno
-      - prev_refs
-      - in_msg_descr_length
-      - out_msg_descr_length
-      - rand_seed
-      - created_by
-      - tx_quantity
       properties:
-        tx_quantity:
+        workchain:
           type: integer
-          example: 130
-        value_flow:
-          $ref: '#/components/schemas/BlockValueFlow'
-        workchain_id:
-          type: integer
+          format: int
           example: 0
-          format: int32
-        shard:
-          type: string
-          example: '8000000000000000'
-        seqno:
+        enabled_since:
           type: integer
-          example: 21734019
-          format: int32
-        root_hash:
+          format: int64
+          example: 1000000
+        actual_min_split:
+          type: integer
+          format: int
+          example: 1000000
+        min_split:
+          type: integer
+          format: int
+          example: 1000000
+        max_split:
+          type: integer
+          format: int
+          example: 1000000
+        basic:
+          type: integer
+          example: 1000000
+        active:
+          type: boolean
+          example: true
+        accept_msgs:
+          type: boolean
+          example: true
+        flags:
+          type: integer
+          format: int
+          example: 1000000
+        zerostate_root_hash:
           type: string
           example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
-        file_hash:
+        zerostate_file_hash:
           type: string
           example: A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB
-        global_id:
-          type: integer
-          example: -239
-          format: int32
         version:
           type: integer
-          example: 0
-          format: int32
-        after_merge:
-          type: boolean
-          example: true
-        before_split:
-          type: boolean
-          example: true
-        after_split:
-          type: boolean
-          example: true
-        want_split:
-          type: boolean
-          example: true
-        want_merge:
-          type: boolean
-          example: true
-        key_block:
-          type: boolean
-          example: true
-        gen_utime:
-          type: integer
-          format: int64
-          example: 1674826775
-        start_lt:
-          type: integer
-          format: int64
-          example: 23814011000000
-          x-js-format: bigint
-        end_lt:
-          type: integer
-          format: int64
-          example: 23814011000001
-          x-js-format: bigint
-        vert_seqno:
-          type: integer
-          example: 0
-          format: int32
-        gen_catchain_seqno:
-          type: integer
-          example: 0
-          format: int32
-        min_ref_mc_seqno:
-          type: integer
-          example: 0
-          format: int32
-        prev_key_block_seqno:
-          type: integer
-          example: 0
-          format: int32
-        gen_software_version:
-          type: integer
-          example: 0
-          format: int32
-        gen_software_capabilities:
-          type: integer
-          format: int64
-          example: 0
-        master_ref:
-          type: string
-          example: (-1,4234234,8000000000000000)
-        prev_refs:
-          type: array
-          items:
-            type: string
-            example:
-            - (-1
-            - 4234235
-            - 8000000000000000)
-        in_msg_descr_length:
-          type: integer
-          format: int64
-          example: 0
-        out_msg_descr_length:
-          type: integer
-          format: int64
-          example: 0
-        rand_seed:
-          type: string
-          example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
-        created_by:
-          type: string
-          example: A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB
-    RawBlockchainConfig:
-      type: object
-      required:
-      - config
-      properties:
-        config:
-          type: object
-          additionalProperties: true
-          example: {}
-    StoragePhase:
-      type: object
-      required:
-      - fees_collected
-      - status_change
-      properties:
-        fees_collected:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 25713146000001
-        fees_due:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 25713146000001
-        status_change:
-          $ref: '#/components/schemas/AccStatusChange'
-    Validators:
-      type: object
-      required:
-      - validators
-      - elect_at
-      - elect_close
-      - min_stake
-      - total_stake
-      properties:
-        elect_at:
-          type: integer
-          format: int64
-          example: 123456789
-        elect_close:
-          type: integer
-          format: int64
-          example: 123456789
-        min_stake:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 123456789
-        total_stake:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 123456789
-        validators:
-          type: array
-          items:
-            $ref: '#/components/schemas/Validator'
-    AccountStorageInfo:
-      type: object
-      required:
-      - used_cells
-      - used_bits
-      - used_public_cells
-      - last_paid
-      - due_payment
-      properties:
-        used_cells:
-          type: integer
-          format: int64
-          example: 567
-        used_bits:
-          type: integer
-          format: int64
-          example: 567
-        used_public_cells:
-          type: integer
-          format: int64
-          example: 567
-        last_paid:
-          type: integer
-          format: int64
-          description: time of the last payment
-          example: 1720860269
-        due_payment:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 567
-    ExtraCurrency:
-      type: object
-      required:
-      - amount
-      - preview
-      properties:
-        amount:
-          type: string
-          x-js-format: bigint
-          example: '1000000000'
-        preview:
-          $ref: '#/components/schemas/EcPreview'
-    CreditPhase:
-      type: object
-      required:
-      - fees_collected
-      - credit
-      properties:
-        fees_collected:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 100
-        credit:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 1000
-    ExecGetMethodArg:
-      type: object
-      required:
-      - type
-      - value
-      properties:
-        type:
-          $ref: '#/components/schemas/ExecGetMethodArgType'
-        value:
-          type: string
-          description: String representation of the value according to the specified type
-          example: '0xfa01d78381ae32'
-    SourceFile:
-      type: object
-      required:
-      - name
-      - content
-      - is_entrypoint
-      - is_std_lib
-      - include_in_command
-      properties:
-        name:
-          type: string
-        content:
-          type: string
-        is_entrypoint:
-          type: boolean
-          example: false
-        is_std_lib:
-          type: boolean
-          example: false
-        include_in_command:
-          type: boolean
-          example: false
-    ReducedBlock:
-      type: object
-      required:
-      - workchain_id
-      - shard
-      - seqno
-      - tx_quantity
-      - utime
-      - shards_blocks
-      - parent
-      properties:
-        workchain_id:
-          type: integer
-          example: 0
-          format: int32
-        shard:
-          type: string
-          example: '8000000000000000'
-        seqno:
-          type: integer
-          example: 21734019
-          format: int32
-        master_ref:
-          type: string
-          example: (-1,4234234,8000000000000000)
-        tx_quantity:
-          type: integer
-          example: 130
-        utime:
-          type: integer
-          format: int64
-          example: 23814011000000
-        shards_blocks:
-          type: array
-          items:
-            type: string
-            example: '[ (0,4234235,8000000000000000) ]'
-        parent:
-          type: array
-          items:
-            type: string
-            example: '[ (0,21734018,8000000000000000) ]'
-    JettonBridgeParams:
-      type: object
-      required:
-      - bridge_address
-      - oracles_address
-      - state_flags
-      - oracles
-      properties:
-        bridge_address:
-          type: string
-          format: address
-        oracles_address:
-          type: string
-          format: address
-        state_flags:
-          type: integer
-        burn_bridge_fee:
-          type: integer
-          format: int64
-        oracles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Oracle'
-        external_chain_address:
-          type: string
-        prices:
-          $ref: '#/components/schemas/JettonBridgePrices'
-    AccountAddress:
-      type: object
-      required:
-      - address
-      - is_scam
-      - is_wallet
-      properties:
-        address:
-          type: string
-          format: maybe-address
-          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
-        name:
-          type: string
-          example: Ton foundation
-          description: Display name. Data collected from different sources like moderation lists, dns, collections names and over.
-        is_scam:
-          type: boolean
-          example: true
-          description: Is this account was marked as part of scammers activity
-        icon:
-          type: string
-          example: https://ton.org/logo.png
-        is_wallet:
-          type: boolean
-          example: true
-    SizeLimitsConfig:
-      type: object
-      required:
-      - max_msg_bits
-      - max_msg_cells
-      - max_library_cells
-      - max_vm_data_depth
-      - max_ext_msg_size
-      - max_ext_msg_depth
-      properties:
-        max_msg_bits:
-          type: integer
           format: int64
           example: 1000000
-        max_msg_cells:
-          type: integer
-          format: int64
-          example: 1000000
-        max_library_cells:
-          type: integer
-          format: int64
-          example: 1000000
-        max_vm_data_depth:
-          type: integer
-          format: int
-          example: 1000000
-        max_ext_msg_size:
-          type: integer
-          format: int64
-          example: 1000000
-        max_ext_msg_depth:
-          type: integer
-          format: int
-          example: 1000000
-        max_acc_state_cells:
-          type: integer
-          format: int64
-          example: 1000000
-        max_acc_state_bits:
-          type: integer
-          format: int64
-          example: 1000000
-    BlockLimits:
-      type: object
-      required:
-      - bytes
-      - gas
-      - lt_delta
-      properties:
-        bytes:
-          $ref: '#/components/schemas/BlockParamLimits'
-        gas:
-          $ref: '#/components/schemas/BlockParamLimits'
-        lt_delta:
-          $ref: '#/components/schemas/BlockParamLimits'
-    BlockchainRawAccount:
-      type: object
-      required:
-      - address
-      - balance
-      - status
-      - last_transaction_lt
-      - storage
-      properties:
-        address:
-          type: string
-          format: address
-          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        balance:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 123456789
-        extra_balance:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExtraCurrency'
-        code:
-          type: string
-          format: cell
-          example: b5ee9c72410104010087000114ff00f4a413f4a0f2c80b0102012002030002d200dfa5ffff76a268698fe9ffe8e42c5267858f90e785ffe4f6aa6467c444ffb365ffc10802faf0807d014035e7a064b87d804077e7857fc10803dfd2407d014035e7a064b86467cd8903a32b9ba4410803ade68afd014035e7a045ea432b6363796103bb7b9363210c678b64b87d807d8040c249b3e4
-        data:
-          type: string
-          format: cell
-          example: b5ee9c7241010101002600004811fd096c0000000000000000000000000000000000000000000000000000000000000000cb78264d
-        last_transaction_lt:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 123456789
-        last_transaction_hash:
-          type: string
-          example: 088b436a846d92281734236967970612f87fbd64a2cd3573107948379e8e4161
-        frozen_hash:
-          type: string
-          example: 088b436a846d92281734236967970612f87fbd64a2cd3573107948379e8e4161
-        status:
-          $ref: '#/components/schemas/AccountStatus'
-        storage:
-          $ref: '#/components/schemas/AccountStorageInfo'
-        libraries:
-          type: array
-          items:
-            type: object
-            required:
-            - public
-            - root
-            properties:
-              public:
-                type: boolean
-                example: true
-              root:
-                type: string
-                format: cell
-  parameters:
-    methodNameParameter:
-      in: path
-      name: method_name
-      required: true
-      description: contract get method name
-      schema:
-        type: string
-        example: get_wallet_address
-    transactionIDParameter:
-      in: path
-      name: transaction_id
-      required: true
-      description: transaction ID
-      schema:
-        type: string
-        example: 97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
-    messageIDParameter:
-      in: path
-      name: msg_id
-      required: true
-      description: message ID
-      schema:
-        type: string
-        example: 97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
-    accountIDParameter:
-      in: path
-      name: account_id
-      required: true
-      description: account ID
-      schema:
-        type: string
-        format: address
-        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
-    offsetQuery:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
-    toQuery:
-      in: query
-      name: to
-      required: true
-      schema:
-        type: integer
-        format: int64
-    fromQuery:
-      in: query
-      name: from
-      required: true
-      schema:
-        type: integer
-        format: int64
-    masterchainSeqno:
-      in: path
-      name: masterchain_seqno
-      required: true
-      description: masterchain block seqno
-      schema:
-        type: integer
-        format: int32
-        example: 123456
-    hashParameter:
-      in: path
-      name: hash
-      required: true
-      description: hash in hex (without 0x) format
-      schema:
-        type: string
-        example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
-    blockchainBlockIDParameter:
-      in: path
-      name: block_id
-      required: true
-      description: block ID
-      schema:
-        type: string
-        example: (-1,8000000000000000,4234234)
-  requestBodies:
-    AccountIDs:
-      description: a list of account ids
+  responses:
+    Error:
+      description: Some error during request processing
       content:
         application/json:
           schema:
             type: object
             required:
-            - account_ids
+            - error
             properties:
-              account_ids:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'
+  requestBodies:
+    ExecGetMethodArgs:
+      description: 'Request body for executing a GET method on a blockchain account via POST. This format allows passing arguments in the request body instead of query parameters, which is especially useful for large or complex input data.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - args
+            properties:
+              args:
                 type: array
                 items:
-                  type: string
-                  format: address
-                  example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+                  $ref: '#/components/schemas/ExecGetMethodArg'
     BatchBoc:
       description: both a single boc and a batch of boc serialized in base64/hex are accepted
       required: true
@@ -2640,35 +2657,18 @@ components:
                 type: object
                 additionalProperties:
                   type: string
-    ExecGetMethodArgs:
-      description: 'Request body for executing a GET method on a blockchain account via POST. This format allows passing arguments in the request body instead of query parameters, which is especially useful for large or complex input data.
-
-        '
+    AccountIDs:
+      description: a list of account ids
       content:
         application/json:
           schema:
             type: object
             required:
-            - args
+            - account_ids
             properties:
-              args:
+              account_ids:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ExecGetMethodArg'
-  responses:
-    Error:
-      description: Some error during request processing
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                type: string
-              error_code:
-                type: integer
-                format: int64
-              details:
-                $ref: '#/components/schemas/InsufficientFunds'
+                  type: string
+                  format: address
+                  example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621

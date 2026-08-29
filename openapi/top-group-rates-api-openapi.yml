@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: REST api to TON blockchain explorer Accounts Rates API
+  title: REST api to TON blockchain explorer Rates API
   version: 2.0.0
   description: Provide access to indexed TON blockchain
   contact:
@@ -149,35 +149,6 @@ paths:
           $ref: '#/components/responses/Error'
 components:
   schemas:
-    MarketTonRates:
-      type: object
-      required:
-      - market
-      - usd_price
-      - last_date_update
-      properties:
-        market:
-          type: string
-          example: OKX
-        usd_price:
-          type: number
-          example: 5.2
-        last_date_update:
-          type: integer
-          format: int64
-          example: 1668436763
-    ChartPoints:
-      type: array
-      items:
-        type: array
-        minItems: 2
-        maxItems: 2
-        items:
-          type: number
-      description: "Each inner array is a pair [timestamp, price]:\n  • index 0 — Unix timestamp (int64)  \n  • index 1 — token price (decimal) in the requested currency.\n"
-      example:
-      - - 1668436763
-        - 97.21323234
     InsufficientFunds:
       type: object
       description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
@@ -224,6 +195,35 @@ components:
             type: string
           example:
             GRAM: -0.56%
+    MarketTonRates:
+      type: object
+      required:
+      - market
+      - usd_price
+      - last_date_update
+      properties:
+        market:
+          type: string
+          example: OKX
+        usd_price:
+          type: number
+          example: 5.2
+        last_date_update:
+          type: integer
+          format: int64
+          example: 1668436763
+    ChartPoints:
+      type: array
+      items:
+        type: array
+        minItems: 2
+        maxItems: 2
+        items:
+          type: number
+      description: "Each inner array is a pair [timestamp, price]:\n  • index 0 — Unix timestamp (int64)  \n  • index 1 — token price (decimal) in the requested currency.\n"
+      example:
+      - - 1668436763
+        - 97.21323234
   responses:
     Error:
       description: Some error during request processing
