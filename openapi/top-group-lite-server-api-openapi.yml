@@ -18,7 +18,6 @@ tags:
 paths:
   /v2/liteserver/get_masterchain_info:
     get:
-      description: Get raw masterchain info
       operationId: getRawMasterchainInfo
       tags:
       - Lite Server
@@ -43,9 +42,10 @@ paths:
                     $ref: '#/components/schemas/InitStateRaw'
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw masterchain info
+      x-summary-source: derived
   /v2/liteserver/get_masterchain_info_ext:
     get:
-      description: Get raw masterchain info ext
       operationId: getRawMasterchainInfoExt
       tags:
       - Lite Server
@@ -97,9 +97,10 @@ paths:
                     $ref: '#/components/schemas/InitStateRaw'
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw masterchain info ext
+      x-summary-source: derived
   /v2/liteserver/get_time:
     get:
-      description: Get raw time
       operationId: getRawTime
       tags:
       - Lite Server
@@ -119,9 +120,10 @@ paths:
                     example: 1687146728
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw time
+      x-summary-source: derived
   /v2/liteserver/get_block/{block_id}:
     get:
-      description: Get raw blockchain block
       operationId: getRawBlockchainBlock
       tags:
       - Lite Server
@@ -145,9 +147,10 @@ paths:
                     example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw blockchain block
+      x-summary-source: derived
   /v2/liteserver/get_state/{block_id}:
     get:
-      description: Get raw blockchain block state
       operationId: getRawBlockchainBlockState
       tags:
       - Lite Server
@@ -179,9 +182,10 @@ paths:
                     example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw blockchain block state
+      x-summary-source: derived
   /v2/liteserver/get_block_header/{block_id}:
     get:
-      description: Get raw blockchain block header
       operationId: getRawBlockchainBlockHeader
       tags:
       - Lite Server
@@ -211,6 +215,8 @@ paths:
                     example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw blockchain block header
+      x-summary-source: derived
   /v2/liteserver/send_message:
     post:
       description: Send raw message to blockchain
@@ -235,9 +241,10 @@ paths:
                     example: 200
         default:
           $ref: '#/components/responses/Error'
+      summary: Send raw message
+      x-summary-source: derived
   /v2/liteserver/get_account_state/{account_id}:
     get:
-      description: Get raw account state
       operationId: getRawAccountState
       tags:
       - Lite Server
@@ -273,9 +280,10 @@ paths:
                     example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw account state
+      x-summary-source: derived
   /v2/liteserver/get_shard_info/{block_id}:
     get:
-      description: Get raw shard info
       operationId: getRawShardInfo
       tags:
       - Lite Server
@@ -309,9 +317,10 @@ paths:
                     example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw shard info
+      x-summary-source: derived
   /v2/liteserver/get_all_shards_info/{block_id}:
     get:
-      description: Get all raw shards info
       operationId: getAllRawShardsInfo
       tags:
       - Lite Server
@@ -339,9 +348,10 @@ paths:
                     example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
         default:
           $ref: '#/components/responses/Error'
+      summary: Get all raw shards info
+      x-summary-source: derived
   /v2/liteserver/get_transactions/{account_id}:
     get:
-      description: Get raw transactions
       operationId: getRawTransactions
       tags:
       - Lite Server
@@ -370,9 +380,10 @@ paths:
                     example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw transactions
+      x-summary-source: derived
   /v2/liteserver/list_block_transactions/{block_id}:
     get:
-      description: Get raw list block transactions
       operationId: getRawListBlockTransactions
       tags:
       - Lite Server
@@ -431,9 +442,10 @@ paths:
                     example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw list block transactions
+      x-summary-source: derived
   /v2/liteserver/get_block_proof:
     get:
-      description: Get raw block proof
       operationId: getRawBlockProof
       tags:
       - Lite Server
@@ -547,9 +559,10 @@ paths:
                                         example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw block proof
+      x-summary-source: derived
   /v2/liteserver/get_config_all/{block_id}:
     get:
-      description: Get raw config
       operationId: getRawConfig
       tags:
       - Lite Server
@@ -583,9 +596,10 @@ paths:
                     example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw config
+      x-summary-source: derived
   /v2/liteserver/get_shard_block_proof/{block_id}:
     get:
-      description: Get raw shard block proof
       operationId: getRawShardBlockProof
       tags:
       - Lite Server
@@ -619,9 +633,10 @@ paths:
                           example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
         default:
           $ref: '#/components/responses/Error'
+      summary: Get raw shard block proof
+      x-summary-source: derived
   /v2/liteserver/get_out_msg_queue_sizes:
     get:
-      description: Get out msg queue sizes
       operationId: getOutMsgQueueSizes
       tags:
       - Lite Server
@@ -654,27 +669,123 @@ paths:
                           format: uint32
         default:
           $ref: '#/components/responses/Error'
+      summary: Get out msg queue sizes
+      x-summary-source: derived
 components:
+  parameters:
+    modeQuery:
+      in: query
+      name: mode
+      required: true
+      description: mode
+      schema:
+        type: integer
+        format: int32
+        example: 0
+    ltQuery:
+      in: query
+      name: lt
+      description: lt
+      schema:
+        type: integer
+        format: int64
+        example: 23814011000000
+    ltMustQuery:
+      in: query
+      name: lt
+      required: true
+      description: lt
+      schema:
+        type: integer
+        format: int64
+        example: 23814011000000
+    shardQuery:
+      in: query
+      name: shard
+      required: true
+      description: shard
+      schema:
+        type: integer
+        format: int64
+        example: 1
+    accountIDParameter:
+      in: path
+      name: account_id
+      required: true
+      description: account ID
+      schema:
+        type: string
+        format: address
+        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+    workchainQuery:
+      in: query
+      name: workchain
+      required: true
+      description: workchain
+      schema:
+        type: integer
+        format: int32
+        example: 1
+    targetBlockIDExtQuery:
+      in: query
+      name: target_block
+      required: false
+      description: 'target block: (workchain,shard,seqno,root_hash,file_hash)'
+      schema:
+        type: string
+        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
+    countQuery:
+      in: query
+      name: count
+      required: true
+      description: count
+      schema:
+        type: integer
+        format: int32
+        example: 100
+    blockchainBlockIDExtParameter:
+      in: path
+      name: block_id
+      required: true
+      description: 'block ID: (workchain,shard,seqno,root_hash,file_hash)'
+      schema:
+        type: string
+        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
+    accountIDQuery:
+      in: query
+      name: account_id
+      required: false
+      description: account ID
+      explode: false
+      schema:
+        type: string
+        format: address
+        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+    exactQuery:
+      in: query
+      name: exact
+      required: true
+      description: exact
+      schema:
+        type: boolean
+        example: false
+    hashQuery:
+      in: query
+      name: hash
+      required: true
+      description: hash
+      schema:
+        type: string
+        example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
+    knownBlockIDExtQuery:
+      in: query
+      name: known_block
+      required: true
+      description: 'known block: (workchain,shard,seqno,root_hash,file_hash)'
+      schema:
+        type: string
+        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
   schemas:
-    InsufficientFunds:
-      type: object
-      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
-
-        '
-      required:
-      - required
-      - available
-      properties:
-        required:
-          type: integer
-          format: int64
-          description: TON in nanotons required to cover transfer gas
-          x-js-format: bigint
-        available:
-          type: integer
-          format: int64
-          description: TON in nanotons currently available on the source wallet
-          x-js-format: bigint
     BlockRaw:
       type: object
       required:
@@ -718,133 +829,25 @@ components:
         file_hash:
           type: string
           example: A6A0BD6608672B11B79538A50B2204E748305C12AA0DED9C16CF0006CE3AF8DB
-  parameters:
-    ltQuery:
-      in: query
-      name: lt
-      description: lt
-      schema:
-        type: integer
-        format: int64
-        example: 23814011000000
-    ltMustQuery:
-      in: query
-      name: lt
-      required: true
-      description: lt
-      schema:
-        type: integer
-        format: int64
-        example: 23814011000000
-    workchainQuery:
-      in: query
-      name: workchain
-      required: true
-      description: workchain
-      schema:
-        type: integer
-        format: int32
-        example: 1
-    accountIDQuery:
-      in: query
-      name: account_id
-      required: false
-      description: account ID
-      explode: false
-      schema:
-        type: string
-        format: address
-        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
-    knownBlockIDExtQuery:
-      in: query
-      name: known_block
-      required: true
-      description: 'known block: (workchain,shard,seqno,root_hash,file_hash)'
-      schema:
-        type: string
-        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
-    hashQuery:
-      in: query
-      name: hash
-      required: true
-      description: hash
-      schema:
-        type: string
-        example: 131D0C65055F04E9C19D687B51BC70F952FD9CA6F02C2801D3B89964A779DF85
-    accountIDParameter:
-      in: path
-      name: account_id
-      required: true
-      description: account ID
-      schema:
-        type: string
-        format: address
-        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
-    countQuery:
-      in: query
-      name: count
-      required: true
-      description: count
-      schema:
-        type: integer
-        format: int32
-        example: 100
-    modeQuery:
-      in: query
-      name: mode
-      required: true
-      description: mode
-      schema:
-        type: integer
-        format: int32
-        example: 0
-    targetBlockIDExtQuery:
-      in: query
-      name: target_block
-      required: false
-      description: 'target block: (workchain,shard,seqno,root_hash,file_hash)'
-      schema:
-        type: string
-        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
-    blockchainBlockIDExtParameter:
-      in: path
-      name: block_id
-      required: true
-      description: 'block ID: (workchain,shard,seqno,root_hash,file_hash)'
-      schema:
-        type: string
-        example: (-1,8000000000000000,4234234,3E575DAB1D25...90D8,47192E5C46C...BB29)
-    exactQuery:
-      in: query
-      name: exact
-      required: true
-      description: exact
-      schema:
-        type: boolean
-        example: false
-    shardQuery:
-      in: query
-      name: shard
-      required: true
-      description: shard
-      schema:
-        type: integer
-        format: int64
-        example: 1
-  requestBodies:
-    LiteServerSendMessageRequest:
-      description: Data that is expected
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - body
-            properties:
-              body:
-                type: string
-                format: cell-base64
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
   responses:
     Error:
       description: Some error during request processing
@@ -862,3 +865,17 @@ components:
                 format: int64
               details:
                 $ref: '#/components/schemas/InsufficientFunds'
+  requestBodies:
+    LiteServerSendMessageRequest:
+      description: Data that is expected
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - body
+            properties:
+              body:
+                type: string
+                format: cell-base64

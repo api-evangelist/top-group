@@ -27,6 +27,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Get webhooks
+      x-summary-source: derived
     post:
       operationId: createWebhook
       parameters:
@@ -54,6 +56,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Create webhook
+      x-summary-source: derived
   /webhooks/{webhook_id}:
     delete:
       description: remove webhook and its subscriptions
@@ -73,6 +77,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Delete webhook
+      x-summary-source: derived
   /webhooks/{webhook_id}/generate-new-token:
     post:
       description: generate a new secret token which will be used by TONAPI to authenticate itself when sending notifications to the webhook endpoint. The old token will be invalidated.
@@ -96,6 +102,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook generate new token
+      x-summary-source: derived
   /webhooks/{webhook_id}/back-online:
     post:
       description: Let TONAPI know that webhook is ready to receive notifications after it has been unavailable
@@ -115,6 +123,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook back online
+      x-summary-source: derived
   /webhooks/{webhook_id}/logs:
     get:
       description: Get logs of failed attempts to deliver notifications to the webhook
@@ -140,6 +150,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Get failure logs
+      x-summary-source: derived
   /webhooks/{webhook_id}/account-tx/subscribe:
     post:
       description: subscribe to notifications for a particular set of accounts
@@ -161,6 +173,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook account tx subscribe
+      x-summary-source: derived
   /webhooks/{webhook_id}/account-tx/unsubscribe:
     post:
       operationId: webhookAccountTxUnsubscribe
@@ -181,6 +195,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook account tx unsubscribe
+      x-summary-source: derived
   /webhooks/{webhook_id}/account-tx/subscriptions:
     get:
       operationId: webhookAccountTxSubscriptions
@@ -200,6 +216,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook account tx subscriptions
+      x-summary-source: derived
   /webhooks/{webhook_id}/msg-opcode/subscriptions:
     get:
       operationId: webhookNewContractsSubscriptions
@@ -219,6 +237,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook new contracts subscriptions
+      x-summary-source: derived
   /webhooks/{webhook_id}/subscribe-new-contracts:
     post:
       description: receive a notification when a new contract is deployed to the blockchain
@@ -238,6 +258,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook new contract subscribe
+      x-summary-source: derived
   /webhooks/{webhook_id}/unsubscribe-new-contracts:
     post:
       description: receive a notification when a new contract is deployed to the blockchain
@@ -257,6 +279,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook new contract unsubscribe
+      x-summary-source: derived
   /webhooks/{webhook_id}/subscribe-msg-opcode/{opcode}:
     post:
       description: receive a notification when there is a new message with a given opcode
@@ -283,6 +307,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook msg opcode subscribe
+      x-summary-source: derived
   /webhooks/{webhook_id}/unsubscribe-msg-opcode/{opcode}:
     post:
       description: stop receiving a notification about a new message with a given opcode
@@ -309,6 +335,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook msg opcode unsubscribe
+      x-summary-source: derived
   /webhooks/{webhook_id}/mempool/subscribe:
     post:
       description: subscribe to notifications for mempool messages
@@ -328,6 +356,8 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook mempool subscribe
+      x-summary-source: derived
   /webhooks/{webhook_id}/mempool/unsubscribe:
     post:
       operationId: webhookMempoolUnsubscribe
@@ -346,7 +376,52 @@ paths:
           $ref: '#/components/responses/Error'
       tags:
       - Webhooks
+      summary: Webhook mempool unsubscribe
+      x-summary-source: derived
 components:
+  requestBodies:
+    WebhookAccountTxSubscribeRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - accounts
+            properties:
+              accounts:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - account_id
+                  properties:
+                    account_id:
+                      type: string
+    WebhookAccountTxUnsubscribeRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - accounts
+            properties:
+              accounts:
+                type: array
+                items:
+                  type: string
+    WebhookConfiguration:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - endpoint
+            properties:
+              endpoint:
+                type: string
   schemas:
     WebhookAccountTxSubscriptions:
       type: object
@@ -476,12 +551,6 @@ components:
               disabled_reason:
                 type: string
   parameters:
-    tokenQuery:
-      in: query
-      name: token
-      schema:
-        type: string
-        example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
     limitQuery:
       in: query
       name: limit
@@ -490,13 +559,6 @@ components:
         type: integer
         default: 1000
         maximum: 1000
-    webhookId:
-      in: path
-      name: webhook_id
-      required: true
-      schema:
-        type: integer
-        format: int64
     offsetQuery:
       in: query
       name: offset
@@ -504,49 +566,19 @@ components:
       schema:
         type: integer
         default: 0
-  requestBodies:
-    WebhookAccountTxUnsubscribeRequest:
+    webhookId:
+      in: path
+      name: webhook_id
       required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - accounts
-            properties:
-              accounts:
-                type: array
-                items:
-                  type: string
-    WebhookConfiguration:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - endpoint
-            properties:
-              endpoint:
-                type: string
-    WebhookAccountTxSubscribeRequest:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - accounts
-            properties:
-              accounts:
-                type: array
-                items:
-                  type: object
-                  required:
-                  - account_id
-                  properties:
-                    account_id:
-                      type: string
+      schema:
+        type: integer
+        format: int64
+    tokenQuery:
+      in: query
+      name: token
+      schema:
+        type: string
+        example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
   responses:
     Error:
       description: Some error during request processing

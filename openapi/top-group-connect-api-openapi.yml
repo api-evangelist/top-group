@@ -37,9 +37,10 @@ paths:
                     example: 84jHVNLQmZsAAAAAZB0Zryi2wqVJI-KaKNXOvCijEi46YyYzkaSHyJrMPBMOkVZa
         default:
           $ref: '#/components/responses/Error'
+      summary: Get ton connect payload
+      x-summary-source: derived
   /v2/tonconnect/stateinit:
     post:
-      description: Get account info by state init
       operationId: getAccountInfoByStateInit
       tags:
       - Connect
@@ -54,8 +55,40 @@ paths:
                 $ref: '#/components/schemas/AccountInfoByStateInit'
         default:
           $ref: '#/components/responses/Error'
+      summary: Get account info by state init
+      x-summary-source: derived
 components:
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'
   schemas:
+    AccountInfoByStateInit:
+      type: object
+      required:
+      - public_key
+      - address
+      properties:
+        public_key:
+          type: string
+          example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
+        address:
+          type: string
+          format: address
+          example: 0:97146a46acc2654y27947f14c4a4b14273e954f78bc017790b41208b0043200b
     InsufficientFunds:
       type: object
       description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
@@ -75,19 +108,6 @@ components:
           format: int64
           description: TON in nanotons currently available on the source wallet
           x-js-format: bigint
-    AccountInfoByStateInit:
-      type: object
-      required:
-      - public_key
-      - address
-      properties:
-        public_key:
-          type: string
-          example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
-        address:
-          type: string
-          format: address
-          example: 0:97146a46acc2654y27947f14c4a4b14273e954f78bc017790b41208b0043200b
   requestBodies:
     TonConnectStateInit:
       description: Data that is expected
@@ -102,20 +122,3 @@ components:
               state_init:
                 type: string
                 format: cell-base64
-  responses:
-    Error:
-      description: Some error during request processing
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                type: string
-              error_code:
-                type: integer
-                format: int64
-              details:
-                $ref: '#/components/schemas/InsufficientFunds'

@@ -66,6 +66,8 @@ paths:
                       $ref: '#/components/schemas/TokenRates'
         default:
           $ref: '#/components/responses/Error'
+      summary: Get rates
+      x-summary-source: derived
   /v2/rates/chart:
     get:
       description: Get chart by token
@@ -125,6 +127,8 @@ paths:
                     $ref: '#/components/schemas/ChartPoints'
         default:
           $ref: '#/components/responses/Error'
+      summary: Get chart rates
+      x-summary-source: derived
   /v2/rates/markets:
     get:
       description: Get the Gram price from markets
@@ -147,27 +151,10 @@ paths:
                       $ref: '#/components/schemas/MarketTonRates'
         default:
           $ref: '#/components/responses/Error'
+      summary: Get markets rates
+      x-summary-source: derived
 components:
   schemas:
-    InsufficientFunds:
-      type: object
-      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
-
-        '
-      required:
-      - required
-      - available
-      properties:
-        required:
-          type: integer
-          format: int64
-          description: TON in nanotons required to cover transfer gas
-          x-js-format: bigint
-        available:
-          type: integer
-          format: int64
-          description: TON in nanotons currently available on the source wallet
-          x-js-format: bigint
     TokenRates:
       type: object
       properties:
@@ -195,6 +182,18 @@ components:
             type: string
           example:
             GRAM: -0.56%
+    ChartPoints:
+      type: array
+      items:
+        type: array
+        minItems: 2
+        maxItems: 2
+        items:
+          type: number
+      description: "Each inner array is a pair [timestamp, price]:\n  • index 0 — Unix timestamp (int64)  \n  • index 1 — token price (decimal) in the requested currency.\n"
+      example:
+      - - 1668436763
+        - 97.21323234
     MarketTonRates:
       type: object
       required:
@@ -212,18 +211,25 @@ components:
           type: integer
           format: int64
           example: 1668436763
-    ChartPoints:
-      type: array
-      items:
-        type: array
-        minItems: 2
-        maxItems: 2
-        items:
-          type: number
-      description: "Each inner array is a pair [timestamp, price]:\n  • index 0 — Unix timestamp (int64)  \n  • index 1 — token price (decimal) in the requested currency.\n"
-      example:
-      - - 1668436763
-        - 97.21323234
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
   responses:
     Error:
       description: Some error during request processing

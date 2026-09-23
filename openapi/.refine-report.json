@@ -55,7 +55,8 @@
     "top-group-tonapi-webhooks-openapi.yml: tagged paths POST /webhooks/{webhook_id}/mempool/subscribe -> Webhooks",
     "top-group-tonapi-webhooks-openapi.yml: tagged paths POST /webhooks/{webhook_id}/mempool/unsubscribe -> Webhooks",
     "top-group-tonapi-webhooks-openapi.yml: declared missing tag: Usage Stats",
-    "top-group-tonapi-webhooks-openapi.yml: declared missing tag: Webhooks"
+    "top-group-tonapi-webhooks-openapi.yml: declared missing tag: Webhooks",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "top-group-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
