@@ -155,6 +155,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ChartPoints:
+      type: array
+      items:
+        type: array
+        minItems: 2
+        maxItems: 2
+        items:
+          type: number
+      description: "Each inner array is a pair [timestamp, price]:\n  • index 0 — Unix timestamp (int64)  \n  • index 1 — token price (decimal) in the requested currency.\n"
+      example:
+      - - 1668436763
+        - 97.21323234
     TokenRates:
       type: object
       properties:
@@ -182,35 +194,6 @@ components:
             type: string
           example:
             GRAM: -0.56%
-    ChartPoints:
-      type: array
-      items:
-        type: array
-        minItems: 2
-        maxItems: 2
-        items:
-          type: number
-      description: "Each inner array is a pair [timestamp, price]:\n  • index 0 — Unix timestamp (int64)  \n  • index 1 — token price (decimal) in the requested currency.\n"
-      example:
-      - - 1668436763
-        - 97.21323234
-    MarketTonRates:
-      type: object
-      required:
-      - market
-      - usd_price
-      - last_date_update
-      properties:
-        market:
-          type: string
-          example: OKX
-        usd_price:
-          type: number
-          example: 5.2
-        last_date_update:
-          type: integer
-          format: int64
-          example: 1668436763
     InsufficientFunds:
       type: object
       description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
@@ -230,6 +213,23 @@ components:
           format: int64
           description: TON in nanotons currently available on the source wallet
           x-js-format: bigint
+    MarketTonRates:
+      type: object
+      required:
+      - market
+      - usd_price
+      - last_date_update
+      properties:
+        market:
+          type: string
+          example: OKX
+        usd_price:
+          type: number
+          example: 5.2
+        last_date_update:
+          type: integer
+          format: int64
+          example: 1668436763
   responses:
     Error:
       description: Some error during request processing

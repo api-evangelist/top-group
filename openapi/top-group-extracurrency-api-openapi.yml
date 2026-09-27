@@ -36,23 +36,6 @@ paths:
       summary: Get extra currency info
       x-summary-source: derived
 components:
-  responses:
-    Error:
-      description: Some error during request processing
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                type: string
-              error_code:
-                type: integer
-                format: int64
-              details:
-                $ref: '#/components/schemas/InsufficientFunds'
   schemas:
     EcPreview:
       type: object
@@ -104,3 +87,20 @@ components:
         type: integer
         example: 239
         format: int32
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'

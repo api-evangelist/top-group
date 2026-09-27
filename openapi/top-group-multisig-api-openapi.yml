@@ -55,6 +55,105 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    TrustType:
+      type: string
+      example: whitelist
+      enum:
+      - whitelist
+      - graylist
+      - blacklist
+      - none
+    Risk:
+      type: object
+      description: 'Conservative upper bound on assets this wallet may lose if the emulated message is sent and the counterparty behaves maliciously. Values may exceed current balances (e.g. already-authorized future receipts). For UI display only.
+
+        '
+      required:
+      - transfer_all_remaining_balance
+      - gram
+      - jettons
+      - nfts
+      properties:
+        transfer_all_remaining_balance:
+          type: boolean
+          description: 'True if the message semantics allow sweeping all current and future remaining Gram balance of the wallet (e.g. “send all” / drain patterns).
+
+            '
+          example: true
+        ton:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 500
+          deprecated: true
+          description: this field will gone after Sept. 2026, use gram instead
+        gram:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 500
+          description: Maximum Gram amount that may leave the wallet in the worst case, in nanogram.
+        jettons:
+          type: array
+          description: Jetton positions that may be debited from the wallet in the worst case.
+          items:
+            $ref: '#/components/schemas/JettonQuantity'
+        nfts:
+          type: array
+          description: NFT items that may be transferred out of the wallet in the worst case.
+          items:
+            $ref: '#/components/schemas/NftItem'
+        total_equivalent:
+          type: number
+          format: float
+          description: 'Estimated equivalent of all assets at risk (Gram, jettons, NFTs) in the selected currency from currencyQuery (e.g. USD). Approximate, best-effort UI value.
+
+            '
+    CurrencyType:
+      type: string
+      example: jetton
+      enum:
+      - native
+      - extra_currency
+      - jetton
+      - fiat
+    AccountAddress:
+      type: object
+      required:
+      - address
+      - is_scam
+      - is_wallet
+      properties:
+        address:
+          type: string
+          format: maybe-address
+          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
+        name:
+          type: string
+          example: Ton foundation
+          description: Display name. Data collected from different sources like moderation lists, dns, collections names and over.
+        is_scam:
+          type: boolean
+          example: true
+          description: Is this account was marked as part of scammers activity
+        icon:
+          type: string
+          example: https://ton.org/logo.png
+        is_wallet:
+          type: boolean
+          example: true
+    ImagePreview:
+      type: object
+      required:
+      - resolution
+      - url
+      properties:
+        resolution:
+          type: string
+          example: 100x100
+        url:
+          type: string
+          example: https://site.com/pic1.jpg
     InsufficientFunds:
       type: object
       description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
@@ -74,91 +173,6 @@ components:
           format: int64
           description: TON in nanotons currently available on the source wallet
           x-js-format: bigint
-    Price:
-      type: object
-      required:
-      - currency_type
-      - value
-      - decimals
-      - token_name
-      - verification
-      - image
-      properties:
-        currency_type:
-          $ref: '#/components/schemas/CurrencyType'
-        value:
-          type: string
-          x-js-format: bigint
-          example: '123000000000'
-        decimals:
-          type: integer
-          example: 9
-        token_name:
-          type: string
-          example: Gram
-        verification:
-          $ref: '#/components/schemas/TrustType'
-        image:
-          type: string
-          example: https://cache.tonapi.io/images/jetton.jpg
-        jetton:
-          type: string
-          format: address
-          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
-    TrustType:
-      type: string
-      example: whitelist
-      enum:
-      - whitelist
-      - graylist
-      - blacklist
-      - none
-    CurrencyType:
-      type: string
-      example: jetton
-      enum:
-      - native
-      - extra_currency
-      - jetton
-      - fiat
-    Sale:
-      type: object
-      required:
-      - address
-      - market
-      - price
-      properties:
-        address:
-          type: string
-          format: address
-          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
-        market:
-          $ref: '#/components/schemas/AccountAddress'
-        owner:
-          $ref: '#/components/schemas/AccountAddress'
-        price:
-          $ref: '#/components/schemas/Price'
-    JettonVerificationType:
-      type: string
-      enum:
-      - whitelist
-      - graylist
-      - blacklist
-      - none
-    ScaledUI:
-      type: object
-      required:
-      - numerator
-      - denominator
-      properties:
-        numerator:
-          type: string
-          x-js-format: bigint
-          example: '597968399'
-        denominator:
-          type: string
-          x-js-format: bigint
-          example: '597968399'
     Multisig:
       type: object
       required:
@@ -194,6 +208,136 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MultisigOrder'
+    ScaledUI:
+      type: object
+      required:
+      - numerator
+      - denominator
+      properties:
+        numerator:
+          type: string
+          x-js-format: bigint
+          example: '597968399'
+        denominator:
+          type: string
+          x-js-format: bigint
+          example: '597968399'
+    NftApprovedBy:
+      type: array
+      items:
+        type: string
+        example: getgems
+        enum:
+        - getgems
+        - tonkeeper
+    JettonPreview:
+      type: object
+      required:
+      - address
+      - name
+      - symbol
+      - decimals
+      - verification
+      - image
+      - score
+      properties:
+        address:
+          type: string
+          format: address
+          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
+        name:
+          type: string
+          example: Wrapped TON
+        symbol:
+          type: string
+          example: WTON
+        decimals:
+          type: integer
+          example: 9
+        image:
+          type: string
+          example: https://cache.tonapi.io/images/jetton.jpg
+        verification:
+          $ref: '#/components/schemas/JettonVerificationType'
+        custom_payload_api_uri:
+          type: string
+        score:
+          type: integer
+          format: int32
+        scaled_ui:
+          $ref: '#/components/schemas/ScaledUI'
+        description:
+          type: string
+    JettonQuantity:
+      type: object
+      required:
+      - quantity
+      - wallet_address
+      - jetton
+      properties:
+        quantity:
+          type: string
+          x-js-format: bigint
+          example: '597968399'
+        wallet_address:
+          $ref: '#/components/schemas/AccountAddress'
+        jetton:
+          $ref: '#/components/schemas/JettonPreview'
+    Price:
+      type: object
+      required:
+      - currency_type
+      - value
+      - decimals
+      - token_name
+      - verification
+      - image
+      properties:
+        currency_type:
+          $ref: '#/components/schemas/CurrencyType'
+        value:
+          type: string
+          x-js-format: bigint
+          example: '123000000000'
+        decimals:
+          type: integer
+          example: 9
+        token_name:
+          type: string
+          example: Gram
+        verification:
+          $ref: '#/components/schemas/TrustType'
+        image:
+          type: string
+          example: https://cache.tonapi.io/images/jetton.jpg
+        jetton:
+          type: string
+          format: address
+          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
+    JettonVerificationType:
+      type: string
+      enum:
+      - whitelist
+      - graylist
+      - blacklist
+      - none
+    Sale:
+      type: object
+      required:
+      - address
+      - market
+      - price
+      properties:
+        address:
+          type: string
+          format: address
+          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
+        market:
+          $ref: '#/components/schemas/AccountAddress'
+        owner:
+          $ref: '#/components/schemas/AccountAddress'
+        price:
+          $ref: '#/components/schemas/Price'
     NftItem:
       type: object
       required:
@@ -264,54 +408,6 @@ components:
         data_hash:
           type: string
           description: Hash of the NFT item account data cell (hex)
-    NftApprovedBy:
-      type: array
-      items:
-        type: string
-        example: getgems
-        enum:
-        - getgems
-        - tonkeeper
-    AccountAddress:
-      type: object
-      required:
-      - address
-      - is_scam
-      - is_wallet
-      properties:
-        address:
-          type: string
-          format: maybe-address
-          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
-        name:
-          type: string
-          example: Ton foundation
-          description: Display name. Data collected from different sources like moderation lists, dns, collections names and over.
-        is_scam:
-          type: boolean
-          example: true
-          description: Is this account was marked as part of scammers activity
-        icon:
-          type: string
-          example: https://ton.org/logo.png
-        is_wallet:
-          type: boolean
-          example: true
-    JettonQuantity:
-      type: object
-      required:
-      - quantity
-      - wallet_address
-      - jetton
-      properties:
-        quantity:
-          type: string
-          x-js-format: bigint
-          example: '597968399'
-        wallet_address:
-          $ref: '#/components/schemas/AccountAddress'
-        jetton:
-          $ref: '#/components/schemas/JettonPreview'
     MultisigOrder:
       type: object
       required:
@@ -387,112 +483,6 @@ components:
               items:
                 type: string
                 format: address
-    ImagePreview:
-      type: object
-      required:
-      - resolution
-      - url
-      properties:
-        resolution:
-          type: string
-          example: 100x100
-        url:
-          type: string
-          example: https://site.com/pic1.jpg
-    JettonPreview:
-      type: object
-      required:
-      - address
-      - name
-      - symbol
-      - decimals
-      - verification
-      - image
-      - score
-      properties:
-        address:
-          type: string
-          format: address
-          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
-        name:
-          type: string
-          example: Wrapped TON
-        symbol:
-          type: string
-          example: WTON
-        decimals:
-          type: integer
-          example: 9
-        image:
-          type: string
-          example: https://cache.tonapi.io/images/jetton.jpg
-        verification:
-          $ref: '#/components/schemas/JettonVerificationType'
-        custom_payload_api_uri:
-          type: string
-        score:
-          type: integer
-          format: int32
-        scaled_ui:
-          $ref: '#/components/schemas/ScaledUI'
-        description:
-          type: string
-    Risk:
-      type: object
-      description: 'Conservative upper bound on assets this wallet may lose if the emulated message is sent and the counterparty behaves maliciously. Values may exceed current balances (e.g. already-authorized future receipts). For UI display only.
-
-        '
-      required:
-      - transfer_all_remaining_balance
-      - gram
-      - jettons
-      - nfts
-      properties:
-        transfer_all_remaining_balance:
-          type: boolean
-          description: 'True if the message semantics allow sweeping all current and future remaining Gram balance of the wallet (e.g. “send all” / drain patterns).
-
-            '
-          example: true
-        ton:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 500
-          deprecated: true
-          description: this field will gone after Sept. 2026, use gram instead
-        gram:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 500
-          description: Maximum Gram amount that may leave the wallet in the worst case, in nanogram.
-        jettons:
-          type: array
-          description: Jetton positions that may be debited from the wallet in the worst case.
-          items:
-            $ref: '#/components/schemas/JettonQuantity'
-        nfts:
-          type: array
-          description: NFT items that may be transferred out of the wallet in the worst case.
-          items:
-            $ref: '#/components/schemas/NftItem'
-        total_equivalent:
-          type: number
-          format: float
-          description: 'Estimated equivalent of all assets at risk (Gram, jettons, NFTs) in the selected currency from currencyQuery (e.g. USD). Approximate, best-effort UI value.
-
-            '
-  parameters:
-    accountIDParameter:
-      in: path
-      name: account_id
-      required: true
-      description: account ID
-      schema:
-        type: string
-        format: address
-        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
   responses:
     Error:
       description: Some error during request processing
@@ -510,3 +500,13 @@ components:
                 format: int64
               details:
                 $ref: '#/components/schemas/InsufficientFunds'
+  parameters:
+    accountIDParameter:
+      in: path
+      name: account_id
+      required: true
+      description: account ID
+      schema:
+        type: string
+        format: address
+        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621

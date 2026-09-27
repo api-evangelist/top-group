@@ -121,23 +121,6 @@ paths:
       summary: Address parse
       x-summary-source: derived
 components:
-  responses:
-    Error:
-      description: Some error during request processing
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                type: string
-              error_code:
-                type: integer
-                format: int64
-              details:
-                $ref: '#/components/schemas/InsufficientFunds'
   schemas:
     ServiceStatus:
       type: object
@@ -175,6 +158,23 @@ components:
           format: int64
           description: TON in nanotons currently available on the source wallet
           x-js-format: bigint
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'
   parameters:
     accountIDParameter:
       in: path

@@ -379,77 +379,36 @@ paths:
       summary: Webhook mempool unsubscribe
       x-summary-source: derived
 components:
-  requestBodies:
-    WebhookAccountTxSubscribeRequest:
+  parameters:
+    offsetQuery:
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+        default: 0
+    tokenQuery:
+      in: query
+      name: token
+      schema:
+        type: string
+        example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
+    webhookId:
+      in: path
+      name: webhook_id
       required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - accounts
-            properties:
-              accounts:
-                type: array
-                items:
-                  type: object
-                  required:
-                  - account_id
-                  properties:
-                    account_id:
-                      type: string
-    WebhookAccountTxUnsubscribeRequest:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - accounts
-            properties:
-              accounts:
-                type: array
-                items:
-                  type: string
-    WebhookConfiguration:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - endpoint
-            properties:
-              endpoint:
-                type: string
+      schema:
+        type: integer
+        format: int64
+    limitQuery:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        default: 1000
+        maximum: 1000
   schemas:
-    WebhookAccountTxSubscriptions:
-      type: object
-      required:
-      - account_tx_subscriptions
-      properties:
-        account_tx_subscriptions:
-          type: array
-          items:
-            type: object
-            required:
-            - account_id
-            - last_delivered_lt
-            properties:
-              account_id:
-                type: string
-              last_delivered_lt:
-                type: integer
-                format: int64
-              failed_at:
-                type: string
-                format: date-time
-              failed_lt:
-                type: integer
-                format: int64
-              failed_attempts:
-                type: integer
-                format: int64
     WebhookList:
       type: object
       required:
@@ -525,6 +484,33 @@ components:
               timestamp:
                 type: string
                 format: date-time
+    WebhookAccountTxSubscriptions:
+      type: object
+      required:
+      - account_tx_subscriptions
+      properties:
+        account_tx_subscriptions:
+          type: array
+          items:
+            type: object
+            required:
+            - account_id
+            - last_delivered_lt
+            properties:
+              account_id:
+                type: string
+              last_delivered_lt:
+                type: integer
+                format: int64
+              failed_at:
+                type: string
+                format: date-time
+              failed_lt:
+                type: integer
+                format: int64
+              failed_attempts:
+                type: integer
+                format: int64
     WebhookMsgOpcodeSubscriptions:
       type: object
       required:
@@ -550,35 +536,6 @@ components:
                 format: date-time
               disabled_reason:
                 type: string
-  parameters:
-    limitQuery:
-      in: query
-      name: limit
-      required: false
-      schema:
-        type: integer
-        default: 1000
-        maximum: 1000
-    offsetQuery:
-      in: query
-      name: offset
-      required: false
-      schema:
-        type: integer
-        default: 0
-    webhookId:
-      in: path
-      name: webhook_id
-      required: true
-      schema:
-        type: integer
-        format: int64
-    tokenQuery:
-      in: query
-      name: token
-      schema:
-        type: string
-        example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
   responses:
     Error:
       description: Some error during request processing
@@ -591,3 +548,46 @@ components:
             properties:
               error:
                 type: string
+  requestBodies:
+    WebhookAccountTxSubscribeRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - accounts
+            properties:
+              accounts:
+                type: array
+                items:
+                  type: object
+                  required:
+                  - account_id
+                  properties:
+                    account_id:
+                      type: string
+    WebhookConfiguration:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - endpoint
+            properties:
+              endpoint:
+                type: string
+    WebhookAccountTxUnsubscribeRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - accounts
+            properties:
+              accounts:
+                type: array
+                items:
+                  type: string

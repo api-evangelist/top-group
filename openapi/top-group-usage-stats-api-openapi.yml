@@ -29,18 +29,6 @@ paths:
       summary: Get usage stats
       x-summary-source: derived
 components:
-  responses:
-    Error:
-      description: Some error during request processing
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                type: string
   schemas:
     UsageStats:
       type: object
@@ -65,6 +53,18 @@ components:
         webhooks_failed:
           type: integer
           format: int64
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
   parameters:
     tokenQuery:
       in: query

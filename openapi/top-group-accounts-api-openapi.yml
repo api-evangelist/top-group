@@ -703,45 +703,6 @@ paths:
       x-summary-source: derived
 components:
   parameters:
-    currenciesQuery:
-      in: query
-      name: currencies
-      description: accept gram and all possible fiat currencies, separated by commas
-      required: false
-      explode: false
-      schema:
-        type: array
-        items:
-          type: string
-        example:
-        - gram
-        - usd
-        - rub
-    eventIDParameter:
-      in: path
-      name: event_id
-      required: true
-      description: event ID or transaction hash in hex (without 0x) or base64url format
-      schema:
-        type: string
-        example: 97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
-    ecIDParameter:
-      in: path
-      name: id
-      required: true
-      description: extra currency id
-      schema:
-        type: integer
-        example: 239
-        format: int32
-    i18n:
-      in: header
-      name: Accept-Language
-      required: false
-      schema:
-        type: string
-        example: ru-RU,ru;q=0.5
-        default: en
     currencyQuery:
       in: query
       name: currency
@@ -749,28 +710,6 @@ components:
       schema:
         type: string
         example: usd
-    periodQuery:
-      in: query
-      name: period
-      required: false
-      description: number of days before expiration
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 3660
-    supportedExtensions:
-      in: query
-      name: supported_extensions
-      description: comma separated list supported extensions
-      explode: false
-      required: false
-      schema:
-        type: array
-        items:
-          type: string
-        example:
-        - custom_payload
-        - defi
     jettonIDParameter:
       in: path
       name: jetton_id
@@ -788,32 +727,6 @@ components:
         type: integer
         default: 0
         minimum: 0
-    accountIDParameter:
-      in: path
-      name: account_id
-      required: true
-      description: account ID
-      schema:
-        type: string
-        format: address
-        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
-    limitQuery:
-      in: query
-      name: limit
-      required: false
-      schema:
-        type: integer
-        default: 1000
-        maximum: 1000
-        minimum: 1
-    initiatorQuery:
-      in: query
-      name: initiator
-      description: Show only events that are initiated by this account
-      explode: false
-      schema:
-        type: boolean
-        default: false
     collectionQuery:
       in: query
       name: collection
@@ -823,7 +736,121 @@ components:
         type: string
         format: address
         example: 0:06d811f426598591b32b2c49f29f66c821368e4acb1de16762b04e0174532465
+    accountIDParameter:
+      in: path
+      name: account_id
+      required: true
+      description: account ID
+      schema:
+        type: string
+        format: address
+        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+    supportedExtensions:
+      in: query
+      name: supported_extensions
+      description: comma separated list supported extensions
+      explode: false
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+        example:
+        - custom_payload
+        - defi
+    initiatorQuery:
+      in: query
+      name: initiator
+      description: Show only events that are initiated by this account
+      explode: false
+      schema:
+        type: boolean
+        default: false
+    limitQuery:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        default: 1000
+        maximum: 1000
+        minimum: 1
+    periodQuery:
+      in: query
+      name: period
+      required: false
+      description: number of days before expiration
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 3660
+    currenciesQuery:
+      in: query
+      name: currencies
+      description: accept gram and all possible fiat currencies, separated by commas
+      required: false
+      explode: false
+      schema:
+        type: array
+        items:
+          type: string
+        example:
+        - gram
+        - usd
+        - rub
+    ecIDParameter:
+      in: path
+      name: id
+      required: true
+      description: extra currency id
+      schema:
+        type: integer
+        example: 239
+        format: int32
+    i18n:
+      in: header
+      name: Accept-Language
+      required: false
+      schema:
+        type: string
+        example: ru-RU,ru;q=0.5
+        default: en
+    eventIDParameter:
+      in: path
+      name: event_id
+      required: true
+      description: event ID or transaction hash in hex (without 0x) or base64url format
+      schema:
+        type: string
+        example: 97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
   schemas:
+    UnSubscriptionAction:
+      type: object
+      required:
+      - subscriber
+      - subscription
+      - beneficiary
+      - admin
+      properties:
+        subscriber:
+          $ref: '#/components/schemas/AccountAddress'
+        subscription:
+          type: string
+          format: address
+          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+        beneficiary:
+          $ref: '#/components/schemas/AccountAddress'
+        admin:
+          $ref: '#/components/schemas/AccountAddress'
+    DefiAssetType:
+      type: string
+      enum:
+      - staking
+      - lending_supply
+      - lending_borrow
+      - liquid_staking
+      - liquid_pool
+      - yield_token
     EncryptedComment:
       type: object
       required:
@@ -836,256 +863,106 @@ components:
         cipher_text:
           type: string
           example: A6A0BD6608672B...CE3AF8DB
-    TraceID:
+    DepositTokenStakeAction:
       type: object
       required:
-      - id
-      - utime
+      - staker
+      - protocol
       properties:
-        id:
-          type: string
-          example: 55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
-        utime:
-          type: integer
-          format: int64
-          example: 1645544908
-    FoundAccounts:
-      type: object
-      required:
-      - addresses
-      properties:
-        addresses:
-          type: array
-          items:
-            type: object
-            required:
-            - address
-            - name
-            - preview
-            - trust
-            properties:
-              address:
-                type: string
-                format: address
-              name:
-                type: string
-                example: blah_blah.ton
-              preview:
-                type: string
-                example: https://cache.tonapi.io/images/media.jpg
-              trust:
-                $ref: '#/components/schemas/TrustType'
-    RemoveExtensionAction:
-      type: object
-      required:
-      - wallet
-      - extension
-      properties:
-        wallet:
+        staker:
           $ref: '#/components/schemas/AccountAddress'
-        extension:
-          type: string
-          format: address
-          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
-    AccountEvents:
-      type: object
-      description: Paginated list of events for a single account.
-      required:
-      - events
-      - next_from
-      properties:
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccountEvent'
-        next_from:
-          type: integer
-          format: int64
-          example: 25713146000001
-    DefiAssets:
+        protocol:
+          $ref: '#/components/schemas/Protocol'
+        stake_meta:
+          $ref: '#/components/schemas/Price'
+    WithdrawTokenStakeRequestAction:
       type: object
       required:
-      - assets
+      - staker
+      - protocol
       properties:
-        assets:
-          type: array
-          items:
-            $ref: '#/components/schemas/DefiAsset'
-    DnsExpiring:
-      type: object
-      required:
-      - items
-      properties:
-        items:
-          type: array
-          items:
-            type: object
-            required:
-            - expiring_at
-            - name
-            properties:
-              expiring_at:
-                type: integer
-                format: int64
-                example: 1678275313
-              name:
-                type: string
-                example: blah_blah.ton
-              dns_item:
-                $ref: '#/components/schemas/NftItem'
-    DefiAsset:
-      type: object
-      required:
-      - type
-      - amount
-      - defi_provider
-      - locked_asset
-      properties:
-        type:
-          $ref: '#/components/schemas/DefiAssetType'
-        amount:
-          type: string
-          x-js-format: bigint
-          description: amount in minimal units of the locked asset
-          example: '1000000000'
-        pool_address:
-          type: string
-          format: address
-        asset_address:
-          type: string
-          format: address
-        defi_provider:
-          $ref: '#/components/schemas/DefiProvider'
-        locked_asset:
-          $ref: '#/components/schemas/DefiLockedAsset'
-    Sale:
+        staker:
+          $ref: '#/components/schemas/AccountAddress'
+        protocol:
+          $ref: '#/components/schemas/Protocol'
+        stake_meta:
+          $ref: '#/components/schemas/Price'
+    MultisigOrder:
       type: object
       required:
       - address
-      - market
-      - price
+      - order_seqno
+      - threshold
+      - sent_for_execution
+      - signers
+      - approvals_num
+      - expiration_date
+      - risk
+      - creation_date
+      - signed_by
+      - multisig_address
       properties:
         address:
           type: string
           format: address
-          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
-        market:
-          $ref: '#/components/schemas/AccountAddress'
-        owner:
-          $ref: '#/components/schemas/AccountAddress'
-        price:
-          $ref: '#/components/schemas/Price'
-    SubscriptionAction:
-      type: object
-      required:
-      - subscriber
-      - subscription
-      - beneficiary
-      - admin
-      - price
-      - initial
-      properties:
-        subscriber:
-          $ref: '#/components/schemas/AccountAddress'
-        subscription:
+          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+        order_seqno:
+          type: string
+        threshold:
+          type: integer
+          format: int32
+        sent_for_execution:
+          type: boolean
+          example: false
+        signers:
+          type: array
+          items:
+            type: string
+            format: address
+            example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+        approvals_num:
+          type: integer
+          format: int32
+        expiration_date:
+          type: integer
+          format: int64
+        risk:
+          $ref: '#/components/schemas/Risk'
+        creation_date:
+          type: integer
+          format: int64
+        signed_by:
+          type: array
+          items:
+            type: string
+            format: address
+            example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+        multisig_address:
           type: string
           format: address
           example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        beneficiary:
-          $ref: '#/components/schemas/AccountAddress'
-        admin:
-          $ref: '#/components/schemas/AccountAddress'
-        amount:
-          deprecated: true
-          type: integer
-          format: int64
-          example: 1000000000
-          x-js-format: bigint
-        price:
-          $ref: '#/components/schemas/Price'
-        initial:
-          type: boolean
-          example: false
-    JettonOperations:
-      type: object
-      required:
-      - operations
-      properties:
-        operations:
-          type: array
-          items:
-            $ref: '#/components/schemas/JettonOperation'
-        next_from:
-          type: integer
-          format: int64
-          example: 25713146000001
-          x-js-format: bigint
-    JettonTransferAction:
-      type: object
-      required:
-      - amount
-      - jetton
-      - senders_wallet
-      - recipients_wallet
-      properties:
-        sender:
-          $ref: '#/components/schemas/AccountAddress'
-        recipient:
-          $ref: '#/components/schemas/AccountAddress'
-        senders_wallet:
-          type: string
-          format: address
-          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
-        recipients_wallet:
-          type: string
-          format: address
-          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
-        amount:
-          type: string
-          x-js-format: bigint
-          example: '1000000000'
-          description: amount in quanta of tokens
-        comment:
-          type: string
-          example: "Hi! This is your salary. \nFrom accounting with love."
-        encrypted_comment:
-          $ref: '#/components/schemas/EncryptedComment'
-        refund:
-          $ref: '#/components/schemas/Refund'
-        jetton:
-          $ref: '#/components/schemas/JettonPreview'
-    ActionSimplePreview:
-      type: object
-      description: shortly describes what this action is about.
-      required:
-      - name
-      - description
-      - accounts
-      properties:
-        name:
-          type: string
-          example: Gram Transfer
-        description:
-          type: string
-          example: Transferring 5 Gram
-        action_image:
-          type: string
-          description: a link to an image for this particular action.
-        value:
-          type: string
-          example: 5 Gram
-        fiat_value:
-          type: string
-          description: the value of this action expressed in the requested fiat currency.
-          example: 4.99 USD
-        value_image:
-          type: string
-          description: a link to an image that depicts this action's asset.
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccountAddress'
-    AddExtensionAction:
+        changing_parameters:
+          type: object
+          required:
+          - threshold
+          - signers
+          - proposers
+          properties:
+            threshold:
+              type: integer
+              format: int32
+            signers:
+              type: array
+              items:
+                type: string
+                format: address
+                example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+            proposers:
+              type: array
+              items:
+                type: string
+                format: address
+    RemoveExtensionAction:
       type: object
       required:
       - wallet
@@ -1110,579 +987,6 @@ components:
           x-js-format: bigint
         staker:
           $ref: '#/components/schemas/AccountAddress'
-    WithdrawXTRAction:
-      type: object
-      required:
-      - user
-      - amount
-      properties:
-        user:
-          $ref: '#/components/schemas/AccountAddress'
-        amount:
-          type: string
-          x-js-format: bigint
-          example: '123000000000'
-    DefiLockedAsset:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          description: native Gram or jetton asset
-          enum:
-          - native
-          - jetton
-        jetton:
-          $ref: '#/components/schemas/JettonPreview'
-    NftItems:
-      type: object
-      required:
-      - nft_items
-      properties:
-        nft_items:
-          type: array
-          items:
-            $ref: '#/components/schemas/NftItem'
-    JettonsBalances:
-      type: object
-      required:
-      - balances
-      properties:
-        balances:
-          type: array
-          items:
-            $ref: '#/components/schemas/JettonBalance'
-    AccountAddress:
-      type: object
-      required:
-      - address
-      - is_scam
-      - is_wallet
-      properties:
-        address:
-          type: string
-          format: maybe-address
-          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
-        name:
-          type: string
-          example: Ton foundation
-          description: Display name. Data collected from different sources like moderation lists, dns, collections names and over.
-        is_scam:
-          type: boolean
-          example: true
-          description: Is this account was marked as part of scammers activity
-        icon:
-          type: string
-          example: https://ton.org/logo.png
-        is_wallet:
-          type: boolean
-          example: true
-    TraceIDs:
-      type: object
-      required:
-      - traces
-      properties:
-        traces:
-          type: array
-          items:
-            $ref: '#/components/schemas/TraceID'
-    TonTransferAction:
-      type: object
-      required:
-      - sender
-      - recipient
-      - amount
-      properties:
-        sender:
-          $ref: '#/components/schemas/AccountAddress'
-        recipient:
-          $ref: '#/components/schemas/AccountAddress'
-        amount:
-          type: integer
-          description: amount in nanograms
-          format: int64
-          example: 123456789
-          x-js-format: bigint
-        comment:
-          type: string
-          example: "Hi! This is your salary. \nFrom accounting with love."
-        encrypted_comment:
-          $ref: '#/components/schemas/EncryptedComment'
-        refund:
-          $ref: '#/components/schemas/Refund'
-    JettonPreview:
-      type: object
-      required:
-      - address
-      - name
-      - symbol
-      - decimals
-      - verification
-      - image
-      - score
-      properties:
-        address:
-          type: string
-          format: address
-          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
-        name:
-          type: string
-          example: Wrapped TON
-        symbol:
-          type: string
-          example: WTON
-        decimals:
-          type: integer
-          example: 9
-        image:
-          type: string
-          example: https://cache.tonapi.io/images/jetton.jpg
-        verification:
-          $ref: '#/components/schemas/JettonVerificationType'
-        custom_payload_api_uri:
-          type: string
-        score:
-          type: integer
-          format: int32
-        scaled_ui:
-          $ref: '#/components/schemas/ScaledUI'
-        description:
-          type: string
-    UnSubscriptionAction:
-      type: object
-      required:
-      - subscriber
-      - subscription
-      - beneficiary
-      - admin
-      properties:
-        subscriber:
-          $ref: '#/components/schemas/AccountAddress'
-        subscription:
-          type: string
-          format: address
-          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        beneficiary:
-          $ref: '#/components/schemas/AccountAddress'
-        admin:
-          $ref: '#/components/schemas/AccountAddress'
-    Metadata:
-      type: object
-      required:
-      - encrypted_binary
-      properties:
-        encrypted_binary:
-          type: string
-          description: hex encoded bytes
-        decryption_key:
-          type: string
-          description: hex encoded bytes
-          example: dead.....beef
-    FlawedJettonTransferAction:
-      type: object
-      required:
-      - sent_amount
-      - received_amount
-      - jetton
-      - senders_wallet
-      - recipients_wallet
-      properties:
-        sender:
-          $ref: '#/components/schemas/AccountAddress'
-        recipient:
-          $ref: '#/components/schemas/AccountAddress'
-        senders_wallet:
-          type: string
-          format: address
-          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
-        recipients_wallet:
-          type: string
-          format: address
-          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
-        sent_amount:
-          type: string
-          x-js-format: bigint
-          example: '1000000000'
-          description: sent amount in quanta of tokens
-        received_amount:
-          type: string
-          x-js-format: bigint
-          example: '1000000000'
-          description: actually received amount in quanta of tokens
-        comment:
-          type: string
-          example: "Hi! This is your salary. \nFrom accounting with love."
-        encrypted_comment:
-          $ref: '#/components/schemas/EncryptedComment'
-        refund:
-          $ref: '#/components/schemas/Refund'
-        jetton:
-          $ref: '#/components/schemas/JettonPreview'
-    DefiAssetType:
-      type: string
-      enum:
-      - staking
-      - lending_supply
-      - lending_borrow
-      - liquid_staking
-      - liquid_pool
-      - yield_token
-    DepositStakeAction:
-      description: validator's participation in elections
-      type: object
-      required:
-      - amount
-      - staker
-      - pool
-      - implementation
-      properties:
-        amount:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 1660050553
-        staker:
-          $ref: '#/components/schemas/AccountAddress'
-        pool:
-          $ref: '#/components/schemas/AccountAddress'
-        implementation:
-          $ref: '#/components/schemas/PoolImplementationType'
-        stake_meta:
-          description: If present, should be used instead of amount
-          $ref: '#/components/schemas/Price'
-    OracleRequestAction:
-      type: object
-      required:
-      - requester
-      - response_to
-      - price_feeds
-      properties:
-        requester:
-          $ref: '#/components/schemas/AccountAddress'
-        response_to:
-          $ref: '#/components/schemas/AccountAddress'
-        price_feeds:
-          type: array
-          items:
-            $ref: '#/components/schemas/OraclePriceFeed'
-    NftItemTransferAction:
-      type: object
-      required:
-      - nft
-      properties:
-        sender:
-          $ref: '#/components/schemas/AccountAddress'
-        recipient:
-          $ref: '#/components/schemas/AccountAddress'
-        nft:
-          type: string
-          format: maybe-address
-          example: ''
-        comment:
-          type: string
-          example: "Hi! This is your salary. \nFrom accounting with love."
-        encrypted_comment:
-          $ref: '#/components/schemas/EncryptedComment'
-        payload:
-          type: string
-          description: raw hex encoded payload
-          example: 0234de3e21d21b3ee21f3
-        refund:
-          $ref: '#/components/schemas/Refund'
-    PoolImplementationType:
-      type: string
-      enum:
-      - whales
-      - tf
-      - liquidTF
-      - ffvault
-    JettonSwapAction:
-      type: object
-      required:
-      - dex
-      - amount_in
-      - amount_out
-      - user_wallet
-      - router
-      properties:
-        dex:
-          type: string
-          example: stonfi
-        amount_in:
-          type: string
-          x-js-format: bigint
-          example: '1660050553'
-        amount_out:
-          type: string
-          x-js-format: bigint
-          example: '1660050553'
-        ton_in:
-          type: integer
-          example: 1000000000
-          format: int64
-          x-js-format: bigint
-          deprecated: true
-          description: this field will gone after Sept. 2026, use gram_in instead
-        ton_out:
-          type: integer
-          example: 2000000000
-          format: int64
-          x-js-format: bigint
-          deprecated: true
-          description: this field will gone after Sept. 2026, use gram_out instead
-        gram_in:
-          type: integer
-          example: 1000000000
-          format: int64
-          x-js-format: bigint
-        gram_out:
-          type: integer
-          example: 2000000000
-          format: int64
-          x-js-format: bigint
-        user_wallet:
-          $ref: '#/components/schemas/AccountAddress'
-        router:
-          $ref: '#/components/schemas/AccountAddress'
-        jetton_master_in:
-          $ref: '#/components/schemas/JettonPreview'
-        jetton_master_out:
-          $ref: '#/components/schemas/JettonPreview'
-    Refund:
-      type: object
-      required:
-      - type
-      - origin
-      properties:
-        type:
-          type: string
-          example: DNS.ton
-          enum:
-          - DNS.ton
-          - DNS.tg
-          - GetGems
-        origin:
-          type: string
-          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-    OraclePriceFeed:
-      type: object
-      required:
-      - id
-      - display_symbol
-      properties:
-        id:
-          type: string
-          example: e62df6c8b4a85fe1a67f1c4d1f1e1d4335c04d1d7e2c50e0d7da7ad911f2d4
-        display_symbol:
-          type: string
-          example: GRAM/USD
-        rate:
-          type: number
-          format: double
-          example: 5.24
-    Accounts:
-      type: object
-      required:
-      - accounts
-      properties:
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-    Protocol:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-          example: Ethena
-        image:
-          type: string
-          example: https://cache.tonapi.io/images/jetton.jpg
-    ElectionsRecoverStakeAction:
-      type: object
-      required:
-      - amount
-      - staker
-      properties:
-        amount:
-          type: integer
-          format: int64
-          example: 1660050553
-          x-js-format: bigint
-        staker:
-          $ref: '#/components/schemas/AccountAddress'
-    JettonBalance:
-      type: object
-      required:
-      - balance
-      - wallet_address
-      - jetton
-      properties:
-        balance:
-          type: string
-          x-js-format: bigint
-          example: '597968399'
-        price:
-          $ref: '#/components/schemas/TokenRates'
-        wallet_address:
-          $ref: '#/components/schemas/AccountAddress'
-        jetton:
-          $ref: '#/components/schemas/JettonPreview'
-        defi_asset:
-          $ref: '#/components/schemas/JettonAssetInfo'
-        extensions:
-          type: array
-          items:
-            type: string
-          example:
-          - custom_payload
-          - non_transferable
-        lock:
-          type: object
-          required:
-          - amount
-          - till
-          properties:
-            amount:
-              type: string
-              x-js-format: bigint
-              example: '597968399'
-            till:
-              type: integer
-              format: int64
-              example: 1678223064
-    ExtraCurrencyTransferAction:
-      type: object
-      required:
-      - sender
-      - recipient
-      - amount
-      - currency
-      properties:
-        sender:
-          $ref: '#/components/schemas/AccountAddress'
-        recipient:
-          $ref: '#/components/schemas/AccountAddress'
-        amount:
-          type: string
-          x-js-format: bigint
-          example: '1000000000'
-          description: amount in quanta of tokens
-        comment:
-          type: string
-          example: "Hi! This is your salary. \nFrom accounting with love."
-        encrypted_comment:
-          $ref: '#/components/schemas/EncryptedComment'
-        currency:
-          $ref: '#/components/schemas/EcPreview'
-    Risk:
-      type: object
-      description: 'Conservative upper bound on assets this wallet may lose if the emulated message is sent and the counterparty behaves maliciously. Values may exceed current balances (e.g. already-authorized future receipts). For UI display only.
-
-        '
-      required:
-      - transfer_all_remaining_balance
-      - gram
-      - jettons
-      - nfts
-      properties:
-        transfer_all_remaining_balance:
-          type: boolean
-          description: 'True if the message semantics allow sweeping all current and future remaining Gram balance of the wallet (e.g. “send all” / drain patterns).
-
-            '
-          example: true
-        ton:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 500
-          deprecated: true
-          description: this field will gone after Sept. 2026, use gram instead
-        gram:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 500
-          description: Maximum Gram amount that may leave the wallet in the worst case, in nanogram.
-        jettons:
-          type: array
-          description: Jetton positions that may be debited from the wallet in the worst case.
-          items:
-            $ref: '#/components/schemas/JettonQuantity'
-        nfts:
-          type: array
-          description: NFT items that may be transferred out of the wallet in the worst case.
-          items:
-            $ref: '#/components/schemas/NftItem'
-        total_equivalent:
-          type: number
-          format: float
-          description: 'Estimated equivalent of all assets at risk (Gram, jettons, NFTs) in the selected currency from currencyQuery (e.g. USD). Approximate, best-effort UI value.
-
-            '
-    SmartContractAction:
-      type: object
-      required:
-      - executor
-      - contract
-      - gram_attached
-      - operation
-      properties:
-        executor:
-          $ref: '#/components/schemas/AccountAddress'
-        contract:
-          $ref: '#/components/schemas/AccountAddress'
-        ton_attached:
-          type: integer
-          description: amount in nanograms
-          format: int64
-          example: 123456789
-          x-js-format: bigint
-          deprecated: true
-        gram_attached:
-          type: integer
-          description: amount in nanograms
-          format: int64
-          example: 123456789
-          x-js-format: bigint
-        operation:
-          type: string
-          example: NftTransfer or 0x35d95a12
-        payload:
-          type: string
-        refund:
-          $ref: '#/components/schemas/Refund'
-    PurchaseAction:
-      type: object
-      required:
-      - source
-      - destination
-      - invoice_id
-      - amount
-      - metadata
-      properties:
-        source:
-          $ref: '#/components/schemas/AccountAddress'
-        destination:
-          $ref: '#/components/schemas/AccountAddress'
-        invoice_id:
-          type: string
-          example: 03cfc582-b1c3-410a-a9a7-1f3afe326b3b
-        amount:
-          $ref: '#/components/schemas/Price'
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-    JettonVerificationType:
-      type: string
-      enum:
-      - whitelist
-      - graylist
-      - blacklist
-      - none
     DomainRenewAction:
       type: object
       required:
@@ -1699,158 +1003,37 @@ components:
           example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
         renewer:
           $ref: '#/components/schemas/AccountAddress'
-    Subscription:
+    Price:
       type: object
       required:
-      - type
-      - status
-      - period
-      - subscription_id
-      - payment_per_period
-      - wallet
-      - next_charge_at
-      - metadata
+      - currency_type
+      - value
+      - decimals
+      - token_name
+      - verification
+      - image
       properties:
-        type:
-          type: string
-          description: type of subscription
-          example: v2
-        status:
-          type: string
-          enum:
-          - not_ready
-          - active
-          - suspended
-          - cancelled
-        period:
-          type: integer
-          description: payment period in seconds
-          format: int64
-          example: 2592000
-        subscription_id:
-          type: string
-          description: common identifier
-        payment_per_period:
-          $ref: '#/components/schemas/Price'
-        wallet:
-          $ref: '#/components/schemas/AccountAddress'
-        next_charge_at:
-          type: integer
-          format: int64
-          example: 1653996834
-        metadata:
-          $ref: '#/components/schemas/Metadata'
-        address:
-          type: string
-          format: maybe-address
-          example: 0:dea8f638b789172ce36d10a20318125e52c649aa84893cd77858224fe2b9b0ee
-        beneficiary:
-          $ref: '#/components/schemas/AccountAddress'
-        admin:
-          $ref: '#/components/schemas/AccountAddress'
-    ImagePreview:
-      type: object
-      required:
-      - resolution
-      - url
-      properties:
-        resolution:
-          type: string
-          example: 100x100
-        url:
-          type: string
-          example: https://site.com/pic1.jpg
-    InsufficientFunds:
-      type: object
-      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
-
-        '
-      required:
-      - required
-      - available
-      properties:
-        required:
-          type: integer
-          format: int64
-          description: TON in nanotons required to cover transfer gas
-          x-js-format: bigint
-        available:
-          type: integer
-          format: int64
-          description: TON in nanotons currently available on the source wallet
-          x-js-format: bigint
-    DepositTokenStakeAction:
-      type: object
-      required:
-      - staker
-      - protocol
-      properties:
-        staker:
-          $ref: '#/components/schemas/AccountAddress'
-        protocol:
-          $ref: '#/components/schemas/Protocol'
-        stake_meta:
-          $ref: '#/components/schemas/Price'
-    BuyXTRAction:
-      type: object
-      required:
-      - recipient
-      - amount
-      properties:
-        recipient:
-          $ref: '#/components/schemas/AccountAddress'
-        amount:
+        currency_type:
+          $ref: '#/components/schemas/CurrencyType'
+        value:
           type: string
           x-js-format: bigint
           example: '123000000000'
-    TrustType:
-      type: string
-      example: whitelist
-      enum:
-      - whitelist
-      - graylist
-      - blacklist
-      - none
-    AccountStatus:
-      type: string
-      example: active
-      enum:
-      - nonexist
-      - uninit
-      - active
-      - frozen
-    CurrencyType:
-      type: string
-      example: jetton
-      enum:
-      - native
-      - extra_currency
-      - jetton
-      - fiat
-    NftPurchaseAction:
-      type: object
-      required:
-      - amount
-      - seller
-      - buyer
-      - auction_type
-      - nft
-      properties:
-        auction_type:
+        decimals:
+          type: integer
+          example: 9
+        token_name:
           type: string
-          enum:
-          - DNS.ton
-          - DNS.tg
-          - NUMBER.tg
-          - getgems
-        amount:
-          $ref: '#/components/schemas/Price'
-        nft:
-          $ref: '#/components/schemas/NftItem'
-        seller:
-          $ref: '#/components/schemas/AccountAddress'
-        buyer:
-          $ref: '#/components/schemas/AccountAddress'
+          example: Gram
+        verification:
+          $ref: '#/components/schemas/TrustType'
+        image:
+          type: string
+          example: https://cache.tonapi.io/images/jetton.jpg
+        jetton:
+          type: string
+          format: address
+          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
     Action:
       type: object
       required:
@@ -1974,6 +1157,334 @@ components:
             type: string
             description: transaction hash
             example: e8b0e3fee4a26bd2317ac1f9952fcdc87dc08fdb617656b5202416323337372e
+    TraceIDs:
+      type: object
+      required:
+      - traces
+      properties:
+        traces:
+          type: array
+          items:
+            $ref: '#/components/schemas/TraceID'
+    JettonTransferAction:
+      type: object
+      required:
+      - amount
+      - jetton
+      - senders_wallet
+      - recipients_wallet
+      properties:
+        sender:
+          $ref: '#/components/schemas/AccountAddress'
+        recipient:
+          $ref: '#/components/schemas/AccountAddress'
+        senders_wallet:
+          type: string
+          format: address
+          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
+        recipients_wallet:
+          type: string
+          format: address
+          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
+        amount:
+          type: string
+          x-js-format: bigint
+          example: '1000000000'
+          description: amount in quanta of tokens
+        comment:
+          type: string
+          example: "Hi! This is your salary. \nFrom accounting with love."
+        encrypted_comment:
+          $ref: '#/components/schemas/EncryptedComment'
+        refund:
+          $ref: '#/components/schemas/Refund'
+        jetton:
+          $ref: '#/components/schemas/JettonPreview'
+    OraclePriceFeed:
+      type: object
+      required:
+      - id
+      - display_symbol
+      properties:
+        id:
+          type: string
+          example: e62df6c8b4a85fe1a67f1c4d1f1e1d4335c04d1d7e2c50e0d7da7ad911f2d4
+        display_symbol:
+          type: string
+          example: GRAM/USD
+        rate:
+          type: number
+          format: double
+          example: 5.24
+    PurchaseAction:
+      type: object
+      required:
+      - source
+      - destination
+      - invoice_id
+      - amount
+      - metadata
+      properties:
+        source:
+          $ref: '#/components/schemas/AccountAddress'
+        destination:
+          $ref: '#/components/schemas/AccountAddress'
+        invoice_id:
+          type: string
+          example: 03cfc582-b1c3-410a-a9a7-1f3afe326b3b
+        amount:
+          $ref: '#/components/schemas/Price'
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+    ContractDeployAction:
+      type: object
+      required:
+      - address
+      - interfaces
+      properties:
+        address:
+          type: string
+          format: address
+          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+        interfaces:
+          type: array
+          items:
+            type: string
+          example:
+          - nft_item
+          - nft_royalty
+    VaultDepositInfo:
+      type: object
+      required:
+      - price
+      - vault
+      properties:
+        price:
+          $ref: '#/components/schemas/Price'
+        vault:
+          type: string
+          format: address
+          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
+    Account:
+      type: object
+      required:
+      - address
+      - balance
+      - status
+      - last_activity
+      - get_methods
+      - is_wallet
+      properties:
+        address:
+          type: string
+          format: address
+          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+        balance:
+          type: integer
+          format: int64
+          example: 123456789
+          x-js-format: bigint
+        extra_balance:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExtraCurrency'
+        currencies_balance:
+          description: '{''USD'': 1, ''IDR'': 1000}'
+          type: object
+          additionalProperties: true
+          example: {}
+        last_activity:
+          type: integer
+          description: unix timestamp
+          format: int64
+          example: 1720860269
+        status:
+          $ref: '#/components/schemas/AccountStatus'
+        interfaces:
+          type: array
+          items:
+            type: string
+            example: nft_sale
+        name:
+          type: string
+          example: Ton foundation
+        is_scam:
+          type: boolean
+          example: true
+        icon:
+          type: string
+          example: https://ton.org/logo.png
+        memo_required:
+          type: boolean
+          example: true
+        get_methods:
+          type: array
+          items:
+            type: string
+          example:
+          - get_item_data
+        is_suspended:
+          type: boolean
+        is_wallet:
+          type: boolean
+    AddExtensionAction:
+      type: object
+      required:
+      - wallet
+      - extension
+      properties:
+        wallet:
+          $ref: '#/components/schemas/AccountAddress'
+        extension:
+          type: string
+          format: address
+          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
+    JettonOperations:
+      type: object
+      required:
+      - operations
+      properties:
+        operations:
+          type: array
+          items:
+            $ref: '#/components/schemas/JettonOperation'
+        next_from:
+          type: integer
+          format: int64
+          example: 25713146000001
+          x-js-format: bigint
+    FoundAccounts:
+      type: object
+      required:
+      - addresses
+      properties:
+        addresses:
+          type: array
+          items:
+            type: object
+            required:
+            - address
+            - name
+            - preview
+            - trust
+            properties:
+              address:
+                type: string
+                format: address
+              name:
+                type: string
+                example: blah_blah.ton
+              preview:
+                type: string
+                example: https://cache.tonapi.io/images/media.jpg
+              trust:
+                $ref: '#/components/schemas/TrustType'
+    AccountEvents:
+      type: object
+      description: Paginated list of events for a single account.
+      required:
+      - events
+      - next_from
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountEvent'
+        next_from:
+          type: integer
+          format: int64
+          example: 25713146000001
+    SubscriptionAction:
+      type: object
+      required:
+      - subscriber
+      - subscription
+      - beneficiary
+      - admin
+      - price
+      - initial
+      properties:
+        subscriber:
+          $ref: '#/components/schemas/AccountAddress'
+        subscription:
+          type: string
+          format: address
+          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+        beneficiary:
+          $ref: '#/components/schemas/AccountAddress'
+        admin:
+          $ref: '#/components/schemas/AccountAddress'
+        amount:
+          deprecated: true
+          type: integer
+          format: int64
+          example: 1000000000
+          x-js-format: bigint
+        price:
+          $ref: '#/components/schemas/Price'
+        initial:
+          type: boolean
+          example: false
+    TrustType:
+      type: string
+      example: whitelist
+      enum:
+      - whitelist
+      - graylist
+      - blacklist
+      - none
+    JettonSwapAction:
+      type: object
+      required:
+      - dex
+      - amount_in
+      - amount_out
+      - user_wallet
+      - router
+      properties:
+        dex:
+          type: string
+          example: stonfi
+        amount_in:
+          type: string
+          x-js-format: bigint
+          example: '1660050553'
+        amount_out:
+          type: string
+          x-js-format: bigint
+          example: '1660050553'
+        ton_in:
+          type: integer
+          example: 1000000000
+          format: int64
+          x-js-format: bigint
+          deprecated: true
+          description: this field will gone after Sept. 2026, use gram_in instead
+        ton_out:
+          type: integer
+          example: 2000000000
+          format: int64
+          x-js-format: bigint
+          deprecated: true
+          description: this field will gone after Sept. 2026, use gram_out instead
+        gram_in:
+          type: integer
+          example: 1000000000
+          format: int64
+          x-js-format: bigint
+        gram_out:
+          type: integer
+          example: 2000000000
+          format: int64
+          x-js-format: bigint
+        user_wallet:
+          $ref: '#/components/schemas/AccountAddress'
+        router:
+          $ref: '#/components/schemas/AccountAddress'
+        jetton_master_in:
+          $ref: '#/components/schemas/JettonPreview'
+        jetton_master_out:
+          $ref: '#/components/schemas/JettonPreview'
     TokenRates:
       type: object
       properties:
@@ -2001,25 +1512,49 @@ components:
             type: string
           example:
             GRAM: -0.56%
-    DomainNames:
+    Metadata:
       type: object
       required:
-      - domains
+      - encrypted_binary
       properties:
-        domains:
-          type: array
-          items:
-            type: string
-            example: vasya.ton
-    Multisigs:
+        encrypted_binary:
+          type: string
+          description: hex encoded bytes
+        decryption_key:
+          type: string
+          description: hex encoded bytes
+          example: dead.....beef
+    BuyXTRAction:
       type: object
       required:
-      - multisigs
+      - recipient
+      - amount
       properties:
-        multisigs:
+        recipient:
+          $ref: '#/components/schemas/AccountAddress'
+        amount:
+          type: string
+          x-js-format: bigint
+          example: '123000000000'
+    Subscriptions:
+      type: object
+      required:
+      - subscriptions
+      properties:
+        subscriptions:
           type: array
           items:
-            $ref: '#/components/schemas/Multisig'
+            $ref: '#/components/schemas/Subscription'
+    SetSignatureAllowedAction:
+      type: object
+      required:
+      - wallet
+      - allowed
+      properties:
+        wallet:
+          $ref: '#/components/schemas/AccountAddress'
+        allowed:
+          type: boolean
     NftItem:
       type: object
       required:
@@ -2090,143 +1625,316 @@ components:
         data_hash:
           type: string
           description: Hash of the NFT item account data cell (hex)
-    Account:
+    GasRelayAction:
       type: object
       required:
-      - address
-      - balance
-      - status
-      - last_activity
-      - get_methods
-      - is_wallet
+      - amount
+      - relayer
+      - target
       properties:
-        address:
-          type: string
-          format: address
-          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        balance:
+        amount:
           type: integer
+          format: int64
+          x-js-format: bigint
+          example: 1000000000
+        relayer:
+          $ref: '#/components/schemas/AccountAddress'
+        target:
+          $ref: '#/components/schemas/AccountAddress'
+    Accounts:
+      type: object
+      required:
+      - accounts
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+    NftItemTransferAction:
+      type: object
+      required:
+      - nft
+      properties:
+        sender:
+          $ref: '#/components/schemas/AccountAddress'
+        recipient:
+          $ref: '#/components/schemas/AccountAddress'
+        nft:
+          type: string
+          format: maybe-address
+          example: ''
+        comment:
+          type: string
+          example: "Hi! This is your salary. \nFrom accounting with love."
+        encrypted_comment:
+          $ref: '#/components/schemas/EncryptedComment'
+        payload:
+          type: string
+          description: raw hex encoded payload
+          example: 0234de3e21d21b3ee21f3
+        refund:
+          $ref: '#/components/schemas/Refund'
+    PoolImplementationType:
+      type: string
+      enum:
+      - whales
+      - tf
+      - liquidTF
+      - ffvault
+    DefiLiquidPoolAssets:
+      type: object
+      required:
+      - asset0
+      - asset1
+      properties:
+        asset0:
+          $ref: '#/components/schemas/DefiLockedAsset'
+        asset1:
+          $ref: '#/components/schemas/DefiLockedAsset'
+    DepositStakeAction:
+      description: validator's participation in elections
+      type: object
+      required:
+      - amount
+      - staker
+      - pool
+      - implementation
+      properties:
+        amount:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 1660050553
+        staker:
+          $ref: '#/components/schemas/AccountAddress'
+        pool:
+          $ref: '#/components/schemas/AccountAddress'
+        implementation:
+          $ref: '#/components/schemas/PoolImplementationType'
+        stake_meta:
+          description: If present, should be used instead of amount
+          $ref: '#/components/schemas/Price'
+    NftItems:
+      type: object
+      required:
+      - nft_items
+      properties:
+        nft_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/NftItem'
+    WithdrawStakeRequestAction:
+      description: validator's participation in elections
+      type: object
+      required:
+      - staker
+      - pool
+      - implementation
+      properties:
+        amount:
+          type: integer
+          format: int64
+          example: 1660050553
+          x-js-format: bigint
+        staker:
+          $ref: '#/components/schemas/AccountAddress'
+        pool:
+          $ref: '#/components/schemas/AccountAddress'
+        implementation:
+          $ref: '#/components/schemas/PoolImplementationType'
+        stake_meta:
+          description: If present, should be used instead of amount
+          $ref: '#/components/schemas/Price'
+    Refund:
+      type: object
+      required:
+      - type
+      - origin
+      properties:
+        type:
+          type: string
+          example: DNS.ton
+          enum:
+          - DNS.ton
+          - DNS.tg
+          - GetGems
+        origin:
+          type: string
+          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+    DefiLockedAsset:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          description: native Gram or jetton asset
+          enum:
+          - native
+          - jetton
+        jetton:
+          $ref: '#/components/schemas/JettonPreview'
+    JettonOperation:
+      type: object
+      required:
+      - operation
+      - utime
+      - lt
+      - jetton
+      - transaction_hash
+      - amount
+      - trace_id
+      - query_id
+      properties:
+        operation:
+          type: string
+          example: transfer
+          enum:
+          - transfer
+          - mint
+          - burn
+        utime:
+          type: integer
+          format: int64
+          example: 1234567890
+        lt:
+          type: integer
+          format: int64
+          example: 25713146000001
+          x-js-format: bigint
+        transaction_hash:
+          type: string
+          example: cbf3e3d70ecf6f69643dd430761cd6004de2cacbdbc3029b0abd30ca3cc1c67e
+        source:
+          $ref: '#/components/schemas/AccountAddress'
+        destination:
+          $ref: '#/components/schemas/AccountAddress'
+        amount:
+          type: string
+          x-js-format: bigint
+          example: '1000000000'
+        jetton:
+          $ref: '#/components/schemas/JettonPreview'
+        trace_id:
+          type: string
+          example: 8fa19eec7bd6d00d0d76048cebe31e34082a859410c9fcf7d55ef4ff8f7fcb47
+        query_id:
+          type: string
+          example: '17286061481122318000'
+          x-js-format: bigint
+        payload: {}
+    TonTransferAction:
+      type: object
+      required:
+      - sender
+      - recipient
+      - amount
+      properties:
+        sender:
+          $ref: '#/components/schemas/AccountAddress'
+        recipient:
+          $ref: '#/components/schemas/AccountAddress'
+        amount:
+          type: integer
+          description: amount in nanograms
           format: int64
           example: 123456789
           x-js-format: bigint
-        extra_balance:
-          type: array
-          items:
-            $ref: '#/components/schemas/ExtraCurrency'
-        currencies_balance:
-          description: '{''USD'': 1, ''IDR'': 1000}'
-          type: object
-          additionalProperties: true
-          example: {}
-        last_activity:
+        comment:
+          type: string
+          example: "Hi! This is your salary. \nFrom accounting with love."
+        encrypted_comment:
+          $ref: '#/components/schemas/EncryptedComment'
+        refund:
+          $ref: '#/components/schemas/Refund'
+    Risk:
+      type: object
+      description: 'Conservative upper bound on assets this wallet may lose if the emulated message is sent and the counterparty behaves maliciously. Values may exceed current balances (e.g. already-authorized future receipts). For UI display only.
+
+        '
+      required:
+      - transfer_all_remaining_balance
+      - gram
+      - jettons
+      - nfts
+      properties:
+        transfer_all_remaining_balance:
+          type: boolean
+          description: 'True if the message semantics allow sweeping all current and future remaining Gram balance of the wallet (e.g. “send all” / drain patterns).
+
+            '
+          example: true
+        ton:
           type: integer
-          description: unix timestamp
           format: int64
-          example: 1720860269
-        status:
-          $ref: '#/components/schemas/AccountStatus'
-        interfaces:
+          x-js-format: bigint
+          example: 500
+          deprecated: true
+          description: this field will gone after Sept. 2026, use gram instead
+        gram:
+          type: integer
+          format: int64
+          x-js-format: bigint
+          example: 500
+          description: Maximum Gram amount that may leave the wallet in the worst case, in nanogram.
+        jettons:
           type: array
+          description: Jetton positions that may be debited from the wallet in the worst case.
           items:
-            type: string
-            example: nft_sale
-        name:
-          type: string
-          example: Ton foundation
-        is_scam:
-          type: boolean
-          example: true
-        icon:
-          type: string
-          example: https://ton.org/logo.png
-        memo_required:
-          type: boolean
-          example: true
-        get_methods:
+            $ref: '#/components/schemas/JettonQuantity'
+        nfts:
           type: array
+          description: NFT items that may be transferred out of the wallet in the worst case.
           items:
-            type: string
-          example:
-          - get_item_data
-        is_suspended:
-          type: boolean
-        is_wallet:
-          type: boolean
-    MultisigOrder:
+            $ref: '#/components/schemas/NftItem'
+        total_equivalent:
+          type: number
+          format: float
+          description: 'Estimated equivalent of all assets at risk (Gram, jettons, NFTs) in the selected currency from currencyQuery (e.g. USD). Approximate, best-effort UI value.
+
+            '
+    DepositXTRAction:
       type: object
       required:
-      - address
-      - order_seqno
-      - threshold
-      - sent_for_execution
-      - signers
-      - approvals_num
-      - expiration_date
-      - risk
-      - creation_date
-      - signed_by
-      - multisig_address
+      - recipient
+      - amount
       properties:
-        address:
+        recipient:
+          $ref: '#/components/schemas/AccountAddress'
+        amount:
           type: string
-          format: address
-          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        order_seqno:
-          type: string
-        threshold:
-          type: integer
-          format: int32
-        sent_for_execution:
-          type: boolean
-          example: false
-        signers:
+          x-js-format: bigint
+          example: '123000000000'
+    JettonAssetInfo:
+      type: object
+      required:
+      - token_type
+      - defi_provider
+      properties:
+        token_type:
+          $ref: '#/components/schemas/DefiAssetType'
+        type:
+          $ref: '#/components/schemas/DefiAssetType'
+        defi_provider:
+          $ref: '#/components/schemas/DefiProvider'
+        pool_assets:
+          $ref: '#/components/schemas/DefiLiquidPoolAssets'
+    JettonVerificationType:
+      type: string
+      enum:
+      - whitelist
+      - graylist
+      - blacklist
+      - none
+    JettonsBalances:
+      type: object
+      required:
+      - balances
+      properties:
+        balances:
           type: array
           items:
-            type: string
-            format: address
-            example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        approvals_num:
-          type: integer
-          format: int32
-        expiration_date:
-          type: integer
-          format: int64
-        risk:
-          $ref: '#/components/schemas/Risk'
-        creation_date:
-          type: integer
-          format: int64
-        signed_by:
-          type: array
-          items:
-            type: string
-            format: address
-            example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        multisig_address:
-          type: string
-          format: address
-          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        changing_parameters:
-          type: object
-          required:
-          - threshold
-          - signers
-          - proposers
-          properties:
-            threshold:
-              type: integer
-              format: int32
-            signers:
-              type: array
-              items:
-                type: string
-                format: address
-                example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-            proposers:
-              type: array
-              items:
-                type: string
-                format: address
+            $ref: '#/components/schemas/JettonBalance'
     AuctionBidAction:
       type: object
       required:
@@ -2250,112 +1958,59 @@ components:
           $ref: '#/components/schemas/AccountAddress'
         auction:
           $ref: '#/components/schemas/AccountAddress'
-    ContractDeployAction:
-      type: object
-      required:
-      - address
-      - interfaces
-      properties:
-        address:
-          type: string
-          format: address
-          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        interfaces:
-          type: array
-          items:
-            type: string
-          example:
-          - nft_item
-          - nft_royalty
-    JettonMintAction:
+    ElectionsRecoverStakeAction:
       type: object
       required:
       - amount
-      - jetton
-      - recipient
-      - recipients_wallet
+      - staker
       properties:
-        recipient:
-          $ref: '#/components/schemas/AccountAddress'
-        recipients_wallet:
-          type: string
-          format: address
-          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
         amount:
-          type: string
+          type: integer
+          format: int64
+          example: 1660050553
           x-js-format: bigint
-          example: '1000000000'
-          description: amount in quanta of tokens
-        jetton:
-          $ref: '#/components/schemas/JettonPreview'
-    JettonBurnAction:
-      type: object
-      required:
-      - amount
-      - jetton
-      - sender
-      - senders_wallet
-      properties:
-        sender:
+        staker:
           $ref: '#/components/schemas/AccountAddress'
-        senders_wallet:
-          type: string
-          format: address
-          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
-        amount:
-          type: string
-          x-js-format: bigint
-          example: '1000000000'
-          description: amount in quanta of tokens
-        jetton:
-          $ref: '#/components/schemas/JettonPreview'
-    DefiProvider:
+    JettonBalance:
       type: object
       required:
-      - name
-      - description
-      - link
-      - icon
-      - card
-      - full
-      - tag
-      properties:
-        name:
-          type: string
-          example: Morpho
-        description:
-          type: string
-          example: Earn up to 15% yield on your crypto
-        link:
-          type: string
-          example: https://lite.morpho.org/tac/earn/
-        miniapp_link:
-          type: string
-          example: https://t.me/MorphoOrgBot
-        icon:
-          type: string
-        card:
-          type: string
-        full:
-          type: string
-        tag:
-          type: string
-          example: morpho
-    JettonQuantity:
-      type: object
-      required:
-      - quantity
+      - balance
       - wallet_address
       - jetton
       properties:
-        quantity:
+        balance:
           type: string
           x-js-format: bigint
           example: '597968399'
+        price:
+          $ref: '#/components/schemas/TokenRates'
         wallet_address:
           $ref: '#/components/schemas/AccountAddress'
         jetton:
           $ref: '#/components/schemas/JettonPreview'
+        defi_asset:
+          $ref: '#/components/schemas/JettonAssetInfo'
+        extensions:
+          type: array
+          items:
+            type: string
+          example:
+          - custom_payload
+          - non_transferable
+        lock:
+          type: object
+          required:
+          - amount
+          - till
+          properties:
+            amount:
+              type: string
+              x-js-format: bigint
+              example: '597968399'
+            till:
+              type: integer
+              format: int64
+              example: 1678223064
     NftApprovedBy:
       type: array
       items:
@@ -2364,149 +2019,116 @@ components:
         enum:
         - getgems
         - tonkeeper
-    GasRelayAction:
+    WithdrawXTRAction:
       type: object
       required:
+      - user
       - amount
-      - relayer
-      - target
       properties:
+        user:
+          $ref: '#/components/schemas/AccountAddress'
         amount:
-          type: integer
-          format: int64
-          x-js-format: bigint
-          example: 1000000000
-        relayer:
-          $ref: '#/components/schemas/AccountAddress'
-        target:
-          $ref: '#/components/schemas/AccountAddress'
-    WithdrawStakeAction:
-      description: validator's participation in elections
-      type: object
-      required:
-      - amount
-      - staker
-      - pool
-      - implementation
-      properties:
-        amount:
-          type: integer
-          format: int64
-          example: 1660050553
-          x-js-format: bigint
-        staker:
-          $ref: '#/components/schemas/AccountAddress'
-        pool:
-          $ref: '#/components/schemas/AccountAddress'
-        implementation:
-          $ref: '#/components/schemas/PoolImplementationType'
-    ScaledUI:
-      type: object
-      required:
-      - numerator
-      - denominator
-      properties:
-        numerator:
           type: string
           x-js-format: bigint
-          example: '597968399'
-        denominator:
+          example: '123000000000'
+    Sale:
+      type: object
+      required:
+      - address
+      - market
+      - price
+      properties:
+        address:
           type: string
-          x-js-format: bigint
-          example: '597968399'
-    SetSignatureAllowedAction:
-      type: object
-      required:
-      - wallet
-      - allowed
-      properties:
-        wallet:
+          format: address
+          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
+        market:
           $ref: '#/components/schemas/AccountAddress'
-        allowed:
-          type: boolean
-    ExtraCurrency:
+        owner:
+          $ref: '#/components/schemas/AccountAddress'
+        price:
+          $ref: '#/components/schemas/Price'
+    ExtraCurrencyTransferAction:
       type: object
       required:
+      - sender
+      - recipient
       - amount
-      - preview
+      - currency
       properties:
+        sender:
+          $ref: '#/components/schemas/AccountAddress'
+        recipient:
+          $ref: '#/components/schemas/AccountAddress'
         amount:
           type: string
           x-js-format: bigint
           example: '1000000000'
-        preview:
+          description: amount in quanta of tokens
+        comment:
+          type: string
+          example: "Hi! This is your salary. \nFrom accounting with love."
+        encrypted_comment:
+          $ref: '#/components/schemas/EncryptedComment'
+        currency:
           $ref: '#/components/schemas/EcPreview'
-    LiquidityDepositAction:
+    InsufficientFunds:
       type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
       required:
-      - protocol
-      - from
-      - tokens
+      - required
+      - available
       properties:
-        protocol:
-          $ref: '#/components/schemas/Protocol'
-        from:
-          $ref: '#/components/schemas/AccountAddress'
-        tokens:
-          type: array
-          items:
-            $ref: '#/components/schemas/VaultDepositInfo'
-    WithdrawStakeRequestAction:
-      description: validator's participation in elections
-      type: object
-      required:
-      - staker
-      - pool
-      - implementation
-      properties:
-        amount:
+        required:
           type: integer
           format: int64
-          example: 1660050553
+          description: TON in nanotons required to cover transfer gas
           x-js-format: bigint
-        staker:
-          $ref: '#/components/schemas/AccountAddress'
-        pool:
-          $ref: '#/components/schemas/AccountAddress'
-        implementation:
-          $ref: '#/components/schemas/PoolImplementationType'
-        stake_meta:
-          description: If present, should be used instead of amount
-          $ref: '#/components/schemas/Price'
-    VaultDepositInfo:
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
+    JettonPreview:
       type: object
       required:
-      - price
-      - vault
+      - address
+      - name
+      - symbol
+      - decimals
+      - verification
+      - image
+      - score
       properties:
-        price:
-          $ref: '#/components/schemas/Price'
-        vault:
+        address:
           type: string
           format: address
           example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
-    WithdrawTokenStakeRequestAction:
-      type: object
-      required:
-      - staker
-      - protocol
-      properties:
-        staker:
-          $ref: '#/components/schemas/AccountAddress'
-        protocol:
-          $ref: '#/components/schemas/Protocol'
-        stake_meta:
-          $ref: '#/components/schemas/Price'
-    DefiLiquidPoolAssets:
-      type: object
-      required:
-      - asset0
-      - asset1
-      properties:
-        asset0:
-          $ref: '#/components/schemas/DefiLockedAsset'
-        asset1:
-          $ref: '#/components/schemas/DefiLockedAsset'
+        name:
+          type: string
+          example: Wrapped TON
+        symbol:
+          type: string
+          example: WTON
+        decimals:
+          type: integer
+          example: 9
+        image:
+          type: string
+          example: https://cache.tonapi.io/images/jetton.jpg
+        verification:
+          $ref: '#/components/schemas/JettonVerificationType'
+        custom_payload_api_uri:
+          type: string
+        score:
+          type: integer
+          format: int32
+        scaled_ui:
+          $ref: '#/components/schemas/ScaledUI'
+        description:
+          type: string
     AccountEvent:
       type: object
       description: 'High-level view over a transaction trace caused by a single inbound message. TonAPI analyses the trace, detects known patterns and groups low-level transactions into user-facing actions (Jetton transfer, NFT purchase, etc.). Actions are a best-effort UI abstraction and may change; do not rely on them for protocol-critical logic.
@@ -2568,20 +2190,95 @@ components:
           type: string
           description: Normalized hash of the root external inbound message (hex).
           example: a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456
-    JettonAssetInfo:
+    OracleRequestAction:
       type: object
       required:
-      - token_type
-      - defi_provider
+      - requester
+      - response_to
+      - price_feeds
       properties:
-        token_type:
-          $ref: '#/components/schemas/DefiAssetType'
-        type:
-          $ref: '#/components/schemas/DefiAssetType'
-        defi_provider:
-          $ref: '#/components/schemas/DefiProvider'
-        pool_assets:
-          $ref: '#/components/schemas/DefiLiquidPoolAssets'
+        requester:
+          $ref: '#/components/schemas/AccountAddress'
+        response_to:
+          $ref: '#/components/schemas/AccountAddress'
+        price_feeds:
+          type: array
+          items:
+            $ref: '#/components/schemas/OraclePriceFeed'
+    JettonBurnAction:
+      type: object
+      required:
+      - amount
+      - jetton
+      - sender
+      - senders_wallet
+      properties:
+        sender:
+          $ref: '#/components/schemas/AccountAddress'
+        senders_wallet:
+          type: string
+          format: address
+          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
+        amount:
+          type: string
+          x-js-format: bigint
+          example: '1000000000'
+          description: amount in quanta of tokens
+        jetton:
+          $ref: '#/components/schemas/JettonPreview'
+    EcPreview:
+      type: object
+      required:
+      - id
+      - symbol
+      - decimals
+      - image
+      properties:
+        id:
+          type: integer
+          example: 239
+          format: int32
+        symbol:
+          type: string
+          example: FMS
+        decimals:
+          type: integer
+          example: 5
+        image:
+          type: string
+          example: https://cache.tonapi.io/images/extra.jpg
+    SmartContractAction:
+      type: object
+      required:
+      - executor
+      - contract
+      - gram_attached
+      - operation
+      properties:
+        executor:
+          $ref: '#/components/schemas/AccountAddress'
+        contract:
+          $ref: '#/components/schemas/AccountAddress'
+        ton_attached:
+          type: integer
+          description: amount in nanograms
+          format: int64
+          example: 123456789
+          x-js-format: bigint
+          deprecated: true
+        gram_attached:
+          type: integer
+          description: amount in nanograms
+          format: int64
+          example: 123456789
+          x-js-format: bigint
+        operation:
+          type: string
+          example: NftTransfer or 0x35d95a12
+        payload:
+          type: string
+        refund:
+          $ref: '#/components/schemas/Refund'
     Multisig:
       type: object
       required:
@@ -2617,128 +2314,431 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MultisigOrder'
-    JettonOperation:
+    ScaledUI:
       type: object
       required:
-      - operation
-      - utime
-      - lt
-      - jetton
-      - transaction_hash
-      - amount
-      - trace_id
-      - query_id
+      - numerator
+      - denominator
       properties:
-        operation:
+        numerator:
           type: string
-          example: transfer
+          x-js-format: bigint
+          example: '597968399'
+        denominator:
+          type: string
+          x-js-format: bigint
+          example: '597968399'
+    DefiAssets:
+      type: object
+      required:
+      - assets
+      properties:
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/DefiAsset'
+    CurrencyType:
+      type: string
+      example: jetton
+      enum:
+      - native
+      - extra_currency
+      - jetton
+      - fiat
+    Subscription:
+      type: object
+      required:
+      - type
+      - status
+      - period
+      - subscription_id
+      - payment_per_period
+      - wallet
+      - next_charge_at
+      - metadata
+      properties:
+        type:
+          type: string
+          description: type of subscription
+          example: v2
+        status:
+          type: string
           enum:
-          - transfer
-          - mint
-          - burn
+          - not_ready
+          - active
+          - suspended
+          - cancelled
+        period:
+          type: integer
+          description: payment period in seconds
+          format: int64
+          example: 2592000
+        subscription_id:
+          type: string
+          description: common identifier
+        payment_per_period:
+          $ref: '#/components/schemas/Price'
+        wallet:
+          $ref: '#/components/schemas/AccountAddress'
+        next_charge_at:
+          type: integer
+          format: int64
+          example: 1653996834
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        address:
+          type: string
+          format: maybe-address
+          example: 0:dea8f638b789172ce36d10a20318125e52c649aa84893cd77858224fe2b9b0ee
+        beneficiary:
+          $ref: '#/components/schemas/AccountAddress'
+        admin:
+          $ref: '#/components/schemas/AccountAddress'
+    AccountStatus:
+      type: string
+      example: active
+      enum:
+      - nonexist
+      - uninit
+      - active
+      - frozen
+    AccountAddress:
+      type: object
+      required:
+      - address
+      - is_scam
+      - is_wallet
+      properties:
+        address:
+          type: string
+          format: maybe-address
+          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
+        name:
+          type: string
+          example: Ton foundation
+          description: Display name. Data collected from different sources like moderation lists, dns, collections names and over.
+        is_scam:
+          type: boolean
+          example: true
+          description: Is this account was marked as part of scammers activity
+        icon:
+          type: string
+          example: https://ton.org/logo.png
+        is_wallet:
+          type: boolean
+          example: true
+    ImagePreview:
+      type: object
+      required:
+      - resolution
+      - url
+      properties:
+        resolution:
+          type: string
+          example: 100x100
+        url:
+          type: string
+          example: https://site.com/pic1.jpg
+    LiquidityDepositAction:
+      type: object
+      required:
+      - protocol
+      - from
+      - tokens
+      properties:
+        protocol:
+          $ref: '#/components/schemas/Protocol'
+        from:
+          $ref: '#/components/schemas/AccountAddress'
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/VaultDepositInfo'
+    Multisigs:
+      type: object
+      required:
+      - multisigs
+      properties:
+        multisigs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Multisig'
+    ActionSimplePreview:
+      type: object
+      description: shortly describes what this action is about.
+      required:
+      - name
+      - description
+      - accounts
+      properties:
+        name:
+          type: string
+          example: Gram Transfer
+        description:
+          type: string
+          example: Transferring 5 Gram
+        action_image:
+          type: string
+          description: a link to an image for this particular action.
+        value:
+          type: string
+          example: 5 Gram
+        fiat_value:
+          type: string
+          description: the value of this action expressed in the requested fiat currency.
+          example: 4.99 USD
+        value_image:
+          type: string
+          description: a link to an image that depicts this action's asset.
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountAddress'
+    TraceID:
+      type: object
+      required:
+      - id
+      - utime
+      properties:
+        id:
+          type: string
+          example: 55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
         utime:
           type: integer
           format: int64
-          example: 1234567890
-        lt:
-          type: integer
-          format: int64
-          example: 25713146000001
-          x-js-format: bigint
-        transaction_hash:
+          example: 1645544908
+    DomainNames:
+      type: object
+      required:
+      - domains
+      properties:
+        domains:
+          type: array
+          items:
+            type: string
+            example: vasya.ton
+    DnsExpiring:
+      type: object
+      required:
+      - items
+      properties:
+        items:
+          type: array
+          items:
+            type: object
+            required:
+            - expiring_at
+            - name
+            properties:
+              expiring_at:
+                type: integer
+                format: int64
+                example: 1678275313
+              name:
+                type: string
+                example: blah_blah.ton
+              dns_item:
+                $ref: '#/components/schemas/NftItem'
+    NftPurchaseAction:
+      type: object
+      required:
+      - amount
+      - seller
+      - buyer
+      - auction_type
+      - nft
+      properties:
+        auction_type:
           type: string
-          example: cbf3e3d70ecf6f69643dd430761cd6004de2cacbdbc3029b0abd30ca3cc1c67e
-        source:
+          enum:
+          - DNS.ton
+          - DNS.tg
+          - NUMBER.tg
+          - getgems
+        amount:
+          $ref: '#/components/schemas/Price'
+        nft:
+          $ref: '#/components/schemas/NftItem'
+        seller:
           $ref: '#/components/schemas/AccountAddress'
-        destination:
+        buyer:
           $ref: '#/components/schemas/AccountAddress'
+    DefiProvider:
+      type: object
+      required:
+      - name
+      - description
+      - link
+      - icon
+      - card
+      - full
+      - tag
+      properties:
+        name:
+          type: string
+          example: Morpho
+        description:
+          type: string
+          example: Earn up to 15% yield on your crypto
+        link:
+          type: string
+          example: https://lite.morpho.org/tac/earn/
+        miniapp_link:
+          type: string
+          example: https://t.me/MorphoOrgBot
+        icon:
+          type: string
+        card:
+          type: string
+        full:
+          type: string
+        tag:
+          type: string
+          example: morpho
+    JettonQuantity:
+      type: object
+      required:
+      - quantity
+      - wallet_address
+      - jetton
+      properties:
+        quantity:
+          type: string
+          x-js-format: bigint
+          example: '597968399'
+        wallet_address:
+          $ref: '#/components/schemas/AccountAddress'
+        jetton:
+          $ref: '#/components/schemas/JettonPreview'
+    Protocol:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          example: Ethena
+        image:
+          type: string
+          example: https://cache.tonapi.io/images/jetton.jpg
+    FlawedJettonTransferAction:
+      type: object
+      required:
+      - sent_amount
+      - received_amount
+      - jetton
+      - senders_wallet
+      - recipients_wallet
+      properties:
+        sender:
+          $ref: '#/components/schemas/AccountAddress'
+        recipient:
+          $ref: '#/components/schemas/AccountAddress'
+        senders_wallet:
+          type: string
+          format: address
+          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
+        recipients_wallet:
+          type: string
+          format: address
+          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
+        sent_amount:
+          type: string
+          x-js-format: bigint
+          example: '1000000000'
+          description: sent amount in quanta of tokens
+        received_amount:
+          type: string
+          x-js-format: bigint
+          example: '1000000000'
+          description: actually received amount in quanta of tokens
+        comment:
+          type: string
+          example: "Hi! This is your salary. \nFrom accounting with love."
+        encrypted_comment:
+          $ref: '#/components/schemas/EncryptedComment'
+        refund:
+          $ref: '#/components/schemas/Refund'
+        jetton:
+          $ref: '#/components/schemas/JettonPreview'
+    DefiAsset:
+      type: object
+      required:
+      - type
+      - amount
+      - defi_provider
+      - locked_asset
+      properties:
+        type:
+          $ref: '#/components/schemas/DefiAssetType'
+        amount:
+          type: string
+          x-js-format: bigint
+          description: amount in minimal units of the locked asset
+          example: '1000000000'
+        pool_address:
+          type: string
+          format: address
+        asset_address:
+          type: string
+          format: address
+        defi_provider:
+          $ref: '#/components/schemas/DefiProvider'
+        locked_asset:
+          $ref: '#/components/schemas/DefiLockedAsset'
+    JettonMintAction:
+      type: object
+      required:
+      - amount
+      - jetton
+      - recipient
+      - recipients_wallet
+      properties:
+        recipient:
+          $ref: '#/components/schemas/AccountAddress'
+        recipients_wallet:
+          type: string
+          format: address
+          example: 0:E93E7D444180608B8520C00DC664383A387356FB6E16FDDF99DBE5E1415A574B
         amount:
           type: string
           x-js-format: bigint
           example: '1000000000'
+          description: amount in quanta of tokens
         jetton:
           $ref: '#/components/schemas/JettonPreview'
-        trace_id:
-          type: string
-          example: 8fa19eec7bd6d00d0d76048cebe31e34082a859410c9fcf7d55ef4ff8f7fcb47
-        query_id:
-          type: string
-          example: '17286061481122318000'
-          x-js-format: bigint
-        payload: {}
-    DepositXTRAction:
+    ExtraCurrency:
       type: object
       required:
-      - recipient
       - amount
+      - preview
       properties:
-        recipient:
-          $ref: '#/components/schemas/AccountAddress'
         amount:
           type: string
           x-js-format: bigint
-          example: '123000000000'
-    Subscriptions:
+          example: '1000000000'
+        preview:
+          $ref: '#/components/schemas/EcPreview'
+    WithdrawStakeAction:
+      description: validator's participation in elections
       type: object
       required:
-      - subscriptions
+      - amount
+      - staker
+      - pool
+      - implementation
       properties:
-        subscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Subscription'
-    EcPreview:
-      type: object
-      required:
-      - id
-      - symbol
-      - decimals
-      - image
-      properties:
-        id:
+        amount:
           type: integer
-          example: 239
-          format: int32
-        symbol:
-          type: string
-          example: FMS
-        decimals:
-          type: integer
-          example: 5
-        image:
-          type: string
-          example: https://cache.tonapi.io/images/extra.jpg
-    Price:
-      type: object
-      required:
-      - currency_type
-      - value
-      - decimals
-      - token_name
-      - verification
-      - image
-      properties:
-        currency_type:
-          $ref: '#/components/schemas/CurrencyType'
-        value:
-          type: string
+          format: int64
+          example: 1660050553
           x-js-format: bigint
-          example: '123000000000'
-        decimals:
-          type: integer
-          example: 9
-        token_name:
-          type: string
-          example: Gram
-        verification:
-          $ref: '#/components/schemas/TrustType'
-        image:
-          type: string
-          example: https://cache.tonapi.io/images/jetton.jpg
-        jetton:
-          type: string
-          format: address
-          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
+        staker:
+          $ref: '#/components/schemas/AccountAddress'
+        pool:
+          $ref: '#/components/schemas/AccountAddress'
+        implementation:
+          $ref: '#/components/schemas/PoolImplementationType'
   responses:
     Error:
       description: Some error during request processing
