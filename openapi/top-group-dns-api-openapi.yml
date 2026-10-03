@@ -98,15 +98,42 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DomainBids:
+    Sale:
       type: object
       required:
-      - data
+      - address
+      - market
+      - price
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DomainBid'
+        address:
+          type: string
+          format: address
+          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
+        market:
+          $ref: '#/components/schemas/AccountAddress'
+        owner:
+          $ref: '#/components/schemas/AccountAddress'
+        price:
+          $ref: '#/components/schemas/Price'
+    PictureDNS:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - url
+          - bag_id
+        url:
+          type: string
+          description: 'WARNING! This is arbitrary url supplied by domain owner, use it very carefully.
+
+            There is no guarantee that URL resolves to an image file and is not a phishing site.
+
+            '
+        bag_id:
+          type: string
     DomainInfo:
       type: object
       required:
@@ -120,36 +147,6 @@ components:
           description: date of expiring. optional. not all domain in ton has expiration date
         item:
           $ref: '#/components/schemas/NftItem'
-    TrustType:
-      type: string
-      example: whitelist
-      enum:
-      - whitelist
-      - graylist
-      - blacklist
-      - none
-    CurrencyType:
-      type: string
-      example: jetton
-      enum:
-      - native
-      - extra_currency
-      - jetton
-      - fiat
-    Auctions:
-      type: object
-      required:
-      - data
-      - total
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Auction'
-        total:
-          type: integer
-          format: int64
-          example: 1660050553
     AccountAddress:
       type: object
       required:
@@ -175,6 +172,75 @@ components:
         is_wallet:
           type: boolean
           example: true
+    TrustType:
+      type: string
+      example: whitelist
+      enum:
+      - whitelist
+      - graylist
+      - blacklist
+      - none
+    Auction:
+      type: object
+      required:
+      - domain
+      - owner
+      - price
+      - bids
+      - date
+      properties:
+        domain:
+          type: string
+          example: wallet.ton
+        owner:
+          type: string
+          format: address
+          example: 0:c704dadfabac88eab58e340de03080df81ff76636431f48624ad6e26fb2da0a4
+        price:
+          type: integer
+          format: int64
+          example: 1660050553
+          x-js-format: bigint
+        bids:
+          type: integer
+          format: int64
+          example: 1660050553
+          x-js-format: bigint
+        date:
+          type: integer
+          format: int64
+          example: 1660050553
+    Price:
+      type: object
+      required:
+      - currency_type
+      - value
+      - decimals
+      - token_name
+      - verification
+      - image
+      properties:
+        currency_type:
+          $ref: '#/components/schemas/CurrencyType'
+        value:
+          type: string
+          x-js-format: bigint
+          example: '123000000000'
+        decimals:
+          type: integer
+          example: 9
+        token_name:
+          type: string
+          example: Gram
+        verification:
+          $ref: '#/components/schemas/TrustType'
+        image:
+          type: string
+          example: https://cache.tonapi.io/images/jetton.jpg
+        jetton:
+          type: string
+          format: address
+          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
     ImagePreview:
       type: object
       required:
@@ -209,6 +275,70 @@ components:
           example: da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
         picture:
           $ref: '#/components/schemas/PictureDNS'
+    NftApprovedBy:
+      type: array
+      items:
+        type: string
+        example: getgems
+        enum:
+        - getgems
+        - tonkeeper
+    DomainBid:
+      type: object
+      required:
+      - success
+      - value
+      - txTime
+      - bidder
+      - txHash
+      properties:
+        success:
+          type: boolean
+          example: true
+          default: false
+        value:
+          type: integer
+          format: int64
+          example: 1660050553
+        txTime:
+          type: integer
+          format: int64
+          example: 1660050553
+        txHash:
+          type: string
+          example: 55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
+        bidder:
+          $ref: '#/components/schemas/AccountAddress'
+    WalletDNS:
+      type: object
+      required:
+      - address
+      - is_wallet
+      - has_method_pubkey
+      - has_method_seqno
+      - names
+      - account
+      properties:
+        address:
+          type: string
+          format: address
+          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+        account:
+          $ref: '#/components/schemas/AccountAddress'
+        is_wallet:
+          type: boolean
+          example: true
+        has_method_pubkey:
+          type: boolean
+          example: true
+        has_method_seqno:
+          type: boolean
+          example: true
+        names:
+          type: array
+          items:
+            type: string
+            example: name
     NftItem:
       type: object
       required:
@@ -279,92 +409,6 @@ components:
         data_hash:
           type: string
           description: Hash of the NFT item account data cell (hex)
-    WalletDNS:
-      type: object
-      required:
-      - address
-      - is_wallet
-      - has_method_pubkey
-      - has_method_seqno
-      - names
-      - account
-      properties:
-        address:
-          type: string
-          format: address
-          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        account:
-          $ref: '#/components/schemas/AccountAddress'
-        is_wallet:
-          type: boolean
-          example: true
-        has_method_pubkey:
-          type: boolean
-          example: true
-        has_method_seqno:
-          type: boolean
-          example: true
-        names:
-          type: array
-          items:
-            type: string
-            example: name
-    NftApprovedBy:
-      type: array
-      items:
-        type: string
-        example: getgems
-        enum:
-        - getgems
-        - tonkeeper
-    Price:
-      type: object
-      required:
-      - currency_type
-      - value
-      - decimals
-      - token_name
-      - verification
-      - image
-      properties:
-        currency_type:
-          $ref: '#/components/schemas/CurrencyType'
-        value:
-          type: string
-          x-js-format: bigint
-          example: '123000000000'
-        decimals:
-          type: integer
-          example: 9
-        token_name:
-          type: string
-          example: Gram
-        verification:
-          $ref: '#/components/schemas/TrustType'
-        image:
-          type: string
-          example: https://cache.tonapi.io/images/jetton.jpg
-        jetton:
-          type: string
-          format: address
-          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
-    Sale:
-      type: object
-      required:
-      - address
-      - market
-      - price
-      properties:
-        address:
-          type: string
-          format: address
-          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
-        market:
-          $ref: '#/components/schemas/AccountAddress'
-        owner:
-          $ref: '#/components/schemas/AccountAddress'
-        price:
-          $ref: '#/components/schemas/Price'
     InsufficientFunds:
       type: object
       description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
@@ -384,81 +428,37 @@ components:
           format: int64
           description: TON in nanotons currently available on the source wallet
           x-js-format: bigint
-    DomainBid:
+    CurrencyType:
+      type: string
+      example: jetton
+      enum:
+      - native
+      - extra_currency
+      - jetton
+      - fiat
+    DomainBids:
       type: object
       required:
-      - success
-      - value
-      - txTime
-      - bidder
-      - txHash
+      - data
       properties:
-        success:
-          type: boolean
-          example: true
-          default: false
-        value:
-          type: integer
-          format: int64
-          example: 1660050553
-        txTime:
-          type: integer
-          format: int64
-          example: 1660050553
-        txHash:
-          type: string
-          example: 55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
-        bidder:
-          $ref: '#/components/schemas/AccountAddress'
-    Auction:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DomainBid'
+    Auctions:
       type: object
       required:
-      - domain
-      - owner
-      - price
-      - bids
-      - date
+      - data
+      - total
       properties:
-        domain:
-          type: string
-          example: wallet.ton
-        owner:
-          type: string
-          format: address
-          example: 0:c704dadfabac88eab58e340de03080df81ff76636431f48624ad6e26fb2da0a4
-        price:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Auction'
+        total:
           type: integer
           format: int64
           example: 1660050553
-          x-js-format: bigint
-        bids:
-          type: integer
-          format: int64
-          example: 1660050553
-          x-js-format: bigint
-        date:
-          type: integer
-          format: int64
-          example: 1660050553
-    PictureDNS:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - url
-          - bag_id
-        url:
-          type: string
-          description: 'WARNING! This is arbitrary url supplied by domain owner, use it very carefully.
-
-            There is no guarantee that URL resolves to an image file and is not a phishing site.
-
-            '
-        bag_id:
-          type: string
   parameters:
     domainNameParameter:
       in: path

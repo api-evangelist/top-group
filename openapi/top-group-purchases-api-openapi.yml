@@ -52,14 +52,56 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TrustType:
-      type: string
-      example: whitelist
-      enum:
-      - whitelist
-      - graylist
-      - blacklist
-      - none
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
+    Price:
+      type: object
+      required:
+      - currency_type
+      - value
+      - decimals
+      - token_name
+      - verification
+      - image
+      properties:
+        currency_type:
+          $ref: '#/components/schemas/CurrencyType'
+        value:
+          type: string
+          x-js-format: bigint
+          example: '123000000000'
+        decimals:
+          type: integer
+          example: 9
+        token_name:
+          type: string
+          example: Gram
+        verification:
+          $ref: '#/components/schemas/TrustType'
+        image:
+          type: string
+          example: https://cache.tonapi.io/images/jetton.jpg
+        jetton:
+          type: string
+          format: address
+          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
     CurrencyType:
       type: string
       example: jetton
@@ -68,6 +110,57 @@ components:
       - extra_currency
       - jetton
       - fiat
+    AccountPurchases:
+      type: object
+      required:
+      - purchases
+      - next_from
+      properties:
+        purchases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Purchase'
+        next_from:
+          type: integer
+          format: int64
+          example: 25713146000001
+    AccountAddress:
+      type: object
+      required:
+      - address
+      - is_scam
+      - is_wallet
+      properties:
+        address:
+          type: string
+          format: maybe-address
+          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
+        name:
+          type: string
+          example: Ton foundation
+          description: Display name. Data collected from different sources like moderation lists, dns, collections names and over.
+        is_scam:
+          type: boolean
+          example: true
+          description: Is this account was marked as part of scammers activity
+        icon:
+          type: string
+          example: https://ton.org/logo.png
+        is_wallet:
+          type: boolean
+          example: true
+    Metadata:
+      type: object
+      required:
+      - encrypted_binary
+      properties:
+        encrypted_binary:
+          type: string
+          description: hex encoded bytes
+        decryption_key:
+          type: string
+          description: hex encoded bytes
+          example: dead.....beef
     Purchase:
       type: object
       required:
@@ -103,107 +196,14 @@ components:
           $ref: '#/components/schemas/Price'
         metadata:
           $ref: '#/components/schemas/Metadata'
-    AccountAddress:
-      type: object
-      required:
-      - address
-      - is_scam
-      - is_wallet
-      properties:
-        address:
-          type: string
-          format: maybe-address
-          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
-        name:
-          type: string
-          example: Ton foundation
-          description: Display name. Data collected from different sources like moderation lists, dns, collections names and over.
-        is_scam:
-          type: boolean
-          example: true
-          description: Is this account was marked as part of scammers activity
-        icon:
-          type: string
-          example: https://ton.org/logo.png
-        is_wallet:
-          type: boolean
-          example: true
-    InsufficientFunds:
-      type: object
-      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
-
-        '
-      required:
-      - required
-      - available
-      properties:
-        required:
-          type: integer
-          format: int64
-          description: TON in nanotons required to cover transfer gas
-          x-js-format: bigint
-        available:
-          type: integer
-          format: int64
-          description: TON in nanotons currently available on the source wallet
-          x-js-format: bigint
-    Metadata:
-      type: object
-      required:
-      - encrypted_binary
-      properties:
-        encrypted_binary:
-          type: string
-          description: hex encoded bytes
-        decryption_key:
-          type: string
-          description: hex encoded bytes
-          example: dead.....beef
-    Price:
-      type: object
-      required:
-      - currency_type
-      - value
-      - decimals
-      - token_name
-      - verification
-      - image
-      properties:
-        currency_type:
-          $ref: '#/components/schemas/CurrencyType'
-        value:
-          type: string
-          x-js-format: bigint
-          example: '123000000000'
-        decimals:
-          type: integer
-          example: 9
-        token_name:
-          type: string
-          example: Gram
-        verification:
-          $ref: '#/components/schemas/TrustType'
-        image:
-          type: string
-          example: https://cache.tonapi.io/images/jetton.jpg
-        jetton:
-          type: string
-          format: address
-          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
-    AccountPurchases:
-      type: object
-      required:
-      - purchases
-      - next_from
-      properties:
-        purchases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Purchase'
-        next_from:
-          type: integer
-          format: int64
-          example: 25713146000001
+    TrustType:
+      type: string
+      example: whitelist
+      enum:
+      - whitelist
+      - graylist
+      - blacklist
+      - none
   responses:
     Error:
       description: Some error during request processing

@@ -59,6 +59,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AccountInfoByStateInit:
+      type: object
+      required:
+      - public_key
+      - address
+      properties:
+        public_key:
+          type: string
+          example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
+        address:
+          type: string
+          format: address
+          example: 0:97146a46acc2654y27947f14c4a4b14273e954f78bc017790b41208b0043200b
     InsufficientFunds:
       type: object
       description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
@@ -78,19 +91,6 @@ components:
           format: int64
           description: TON in nanotons currently available on the source wallet
           x-js-format: bigint
-    AccountInfoByStateInit:
-      type: object
-      required:
-      - public_key
-      - address
-      properties:
-        public_key:
-          type: string
-          example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
-        address:
-          type: string
-          format: address
-          example: 0:97146a46acc2654y27947f14c4a4b14273e954f78bc017790b41208b0043200b
   responses:
     Error:
       description: Some error during request processing

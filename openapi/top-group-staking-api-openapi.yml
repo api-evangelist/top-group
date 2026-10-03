@@ -156,6 +156,95 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
+    AccountStakingInfo:
+      type: object
+      required:
+      - pool
+      - amount
+      - pending_deposit
+      - pending_withdraw
+      - ready_withdraw
+      properties:
+        pool:
+          type: string
+          example: EQBI-wGVp_x0VFEjd7m9cEUD3tJ_bnxMSp0Tb9qz757ATEAM
+        amount:
+          type: integer
+          format: int64
+          example: 10050000000000
+          x-js-format: bigint
+        pending_deposit:
+          type: integer
+          format: int64
+          example: 500000000000
+          x-js-format: bigint
+        pending_withdraw:
+          type: integer
+          format: int64
+          example: 500000000000
+          x-js-format: bigint
+        ready_withdraw:
+          type: integer
+          format: int64
+          example: 500000000000
+          x-js-format: bigint
+    PoolImplementationType:
+      type: string
+      enum:
+      - whales
+      - tf
+      - liquidTF
+      - ffvault
+    AccountStaking:
+      type: object
+      required:
+      - pools
+      properties:
+        pools:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountStakingInfo'
+    PoolImplementation:
+      type: object
+      required:
+      - name
+      - description
+      - url
+      - socials
+      properties:
+        name:
+          type: string
+          example: TON Whales
+        description:
+          type: string
+          example: Oldest pool with minimal staking amount 50 Gram
+        url:
+          type: string
+          example: https://tonvalidators.org/
+        socials:
+          type: array
+          items:
+            type: string
+            example: https://t.me/tonwhales
     PoolInfo:
       type: object
       required:
@@ -237,63 +326,6 @@ components:
         cycle_length:
           type: integer
           format: int64
-    InsufficientFunds:
-      type: object
-      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
-
-        '
-      required:
-      - required
-      - available
-      properties:
-        required:
-          type: integer
-          format: int64
-          description: TON in nanotons required to cover transfer gas
-          x-js-format: bigint
-        available:
-          type: integer
-          format: int64
-          description: TON in nanotons currently available on the source wallet
-          x-js-format: bigint
-    PoolImplementationType:
-      type: string
-      enum:
-      - whales
-      - tf
-      - liquidTF
-      - ffvault
-    PoolImplementation:
-      type: object
-      required:
-      - name
-      - description
-      - url
-      - socials
-      properties:
-        name:
-          type: string
-          example: TON Whales
-        description:
-          type: string
-          example: Oldest pool with minimal staking amount 50 Gram
-        url:
-          type: string
-          example: https://tonvalidators.org/
-        socials:
-          type: array
-          items:
-            type: string
-            example: https://t.me/tonwhales
-    AccountStaking:
-      type: object
-      required:
-      - pools
-      properties:
-        pools:
-          type: array
-          items:
-            $ref: '#/components/schemas/AccountStakingInfo'
     ApyHistory:
       type: object
       required:
@@ -304,55 +336,6 @@ components:
           type: number
         time:
           type: integer
-    AccountStakingInfo:
-      type: object
-      required:
-      - pool
-      - amount
-      - pending_deposit
-      - pending_withdraw
-      - ready_withdraw
-      properties:
-        pool:
-          type: string
-          example: EQBI-wGVp_x0VFEjd7m9cEUD3tJ_bnxMSp0Tb9qz757ATEAM
-        amount:
-          type: integer
-          format: int64
-          example: 10050000000000
-          x-js-format: bigint
-        pending_deposit:
-          type: integer
-          format: int64
-          example: 500000000000
-          x-js-format: bigint
-        pending_withdraw:
-          type: integer
-          format: int64
-          example: 500000000000
-          x-js-format: bigint
-        ready_withdraw:
-          type: integer
-          format: int64
-          example: 500000000000
-          x-js-format: bigint
-  responses:
-    Error:
-      description: Some error during request processing
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - error
-            properties:
-              error:
-                type: string
-              error_code:
-                type: integer
-                format: int64
-              details:
-                $ref: '#/components/schemas/InsufficientFunds'
   parameters:
     i18n:
       in: header
@@ -371,3 +354,20 @@ components:
         type: string
         format: address
         example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
+  responses:
+    Error:
+      description: Some error during request processing
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - error
+            properties:
+              error:
+                type: string
+              error_code:
+                type: integer
+                format: int64
+              details:
+                $ref: '#/components/schemas/InsufficientFunds'
