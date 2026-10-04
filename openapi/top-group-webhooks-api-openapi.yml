@@ -380,6 +380,19 @@ paths:
       x-summary-source: derived
 components:
   requestBodies:
+    WebhookAccountTxUnsubscribeRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - accounts
+            properties:
+              accounts:
+                type: array
+                items:
+                  type: string
     WebhookConfiguration:
       required: true
       content:
@@ -409,20 +422,14 @@ components:
                   properties:
                     account_id:
                       type: string
-    WebhookAccountTxUnsubscribeRequest:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - accounts
-            properties:
-              accounts:
-                type: array
-                items:
-                  type: string
   parameters:
+    webhookId:
+      in: path
+      name: webhook_id
+      required: true
+      schema:
+        type: integer
+        format: int64
     limitQuery:
       in: query
       name: limit
@@ -431,19 +438,6 @@ components:
         type: integer
         default: 1000
         maximum: 1000
-    webhookId:
-      in: path
-      name: webhook_id
-      required: true
-      schema:
-        type: integer
-        format: int64
-    tokenQuery:
-      in: query
-      name: token
-      schema:
-        type: string
-        example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
     offsetQuery:
       in: query
       name: offset
@@ -451,32 +445,13 @@ components:
       schema:
         type: integer
         default: 0
+    tokenQuery:
+      in: query
+      name: token
+      schema:
+        type: string
+        example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
   schemas:
-    WebhookMsgOpcodeSubscriptions:
-      type: object
-      required:
-      - subscriptions
-      properties:
-        subscriptions:
-          type: array
-          items:
-            type: object
-            required:
-            - opcode
-            - status
-            properties:
-              opcode:
-                type: string
-              status:
-                type: string
-                enum:
-                - active
-                - disabled
-              disabled_at:
-                type: string
-                format: date-time
-              disabled_reason:
-                type: string
     WebhookList:
       type: object
       required:
@@ -528,30 +503,6 @@ components:
                 format: date-time
               status_failed_attempts:
                 type: integer
-    WebhookLogs:
-      type: object
-      required:
-      - logs
-      properties:
-        next_offset:
-          type: integer
-          format: int64
-        logs:
-          type: array
-          items:
-            type: object
-            required:
-            - timestamp
-            - message
-            - event_type
-            properties:
-              message:
-                type: string
-              event_type:
-                type: string
-              timestamp:
-                type: string
-                format: date-time
     WebhookAccountTxSubscriptions:
       type: object
       required:
@@ -579,6 +530,55 @@ components:
               failed_attempts:
                 type: integer
                 format: int64
+    WebhookLogs:
+      type: object
+      required:
+      - logs
+      properties:
+        next_offset:
+          type: integer
+          format: int64
+        logs:
+          type: array
+          items:
+            type: object
+            required:
+            - timestamp
+            - message
+            - event_type
+            properties:
+              message:
+                type: string
+              event_type:
+                type: string
+              timestamp:
+                type: string
+                format: date-time
+    WebhookMsgOpcodeSubscriptions:
+      type: object
+      required:
+      - subscriptions
+      properties:
+        subscriptions:
+          type: array
+          items:
+            type: object
+            required:
+            - opcode
+            - status
+            properties:
+              opcode:
+                type: string
+              status:
+                type: string
+                enum:
+                - active
+                - disabled
+              disabled_at:
+                type: string
+                format: date-time
+              disabled_reason:
+                type: string
   responses:
     Error:
       description: Some error during request processing

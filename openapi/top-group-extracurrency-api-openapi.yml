@@ -36,6 +36,16 @@ paths:
       summary: Get extra currency info
       x-summary-source: derived
 components:
+  parameters:
+    ecIDParameter:
+      in: path
+      name: id
+      required: true
+      description: extra currency id
+      schema:
+        type: integer
+        example: 239
+        format: int32
   schemas:
     EcPreview:
       type: object
@@ -77,16 +87,6 @@ components:
           format: int64
           description: TON in nanotons currently available on the source wallet
           x-js-format: bigint
-  parameters:
-    ecIDParameter:
-      in: path
-      name: id
-      required: true
-      description: extra currency id
-      schema:
-        type: integer
-        example: 239
-        format: int32
   responses:
     Error:
       description: Some error during request processing

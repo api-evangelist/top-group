@@ -201,18 +201,6 @@ components:
             type: string
           example:
             GRAM: -0.56%
-    ChartPoints:
-      type: array
-      items:
-        type: array
-        minItems: 2
-        maxItems: 2
-        items:
-          type: number
-      description: "Each inner array is a pair [timestamp, price]:\n  • index 0 — Unix timestamp (int64)  \n  • index 1 — token price (decimal) in the requested currency.\n"
-      example:
-      - - 1668436763
-        - 97.21323234
     MarketTonRates:
       type: object
       required:
@@ -230,6 +218,18 @@ components:
           type: integer
           format: int64
           example: 1668436763
+    ChartPoints:
+      type: array
+      items:
+        type: array
+        minItems: 2
+        maxItems: 2
+        items:
+          type: number
+      description: "Each inner array is a pair [timestamp, price]:\n  • index 0 — Unix timestamp (int64)  \n  • index 1 — token price (decimal) in the requested currency.\n"
+      example:
+      - - 1668436763
+        - 97.21323234
   responses:
     Error:
       description: Some error during request processing

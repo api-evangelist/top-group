@@ -58,6 +58,20 @@ paths:
       summary: Get account info by state init
       x-summary-source: derived
 components:
+  requestBodies:
+    TonConnectStateInit:
+      description: Data that is expected
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - state_init
+            properties:
+              state_init:
+                type: string
+                format: cell-base64
   schemas:
     AccountInfoByStateInit:
       type: object
@@ -108,17 +122,3 @@ components:
                 format: int64
               details:
                 $ref: '#/components/schemas/InsufficientFunds'
-  requestBodies:
-    TonConnectStateInit:
-      description: Data that is expected
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - state_init
-            properties:
-              state_init:
-                type: string
-                format: cell-base64

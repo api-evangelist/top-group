@@ -98,55 +98,23 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Sale:
+    NftApprovedBy:
+      type: array
+      items:
+        type: string
+        example: getgems
+        enum:
+        - getgems
+        - tonkeeper
+    DomainBids:
       type: object
       required:
-      - address
-      - market
-      - price
+      - data
       properties:
-        address:
-          type: string
-          format: address
-          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
-        market:
-          $ref: '#/components/schemas/AccountAddress'
-        owner:
-          $ref: '#/components/schemas/AccountAddress'
-        price:
-          $ref: '#/components/schemas/Price'
-    PictureDNS:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - url
-          - bag_id
-        url:
-          type: string
-          description: 'WARNING! This is arbitrary url supplied by domain owner, use it very carefully.
-
-            There is no guarantee that URL resolves to an image file and is not a phishing site.
-
-            '
-        bag_id:
-          type: string
-    DomainInfo:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        expiring_at:
-          type: integer
-          format: int64
-          description: date of expiring. optional. not all domain in ton has expiration date
-        item:
-          $ref: '#/components/schemas/NftItem'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DomainBid'
     AccountAddress:
       type: object
       required:
@@ -172,143 +140,14 @@ components:
         is_wallet:
           type: boolean
           example: true
-    TrustType:
+    CurrencyType:
       type: string
-      example: whitelist
+      example: jetton
       enum:
-      - whitelist
-      - graylist
-      - blacklist
-      - none
-    Auction:
-      type: object
-      required:
-      - domain
-      - owner
-      - price
-      - bids
-      - date
-      properties:
-        domain:
-          type: string
-          example: wallet.ton
-        owner:
-          type: string
-          format: address
-          example: 0:c704dadfabac88eab58e340de03080df81ff76636431f48624ad6e26fb2da0a4
-        price:
-          type: integer
-          format: int64
-          example: 1660050553
-          x-js-format: bigint
-        bids:
-          type: integer
-          format: int64
-          example: 1660050553
-          x-js-format: bigint
-        date:
-          type: integer
-          format: int64
-          example: 1660050553
-    Price:
-      type: object
-      required:
-      - currency_type
-      - value
-      - decimals
-      - token_name
-      - verification
-      - image
-      properties:
-        currency_type:
-          $ref: '#/components/schemas/CurrencyType'
-        value:
-          type: string
-          x-js-format: bigint
-          example: '123000000000'
-        decimals:
-          type: integer
-          example: 9
-        token_name:
-          type: string
-          example: Gram
-        verification:
-          $ref: '#/components/schemas/TrustType'
-        image:
-          type: string
-          example: https://cache.tonapi.io/images/jetton.jpg
-        jetton:
-          type: string
-          format: address
-          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
-    ImagePreview:
-      type: object
-      required:
-      - resolution
-      - url
-      properties:
-        resolution:
-          type: string
-          example: 100x100
-        url:
-          type: string
-          example: https://site.com/pic1.jpg
-    DnsRecord:
-      type: object
-      required:
-      - sites
-      properties:
-        wallet:
-          $ref: '#/components/schemas/WalletDNS'
-        next_resolver:
-          type: string
-          format: maybe-address
-          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        sites:
-          type: array
-          items:
-            type: string
-            example: http://12234.ton
-        storage:
-          type: string
-          description: tonstorage bag id
-          example: da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
-        picture:
-          $ref: '#/components/schemas/PictureDNS'
-    NftApprovedBy:
-      type: array
-      items:
-        type: string
-        example: getgems
-        enum:
-        - getgems
-        - tonkeeper
-    DomainBid:
-      type: object
-      required:
-      - success
-      - value
-      - txTime
-      - bidder
-      - txHash
-      properties:
-        success:
-          type: boolean
-          example: true
-          default: false
-        value:
-          type: integer
-          format: int64
-          example: 1660050553
-        txTime:
-          type: integer
-          format: int64
-          example: 1660050553
-        txHash:
-          type: string
-          example: 55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
-        bidder:
-          $ref: '#/components/schemas/AccountAddress'
+      - native
+      - extra_currency
+      - jetton
+      - fiat
     WalletDNS:
       type: object
       required:
@@ -339,6 +178,107 @@ components:
           items:
             type: string
             example: name
+    DomainInfo:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        expiring_at:
+          type: integer
+          format: int64
+          description: date of expiring. optional. not all domain in ton has expiration date
+        item:
+          $ref: '#/components/schemas/NftItem'
+    Auction:
+      type: object
+      required:
+      - domain
+      - owner
+      - price
+      - bids
+      - date
+      properties:
+        domain:
+          type: string
+          example: wallet.ton
+        owner:
+          type: string
+          format: address
+          example: 0:c704dadfabac88eab58e340de03080df81ff76636431f48624ad6e26fb2da0a4
+        price:
+          type: integer
+          format: int64
+          example: 1660050553
+          x-js-format: bigint
+        bids:
+          type: integer
+          format: int64
+          example: 1660050553
+          x-js-format: bigint
+        date:
+          type: integer
+          format: int64
+          example: 1660050553
+    DnsRecord:
+      type: object
+      required:
+      - sites
+      properties:
+        wallet:
+          $ref: '#/components/schemas/WalletDNS'
+        next_resolver:
+          type: string
+          format: maybe-address
+          example: 0:da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+        sites:
+          type: array
+          items:
+            type: string
+            example: http://12234.ton
+        storage:
+          type: string
+          description: tonstorage bag id
+          example: da6b1b6663a0e4d18cc8574ccd9db5296e367dd9324706f3bbd9eb1cd2caf0bf
+        picture:
+          $ref: '#/components/schemas/PictureDNS'
+    Sale:
+      type: object
+      required:
+      - address
+      - market
+      - price
+      properties:
+        address:
+          type: string
+          format: address
+          example: 0:10C1073837B93FDAAD594284CE8B8EFF7B9CF25427440EB2FC682762E1471365
+        market:
+          $ref: '#/components/schemas/AccountAddress'
+        owner:
+          $ref: '#/components/schemas/AccountAddress'
+        price:
+          $ref: '#/components/schemas/Price'
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
     NftItem:
       type: object
       required:
@@ -409,42 +349,14 @@ components:
         data_hash:
           type: string
           description: Hash of the NFT item account data cell (hex)
-    InsufficientFunds:
-      type: object
-      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
-
-        '
-      required:
-      - required
-      - available
-      properties:
-        required:
-          type: integer
-          format: int64
-          description: TON in nanotons required to cover transfer gas
-          x-js-format: bigint
-        available:
-          type: integer
-          format: int64
-          description: TON in nanotons currently available on the source wallet
-          x-js-format: bigint
-    CurrencyType:
+    TrustType:
       type: string
-      example: jetton
+      example: whitelist
       enum:
-      - native
-      - extra_currency
-      - jetton
-      - fiat
-    DomainBids:
-      type: object
-      required:
-      - data
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/DomainBid'
+      - whitelist
+      - graylist
+      - blacklist
+      - none
     Auctions:
       type: object
       required:
@@ -459,15 +371,95 @@ components:
           type: integer
           format: int64
           example: 1660050553
+    Price:
+      type: object
+      required:
+      - currency_type
+      - value
+      - decimals
+      - token_name
+      - verification
+      - image
+      properties:
+        currency_type:
+          $ref: '#/components/schemas/CurrencyType'
+        value:
+          type: string
+          x-js-format: bigint
+          example: '123000000000'
+        decimals:
+          type: integer
+          example: 9
+        token_name:
+          type: string
+          example: Gram
+        verification:
+          $ref: '#/components/schemas/TrustType'
+        image:
+          type: string
+          example: https://cache.tonapi.io/images/jetton.jpg
+        jetton:
+          type: string
+          format: address
+          example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
+    DomainBid:
+      type: object
+      required:
+      - success
+      - value
+      - txTime
+      - bidder
+      - txHash
+      properties:
+        success:
+          type: boolean
+          example: true
+          default: false
+        value:
+          type: integer
+          format: int64
+          example: 1660050553
+        txTime:
+          type: integer
+          format: int64
+          example: 1660050553
+        txHash:
+          type: string
+          example: 55e8809519cd3c49098c9ee45afdafcea7a894a74d0f628d94a115a50e045122
+        bidder:
+          $ref: '#/components/schemas/AccountAddress'
+    ImagePreview:
+      type: object
+      required:
+      - resolution
+      - url
+      properties:
+        resolution:
+          type: string
+          example: 100x100
+        url:
+          type: string
+          example: https://site.com/pic1.jpg
+    PictureDNS:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - url
+          - bag_id
+        url:
+          type: string
+          description: 'WARNING! This is arbitrary url supplied by domain owner, use it very carefully.
+
+            There is no guarantee that URL resolves to an image file and is not a phishing site.
+
+            '
+        bag_id:
+          type: string
   parameters:
-    domainNameParameter:
-      in: path
-      name: domain_name
-      required: true
-      description: domain name with .ton or .t.me
-      schema:
-        type: string
-        example: wallet.ton
     domainFilterQuery:
       in: query
       name: tld
@@ -476,6 +468,14 @@ components:
       schema:
         type: string
         example: ton
+    domainNameParameter:
+      in: path
+      name: domain_name
+      required: true
+      description: domain name with .ton or .t.me
+      schema:
+        type: string
+        example: wallet.ton
   responses:
     Error:
       description: Some error during request processing

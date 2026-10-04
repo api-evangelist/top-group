@@ -52,25 +52,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    InsufficientFunds:
+    Metadata:
       type: object
-      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
-
-        '
       required:
-      - required
-      - available
+      - encrypted_binary
       properties:
-        required:
-          type: integer
-          format: int64
-          description: TON in nanotons required to cover transfer gas
-          x-js-format: bigint
-        available:
-          type: integer
-          format: int64
-          description: TON in nanotons currently available on the source wallet
-          x-js-format: bigint
+        encrypted_binary:
+          type: string
+          description: hex encoded bytes
+        decryption_key:
+          type: string
+          description: hex encoded bytes
+          example: dead.....beef
     Price:
       type: object
       required:
@@ -102,14 +95,6 @@ components:
           type: string
           format: address
           example: 0:0BB5A9F69043EEBDDA5AD2E946EB953242BD8F603FE795D90698CEEC6BFC60A0
-    CurrencyType:
-      type: string
-      example: jetton
-      enum:
-      - native
-      - extra_currency
-      - jetton
-      - fiat
     AccountPurchases:
       type: object
       required:
@@ -124,6 +109,41 @@ components:
           type: integer
           format: int64
           example: 25713146000001
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
+    CurrencyType:
+      type: string
+      example: jetton
+      enum:
+      - native
+      - extra_currency
+      - jetton
+      - fiat
+    TrustType:
+      type: string
+      example: whitelist
+      enum:
+      - whitelist
+      - graylist
+      - blacklist
+      - none
     AccountAddress:
       type: object
       required:
@@ -149,18 +169,6 @@ components:
         is_wallet:
           type: boolean
           example: true
-    Metadata:
-      type: object
-      required:
-      - encrypted_binary
-      properties:
-        encrypted_binary:
-          type: string
-          description: hex encoded bytes
-        decryption_key:
-          type: string
-          description: hex encoded bytes
-          example: dead.....beef
     Purchase:
       type: object
       required:
@@ -196,14 +204,16 @@ components:
           $ref: '#/components/schemas/Price'
         metadata:
           $ref: '#/components/schemas/Metadata'
-    TrustType:
-      type: string
-      example: whitelist
-      enum:
-      - whitelist
-      - graylist
-      - blacklist
-      - none
+  parameters:
+    accountIDParameter:
+      in: path
+      name: account_id
+      required: true
+      description: account ID
+      schema:
+        type: string
+        format: address
+        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621
   responses:
     Error:
       description: Some error during request processing
@@ -221,13 +231,3 @@ components:
                 format: int64
               details:
                 $ref: '#/components/schemas/InsufficientFunds'
-  parameters:
-    accountIDParameter:
-      in: path
-      name: account_id
-      required: true
-      description: account ID
-      schema:
-        type: string
-        format: address
-        example: 0:97264395BD65A255A429B11326C84128B7D70FFED7949ABAE3036D506BA38621

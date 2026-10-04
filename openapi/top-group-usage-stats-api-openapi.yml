@@ -29,13 +29,6 @@ paths:
       summary: Get usage stats
       x-summary-source: derived
 components:
-  parameters:
-    tokenQuery:
-      in: query
-      name: token
-      schema:
-        type: string
-        example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
   responses:
     Error:
       description: Some error during request processing
@@ -72,3 +65,10 @@ components:
         webhooks_failed:
           type: integer
           format: int64
+  parameters:
+    tokenQuery:
+      in: query
+      name: token
+      schema:
+        type: string
+        example: NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODQ3...
