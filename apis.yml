@@ -535,6 +535,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/top-group-capability-edges.yml
+  name: TOP Group (The Open Platform) Business Capability Map
 - type: Overlay
   url: overlays/top-group-tonapi-overlay.yaml
 - type: Website
