@@ -36,17 +36,26 @@ paths:
       summary: Get extra currency info
       x-summary-source: derived
 components:
-  parameters:
-    ecIDParameter:
-      in: path
-      name: id
-      required: true
-      description: extra currency id
-      schema:
-        type: integer
-        example: 239
-        format: int32
   schemas:
+    InsufficientFunds:
+      type: object
+      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
+
+        '
+      required:
+      - required
+      - available
+      properties:
+        required:
+          type: integer
+          format: int64
+          description: TON in nanotons required to cover transfer gas
+          x-js-format: bigint
+        available:
+          type: integer
+          format: int64
+          description: TON in nanotons currently available on the source wallet
+          x-js-format: bigint
     EcPreview:
       type: object
       required:
@@ -68,25 +77,6 @@ components:
         image:
           type: string
           example: https://cache.tonapi.io/images/extra.jpg
-    InsufficientFunds:
-      type: object
-      description: 'Present on an error when a request failed because the source wallet does not hold enough TON to cover the required gas (error_code 50000).
-
-        '
-      required:
-      - required
-      - available
-      properties:
-        required:
-          type: integer
-          format: int64
-          description: TON in nanotons required to cover transfer gas
-          x-js-format: bigint
-        available:
-          type: integer
-          format: int64
-          description: TON in nanotons currently available on the source wallet
-          x-js-format: bigint
   responses:
     Error:
       description: Some error during request processing
@@ -104,3 +94,13 @@ components:
                 format: int64
               details:
                 $ref: '#/components/schemas/InsufficientFunds'
+  parameters:
+    ecIDParameter:
+      in: path
+      name: id
+      required: true
+      description: extra currency id
+      schema:
+        type: integer
+        example: 239
+        format: int32
