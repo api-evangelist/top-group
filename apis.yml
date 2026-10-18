@@ -53,6 +53,16 @@ tags:
 - Blockchain
 - TON
 - Telegram
+- Cryptocurrency
+- Wallets
+- Web3
+- NFT
+- Payments
+tags_raw:
+- Company
+- Blockchain
+- TON
+- Telegram
 - Crypto
 - Wallets
 - Web3
@@ -210,6 +220,8 @@ apis:
   humanURL: https://tonapi.io
   baseURL: https://tonapi.io
   tags:
+  - Gasless Transactions
+  tags_raw:
   - Gasless
   properties:
   - type: OpenAPI
