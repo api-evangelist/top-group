@@ -2112,3 +2112,9 @@ components:
       schema:
         type: string
         example: usd
+x-provenance:
+  method: harvested
+  publisher: TOP Group (The Open Platform)
+  source: https://raw.githubusercontent.com/tonkeeper/opentonapi/master/api/openapi.yml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
